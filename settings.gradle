@@ -1,0 +1,4 @@
+include ':CtsLibrary'
+include ':Arrakis'
+include ':app'
+rootProject.name = "CtsAppFip3A"
