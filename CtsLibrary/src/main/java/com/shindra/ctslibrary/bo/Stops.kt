@@ -1,10 +1,13 @@
+package com.shindra.ctslibrary.bo
+
 import com.google.gson.annotations.SerializedName
-import com.shindra.ctslibrary.bo.CtsPersistentObject
+import com.shindra.ctslibrary.bo.CtsPersistentBo
 import com.shindra.ctslibrary.bo.LineExtension
 
-data class StopPoints (    @SerializedName("StopPointsDelivery")
-    val stopPointsDelivery: StopPointsDelivery
-) : CtsPersistentObject()
+
+data class Stops(@SerializedName("StopPointsDelivery")
+                      val stopPointsDelivery: StopPointsDelivery
+) : CtsPersistentBo()
 
 data class StopPointsDelivery(
     @SerializedName("AnnotatedStopPointRef")
@@ -34,16 +37,7 @@ data class Extension(
     val distance: Int
 )
 
-data class Line(
-    @SerializedName("Destinations")
-    val destinations: List<Destination>,
-    @SerializedName("Extension")
-    val lineExtension: LineExtension,
-    @SerializedName("LineName")
-    val lineName: String,
-    @SerializedName("LineRef")
-    val lineRef: String
-)
+
 
 data class Location(
     @SerializedName("Latitude")
@@ -54,7 +48,7 @@ data class Location(
 
 data class Destination(
     @SerializedName("DirectionRef")
-    val directionRef : Int,
+    val directionRef: Int,
     @SerializedName("DestinationName")
-    val destinationName : List<String>
+    val destinationName: List<String>
 )

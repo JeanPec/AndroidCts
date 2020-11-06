@@ -2,6 +2,7 @@ package com.shindra.arrakis.webservice
 
 import androidx.viewbinding.BuildConfig
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.google.gson.Gson
 import com.shindra.arrakis.ArrakisApplication
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.Interceptor
@@ -21,7 +22,7 @@ abstract class RetrofitServices<Service> {
         return Retrofit.Builder()
             .baseUrl(getUrl())
             .addConverterFactory(
-                GsonConverterFactory.create()
+                GsonConverterFactory.create(gson())
             )
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(okHttpBuilder().build())
@@ -29,6 +30,7 @@ abstract class RetrofitServices<Service> {
 
     open fun retrofit() = retrofitBuilder().build()
     open fun service() = retrofit().create(apiServiceClass())
+    open fun gson() = Gson()
 
     abstract fun apiServiceClass(): Class<Service>
     abstract fun getUrl(): String
