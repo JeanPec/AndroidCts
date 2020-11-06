@@ -1,14 +1,12 @@
-package com.shindra.arrakis.Repository
+package com.shindra.arrakis.repository
 
 import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.shindra.arrakis.ArrakisApplication
 import com.shindra.arrakis.bo.Persistant
 import com.shindra.arrakis.bo.PersistentCacheWrapper
 import com.shindra.arrakis.cache.Cache
 import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import java.lang.reflect.Type
 
