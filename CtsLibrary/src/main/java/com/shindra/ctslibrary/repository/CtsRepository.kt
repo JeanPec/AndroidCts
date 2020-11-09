@@ -20,7 +20,7 @@ class CtsRepository : Repository() {
     fun stopPoints(latitude: Double, longitude: Double, distanceArroundInM: Int): Observable<Stops> {
         return withPersistentCache(STOP_POINTS_STREAM_ID, CtsService.stopPoints(latitude, longitude, distanceArroundInM), object : TypeToken<Stops>() {}.type).toObservable()
     }
-
+fff
     fun lines(): Observable<Lines> {
         return withPersistentCache(LINE_STREAM_ID, CtsService.linesDiscovery(), object : TypeToken<Lines>() {}.type).toObservable()
     }
