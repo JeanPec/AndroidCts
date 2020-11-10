@@ -7,7 +7,7 @@ import com.shindra.ctslibrary.bo.*
 import com.shindra.ctslibrary.repository.CtsRepository
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 
-class ViewModel : ViewModel() {
+class MyViewModel : ViewModel() {
 
     private val ctsRepository = CtsRepository()
 

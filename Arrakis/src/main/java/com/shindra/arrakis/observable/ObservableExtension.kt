@@ -21,41 +21,26 @@ fun <T> Observable<T>.convertToBehaviorSubject(): BehaviorSubject<T> {
     val subject = BehaviorSubject.create<T>()
     this.subscribe(subject)
     return subject
-
 }
 
-fun <T> BehaviorSubject<T>.subscribeWithLifecycle(lifecycle: Lifecycle, listener: ObservableListener<T>) : Disposable? {
+fun <T> BehaviorSubject<T>.subscribeToBehaviorSubject(listener: ObservableListener<T>): Disposable? {
     var dispose: Disposable? = null
 
-    this.doOnSubscribe { listener.onLoading() }
-
-    lifecycle.addObserver(object : LifecycleObserver {
-
-        @OnLifecycleEvent(Lifecycle.Event.ON_START)
-        fun subscribe() {
-            Log.d("Subscribe","OnSubscribe")
-            this@subscribeWithLifecycle.subscribe(
-                {
-                    listener.onSuccess(it)
-                },
-                {
-                    listener.onError(it)
-                })
-        }
-
-        @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-        fun dispose() {
-            Log.d("Subscribe","OnDispose")
-            this@subscribeWithLifecycle.onComplete()
-        }
-    })
-
+    this
+        .doOnSubscribe { listener.onLoading() }
+        .subscribe(
+            {
+                listener.onSuccess(it)
+            },
+            {
+                listener.onError(it)
+            })
     return dispose
 }
 
-interface ObservableListener<T>{
+interface ObservableListener<T> {
     fun onLoading()
-    fun onSuccess(data : T)
+    fun onSuccess(data: T)
     fun onError(throwable: Throwable)
 }
 
