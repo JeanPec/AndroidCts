@@ -14,10 +14,9 @@ open class Repository {
 
     fun <T> withCache(key: String, networkObservable: Single<T>, cache: Cache = Cache()): Single<T> {
 
-        val on = networkObservable.map {
+        val netSingle = networkObservable.doAfterSuccess {
             Log.d("Repository", "key : $key is put in cache with result : ${it.toString()}")
             cache.put(key, it)
-            it
         }
 
         val oc = Maybe.create<T> { emitter ->
@@ -26,34 +25,35 @@ open class Repository {
             t?.let { emitter.onSuccess(it) } ?: emitter.onComplete()
         }
 
-        return oc.switchIfEmpty(on)
+        return oc.switchIfEmpty(netSingle)
 
     }
 
     fun <T : Persistant> withPersistentCache(key: String, networkObservable: Single<T>, type: Type): Single<T> {
         val dao = ArrakisApplication.persistentDataBase.getPersistentWrapperDao()
 
-        val sN = networkObservable.map {
+
+        val netSingle = networkObservable.doAfterSuccess {
             Log.d("Repository", "key : $key is put in persistent cache")
             dao.insert(PersistentCacheWrapper(key,it.toJson()))
-            it
         }
 
-        val pM = dao.getPersistentWrapper(key).flatMap {
+
+        val pM = dao.getPersistentWrapper(key).map {
             Log.d("Repository", "key : $key is loaded from persistent cache")
 
-            val t = Gson().fromJson<T>(it.dataAsJson,type)
+            val t = Gson().fromJson<T>(it.dataAsJson, type)
 
-            if(!t.isValid(it.dateOfInsertion)) {
+            if (!t.isValid(it.dateOfInsertion)) {
                 Log.d("Repository", "key : $key loaded from persistent cache is no longer valid switchin to network call")
                 dao.delete(it)
-               sN.toMaybe()
-            }else{
-                Maybe.just(t)
+                throw Throwable()
+            } else {
+                t
             }
-        }
+        }.onErrorResumeNext { netSingle }
 
-        return pM.switchIfEmpty(sN)
+        return pM
 
     }
 
