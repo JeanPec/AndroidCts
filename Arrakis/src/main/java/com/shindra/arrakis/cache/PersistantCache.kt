@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.*
 import com.shindra.arrakis.bo.PersistentCacheWrapper
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Single
 import java.util.*
 
 @Dao
@@ -16,7 +17,7 @@ interface PersistentDao{
     fun delete(wrapper : PersistentCacheWrapper)
 
     @Query("SELECT * FROM PersistentCacheWrapper WHERE `key` == :key")
-    fun getPersistentWrapper(key: String): Maybe<PersistentCacheWrapper>
+    fun getPersistentWrapper(key: String): Single<PersistentCacheWrapper>
 
 }
 

@@ -1,9 +1,8 @@
 package com.shindra.ctslibrary.bo
 
 import com.google.gson.annotations.SerializedName
-import com.shindra.arrakis.bo.Persistant
 
-data class VeloParcs(@SerializedName("Veloparc") val veloparc: List<Veloparc>) : CtsPersistentObject()
+data class VeloParcs(@SerializedName("Veloparc") val veloparc: List<Veloparc>) : CtsPersistentBo()
 
 data class Veloparc(
     @SerializedName("AccessInformation_DE")
