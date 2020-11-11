@@ -12,32 +12,36 @@ import com.shindra.ctslibrary.bo.Lines;
 
 import org.jetbrains.annotations.NotNull;
 
-public class StartActivity extends AppCompatActivity {
-
+public class StartActivity extends AppCompatActivity
+{
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
-        ObservableExtensionKt.subscribeToBehaviorSubject(model.linesDelivery(), new ObservableListener<Lines>() {
+        ObservableExtensionKt.subscribeToBehaviorSubject(model.linesDelivery(), new ObservableListener<Lines>()
+        {
             @Override
-            public void onLoading() {
+            public void onLoading()
+            {
                 //call once we started the network called. Indicate that the network call is in progress
             }
 
             @Override
-            public void onSuccess(Lines data) {
+            public void onSuccess(Lines data)
+            {
                 //call once the network call has responded with a success
             }
 
             @Override
-            public void onError(@NotNull Throwable throwable) {
+            public void onError(@NotNull Throwable throwable)
+            {
                 //call if the network call has responded with an error
             }
         });
-
-
     }
 }
 
