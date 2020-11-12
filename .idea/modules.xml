@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CtsAppFip3A.iml" filepath="$PROJECT_DIR$/.idea/modules/CtsAppFip3A.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Arrakis/CtsAppFip3A.Arrakis.iml" filepath="$PROJECT_DIR$/.idea/modules/Arrakis/CtsAppFip3A.Arrakis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CtsLibrary/CtsAppFip3A.CtsLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/CtsLibrary/CtsAppFip3A.CtsLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CtsAppFip3A.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CtsAppFip3A.app.iml" />
+    </modules>
+  </component>
+</project>
