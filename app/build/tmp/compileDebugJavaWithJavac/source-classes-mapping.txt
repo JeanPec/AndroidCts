@@ -1,5 +1,0 @@
-com/shindra/BuildConfig.java
- com.shindra.BuildConfig
-com/shindra/StartActivity.java
- com.shindra.StartActivity
- com.shindra.StartActivity$1
