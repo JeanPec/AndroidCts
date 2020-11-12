@@ -1,4 +1,4 @@
-package com.shindra.ctslibrary.bo
+package com.shindra.ctslibrary.apibo
 
 import com.google.gson.annotations.SerializedName
 
