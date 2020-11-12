@@ -1,14 +1,14 @@
-package com.shindra.ctslibrary.bo
+package com.shindra.ctslibrary.apibo
 
 import com.google.gson.annotations.SerializedName
 
 data class LineExtension(
     @SerializedName("RouteColor")
-    val routeColor: String,
+    val routeColor: String? = null,
     @SerializedName("RouteTextColor")
-    val routeTextColor: String,
+    val routeTextColor: String? = null,
     @SerializedName("RouteType")
-    val routeType: RouteType
+    val routeType: RouteType? = null
 )
 
 enum class RouteType{
