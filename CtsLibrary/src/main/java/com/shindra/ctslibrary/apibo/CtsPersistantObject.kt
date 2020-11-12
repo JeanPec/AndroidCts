@@ -1,4 +1,4 @@
-package com.shindra.ctslibrary.bo
+package com.shindra.ctslibrary.apibo
 
 import com.shindra.arrakis.bo.Persistant
 import java.time.Duration
@@ -12,7 +12,7 @@ open class CtsPersistentBo  : Persistant{
     override fun isValid(dateOfInsertion: Date): Boolean {
         val now = Calendar.getInstance().time
 
-        return false /*dateOfInsertion.time + hourToMs(1) < now.time*/
+        return dateOfInsertion.time + hourToMs(1) < now.time
     }
 
     private fun hourToMs(hour : Int) : Long{
