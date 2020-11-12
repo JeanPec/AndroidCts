@@ -1,17 +1,20 @@
-package com.shindra.ctslibrary.bo
+package com.shindra.ctslibrary.apibo
 
 import com.google.gson.annotations.SerializedName
+import com.shindra.arrakis.extension.isValid
+import com.shindra.arrakis.extension.toDate
+import com.shindra.ctslibrary.mapper.T_DATE_FORMAT
+import java.time.Duration
+import java.util.*
 
-data class Lines(
-    @SerializedName("LinesDelivery")
-    val lines: LinesDelivery
-) : CtsPersistentObject(){
+
+data class Lines(@SerializedName("LinesDelivery") val linesDelivery: LinesDelivery) : CtsPersistentBo() {
 
 }
 
 data class LinesDelivery(
-    @SerializedName("Line")
-    val line: List<Line>,
+    @SerializedName("AnnotatedLineRef")
+    val line: List<LineApi>,
     @SerializedName("RequestMessageRef")
     val requestMessageRef: String,
     @SerializedName("ResponseTimestamp")
@@ -22,19 +25,9 @@ data class LinesDelivery(
     val validUntil: String
 )
 
-data class Line(
-    @SerializedName("Extension")
-    val extension: LineExtension,
-    @SerializedName("LineName")
-    val lineName: String,
-    @SerializedName("LineRef")
-    val lineRef: String
-)
-
 data class LineDestination(
     @SerializedName("DestinationName")
     val destinationName: List<String>,
     @SerializedName("DirectionRef")
     val directionRef: Int
 )
-
