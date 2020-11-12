@@ -20,6 +20,7 @@ public class StartActivity extends AppCompatActivity {
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
+        
         ObservableExtensionKt.subscribeToBehaviorSubject(model.linesDelivery(), new ObservableListener<Lines>() {
             @Override
             public void onLoading() {
