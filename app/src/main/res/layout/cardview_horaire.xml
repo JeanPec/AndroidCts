@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_horaire"
         android:layout_width="match_parent"
@@ -20,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -43,6 +41,7 @@
                 android:layout_below="@+id/Headline1"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
                 android:text="BodyLine"></TextView>
 
             <TextView
@@ -64,6 +63,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Prochain départ"></TextView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

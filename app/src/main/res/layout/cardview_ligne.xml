@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_tram"
+        android:id="@+id/cardView_ligne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,8 +47,8 @@
             <Button
                 android:id="@+id/button"
                 style="@style/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="115dp"
+                android:layout_height="38dp"
                 android:layout_below="@+id/imagetram"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
@@ -62,5 +61,5 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
