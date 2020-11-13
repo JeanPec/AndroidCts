@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -22,9 +24,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
@@ -44,5 +44,6 @@ public class StartActivity extends AppCompatActivity {
 
         });
     }
+
 }
 
