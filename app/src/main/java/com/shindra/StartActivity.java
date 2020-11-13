@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -17,15 +19,22 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+
+    int images[] = {R.drawable.nouveau_tram_strasbourg,R.drawable.nouveau_tram_strasbourg,R.drawable.nouveau_tram_strasbourg};
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+        recyclerView = findViewById(R.id.RecyclerView);
+
+        com.shindra.MyAdapter myAdapter = new MyAdapter(this,images);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override

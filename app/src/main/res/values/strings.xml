@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="horaire">horaire</string>
+    <string-array name="lignes">
+        <item>@drawable/a</item>
+    </string-array>
+
 </resources>

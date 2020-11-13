@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="cPrimary">#EF2B3E</color>
+    <color name="cPrimaryVariant">#B50017</color>
+    <color name="cBackGroundActFrag">#EF2B3E</color>
+    <color name="cHeadLine">#000000</color>
+    <color name="cBody2">#EF2B3E</color>
+    <color name="cLigneA">#D8232A</color>
+    <color name="cLigneB">#00A3DA</color>
+    <color name="cLigneC">#EB8B2D</color>
+    <color name="cLigneD">#009F4A</color>
+    <color name="cLigneE">#7F78AB</color>
+    <color name="cLigneF">#84BF41</color>
+
+    <color name="grey">#808080</color>
+
 </resources>
