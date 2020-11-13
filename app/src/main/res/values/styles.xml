@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    //User Defined Style
+    <style name="Headline_6">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">40px</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Body_2">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">14px</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
