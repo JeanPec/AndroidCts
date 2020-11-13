@@ -23,6 +23,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
 
