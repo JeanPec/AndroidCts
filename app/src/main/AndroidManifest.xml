@@ -8,11 +8,12 @@
         android:allowBackup="true"
         android:name=".MyApplication"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/Nos_trams"
+        android:label="CtsAppFip3A"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".StartActivity">
+        <activity android:name=".StartActivity"
+            android:label="@string/Nos_trams">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
