@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="main_view_name">Nos trams</string>
+    <string name="chargement">Veillez patienter, chargement des données en cours ...</string>
 </resources>
