@@ -26,7 +26,6 @@
             android:layout_width="403dp"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent">
 
 
@@ -64,9 +63,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="235dp"
                 android:layout_marginEnd="273dp"
+                android:backgroundTint="@color/design_default_color_background"
                 android:text="@string/Validate"
                 android:textColor="@color/Primary"
-                android:backgroundTint="@color/design_default_color_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

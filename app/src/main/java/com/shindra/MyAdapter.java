@@ -10,6 +10,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     int imgLignetram[];
     int imgTram;
 
+
     Context context;
 
     public MyAdapter(Context context1, int imgLignetram1[], int imgTram1){
