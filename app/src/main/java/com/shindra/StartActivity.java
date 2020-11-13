@@ -41,6 +41,7 @@ public class StartActivity extends AppCompatActivity {
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
             }
+
         });
     }
 }
