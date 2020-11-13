@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="headline_6">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="body_2">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- style 18h35 is the same as headline_6 -->
+    <style name="_18h35">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>
