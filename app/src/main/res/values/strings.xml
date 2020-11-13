@@ -2,7 +2,7 @@
     <string name="app_name">CtsAppFip3A</string>
 
 <!--    Page Name-->
-    <string name="page_NosTrams">CtsAppFip3A</string>
-    <string name="page_Horaire">CtsAppFip3A</string>
+    <string name="page_NosTrams">Nos Trams</string>
+    <string name="page_Horaires">Horaires</string>
 
 </resources>

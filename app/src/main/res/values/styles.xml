@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Style Headline 6 -->
+    <style name="Headline6">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <!-- Style Body 2 -->
+    <style name="Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <!-- Style Button -->
+    <style name="Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+        <item name="android:textAllCaps">true</item>             !-- Creation de la Majuscule -->
+
+    </style>
 
 </resources>
