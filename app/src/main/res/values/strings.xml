@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+
+    <string name="activity_name_trams">Nos trams</string>
+    <string name="activity_name_horaires">Horaires</string>
+
 </resources>

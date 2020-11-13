@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -22,6 +24,18 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // data to populate the RecyclerView with
+        ArrayList<String> testList = new ArrayList<>();
+        testList.add("Horse");
+        testList.add("Cow");
+        testList.add("Camel");
+        testList.add("Sheep");
+        testList.add("Goat");
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.rvTramLines);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new LinesRecyclerViewAdapter(this, testList));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
