@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6300EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+
+<!--    Default Color-->
+    <color name="purple_200">#FFBB86FC</color>-->
+    <color name="purple_500">#FF6300EE</color>-->
+    <color name="purple_700">#FF3700B3</color>-->
+    <color name="teal_200">#FF03DAC5</color>-->
+    <color name="teal_700">#FF018786</color>-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    My Color CTS Application-->
+    <color name="TramPrimary">#EF2B3E</color>
+    <color name="TramPrimaryVariant">#B50017</color>
+    <color name="BackgroundFragments">#F2F2F2</color>
+    <color name="TramLineA">#D8232A</color>
+    <color name="TramLineB">#00A3DA</color>
+    <color name="TramLineC">#EB8B2D</color>
+    <color name="TramLineD">#009F4A</color>
+    <color name="TramLineE">#7F78AB</color>
+    <color name="TramLineF">#84BF41</color>
+    <color name="HeadLine">#000000</color>
+    <color name="Body2">#99000000</color>
+
+
 </resources>
