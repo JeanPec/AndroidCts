@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -30,6 +32,11 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                PremierFragment fragment = new PremierFragment();
+                fragmentTransaction.add(R.id.fragment_container_view, fragment);
+
             }
 
             @Override
