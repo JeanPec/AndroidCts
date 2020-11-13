@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="entete_card_tram_a">entete card tram A</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imagetram">Image TRAM</string>
+    <string name="illustrationtram">Illustration TRAM</string>
+    <string name="horaire">Horaire</string>
 </resources>
