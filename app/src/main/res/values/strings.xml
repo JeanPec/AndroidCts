@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nos trams</string>
+    <string name="message_onload">Veuillez patienter, chargement des données en cours </string>
 </resources>
