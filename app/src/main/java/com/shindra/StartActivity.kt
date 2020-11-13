@@ -1,6 +1,5 @@
 package com.shindra
 
-import androidx.recyclerview.widget.RecyclerView
 
 
 //import com.shindra.MyViewModel.lines
@@ -10,23 +9,23 @@ import android.os.Bundle
 import com.shindra.R
 import com.shindra.MyViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.ctslibrary.bo.Line
 import java.util.ArrayList
+import androidx.recyclerview.widget.RecyclerView
 
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val list = ArrayList<Train>()
-        list +=Train(R.drawable.tram_a)
-        list +=Train(R.drawable.tram_b)
+        val listTrain = initList()
 
-        //recycler_view = findViewById((R.id.recycler_view))
-
-        TrainAdapter(list)
-        //activi
+        val recyclerview = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerview.adapter = TrainAdapter(listTrain)
+        recyclerview.layoutManager = LinearLayoutManager(this )
+        recyclerview.setHasFixedSize(true)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
@@ -43,5 +42,18 @@ class StartActivity : AppCompatActivity() {
             }
         })
     }
+
+}
+
+private fun initList(): List<Train>{
+
+    val list = ArrayList<Train>()
+    list +=Train(R.drawable.tram_a)
+    list +=Train(R.drawable.tram_b)
+    list +=Train(R.drawable.tram_c)
+    list +=Train(R.drawable.tram_d)
+    list +=Train(R.drawable.tram_e)
+    list +=Train(R.drawable.tram_f)
+    return list
 
 }

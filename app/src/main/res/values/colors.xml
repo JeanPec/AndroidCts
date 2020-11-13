@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Primary">#EF2B3E</color>
     <color name="Primary_Variant">#B50017</color>
-    <color name="Background_Activity">#F2F2F2</color>
+    <color name="Background">#F2F2F2</color>
     <color name="Ligne_A">#D8232A</color>
     <color name="Ligne_B">#00A3DA</color>
     <color name="Ligne_C">#EB8B2D</color>
