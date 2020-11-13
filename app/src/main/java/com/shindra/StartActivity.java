@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -22,9 +24,12 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView tramList = findViewById(R.id.tram_list);
+
+        tramList.setLayoutManager(new LinearLayoutManager(this));
+        tramList.setAdapter(new TramRecyclerViewAdapter(getListOfTram()));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
@@ -42,6 +47,18 @@ public class StartActivity extends AppCompatActivity {
                 //call if the network call has responded with an error
             }
         });
+    }
+
+    private ArrayList<Integer> getListOfTram(){
+        ArrayList<Integer> tramArray = new ArrayList<>();
+        tramArray.add(R.drawable.tram_a);
+        tramArray.add(R.drawable.tram_b);
+        tramArray.add(R.drawable.tram_c);
+        tramArray.add(R.drawable.tram_d);
+        tramArray.add(R.drawable.tram_e);
+        tramArray.add(R.drawable.tram_f);
+
+        return tramArray;
     }
 }
 
