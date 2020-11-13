@@ -3,22 +3,18 @@ package com.shindra;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.shindra.ctslibrary.bo.Line;
-
 import java.util.ArrayList;
 
 public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
 {
-    ArrayList<Line> Data;
+    ArrayList<Line> lines;
 
-    public LineAdapter(ArrayList<Line> data)
+    public LineAdapter(ArrayList<Line> lines)
     {
-        this.Data = data;
+        this.lines = lines;
     }
 
     @NonNull
@@ -32,35 +28,34 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
     @Override
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position)
     {
-        Line item = this.Data.get(position);
-        switch (item.getName())
-        {
-            case "Ligne A":
-                holder.TramIcon.setImageResource(R.drawable.tram_a);
-                break;
-            case "Ligne B":
-                holder.TramIcon.setImageResource(R.drawable.tram_b);
-                break;
-            case "Ligne C":
-                holder.TramIcon.setImageResource(R.drawable.tram_c);
-                break;
-            case "Ligne D":
-                holder.TramIcon.setImageResource(R.drawable.tram_d);
-                break;
-            case "Ligne E":
-                holder.TramIcon.setImageResource(R.drawable.tram_e);
-                break;
-            case "Ligne F":
-                holder.TramIcon.setImageResource(R.drawable.tram_f);
-                break;
-            default:
-                holder.TramIcon.setImageResource(R.drawable.tram);
-        }
+        Line item = lines.get(position);
+        holder.tramIcon.setImageResource(getTramIcon(item));
     }
 
     @Override
     public int getItemCount()
     {
-        return this.Data.size();
+        return this.lines.size();
+    }
+
+    private int getTramIcon(Line line)
+    {
+        switch (line.getName())
+        {
+            case "Ligne A":
+                return R.drawable.tram_a;
+            case "Ligne B":
+                return R.drawable.tram_b;
+            case "Ligne C":
+                return R.drawable.tram_c;
+            case "Ligne D":
+                return R.drawable.tram_d;
+            case "Ligne E":
+                return R.drawable.tram_e;
+            case "Ligne F":
+                return R.drawable.tram_f;
+            default:
+                return R.drawable.tram;
+        }
     }
 }

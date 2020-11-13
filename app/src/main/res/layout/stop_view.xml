@@ -13,45 +13,45 @@
 
         <TextView
             android:id="@+id/stopName"
+            style="@style/HeadLine6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            style="@style/HeadLine6"
             android:text="XXXXXXX">
         </TextView>
 
         <TextView
             android:id="@+id/lineName"
+            android:layout_below="@id/stopName"
+            style="@style/Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/stopName"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
-            style="@style/Body2"
             android:text="XXXXXXX">
         </TextView>
 
         <TextView
             android:id="@+id/stopTime"
+            style="@style/HeadLine6"
+            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:layout_alignParentRight="true"
-            style="@style/HeadLine6"
             android:text="XXXXXXX">
         </TextView>
 
         <TextView
             android:id="@+id/information"
+            android:layout_below="@id/stopName"
+            style="@style/Body2"
+            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/stopName"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="8dp"
-            android:layout_alignParentRight="true"
-            style="@style/Body2"
             android:text="XXXXXXX">
         </TextView>
 
