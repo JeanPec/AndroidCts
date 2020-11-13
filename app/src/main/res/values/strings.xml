@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="Nos_trams">Nos trams</string>
+    <string name="Ligne_A">Ligne A</string>
+    <string name="Ligne_B">Ligne B</string>
+    <string name="Ligne_C">Ligne C</string>
+    <string name="Ligne_D">Ligne D</string>
+    <string name="Ligne_E">Ligne E</string>
+    <string name="Ligne_F">Ligne F</string>
 </resources>
