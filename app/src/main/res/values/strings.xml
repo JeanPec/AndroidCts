@@ -5,4 +5,14 @@
     <string name="page_NosTrams">Nos Trams</string>
     <string name="page_Horaires">Horaires</string>
 
+    <!--    Liste Page Nos Tram-->
+    <string-array name="Lignes_trams">
+        <item>LigneA</item>
+        <item>LigneB</item>
+        <item>LigneC</item>
+        <item>LigneD</item>
+        <item>LigneE</item>
+        <item>LigneF</item>
+    </string-array>
+
 </resources>

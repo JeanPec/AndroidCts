@@ -4,8 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -17,15 +18,25 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
+    //Creation des variables
+    int ImagesLigneTram[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
 
+    //Creation de la Recycler View
+    RecyclerView RecyclerView_Ligne_Tram;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RecyclerView_Ligne_Tram = findViewById(R.id.RecyclerView_Ligne_Tram);
 
+        AdapterLigneTram adapterView = new AdapterLigneTram(this, ImagesLigneTram);
+        RecyclerView_Ligne_Tram.setAdapter(adapterView);
+        RecyclerView_Ligne_Tram.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+
+
 
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
