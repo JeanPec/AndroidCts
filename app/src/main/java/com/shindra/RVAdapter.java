@@ -15,7 +15,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     int images2[];
     Context context;
 
-    public RVAdapter(Context ct, int img1[], int img2[]){
+    RVAdapter(Context ct, int img1[], int img2[]){
         context = ct;
         images1 = img1;
         images2 = img2;
@@ -32,7 +32,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.myImg1.setImageResource(images1[position]);
-        holder.myImg2.setImageResource(images2[position]);
+        holder.myImg2.setImageResource(images2[0]);
     }
 
     @Override
