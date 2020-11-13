@@ -2,15 +2,21 @@
 <resources>
 
     //User Defined Style
-    <style name="Headline_6">
-        <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">40px</item>
+    <style name="Headline_6F">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Body_2">
-        <item name="fontFamily">sans-serif</item>
-        <item name="android:textSize">14px</item>
+    <style name="Body_2F">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ButtonF">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 

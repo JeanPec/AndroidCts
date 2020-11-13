@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -17,10 +18,18 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
+    int imgLignetram[] = {R.drawable.tram_a, R.drawable.tram_b, R.drawable.tram_c, R.drawable.tram_d, R.drawable.tram_e, R.drawable.tram_f};
+    int imgTram = R.drawable.nouveau_tram_strasbourg;
+
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = findViewById(R.id.recyclerViewTram);
+
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);

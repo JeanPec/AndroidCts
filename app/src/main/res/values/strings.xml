@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="ButtonForTime">HORAIRE</string>
 </resources>
