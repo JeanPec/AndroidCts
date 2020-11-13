@@ -11,16 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/tramIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/tram"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp">
-        </androidx.appcompat.widget.AppCompatImageView>
+        </ImageView>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/tramPicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_below="@id/tramIcon"
             android:src="@drawable/nouveau_tram_strasbourg"
             android:adjustViewBounds="true">
-        </androidx.appcompat.widget.AppCompatImageView>
+        </ImageView>
 
         <Button
             android:id="@+id/scheduleButton"
