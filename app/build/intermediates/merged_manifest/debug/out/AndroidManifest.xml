@@ -10,6 +10,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Include required permissions for Google Maps API to run. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:name="com.shindra.MyApplication"
         android:allowBackup="true"
@@ -22,13 +29,18 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.CtsAppFip3A" >
-        <activity android:name="com.shindra.MainActivity" >
+        <activity android:name="com.shindra.StartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB-PUj9rWHjXJveAxRnMtHGM54ZpxmEGDU" />
+
         <activity
             android:name="com.chuckerteam.chucker.internal.ui.MainActivity"
             android:label="@string/chucker_name"
@@ -56,7 +68,19 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/chucker_provider_paths" />
-        </provider>
+        </provider> <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

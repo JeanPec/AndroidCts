@@ -14,103 +14,145 @@
 11-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:5:5-83
 11-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:5:22-64
 12
-13    <application
-13-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:7:5-22:19
-14        android:name="com.shindra.MyApplication"
-14-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:9:9-38
-15        android:allowBackup="true"
-15-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:8:9-35
-16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.3.2] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\8dec601f45437c957e89ca33d688e76a\core-1.3.2\AndroidManifest.xml:24:18-86
-17        android:debuggable="true"
-18        android:extractNativeLibs="false"
-19        android:icon="@mipmap/ic_launcher"
-19-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:10:9-43
-20        android:label="@string/app_name"
-20-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:11:9-41
-21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:12:9-54
-22        android:supportsRtl="true"
-22-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:13:9-35
-23        android:testOnly="true"
-24        android:theme="@style/Theme.CtsAppFip3A" >
-24-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:14:9-49
-25        <activity android:name="com.shindra.MainActivity" >
-25-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:15:9-21:20
-25-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:15:19-47
-26            <intent-filter>
-26-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:16:13-20:29
-27                <action android:name="android.intent.action.MAIN" />
-27-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:17:17-69
-27-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:17:25-66
-28
-29                <category android:name="android.intent.category.LAUNCHER" />
-29-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:19:17-77
-29-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:19:27-74
-30            </intent-filter>
-31        </activity>
-32        <activity
-32-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:10:9-15:52
-33            android:name="com.chuckerteam.chucker.internal.ui.MainActivity"
-33-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:11:13-76
-34            android:label="@string/chucker_name"
-34-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:12:13-49
-35            android:launchMode="singleTask"
-35-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:13:13-44
-36            android:taskAffinity="com.chuckerteam.chucker.task"
-36-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:14:13-64
-37            android:theme="@style/Chucker.Theme" />
-37-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:15:13-49
-38        <activity
-38-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:16:9-19:52
-39            android:name="com.chuckerteam.chucker.internal.ui.transaction.TransactionActivity"
-39-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:17:13-95
-40            android:parentActivityName="com.chuckerteam.chucker.internal.ui.MainActivity"
-40-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:18:13-90
-41            android:theme="@style/Chucker.Theme" />
-41-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:19:13-49
-42        <activity
-42-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:20:9-23:52
-43            android:name="com.chuckerteam.chucker.internal.ui.throwable.ThrowableActivity"
-43-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:21:13-91
-44            android:parentActivityName="com.chuckerteam.chucker.internal.ui.MainActivity"
-44-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:22:13-90
-45            android:theme="@style/Chucker.Theme" />
-45-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:23:13-49
-46
-47        <service
-47-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:25:9-27:40
-48            android:name="com.chuckerteam.chucker.internal.support.ClearDatabaseService"
-48-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:26:13-89
-49            android:exported="false" />
-49-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:27:13-37
-50
-51        <provider
-51-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:29:9-37:20
-52            android:name="com.chuckerteam.chucker.internal.support.ChuckerFileProvider"
-52-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:30:13-88
-53            android:authorities="com.shindra.com.chuckerteam.chucker.provider"
-53-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:31:13-84
-54            android:exported="false"
-54-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:32:13-37
-55            android:grantUriPermissions="true" >
-55-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:33:13-47
-56            <meta-data
-56-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:34:13-36:66
-57                android:name="android.support.FILE_PROVIDER_PATHS"
-57-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:35:17-67
-58                android:resource="@xml/chucker_provider_paths" />
-58-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:36:17-63
-59        </provider>
-60
-61        <service
-61-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:25:9-28:40
-62            android:name="androidx.room.MultiInstanceInvalidationService"
-62-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:26:13-74
-63            android:directBootAware="true"
-63-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:27:13-43
-64            android:exported="false" />
-64-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:28:13-37
-65    </application>
-66
-67</manifest>
+13    <!-- Include required permissions for Google Maps API to run. -->
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+14-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+15
+16    <uses-feature
+16-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+17        android:glEsVersion="0x00020000"
+17-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+18        android:required="true" />
+18-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+19
+20    <application
+20-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:7:5-27:19
+21        android:name="com.shindra.MyApplication"
+21-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:9:9-38
+22        android:allowBackup="true"
+22-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:8:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.3.2] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\8dec601f45437c957e89ca33d688e76a\core-1.3.2\AndroidManifest.xml:24:18-86
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:icon="@mipmap/ic_launcher"
+26-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:10:9-43
+27        android:label="@string/app_name"
+27-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:11:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:12:9-54
+29        android:supportsRtl="true"
+29-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:13:9-35
+30        android:testOnly="true"
+31        android:theme="@style/Theme.CtsAppFip3A" >
+31-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:14:9-49
+32        <activity android:name="com.shindra.StartActivity" >
+32-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:15:9-21:20
+32-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:15:19-48
+33            <intent-filter>
+33-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:16:13-20:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:17:17-69
+34-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:17:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:19:17-77
+36-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:19:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <meta-data
+40-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:23:9-25:70
+41            android:name="com.google.android.geo.API_KEY"
+41-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:24:13-58
+42            android:value="AIzaSyB-PUj9rWHjXJveAxRnMtHGM54ZpxmEGDU" />
+42-->D:\Android\FIP 3A\app\src\main\AndroidManifest.xml:25:13-68
+43
+44        <activity
+44-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:10:9-15:52
+45            android:name="com.chuckerteam.chucker.internal.ui.MainActivity"
+45-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:11:13-76
+46            android:label="@string/chucker_name"
+46-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:12:13-49
+47            android:launchMode="singleTask"
+47-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:13:13-44
+48            android:taskAffinity="com.chuckerteam.chucker.task"
+48-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:14:13-64
+49            android:theme="@style/Chucker.Theme" />
+49-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:15:13-49
+50        <activity
+50-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:16:9-19:52
+51            android:name="com.chuckerteam.chucker.internal.ui.transaction.TransactionActivity"
+51-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:17:13-95
+52            android:parentActivityName="com.chuckerteam.chucker.internal.ui.MainActivity"
+52-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:18:13-90
+53            android:theme="@style/Chucker.Theme" />
+53-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:19:13-49
+54        <activity
+54-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:20:9-23:52
+55            android:name="com.chuckerteam.chucker.internal.ui.throwable.ThrowableActivity"
+55-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:21:13-91
+56            android:parentActivityName="com.chuckerteam.chucker.internal.ui.MainActivity"
+56-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:22:13-90
+57            android:theme="@style/Chucker.Theme" />
+57-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:23:13-49
+58
+59        <service
+59-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:25:9-27:40
+60            android:name="com.chuckerteam.chucker.internal.support.ClearDatabaseService"
+60-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:26:13-89
+61            android:exported="false" />
+61-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:27:13-37
+62
+63        <provider
+63-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:29:9-37:20
+64            android:name="com.chuckerteam.chucker.internal.support.ChuckerFileProvider"
+64-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:30:13-88
+65            android:authorities="com.shindra.com.chuckerteam.chucker.provider"
+65-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:31:13-84
+66            android:exported="false"
+66-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:32:13-37
+67            android:grantUriPermissions="true" >
+67-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:33:13-47
+68            <meta-data
+68-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:34:13-36:66
+69                android:name="android.support.FILE_PROVIDER_PATHS"
+69-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:35:17-67
+70                android:resource="@xml/chucker_provider_paths" />
+70-->[com.github.chuckerteam.chucker:library:3.3.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\c3da82d263cedb1848604d5535cb4f13\jetified-library-3.3.0\AndroidManifest.xml:36:17-63
+71        </provider> <!-- Needs to be explicitly declared on P+ -->
+72        <uses-library
+72-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+73            android:name="org.apache.http.legacy"
+73-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+74            android:required="false" />
+74-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\4507540fccbede83739ff229a8cb9124\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+75
+76        <activity
+76-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\9611abfb7e24dacf8fa36e580aff5774\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+77            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+77-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\9611abfb7e24dacf8fa36e580aff5774\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+78            android:exported="false"
+78-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\9611abfb7e24dacf8fa36e580aff5774\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+79            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+79-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\9611abfb7e24dacf8fa36e580aff5774\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+80
+81        <meta-data
+81-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\3b3bc14d7d0c25719f25563a2e8a12a2\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+82            android:name="com.google.android.gms.version"
+82-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\3b3bc14d7d0c25719f25563a2e8a12a2\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+83            android:value="@integer/google_play_services_version" />
+83-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\3b3bc14d7d0c25719f25563a2e8a12a2\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+84
+85        <service
+85-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:25:9-28:40
+86            android:name="androidx.room.MultiInstanceInvalidationService"
+86-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:26:13-74
+87            android:directBootAware="true"
+87-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:27:13-43
+88            android:exported="false" />
+88-->[androidx.room:room-runtime:2.3.0-alpha03] C:\Users\julie\.gradle\caches\transforms-2\files-2.1\5a888af41fff87a61bd2550945756273\room-runtime-2.3.0-alpha03\AndroidManifest.xml:28:13-37
+89    </application>
+90
+91</manifest>
