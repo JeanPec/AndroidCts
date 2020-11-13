@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="time">Horaire</string>
+    <string name="loading">Veuillez patientez, chargement des données en cours</string>
 </resources>
