@@ -23,6 +23,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.main_activity_name);
 
         RecyclerView tramList = findViewById(R.id.tram_list);
 
