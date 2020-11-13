@@ -4,5 +4,5 @@ import com.shindra.arrakis.ArrakisApplication
 
 class MyApplication : ArrakisApplication(){
 
-    //test
+
 }

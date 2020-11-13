@@ -45,7 +45,6 @@
 
             <Button
                 android:id="@+id/button"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image_tram"
@@ -53,7 +52,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="#00000000"
-                android:text="Horaire">
+                android:text="HORAIRE"
+                style="@style/BUTTON"
+                android:textColor="@color/Primary"
+                >
 
             </Button>
 
