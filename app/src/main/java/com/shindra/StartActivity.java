@@ -34,7 +34,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                //call once the network call has responded with a success
+                ;//call once the network call has responded with a success
             }
 
             @Override
