@@ -23,7 +23,7 @@ fun <T> Observable<T>.convertToBehaviorSubject(): BehaviorSubject<T> {
     return subject
 }
 
-fun <T> BehaviorSubject<T>.observe(listener: ObservableListener<T>): Disposable? {
+fun <T> BehaviorSubject<T>.subscribeToBehaviorSubject(listener: ObservableListener<T>): Disposable? {
     var dispose: Disposable? = null
 
     this
@@ -35,7 +35,6 @@ fun <T> BehaviorSubject<T>.observe(listener: ObservableListener<T>): Disposable?
             {
                 listener.onError(it)
             })
-
     return dispose
 }
 

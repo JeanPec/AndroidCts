@@ -1,21 +1,14 @@
 package com.shindra.ctslibrary.bo
 
-import com.shindra.ctslibrary.apibo.Coordinate
-import com.shindra.ctslibrary.apibo.RouteType
-import java.util.*
-import kotlin.collections.ArrayList
+import com.google.gson.annotations.SerializedName
 
 data class Line(
-    val name: String,
-    val routeType: RouteType,
-    val stops: ArrayList<Stop>? = null
-
-)
-
-data class Stop(
-    val name: String?,
-    val estimatedArrivalTime: Date? = null,
-    val estimatedDepartureTime : Date? = null,
-    val direction: String? = null,
-    val position: Coordinate? = null
+    @SerializedName("Destinations")
+    val destinations: List<Destination>,
+    @SerializedName("Extension")
+    val lineExtension: LineExtension,
+    @SerializedName("LineName")
+    val lineName: String,
+    @SerializedName("LineRef")
+    val lineRef: String
 )

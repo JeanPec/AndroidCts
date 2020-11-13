@@ -1,11 +1,13 @@
 package com.shindra.ctslibrary.webservice
 
+import com.google.gson.*
 import com.shindra.arrakis.webservice.RetrofitServices
-import com.shindra.ctslibrary.apibo.*
+import com.shindra.ctslibrary.bo.*
 import io.reactivex.rxjava3.core.Single
 import okhttp3.*
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.lang.reflect.Type
 
 
 private const val CTS_API_TOKEN = "a9308ac0-cc13-4519-bca2-f0c21166b197"
@@ -22,7 +24,7 @@ interface CtsApiService {
         @Query("distance") distance: Int,
         @Query("includeLinesDestinations") includeLinesDestinations: Boolean = true,
         @Query("stopCode") stopCode: String?
-    ): Single<StopsApi>
+    ): Single<Stops>
 
     @GET("v1/siri/2.0/lines-discovery")
     fun linesDiscovery(): Single<Lines>
@@ -51,7 +53,7 @@ object CtsService : RetrofitServices<CtsApiService>() {
     fun stopPoints(latitude: Double,
                    longitude: Double, distance:
                    Int, includeLinesDestinations: Boolean = true,
-                   stopCode: String? = null): Single<StopsApi> {
+                   stopCode: String? = null): Single<Stops> {
         return service.stopPoints(latitude, longitude, distance, includeLinesDestinations, stopCode)
     }
 
