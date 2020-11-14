@@ -13,6 +13,9 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Changement du titre de l'activité
+        setTitle("Nos trams")
+
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {

@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Primary">#EF2B3E</color>
-    <color name="Primary_Variant">#B50017</color>
-    <color name="Activity_Background">#F2F2F2</color>
+    <color name="primary">#EF2B3E</color>
+    <color name="primary_variant">#B50017</color>
+    <color name="activity_background">#F2F2F2</color>
     <color name="LigneA">#D8232A</color>
     <color name="LigneB">#00A3DA</color>
     <color name="LigneC">#EB8B2D</color>
