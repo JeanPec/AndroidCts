@@ -43,21 +43,26 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
         return this.lines.size();
     }
 
+    public void setLines(ArrayList<Line> lines)
+    {
+        this.lines = lines;
+    }
+
     private int getTramIcon(Line line)
     {
         switch (line.getName())
         {
-            case "Ligne A":
+            case "Parc des Sports - Illkirch Graffenstaden":
                 return R.drawable.tram_a;
-            case "Ligne B":
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
                 return R.drawable.tram_b;
-            case "Ligne C":
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
                 return R.drawable.tram_c;
-            case "Ligne D":
+            case "Poteries - Port du Rhin / Kehl Rathaus":
                 return R.drawable.tram_d;
-            case "Ligne E":
+            case "Robertsau l'Escale - Campus d'Illkirch":
                 return R.drawable.tram_e;
-            case "Ligne F":
+            case "Comtes - Place d'Islande":
                 return R.drawable.tram_f;
             default:
                 return R.drawable.tram;
