@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.Misc
 
 import com.shindra.arrakis.ArrakisApplication
 

@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.Misc
 
 import androidx.lifecycle.ViewModel
 import com.shindra.arrakis.observable.convertToBehaviorSubject
