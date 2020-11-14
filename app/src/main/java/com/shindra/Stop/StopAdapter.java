@@ -51,4 +51,8 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
         return stops.size();
     }
 
+    public void setStops(ArrayList<Stop> stops)
+    {
+        this.stops = stops;
+    }
 }
