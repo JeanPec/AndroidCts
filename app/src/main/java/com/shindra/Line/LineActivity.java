@@ -1,14 +1,18 @@
-package com.shindra;
+package com.shindra.Line;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.Line.ILineClickable;
+import com.shindra.Line.LineAdapter;
+import com.shindra.MyViewModel;
+import com.shindra.R;
+import com.shindra.StopAdapter;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.Coordinate;
@@ -18,25 +22,18 @@ import com.shindra.ctslibrary.bo.Stop;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
-public class StartActivity extends AppCompatActivity
+public class LineActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.line_activity);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
-        // Uncomment one of those line to test each recycler views
-        //setLineRecyclerView(R.id.line_views);
-        //setStopRecyclerView(R.id.line_views);
-
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
         {
             @Override
@@ -49,6 +46,16 @@ public class StartActivity extends AppCompatActivity
             public void onSuccess(ArrayList<Line> data)
             {
                 //call once the network call has responded with a success
+                getSupportActionBar().setTitle(R.string.lines);
+                
+                RecyclerView lines = findViewById(R.id.lines);
+                lines.setLayoutManager(new LinearLayoutManager(getParent()));
+                lines.setAdapter(new LineAdapter(getDummyLines(), new ILineClickable() {
+                    @Override
+                    public void OnLineClick(Line line)
+                    {
+                    }
+                }));
             }
 
             @Override
@@ -57,20 +64,6 @@ public class StartActivity extends AppCompatActivity
                 //call if the network call has responded with an error
             }
         });
-    }
-
-    private void setLineRecyclerView(int targetRecyclerId)
-    {
-        RecyclerView lineViews = findViewById(targetRecyclerId);
-        lineViews.setLayoutManager(new LinearLayoutManager(this));
-        lineViews.setAdapter(new LineAdapter(getDummyLines()));
-    }
-
-    private void setStopRecyclerView(int targetRecyclerId)
-    {
-        RecyclerView stopViews = findViewById(targetRecyclerId);
-        stopViews.setLayoutManager(new LinearLayoutManager(this));
-        stopViews.setAdapter(new StopAdapter(getDummyStops(), "Ligne A"));
     }
 
     private ArrayList<Line>  getDummyLines()
