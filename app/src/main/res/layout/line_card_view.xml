@@ -15,19 +15,19 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tram_text"
-            android:src="@drawable/tram"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:id="@+id/image_tram_icon"
+            android:src="@drawable/tram">
 
         </ImageView>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tram_image"
-            android:src="@drawable/nouveau_tram_strasbourg"
             android:layout_margin="0dp"
-            android:layout_below="@+id/tram_text"
+            android:id="@+id/image_tram_image"
+            android:src="@drawable/nouveau_tram_strasbourg"
+            android:layout_below="@+id/image_tram_icon"
             android:adjustViewBounds="true">
 
         </ImageView>
@@ -35,11 +35,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/schedule_button"
             android:layout_margin="16dp"
-            android:layout_below="@+id/tram_image"
-            style="@style/Button"
-            android:text="@string/schedule">
+            android:id="@+id/button_schedule"
+            android:layout_below="@+id/image_tram_image"
+            android:text="@string/button_schedule"
+            style="@style/button">
         </Button>
 
     </RelativeLayout>

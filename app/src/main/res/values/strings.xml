@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CtsAppFip3A</string>
-    <string name="schedule">Horaire</string>
-    <string name="main_activity_name">Nos Trams</string>
+    <string name="application_name">CtsAppFip3A</string>
+    <string name="button_schedule">Horaire</string>
+    <string name="line_activity_name">Nos Trams</string>
 </resources>

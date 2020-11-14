@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Headline -->
-    <style name="Headline">
+    <style name="headline">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/HeadLine</item>
     </style>
     <!-- Body 2 -->
-    <style name="Body2">
+    <style name="body2">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/HeadLine</item>
     </style>
     <!-- Button -->
-    <style name="Button">
+    <style name="button">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/Primary</item>
