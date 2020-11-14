@@ -1,17 +1,14 @@
-package com.shindra;
+package com.shindra.Stop;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shindra.ctslibrary.bo.Line;
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Stop;
 import java.util.ArrayList;
 import java.util.Calendar;
