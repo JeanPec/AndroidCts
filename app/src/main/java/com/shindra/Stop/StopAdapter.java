@@ -54,17 +54,17 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
     {
         switch (lineName)
         {
-            case "Ligne A":
+            case "Parc des Sports - Illkirch Graffenstaden":
                 return R.color.LineA;
-            case "Ligne B":
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
                 return R.color.LineB;
-            case "Ligne C":
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
                 return R.color.LineC;
-            case "Ligne D":
+            case "Poteries - Port du Rhin / Kehl Rathaus":
                 return R.color.LineD;
-            case "Ligne E":
+            case "Robertsau l'Escale - Campus d'Illkirch":
                 return R.color.LineE;
-            case "Ligne F":
+            case "Comtes - Place d'Islande":
                 return R.color.LineF;
             default:
                 return R.color.black;
