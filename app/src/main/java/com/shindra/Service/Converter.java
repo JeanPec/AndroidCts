@@ -3,6 +3,7 @@ package com.shindra.Service;
 import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -80,8 +81,7 @@ public abstract class  Converter
 
     public static String dateToTime(Date date)
     {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar.get(Calendar.HOUR_OF_DAY) + "h" + calendar.get(Calendar.MINUTE);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH'h'mm");
+        return simpleDateFormat.format(date);
     }
 }
