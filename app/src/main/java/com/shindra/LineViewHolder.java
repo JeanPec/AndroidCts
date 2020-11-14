@@ -12,7 +12,8 @@ public class LineViewHolder extends RecyclerView.ViewHolder
     public ImageView tramPicture;
     public Button scheduleButton;
 
-    public LineViewHolder(@NonNull View itemView) {
+    public LineViewHolder(@NonNull View itemView)
+    {
         super(itemView);
         tramIcon = itemView.findViewById(R.id.tramIcon);
         tramPicture = itemView.findViewById(R.id.tramPicture);
