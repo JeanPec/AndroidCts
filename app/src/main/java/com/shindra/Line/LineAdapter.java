@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
+import com.shindra.Service.Converter;
 import com.shindra.ctslibrary.bo.Line;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position)
     {
         Line item = lines.get(position);
-        holder.tramIcon.setImageResource(getTramIcon(item));
+        holder.tramIcon.setImageResource(Converter.lineNameToLineIcon(item.getName()));
         holder.OnBind(item, callback);
     }
 
@@ -46,26 +47,5 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
     public void setLines(ArrayList<Line> lines)
     {
         this.lines = lines;
-    }
-
-    private int getTramIcon(Line line)
-    {
-        switch (line.getName())
-        {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return R.drawable.tram_a;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return R.drawable.tram_b;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return R.drawable.tram_c;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return R.drawable.tram_d;
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return R.drawable.tram_e;
-            case "Comtes - Place d'Islande":
-                return R.drawable.tram_f;
-            default:
-                return R.drawable.tram;
-        }
     }
 }

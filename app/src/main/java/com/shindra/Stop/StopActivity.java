@@ -14,6 +14,7 @@ import com.shindra.Line.ILineClickable;
 import com.shindra.Line.LineAdapter;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
+import com.shindra.Service.Converter;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -42,28 +43,6 @@ public class StopActivity extends AppCompatActivity
         stops.setLayoutManager(new LinearLayoutManager(getParent()));
         stops.setAdapter(new StopAdapter(new ArrayList<Stop>(), lineName));
 
-        getSupportActionBar().setTitle(getTramLineNumber(lineName));
-    }
-
-    private int getTramLineNumber(String lineName)
-    {
-        switch (lineName)
-        {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return R.string.lineA;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return R.string.lineB;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return R.string.lineC;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return R.string.lineD;
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return R.string.lineE;
-            case "Comtes - Place d'Islande":
-                return R.string.lineF;
-            default:
-                return R.string.unknownLine;
-
-        }
+        getSupportActionBar().setTitle(Converter.lineNameToLineLetter(lineName));
     }
 }

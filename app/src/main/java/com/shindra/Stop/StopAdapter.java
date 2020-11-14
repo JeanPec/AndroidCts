@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
+import com.shindra.Service.Converter;
 import com.shindra.ctslibrary.bo.Stop;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,8 +40,8 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
         Stop item = stops.get(position);
         holder.stopName.setText(item.getName());
         holder.lineName.setText(lineName);
-        holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.getContext(),getLineColor(lineName)));
-        holder.stopTime.setText(getTimeFromDate(item.getEstimatedDepartureTime()));
+        holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.getContext(), Converter.lineNameToLineColor(lineName)));
+        holder.stopTime.setText(Converter.dateToTime(item.getEstimatedDepartureTime()));
         holder.information.setText("Prochain départ");
     }
 
@@ -50,32 +51,4 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
         return stops.size();
     }
 
-    int getLineColor(String lineName)
-    {
-        switch (lineName)
-        {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return R.color.LineA;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return R.color.LineB;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return R.color.LineC;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return R.color.LineD;
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return R.color.LineE;
-            case "Comtes - Place d'Islande":
-                return R.color.LineF;
-            default:
-                return R.color.black;
-
-        }
-    }
-
-    private String getTimeFromDate(Date date)
-    {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        return calendar.get(Calendar.HOUR_OF_DAY) + "h" + calendar.get(Calendar.MINUTE);
-    }
 }
