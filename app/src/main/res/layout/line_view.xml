@@ -41,7 +41,7 @@
             android:textColor="@color/Primary"
             android:background="@android:color/transparent"
             style="@style/BUTTON"
-            android:text="Horaires"
+            android:text="@string/schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
