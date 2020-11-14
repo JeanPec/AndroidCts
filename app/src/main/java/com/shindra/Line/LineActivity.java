@@ -1,5 +1,6 @@
 package com.shindra.Line;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
+import com.shindra.Stop.StopActivity;
 import com.shindra.Stop.StopAdapter;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -34,12 +36,15 @@ public class LineActivity extends AppCompatActivity
         setContentView(R.layout.line_activity);
 
         lines = findViewById(R.id.lines);
-        lines.setLayoutManager(new LinearLayoutManager(getParent()));
+        lines.setLayoutManager(new LinearLayoutManager(this));
         lines.setAdapter(new LineAdapter(new ArrayList<Line>(), new ILineClickable() {
             @Override
             public void OnLineClick(Line line)
             {
                 //Launch the stop activity here
+                Intent intent = new Intent(LineActivity.this, StopActivity.class);
+                intent.putExtra("lineName", line.getName());
+                startActivity(intent);
             }
         }));
 
