@@ -11,10 +11,12 @@ import java.util.ArrayList;
 public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
 {
     ArrayList<Line> lines;
+    RecyclerLineClick callback;
 
-    public LineAdapter(ArrayList<Line> lines)
+    public LineAdapter(ArrayList<Line> lines, RecyclerLineClick callback)
     {
         this.lines = lines;
+        this.callback = callback;
     }
 
     @NonNull
@@ -30,6 +32,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
     {
         Line item = lines.get(position);
         holder.tramIcon.setImageResource(getTramIcon(item));
+        holder.OnBind(item, callback);
     }
 
     @Override
