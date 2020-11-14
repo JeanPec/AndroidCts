@@ -2,17 +2,19 @@ package com.shindra.Line;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
 import com.shindra.Stop.StopActivity;
-import com.shindra.Stop.StopAdapter;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.Coordinate;
@@ -28,12 +30,15 @@ import java.util.Date;
 public class LineActivity extends AppCompatActivity
 {
     public RecyclerView lines;
+    public LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.line_activity);
+
+        loadingDialog = new LoadingDialog(this);
 
         lines = findViewById(R.id.lines);
         lines.setLayoutManager(new LinearLayoutManager(this));
@@ -55,12 +60,18 @@ public class LineActivity extends AppCompatActivity
             public void onLoading()
             {
                 //call once we started the network called. Indicate that the network call is in progress
+                //Show the loading dialog
+                loadingDialog.show();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data)
             {
                 //call once the network call has responded with a success
+                //Dismiss the loading dialog
+                loadingDialog.dismiss();
+
+                //Set the right title to the app
                 getSupportActionBar().setTitle(R.string.lines);
 
                 //Only keep Tram lines
@@ -78,31 +89,10 @@ public class LineActivity extends AppCompatActivity
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
+                //Dismiss the loading dialog
+                loadingDialog.dismiss();
             }
         });
-    }
-
-    private ArrayList<Line>  getDummyLines()
-    {
-        ArrayList<Line> temp = new ArrayList<Line>();
-        temp.add(new Line("Ligne A", RouteType.TRAM, getDummyStops()));
-        temp.add(new Line("Ligne B", RouteType.TRAM, getDummyStops()));
-        temp.add(new Line("Ligne C", RouteType.TRAM, getDummyStops()));
-        temp.add(new Line("Ligne D", RouteType.TRAM, getDummyStops()));
-        temp.add(new Line("Ligne E", RouteType.TRAM, getDummyStops()));
-        temp.add(new Line("Ligne F", RouteType.TRAM, getDummyStops()));
-        return temp;
-    }
-
-    private ArrayList<Stop> getDummyStops()
-    {
-        Date currentDate = new Date(System.currentTimeMillis());
-        ArrayList<Stop> temp = new ArrayList<Stop>();
-        temp.add(new Stop("Parc des Sports", currentDate, currentDate, "Parc des Sports", new Coordinate()));
-        temp.add(new Stop("Le Galet", currentDate, currentDate, "Parc des Sports", new Coordinate()));
-        temp.add(new Stop("Cervantès", currentDate, currentDate, "Parc des Sports", new Coordinate()));
-        temp.add(new Stop("Dante", currentDate, currentDate, "Parc des Sports", new Coordinate()));
-        return temp;
     }
 }
 
