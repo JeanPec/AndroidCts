@@ -39,7 +39,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
     {
         Stop item = stops.get(position);
         holder.stopName.setText(item.getName());
-        holder.lineName.setText(lineName);
+        holder.lineName.setText(Converter.lineNameToLineLetter(lineName));
         holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.getContext(), Converter.lineNameToLineColor(lineName)));
         holder.stopTime.setText(Converter.dateToTime(item.getEstimatedDepartureTime()));
         holder.information.setText("Prochain départ");
