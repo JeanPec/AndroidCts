@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="schedule">Horaires</string>
+    <string name="empty">XXXXXXX</string>
+    <string name="lines">Nos trams</string>
+    <string name="seeOnMap">Voir sur la carte</string>
+    <string name="lineA">Ligne A</string>
+    <string name="lineB">Ligne B</string>
+    <string name="lineC">Ligne C</string>
+    <string name="lineD">Ligne D</string>
+    <string name="lineE">Ligne E</string>
+    <string name="lineF">Ligne F</string>
+    <string name="unknownLine">Ligne ?</string>
+    <string name="loading">Veuillez patienter, chargement de données en cours...</string>
 </resources>
