@@ -79,6 +79,27 @@ public abstract class  Converter
         }
     }
 
+    public static int lineLetterToLineColor(String lineLetter)
+    {
+        switch (lineLetter)
+        {
+            case "A":
+                return R.color.LineA;
+            case "B":
+                return R.color.LineB;
+            case "C":
+                return R.color.LineC;
+            case "D":
+                return R.color.LineD;
+            case "E":
+                return R.color.LineE;
+            case "F":
+                return R.color.LineF;
+            default:
+                return R.color.black;
+        }
+    }
+
     public static String dateToTime(Date date)
     {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH'h'mm");

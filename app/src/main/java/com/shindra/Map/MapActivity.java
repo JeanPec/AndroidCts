@@ -72,7 +72,7 @@ public class MapActivity extends AppCompatActivity
                 getSupportActionBar().setTitle("Ligne " + Converter.lineNameToLineLetter(lineName));
 
                 //Add Stops icon on map
-                fragment.addStopsOnMap(lineName, data.getStops());
+                fragment.addStopsOnMap(data);
             }
 
             @Override
