@@ -31,6 +31,12 @@ public class StartActivity extends AppCompatActivity {
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvTramLines);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        TramlineViewHolder.RecyclerItemClick callback = new TramlineViewHolder.RecyclerItemClick() {
+            @Override
+            public void OnTramlineClick(Line l) {
+                Log.i(TAG, "Clicked on the line with name : "+l.getName());
+            }
+        };
 
         //Call api for available lines
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -51,7 +57,7 @@ public class StartActivity extends AppCompatActivity {
                     if(l.getRouteType() == RouteType.TRAM)
                         availableTramlines.add(l);
                 }
-                recyclerView.setAdapter(new TramlinesRecyclerViewAdapter(availableTramlines));
+                recyclerView.setAdapter(new TramlinesRecyclerViewAdapter(availableTramlines, callback));
             }
 
             @Override

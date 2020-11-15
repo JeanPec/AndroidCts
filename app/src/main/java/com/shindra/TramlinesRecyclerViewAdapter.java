@@ -13,10 +13,13 @@ import java.util.List;
 
 public class TramlinesRecyclerViewAdapter extends RecyclerView.Adapter<TramlineViewHolder> {
 
+    private TramlineViewHolder.RecyclerItemClick callback;
+
     private List<Line> availableTramlines;
 
     // data is passed into the constructor
-    TramlinesRecyclerViewAdapter(List<Line> availableTramlines) {
+    TramlinesRecyclerViewAdapter(List<Line> availableTramlines, TramlineViewHolder.RecyclerItemClick callback) {
+        this.callback = callback;
         this.availableTramlines = availableTramlines;
     }
 
@@ -35,7 +38,7 @@ public class TramlinesRecyclerViewAdapter extends RecyclerView.Adapter<TramlineV
     public void onBindViewHolder(TramlineViewHolder receivingHolder, int position) {
         Line requestedTramline = availableTramlines.get(position);
 
-        receivingHolder.onBind(requestedTramline);
+        receivingHolder.onBind(requestedTramline, callback);
     }
 
     // total number of rows
