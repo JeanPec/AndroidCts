@@ -1,10 +1,10 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +38,12 @@ public class StartActivity extends AppCompatActivity {
         _recyclerView = findViewById(R.id.recycler_view_tram);
         _recyclerView.setHasFixedSize(true);
         _layoutManager = new LinearLayoutManager(this);
-        _adapter = new tramAdapter(listOfTrams);
+        _adapter = new tramAdapter(listOfTrams, new tramAdapter.RecyclerItemClick() {
+            @Override
+            public void onDiaryButtonClick(tramCardview tram) {
+                startActivity(new Intent(StartActivity.this, stationDiaryActivity.class));
+            }
+        });
 
         _recyclerView.setLayoutManager(_layoutManager);
         _recyclerView.setAdapter(_adapter);
