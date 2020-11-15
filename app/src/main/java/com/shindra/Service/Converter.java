@@ -16,24 +16,24 @@ public abstract class  Converter
     private static final String lineE = "Robertsau l'Escale - Campus d'Illkirch";
     private static final String lineF = "Comtes - Place d'Islande";
 
-    public static int lineNameToLineLetter(String lineName)
+    public static String lineNameToLineLetter(String lineName)
     {
         switch (lineName)
         {
             case lineA:
-                return R.string.lineA;
+                return "A";
             case lineB:
-                return R.string.lineB;
+                return "B";
             case lineC:
-                return R.string.lineC;
+                return "C";
             case lineD:
-                return R.string.lineD;
+                return "D";
             case lineE:
-                return R.string.lineE;
+                return "E";
             case lineF:
-                return R.string.lineF;
+                return "F";
             default:
-                return R.string.unknownLine;
+                return "?";
         }
     }
 

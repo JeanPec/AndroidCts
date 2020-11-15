@@ -46,7 +46,7 @@ public class StopActivity extends AppCompatActivity
         stops.setAdapter(new StopAdapter(new ArrayList<Stop>(), lineName));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, lineName), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, Converter.lineNameToLineLetter(lineName), 0), new ObservableListener<Line>() {
 
             @Override
             public void onLoading()
@@ -64,10 +64,16 @@ public class StopActivity extends AppCompatActivity
                 loadingDialog.dismiss();
 
                 //Set the right title to the app
-                getSupportActionBar().setTitle(Converter.lineNameToLineLetter(lineName));
+                getSupportActionBar().setTitle("Ligne " + Converter.lineNameToLineLetter(lineName));
+
+                //Only keep stops with a no-null departure time
+                ArrayList<Stop> stopWithDeparture = new ArrayList<Stop>();
+                for (Stop item : data.getStops())
+                    if (item.getEstimatedDepartureTime() != null)
+                        stopWithDeparture.add(item);
 
                 //Update the recycler view through the adapter
-                ((StopAdapter) stops.getAdapter()).setStops(data.getStops());
+                ((StopAdapter) stops.getAdapter()).setStops(stopWithDeparture);
                 stops.getAdapter().notifyDataSetChanged();
             }
 
