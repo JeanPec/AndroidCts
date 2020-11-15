@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,9 +19,9 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView LinesRecyclerView;
+    private RecyclerView.Adapter LinesAdapter;
+    private RecyclerView.LayoutManager LinesLayoutManager;
 
 
     @Override
@@ -33,6 +32,18 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_tram);
 
         ArrayList<Line> lines = new ArrayList<Line>();
+
+        setTitle("Nos Trams");
+
+        LinesRecyclerView = findViewById(R.id.cardList);
+        LinesRecyclerView.setHasFixedSize(true);
+        LinesLayoutManager = new LinearLayoutManager(this);
+        //mAdapter = new RecyclerViewAdapter(getListOfTramLines());
+        LinesAdapter = new LinesRecyclerViewAdapter(lines);
+        LinesRecyclerView.setLayoutManager(LinesLayoutManager);
+        //mRecyclerView.setAdapter(mAdapter);
+
+
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -53,7 +64,8 @@ public class StartActivity extends AppCompatActivity {
                     if (line.getRouteType() == RouteType.TRAM){
                         lines.add(line);
                         names.add(line.getName());
-                        System.out.println(line.getName());
+                        //System.out.println(line.getName());
+                        LinesRecyclerView.setAdapter(LinesAdapter);
                     }
                 }
             }
@@ -64,15 +76,7 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        setTitle("Nos Trams");
 
-        mRecyclerView = findViewById(R.id.cardList);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        //mAdapter = new RecyclerViewAdapter(getListOfTramLines());
-        mAdapter = new RecyclerViewAdapter(lines);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     /*private ArrayList<Line> getListOfTramLines(){

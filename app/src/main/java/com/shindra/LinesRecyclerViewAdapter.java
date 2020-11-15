@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,26 +11,26 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ExampleViewHolder> {
+public class LinesRecyclerViewAdapter extends RecyclerView.Adapter<LinesRecyclerViewAdapter.LinesViewHolder> {
     private ArrayList<Line> lines;
-    public static class ExampleViewHolder extends RecyclerView.ViewHolder {
+    public static class LinesViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
-        public ExampleViewHolder(View itemView) {
+        public LinesViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.tramLine);
         }
     }
-    public RecyclerViewAdapter(ArrayList<Line> mlines) {
+    public LinesRecyclerViewAdapter(ArrayList<Line> mlines) {
         lines = mlines;
     }
     @Override
-    public ExampleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LinesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
-        ExampleViewHolder evh = new ExampleViewHolder(v);
+        LinesViewHolder evh = new LinesViewHolder(v);
         return evh;
     }
     @Override
-    public void onBindViewHolder(ExampleViewHolder holder, int position) {
+    public void onBindViewHolder(LinesViewHolder holder, int position) {
         Line currentItem = lines.get(position);
         if ("Parc des Sports - Illkirch Graffenstaden".equals(currentItem.getName())){
             holder.mImageView.setImageResource(R.drawable.tram_a);//currentItem.getImageResource());
