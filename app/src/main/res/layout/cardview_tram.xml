@@ -43,7 +43,7 @@
                 card_view_tram:srcCompat="@drawable/tram_a" />
 
             <Button
-                android:id="@+id/diaryButton"
+                android:id="@+id/diaryStationButton"
                 style="@style/body_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

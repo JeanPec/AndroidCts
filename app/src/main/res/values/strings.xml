@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="tramLinesActivityName">Nos trams</string>
+    <string name="stationDiaryActivityName">Horaire</string>
 </resources>

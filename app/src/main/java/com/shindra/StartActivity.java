@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-
     private RecyclerView _recyclerView;
     private RecyclerView.Adapter _adapter;
     private RecyclerView.LayoutManager _layoutManager;
@@ -55,6 +54,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                getSupportActionBar().setTitle("Nos trams");
             }
 
             @Override
