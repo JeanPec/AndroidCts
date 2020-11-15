@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
     <string name="loading_text">Veuillez patientez, chargement des données en cours</string>
+    <string name="tram_schedule">HORAIRE</string>
+    <string name="icon_tram">Icon of the tram</string>
+    <string name="image_tram">Beautiful image of the tram which doesn\'t look like the one in strasbourg at all</string>
+    <string name="hello_blank_fragment">Nothing to display</string>
 </resources>

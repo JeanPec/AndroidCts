@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="8dp"
+    android:contentDescription="@string/hello_blank_fragment"
+    android:elevation="8dp"
+    app:cardCornerRadius="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,30 +20,32 @@
             android:id="@+id/iconTram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_tram"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"/>
+            android:contentDescription="@string/icon_tram"
+            app:srcCompat="@drawable/ic_tram" />
 
         <ImageView
             android:id="@+id/imageTram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/iconTram"
-            app:srcCompat="@drawable/nouveau_tram_strasbourg"
             android:layout_marginTop="8dp"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/icon_tram"
+            app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
         <Button
             android:id="@+id/btnSchedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HORAIRE"
             android:layout_below="@id/imageTram"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/primary"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:text="@string/tram_schedule"
+            android:textColor="@color/primary" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
