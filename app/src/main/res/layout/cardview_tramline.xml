@@ -4,9 +4,9 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/card_tramlines_Name"
-        android:layout_width="wrap_content"
+        android:id="@+id/cvTramLine_Name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="LineName" />
+        android:layout_weight="1" />
+
 </LinearLayout>
