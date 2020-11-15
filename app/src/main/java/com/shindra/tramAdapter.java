@@ -19,8 +19,8 @@ public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder
 
         public tramViewHolder(@NonNull View itemView) {
             super(itemView);
-            tramLineView = itemView.findViewById(R.id.imageView);
-            tramIllustrationView = itemView.findViewById(R.id.imageView2);
+            tramLineView = itemView.findViewById(R.id.tramLinePicture);
+            tramIllustrationView = itemView.findViewById(R.id.illustrationPicture);
         }
     }
 
