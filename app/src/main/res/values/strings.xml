@@ -12,4 +12,6 @@
     <string name="lineF">Ligne F</string>
     <string name="unknownLine">Ligne ?</string>
     <string name="loading">Veuillez patienter, chargement de données en cours...</string>
+    <string name="error">Erreur lors du chargement des données</string>
+    <string name="back">Retour</string>
 </resources>

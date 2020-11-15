@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.Map.MapActivity;
 import com.shindra.Map.MapLineFragment;
+import com.shindra.Misc.ErrorDialog;
 import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
@@ -32,6 +33,7 @@ public class StopActivity extends AppCompatActivity
     public Button seeOnMapButton;
     public  String lineName;
     public LoadingDialog loadingDialog;
+    public ErrorDialog errorDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -40,6 +42,7 @@ public class StopActivity extends AppCompatActivity
         setContentView(R.layout.stop_activity);
 
         loadingDialog = new LoadingDialog(this);
+        errorDialog = new ErrorDialog(this);
 
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineName");
@@ -95,8 +98,9 @@ public class StopActivity extends AppCompatActivity
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                //Dismiss the loading dialog
+                //Dismiss the loading dialog and show the error dialog
                 loadingDialog.dismiss();
+                errorDialog.show();
             }
         });
     }

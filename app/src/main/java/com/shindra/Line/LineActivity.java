@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.Misc.ErrorDialog;
 import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
@@ -31,6 +32,7 @@ public class LineActivity extends AppCompatActivity
 {
     public RecyclerView lines;
     public LoadingDialog loadingDialog;
+    public ErrorDialog errorDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -39,6 +41,7 @@ public class LineActivity extends AppCompatActivity
         setContentView(R.layout.line_activity);
 
         loadingDialog = new LoadingDialog(this);
+        errorDialog = new ErrorDialog(this);
 
         lines = findViewById(R.id.lines);
         lines.setLayoutManager(new LinearLayoutManager(this));
@@ -89,8 +92,9 @@ public class LineActivity extends AppCompatActivity
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                //Dismiss the loading dialog
+                //Dismiss the loading dialog and show the error dialog
                 loadingDialog.dismiss();
+                errorDialog.show();
             }
         });
     }

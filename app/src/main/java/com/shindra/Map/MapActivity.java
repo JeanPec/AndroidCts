@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.shindra.Misc.ErrorDialog;
 import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
@@ -32,6 +34,7 @@ public class MapActivity extends AppCompatActivity
 {
     public String lineName;
     public LoadingDialog loadingDialog;
+    public ErrorDialog errorDialog;
     public MapLineFragment fragment;
 
     @SuppressLint("ResourceType")
@@ -46,6 +49,7 @@ public class MapActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.frameContainer, fragment).commit();
 
         loadingDialog = new LoadingDialog(this);
+        errorDialog = new ErrorDialog(this);
 
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineName");
@@ -79,8 +83,9 @@ public class MapActivity extends AppCompatActivity
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                //Dismiss the loading dialog
+                //Dismiss the loading dialog and show the error dialog
                 loadingDialog.dismiss();
+                errorDialog.show();
             }
         });
     }
