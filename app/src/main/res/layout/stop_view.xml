@@ -18,9 +18,11 @@
         <TextView
             android:id="@+id/stopName"
             android:textColor="@color/HeadLine"
+            android:layout_toLeftOf="@id/stopTime"
             style="@style/HeadLine6"
-            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:text="@string/empty">
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:text="@string/empty">
         </TextView>
 
