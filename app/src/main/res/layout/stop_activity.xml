@@ -6,18 +6,20 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stops"
+        android:layout_above="@+id/seeOnMapButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
+        android:id="@+id/seeOnMapButton"
+        android:text="@string/seeOnMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/seeOnMap">
+        android:layout_marginRight="8dp">
     </Button>
 
 </RelativeLayout>
