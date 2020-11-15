@@ -33,14 +33,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ExampleViewHolder holder, int position) {
         Line currentItem = lines.get(position);
-        if (currentItem.getName() == "Tram A"){
+        if ("Parc des Sports - Illkirch Graffenstaden".equals(currentItem.getName())){
             holder.mImageView.setImageResource(R.drawable.tram_a);//currentItem.getImageResource());
         }
-        else if (currentItem.getName() == "Tram B") {
+        else if ("Lingolsheim Tiergaertel - Hoenheim Gare".equals(currentItem.getName())) {
             holder.mImageView.setImageResource(R.drawable.tram_b);//currentItem.getImageResource());
         }
-        else if (currentItem.getName() == "Tram C") {
+        else if ("Gare Centrale - Neuhof Rodolphe Reuss".equals(currentItem.getName())) {
             holder.mImageView.setImageResource(R.drawable.tram_c);//currentItem.getImageResource());
+        }
+        else if ("Poteries - Port du Rhin / Kehl Rathaus".equals(currentItem.getName())) {
+            holder.mImageView.setImageResource(R.drawable.tram_d);//currentItem.getImageResource());
+        }
+        else if ("Robertsau l'Escale - Campus d'Illkirch".equals(currentItem.getName())) {
+            holder.mImageView.setImageResource(R.drawable.tram_e);//currentItem.getImageResource());
+        }
+        else if ("Comtes - Place d'Islande".equals(currentItem.getName())) {
+            holder.mImageView.setImageResource(R.drawable.tram_f);//currentItem.getImageResource());
         }
         else{
             holder.mImageView.setImageResource(R.drawable.tram);//currentItem.getImageResource());

@@ -32,6 +32,8 @@ public class StartActivity extends AppCompatActivity {
 
         setContentView(R.layout.fragment_tram);
 
+        ArrayList<Line> lines = new ArrayList<Line>();
+
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -45,6 +47,15 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 data.size();//call once the network call has responded with a success
+
+                ArrayList<String> names = new ArrayList<String>();
+                for( Line line : data ) {
+                    if (line.getRouteType() == RouteType.TRAM){
+                        lines.add(line);
+                        names.add(line.getName());
+                        System.out.println(line.getName());
+                    }
+                }
             }
 
             @Override
@@ -53,15 +64,18 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+        setTitle("Nos Trams");
+
         mRecyclerView = findViewById(R.id.cardList);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new RecyclerViewAdapter(getListOfTramLines());
+        //mAdapter = new RecyclerViewAdapter(getListOfTramLines());
+        mAdapter = new RecyclerViewAdapter(lines);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private ArrayList<Line> getListOfTramLines(){
+    /*private ArrayList<Line> getListOfTramLines(){
         ArrayList<Line> lines = new ArrayList<Line>();
 
         lines.add(new Line("Tram A", RouteType.TRAM, null));
@@ -70,6 +84,6 @@ public class StartActivity extends AppCompatActivity {
 
 
         return lines;
-    }
+    }*/
 }
 
