@@ -10,14 +10,13 @@
     <style name="body2">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/HeadLine</item>
+        <item name="android:textColor">@color/Body2</item>
     </style>
     <!-- Button -->
     <style name="button">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/Primary</item>
+        <item name="android:textColor">@color/HeadLine</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:backgroundTint">@color/Background</item>
     </style>
 </resources>

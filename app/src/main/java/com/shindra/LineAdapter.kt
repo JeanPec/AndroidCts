@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
 
-class LineAdapter(private val lines: ArrayList<Line>) : RecyclerView.Adapter<LineViewHolder>() {
+class LineAdapter(private val lines: ArrayList<Line>, val callback: LineViewHolder.OnLineClickListener) : RecyclerView.Adapter<LineViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineViewHolder {
         val lineView = LayoutInflater.from(parent.context).inflate(R.layout.line_card_view, parent, false)
@@ -16,7 +16,7 @@ class LineAdapter(private val lines: ArrayList<Line>) : RecyclerView.Adapter<Lin
     override fun onBindViewHolder(holder: LineViewHolder, position: Int) {
         val line = lines[position]
         holder.tramIcon.setImageResource(getTramIcon(line))
-        holder.onBind(line)
+        holder.onBind(line,callback)
     }
 
     override fun getItemCount(): Int {

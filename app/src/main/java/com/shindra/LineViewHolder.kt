@@ -11,7 +11,13 @@ class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tramImage: ImageView = itemView.findViewById(R.id.image_tram_image)
     val scheduleButton: Button = itemView.findViewById(R.id.button_schedule)
 
-    fun onBind(line: Line) {
+    fun onBind(line: Line, callback: OnLineClickListener) {
+        scheduleButton.setOnClickListener{
+            callback.onItemClick(line)
+        }
+    }
 
+    interface OnLineClickListener{
+        fun onItemClick(line: Line)
     }
 }

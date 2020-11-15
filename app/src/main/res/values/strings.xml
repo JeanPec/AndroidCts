@@ -2,4 +2,12 @@
     <string name="application_name">CtsAppFip3A</string>
     <string name="button_schedule">Horaire</string>
     <string name="line_activity_name">Nos Trams</string>
+    <string name="schedule_activity_name">Horaires</string>
+    <string name="button_map">Voir sur la carte</string>
+    <string name="schedule_card_view_headline">Headline</string>
+    <string name="schedule_card_view_line">Line</string>
+    <string name="schedule_card_view_hour">Line</string>
+    <string name="schedule_card_view_body">Prochain départ</string>
+    <string name="hour_unit">h</string>
+    <string name="schedule_default_line_name">Ligne Erreur</string>
 </resources>

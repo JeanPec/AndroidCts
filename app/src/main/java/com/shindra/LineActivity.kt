@@ -1,6 +1,8 @@
 package com.shindra
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +13,7 @@ import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
 
-class LineActivity : AppCompatActivity() {
+class LineActivity : AppCompatActivity(), LineViewHolder.OnLineClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -19,10 +21,10 @@ class LineActivity : AppCompatActivity() {
         setContentView(R.layout.line_activity)
         setTitle(R.string.line_activity_name)
 
-        //temporary
+        //RecyclerView
         val tramList = findViewById<RecyclerView>(R.id.line_list)
         tramList.layoutManager = LinearLayoutManager(this)
-        tramList.adapter = LineAdapter(listOfTram)
+        tramList.adapter = LineAdapter(listOfTram,this)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
@@ -40,6 +42,12 @@ class LineActivity : AppCompatActivity() {
                 //call if the network call has responded with an error
             }
         })
+    }
+
+    override fun onItemClick(line: Line) {
+        val intent = Intent(this,ScheduleActivity::class.java)
+        intent.putExtra("lineName", line.name)
+        startActivity(intent)
     }
 
     private val listOfTram: ArrayList<Line>
