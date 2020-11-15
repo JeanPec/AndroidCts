@@ -19,27 +19,35 @@ import java.util.ArrayList;
 public class StartActivity extends AppCompatActivity {
 
     //Creation des variables
-    int ImagesLigneTram[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
+    //int ImagesLigneTram[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
 
     //Creation de la Recycler View
-    RecyclerView RecyclerView_Ligne_Tram;
+    //RecyclerView RecyclerView_Ligne_Tram;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView_Ligne_Tram = findViewById(R.id.RecyclerView_Ligne_Tram);
 
-        AdapterLigneTram adapterView = new AdapterLigneTram(this, ImagesLigneTram);
-        RecyclerView_Ligne_Tram.setAdapter(adapterView);
-        RecyclerView_Ligne_Tram.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);
+
+        ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
+        ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(getListOfTrams()));
+
+        //RecyclerView_Ligne_Tram = findViewById(R.id.RecyclerView_Ligne_Tram);
+
+        //RecyclerViewAdapterLigneTram adapterView = new RecyclerViewAdapterLigneTram(this, ImagesLigneTram);
+        //RecyclerView_Ligne_Tram.setAdapter(adapterView);
+        //RecyclerView_Ligne_Tram.setLayoutManager(new LinearLayoutManager(this));
+
+
+
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
-
-
-
-        ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
+        ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
+        {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
@@ -56,5 +64,18 @@ public class StartActivity extends AppCompatActivity {
             }
         });
     }
+
+    private ArrayList<Integer> getListOfTrams()
+    {
+        ArrayList<Integer> ligneTram = new ArrayList<>();
+        ligneTram.add(R.drawable.tram_a);
+        ligneTram.add(R.drawable.tram_b);
+        ligneTram.add(R.drawable.tram_c);
+        ligneTram.add(R.drawable.tram_d);
+        ligneTram.add(R.drawable.tram_e);
+        ligneTram.add(R.drawable.tram_f);
+        return ligneTram;
+    }
+
 }
 
