@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="4dp"
+    android:elevation="4dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/txt_tram"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tramLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -21,11 +28,11 @@
             android:layout_marginLeft="8dp"
             app:srcCompat="@drawable/tram" />
 
-        <ImageView
-            android:id="@+id/tram"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tramPicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_tram"
+            android:layout_below="@id/tramLine"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
@@ -33,7 +40,7 @@
             android:id="@+id/time_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tram"
+            android:layout_below="@id/tramPicture"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"

@@ -2,6 +2,11 @@ com/shindra/FragmentTram.java
  com.shindra.FragmentTram
 com/shindra/BuildConfig.java
  com.shindra.BuildConfig
+com/shindra/LineViewHolder.java
+ com.shindra.LineViewHolder
+com/shindra/RecyclerViewAdapter.java
+ com.shindra.RecyclerViewAdapter
+ com.shindra.RecyclerViewAdapter$ExampleViewHolder
 com/shindra/StartActivity.java
  com.shindra.StartActivity
  com.shindra.StartActivity$1

@@ -1821,6 +1821,7 @@ id buttonPanel
 id cache_measures
 id cancel_action
 id cancel_button
+id cardList
 id center
 id center_horizontal
 id center_vertical
@@ -2147,7 +2148,8 @@ id top
 id topPanel
 id totalSize
 id touch_outside
-id tram
+id tramLine
+id tramPicture
 id transactionsRecyclerView
 id transitionToEnd
 id transitionToStart
@@ -2159,7 +2161,6 @@ id transition_transform
 id triangle
 id tutorialLink
 id tutorialView
-id txt_tram
 id unchecked
 id uniform
 id unlabeled
