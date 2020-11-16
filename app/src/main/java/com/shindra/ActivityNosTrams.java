@@ -29,7 +29,6 @@ public class ActivityNosTrams extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horaire_tram);
 
-
         setTitle(NomPage);  //Ecriture du titre de la vue
 
         //RecyclerView, ligne de tram
@@ -42,7 +41,7 @@ public class ActivityNosTrams extends AppCompatActivity
             @Override
             public void onHoraireLineClick(Line ligne)
             {
-                Log.i("Main",ligne.getName());
+                Log.i(NomPage,"Appuie BTN : " + ligne.getName());
                 //Toast.makeText(getApplicationContext(), ligne.getName(), Toast.LENGTH_SHORT).show();
                 //Creation de la nouvelle Intent
                 //Intent intent = new Intent(this, ActivityHoraire.this);
@@ -55,13 +54,16 @@ public class ActivityNosTrams extends AppCompatActivity
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
         {
             @Override
-            public void onLoading() {
+            public void onLoading()
+            {
                 //call once we started the network called. Indicate that the network call is in progress
+                Log.i(NomPage,"Chargement de la page Nos Trams");
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                Log.i(NomPage,"Recupération des Lignes de Trams");
 
                 //Remplissage dynamique des tableaux des lignes de trams
                 ligneTram = new ArrayList<Line>();
@@ -73,11 +75,14 @@ public class ActivityNosTrams extends AppCompatActivity
                     }
                 }
                 ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(ligneTram, callBack));
+                Log.i(NomPage,"Recupération des Lignes de Trams Validé");
             }
 
             @Override
-            public void onError(@NotNull Throwable throwable) {
+            public void onError(@NotNull Throwable throwable)
+            {
                 //call if the network call has responded with an error
+                Log.e(NomPage,"Erreur Application");
             }
         });
     }
