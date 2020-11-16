@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
@@ -18,18 +19,24 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    int pictures[] = {R.drawable.tram_a, R.drawable.tram_b, R.drawable.tram_c, R.drawable.tram_d, R.drawable.tram_e, R.drawable.tram_f};
+    public RecyclerView recyclerView;
+    public ArrayList<Line> lines;
+    //int pictures[] = {R.drawable.tram_a, R.drawable.tram_b, R.drawable.tram_c, R.drawable.tram_d, R.drawable.tram_e, R.drawable.tram_f};
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.startactivity);
 
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
 
-        LineAdapter myAdapter = new LineAdapter(this, pictures);
+        lines = new ArrayList<Line>();
+        lines = getListOfLines();
+
+        // LineAdapter myAdapter = new LineAdapter(this, pictures);
+        LineAdapter myAdapter = new LineAdapter(lines);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -44,6 +51,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+
             }
 
             @Override
@@ -51,6 +59,20 @@ public class StartActivity extends AppCompatActivity {
                 //call if the network call has responded with an error
             }
         });
+    }
+
+    public ArrayList<Line> getListOfLines(){
+
+        ArrayList<Line> lines = new ArrayList<Line>();
+
+        lines.add(new Line("A", RouteType.TRAM, null));
+        lines.add(new Line("B", RouteType.TRAM, null));
+        lines.add(new Line("C", RouteType.TRAM, null));
+        lines.add(new Line("D", RouteType.TRAM, null));
+        lines.add(new Line("E", RouteType.TRAM, null));
+        lines.add(new Line("F", RouteType.TRAM, null));
+
+        return lines;
     }
 }
 
