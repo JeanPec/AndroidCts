@@ -1,6 +1,7 @@
 package com.shindra;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,19 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity
+{
 
-    //Creation des variables
-    //int ImagesLigneTram[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
-
-    //Creation de la Recycler View
-    //RecyclerView RecyclerView_Ligne_Tram;
+    private ArrayList<Line> ligneTram;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -30,22 +29,17 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Nos Trams");
+
+        //RecyclerView, ligne de tram
         RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);
-
         ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
-        ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(getListOfTrams()));
+        RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapterLigneTram(ligneTram);
 
-        //RecyclerView_Ligne_Tram = findViewById(R.id.RecyclerView_Ligne_Tram);
-
-        //RecyclerViewAdapterLigneTram adapterView = new RecyclerViewAdapterLigneTram(this, ImagesLigneTram);
-        //RecyclerView_Ligne_Tram.setAdapter(adapterView);
-        //RecyclerView_Ligne_Tram.setLayoutManager(new LinearLayoutManager(this));
-
-
+        //ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(getListOfLines()));
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
         {
             @Override
@@ -56,6 +50,17 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                ligneTram = new ArrayList<Line>();
+                for (Line ligne : data)
+                {
+                    if(ligne.getRouteType() == RouteType.TRAM)
+                    {
+                        ligneTram.add(ligne);
+                        //ListeLigneTram.setAdapter(ligneTram);
+                    }
+
+                }
+                ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(ligneTram));
             }
 
             @Override
@@ -65,17 +70,19 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<Integer> getListOfTrams()
-    {
-        ArrayList<Integer> ligneTram = new ArrayList<>();
-        ligneTram.add(R.drawable.tram_a);
-        ligneTram.add(R.drawable.tram_b);
-        ligneTram.add(R.drawable.tram_c);
-        ligneTram.add(R.drawable.tram_d);
-        ligneTram.add(R.drawable.tram_e);
-        ligneTram.add(R.drawable.tram_f);
-        return ligneTram;
-    }
+//    private ArrayList<Integer> getListOfLines()
+//    {
+//        ArrayList<Line> ligneTram = new ArrayList<Line>();
+//
+//        ligneTram.add(R.drawable.tram_a);
+//        ligneTram.add(R.drawable.tram_b);
+//        ligneTram.add(R.drawable.tram_c);
+//        ligneTram.add(R.drawable.tram_d);
+//        ligneTram.add(R.drawable.tram_e);
+//        ligneTram.add(R.drawable.tram_f);
+//        return ligneTram;
+//    }
+
 
 }
 
