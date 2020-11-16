@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,14 +26,14 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
 
-        MyAdapter myAdapter = new MyAdapter(this, pictures);
+        LineAdapter myAdapter = new LineAdapter(this, pictures);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
