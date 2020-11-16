@@ -1,5 +1,6 @@
 package com.shindra.ctslibrary.bo
 
+import android.icu.number.IntegerWidth
 import com.shindra.ctslibrary.apibo.Coordinate
 import com.shindra.ctslibrary.apibo.RouteType
 import java.util.*
@@ -9,6 +10,8 @@ data class Line(
     val name: String,
     val routeType: RouteType,
     val stops: ArrayList<Stop>? = null
+
+
 
 )
 

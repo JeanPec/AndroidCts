@@ -15,33 +15,23 @@ import com.shindra.ctslibrary.bo.Line;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
+     ArrayList<Line> linesTram;
 
-    RecyclerView recyclerViewTram;
+    RecyclerView recyclerViewLineTram;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Create a List of Lines
-        List<TramLine> Lines = new ArrayList<TramLine>();
-        //Add All Lines
-        Lines.add(new TramLine("A",R.drawable.tram_a,R.drawable.nouveau_tram_strasbourg));
-        Lines.add(new TramLine("B",R.drawable.tram_b,R.drawable.nouveau_tram_strasbourg));
-        Lines.add(new TramLine("C",R.drawable.tram_c,R.drawable.nouveau_tram_strasbourg));
-        Lines.add(new TramLine("D",R.drawable.tram_d,R.drawable.nouveau_tram_strasbourg));
-        Lines.add(new TramLine("E",R.drawable.tram_e,R.drawable.nouveau_tram_strasbourg));
-        Lines.add(new TramLine("F",R.drawable.tram_f,R.drawable.nouveau_tram_strasbourg));
+        //RecyclerView
+        recyclerViewLineTram = findViewById(R.id.recyclerViewTram);
+        recyclerViewLineTram.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.Adapter CardAdapter = new recyclerMenuAdapter(linesTram);
 
-        recyclerMenuAdapter CardAdapter = new recyclerMenuAdapter(this, Lines);
-
-        recyclerViewTram = findViewById(R.id.recyclerViewTram);
-        recyclerViewTram.setAdapter(CardAdapter);
-        //Set the Layout Manager of the RecyclerView
-        recyclerViewTram.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -55,7 +45,19 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
-            }
+                linesTram = new ArrayList<Line>();
+
+                for (int i=0; i < data.size(); i++)
+                {
+                    if (data.get(i).getRouteType().name() == "TRAM") {
+                        //Log.d("MSG", data.get(i).getName());
+                        linesTram.add(data.get(i));
+                    }
+                }
+
+                recyclerViewLineTram.setAdapter(new recyclerMenuAdapter(linesTram));
+                }
+
 
             @Override
             public void onError(@NotNull Throwable throwable) {
