@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
-    <string name="time">Horaire</string>
+    <string name="button_time">Horaire</string>
     <string name="loading">Veuillez patientez, chargement des données en cours</string>
+    <string name="map_time">Voir sur la carte</string>
+    <string name="next_step">Prochain départ</string>
+    <string name="undefined">Erreur</string>
+
 </resources>

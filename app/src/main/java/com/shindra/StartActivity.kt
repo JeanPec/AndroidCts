@@ -3,9 +3,12 @@ package com.shindra
 
 
 //import com.shindra.MyViewModel.lines
+import android.content.Intent
 import com.shindra.arrakis.observable.observe
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import com.shindra.R
 import com.shindra.MyViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,16 +17,17 @@ import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.ctslibrary.bo.Line
 import java.util.ArrayList
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.ctslibrary.apibo.RouteType
 
-class StartActivity : AppCompatActivity() {
+class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerItemClick {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val listTrain = initList()
+        title = "Nos trams"
+        val listLine = initList()
 
         val recyclerview = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerview.adapter = TrainAdapter(listTrain)
+        recyclerview.adapter = TrainAdapter(listLine,this)
         recyclerview.layoutManager = LinearLayoutManager(this )
         recyclerview.setHasFixedSize(true)
 
@@ -43,17 +47,19 @@ class StartActivity : AppCompatActivity() {
         })
     }
 
+    override fun onItemClick(line: Line) {
+        val intent = Intent(this,TimeActivity::class.java)
+        intent.putExtra("name",line.name)
+        startActivity(intent)
+    }
+
 }
 
-private fun initList(): List<Train>{
+private fun initList(): List<Line>{
 
-    val list = ArrayList<Train>()
-    list +=Train(R.drawable.tram_a)
-    list +=Train(R.drawable.tram_b)
-    list +=Train(R.drawable.tram_c)
-    list +=Train(R.drawable.tram_d)
-    list +=Train(R.drawable.tram_e)
-    list +=Train(R.drawable.tram_f)
+    val list = ArrayList<Line>()
+    list += Line("tram_a",RouteType.TRAM,null)
+    list += Line("tram_b",RouteType.TRAM,null)
     return list
 
 }

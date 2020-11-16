@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:orientation="vertical"
-        android:background="?android:selectableItemBackground"
+        android:background="@color/Background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -39,8 +39,8 @@
 
         <Button
             android:layout_below="@id/image_view2"
-            android:id="@+id/button_name"
-            android:text="@string/time"
+            android:id="@+id/button_horraires"
+            android:text="@string/button_time"
             style="@style/BUTTON"
             android:layout_margin="16dp"
             android:textColor="@color/Primary"
