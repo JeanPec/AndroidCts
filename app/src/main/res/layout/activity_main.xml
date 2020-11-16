@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@android:dimen/notification_large_icon_width"
     tools:context=".StartActivity">
 
 
-
-     <!--<TextView
+    <!-- <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" /> -->
 
-   <!-- <androidx.fragment.app.FragmentContainerView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cardList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="visible" />
+
+    <!-- <androidx.fragment.app.FragmentContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fragment_container_view"
@@ -26,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" /> -->
 
-    <androidx.fragment.app.FragmentContainerView
+    <!-- <androidx.fragment.app.FragmentContainerView
         android:id="@+id/liste_trams_container"
         android:name="com.shindra.ListeTrams"
         android:layout_width="wrap_content"
@@ -35,7 +42,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        /> -->
 
     <!--    <Button
             android:id="@+id/button"
