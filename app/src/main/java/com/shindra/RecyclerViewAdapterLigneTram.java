@@ -1,10 +1,8 @@
 package com.shindra;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsViewHolder>
 {
     private ArrayList<Line> LigneTrams;
-    Context context;
+    private TramsViewHolder.RecyclerHoraireClick callBack;
 
     //Constructeur
-    RecyclerViewAdapterLigneTram(ArrayList<Line> listelignetrams)
+    public RecyclerViewAdapterLigneTram(ArrayList<Line> listelignetrams, TramsViewHolder.RecyclerHoraireClick callBack)
     {
         this.LigneTrams = listelignetrams;
+        this.callBack = callBack;
     }
 
     //Liaison avec la RecyclerView du fichier xml
@@ -30,7 +28,7 @@ public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsView
     @Override
     public TramsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View TramView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tableau_deroulant_ligne_tram, parent, false);
+        View TramView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_ligne_tram, parent, false);
         return new TramsViewHolder(TramView);
     }
 
@@ -38,8 +36,8 @@ public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsView
     @Override
     public void onBindViewHolder(@NonNull TramsViewHolder holder, int position)
     {
-        Line requestTramLine = LigneTrams.get(position);
-        holder.onBind(requestTramLine);
+        Line requestLigneTram = LigneTrams.get(position);
+        holder.onBind(requestLigneTram, callBack);
     }
 
     //Nombre de lignes sur la RecyclerView

@@ -11,10 +11,17 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class TramsViewHolder extends RecyclerView.ViewHolder
 {
+    //Objets de la vue "Nos Trams"
     private final ImageView imagePhotoTram;
     private final ImageView imageLigneTram;
     private final Button button;
 
+    interface RecyclerHoraireClick
+    {
+        void onHoraireLineClick(Line ligne);
+    }
+
+    //Constructeur
     public TramsViewHolder(@NonNull View itemView)
     {
         super(itemView);
@@ -23,10 +30,11 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
         this.button = itemView.findViewById(R.id.buttonlignetram);
     }
 
-    public void onBind(Line image)
+
+    // Retourne le ViewHolder des données sur lequels elles sont liées / Appelé pour chaque elements dans la liste
+    public void onBind(Line image, RecyclerHoraireClick callBack)
     {
-        String txt = image.getName();
-        switch (txt)
+        switch (image.getName())
         {
             case "Parc des Sports - Illkirch Graffenstaden":    //ligne A
                 imageLigneTram.setImageResource(R.drawable.tram_a);
@@ -56,9 +64,14 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
                 imageLigneTram.setImageResource(R.drawable.tram);
                 break;
         }
-    }
-    public void onClick(View v)
-    {
 
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                callBack.onHoraireLineClick(image);
+            }
+        });
     }
 }
