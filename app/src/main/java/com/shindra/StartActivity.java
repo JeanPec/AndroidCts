@@ -46,6 +46,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLineClick(Line line) {
                 String name = line.getName();
+                intent.putExtra("LINE_NAME", name);
                /* Log.d("StartActivity", "name = " + name); */
                 startActivity(intent);
             }

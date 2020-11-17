@@ -18,7 +18,7 @@
 
         <activity
             android:name=".StartActivity"
-            android:label="@string/nos_trams">
+            android:label="@string/title_activity_line">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
