@@ -24,7 +24,7 @@ class TimeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val line_name= this.arguments?.getString("name")
 
-        val listStop :List<Stop> = initList()
+        val listStop :ArrayList<Stop> = initList()
 
         val stops = this.activity?.findViewById<RecyclerView>(R.id.fragment_container)
         if (stops != null) {
@@ -36,7 +36,7 @@ class TimeFragment : Fragment() {
 
 }
 
-private fun initList(): List<Stop>{
+private fun initList(): ArrayList<Stop>{
 
     val list = ArrayList<Stop>()
     list += Stop("Berlioz", Date(12), Date(14),"devant", Coordinate(12.3,13.3))

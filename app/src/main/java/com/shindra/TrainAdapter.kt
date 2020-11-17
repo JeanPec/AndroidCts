@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 
 
-class TrainAdapter(private val lineList: List<Line>, val callback: TrainViewHolder.RecyclerItemClick) : RecyclerView.Adapter<TrainAdapter.TrainViewHolder>(){
+class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.RecyclerItemClick) : RecyclerView.Adapter<TrainAdapter.TrainViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.nos_trams,
@@ -47,12 +47,12 @@ class TrainAdapter(private val lineList: List<Line>, val callback: TrainViewHold
     }
 private fun getImagesRessource(line_name : String) : Int{
     when (line_name){
-        "tram_a" -> return R.drawable.tram_a
-        "tram_b" -> return R.drawable.tram_b
-        "tram_c" -> return R.drawable.tram_c
-        "tram_d" -> return R.drawable.tram_d
-        "tram_e" -> return R.drawable.tram_e
-        "tram_f" -> return R.drawable.tram_f
+        "Parc des Sports - Illkirch Graffenstaden" -> return R.drawable.tram_a
+        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return R.drawable.tram_b
+        "Gare Centrale - Neuhof Rodolphe Reuss" -> return R.drawable.tram_c
+        "Poteries - Port du Rhin / Kehl Rathaus" -> return R.drawable.tram_d
+        "Robertsau l'Escale - Campus d'Illkirch" -> return R.drawable.tram_e
+        "Comtes - Place d'Islande" -> return R.drawable.tram_f
         else -> {
             return R.drawable.tram
         }

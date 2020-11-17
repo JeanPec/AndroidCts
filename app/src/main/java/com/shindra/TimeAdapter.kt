@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class TimeAdapter(private val stopList: List<Stop>, val lineName : String?) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
+class TimeAdapter(private val stopList: ArrayList<Stop>, val lineName : String?) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.horraire,
@@ -58,12 +58,12 @@ private fun getColorId( lineName : String?) : Int
 private fun getLineName( lineName : String?) : String
 {
     when (lineName) {
-        "tram_a" -> return "Ligne A"
-        "tram_b" -> return "Ligne B"
-        "tram_c" -> return "Ligne C"
-        "tram_d" -> return "Ligne D"
-        "tram_e" -> return "Ligne E"
-        "tram_f" -> return "Ligne F"
+        "Parc des Sports - Illkirch Graffenstaden" -> return "Ligne A"
+        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return "Ligne B"
+        "Gare Centrale - Neuhof Rodolphe Reuss" -> return "Ligne C"
+        "Poteries - Port du Rhin / Kehl Rathaus" -> return "Ligne D"
+        "Robertsau l'Escale - Campus d'Illkirch" -> return "Ligne E"
+        "Comtes - Place d'Islande" -> return "Ligne F"
         else -> {
             return "Ligne "
         }
