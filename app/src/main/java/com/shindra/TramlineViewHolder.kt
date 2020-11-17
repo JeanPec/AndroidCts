@@ -15,12 +15,18 @@ class TramlineViewHolder internal constructor(itemView: View) : RecyclerView.Vie
 
     internal interface LineNames {
         companion object {
-            const val LineA = "Parc des Sports - Illkirch Graffenstaden"
-            const val LineB = "Lingolsheim Tiergaertel - Hoenheim Gare"
-            const val LineC = "Gare Centrale - Neuhof Rodolphe Reuss"
-            const val LineD = "Poteries - Port du Rhin / Kehl Rathaus"
-            const val LineE = "Robertsau l'Escale - Campus d'Illkirch"
-            const val LineF = "Comtes - Place d'Islande"
+//            const val LineA = "Parc des Sports - Illkirch Graffenstaden"
+//            const val LineB = "Lingolsheim Tiergaertel - Hoenheim Gare"
+//            const val LineC = "Gare Centrale - Neuhof Rodolphe Reuss"
+//            const val LineD = "Poteries - Port du Rhin / Kehl Rathaus"
+//            const val LineE = "Robertsau l'Escale - Campus d'Illkirch"
+//            const val LineF = "Comtes - Place d'Islande"
+            const val LineA = "A"
+            const val LineB = "B"
+            const val LineC = "C"
+            const val LineD = "D"
+            const val LineE = "E"
+            const val LineF = "F"
         }
     }
 

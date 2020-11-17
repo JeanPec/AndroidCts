@@ -33,7 +33,7 @@ class TimetableFragment : Fragment() {
     fun RequestTimetable(lineName : String) {
         //Call api for available lines
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, "A", 0).observe(object : ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 Log.i(TAG, "Waiting for answer...")
