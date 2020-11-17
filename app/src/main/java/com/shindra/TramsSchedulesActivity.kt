@@ -18,9 +18,11 @@ class TramsSchedulesActivity : AppCompatActivity() {
 
         // Get the Intent that started this activity and extract the string
         val requestedLineName = intent.getStringExtra(StartActivity.LINENAME_MESSAGE)
-
         Log.i(TAG, "Created second activity with tramline : " + requestedLineName)
 
+        //Fragment get started automatically
+
+        //When everything has finished creating, we can start the request to the api
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentTramTimetable) as TimetableFragment
         fragment.RequestTimetable(requestedLineName.toString())
     }
