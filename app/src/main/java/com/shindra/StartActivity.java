@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -19,7 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
-    private static final String TAG = "mainActivity";
+    private static final String TAG = "MainActivity";
+    public static final String LINENAME_MESSAGE = "com.souf.ctsfip3a.LINENAME";
 
     private ArrayList<Line> availableTramlines;
 
@@ -28,15 +30,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvTramLines);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        TramlineViewHolder.RecyclerItemClick callback = new TramlineViewHolder.RecyclerItemClick() {
-            @Override
-            public void OnTramlineClick(Line l) {
-                Log.i(TAG, "Clicked on the line with name : "+l.getName());
-            }
-        };
+        RecyclerView recyclerView = SetUpRecyclerView();
 
         //Call api for available lines
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -50,14 +44,16 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> receivedData) {
                 //call once the network call has responded with a success
-                Log.i(TAG, "Received data");
+                Log.i(TAG, "Received data from network");
 
-                availableTramlines = new ArrayList<>();
+                //Filter to get only trams
                 for(Line l : receivedData) {
                     if(l.getRouteType() == RouteType.TRAM)
                         availableTramlines.add(l);
                 }
-                recyclerView.setAdapter(new TramlinesRecyclerViewAdapter(availableTramlines, callback));
+
+                //Fill the recycler view with received tramlines
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -66,6 +62,24 @@ public class StartActivity extends AppCompatActivity {
                 Log.e(TAG, "API error");
             }
         });
+
+    }
+
+    private RecyclerView SetUpRecyclerView(){
+        availableTramlines = new ArrayList<>(); //empty list to initialize recycler view
+
+        RecyclerView recyclerView = findViewById(R.id.rvTramLines);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new TramlinesRecyclerViewAdapter(availableTramlines, this::OnTramlineClick));
+        return recyclerView;
+    }
+
+    public void OnTramlineClick(Line l){
+        Log.i(TAG, "Clicked on the tramline with name : "+l.getName());
+
+        Intent intent = new Intent(this, TramsSchedulesActivity.class);
+        intent.putExtra(LINENAME_MESSAGE, l.getName());
+        startActivity(intent);
     }
 }
 
