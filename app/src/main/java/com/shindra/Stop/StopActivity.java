@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,11 +30,9 @@ import java.util.ArrayList;
 
 public class StopActivity extends AppCompatActivity
 {
-    public RecyclerView stops;
-    public Button seeOnMapButton;
-    public  String lineName;
     public LoadingDialog loadingDialog;
     public ErrorDialog errorDialog;
+    public StopFragment fragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -44,26 +43,12 @@ public class StopActivity extends AppCompatActivity
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);
 
-        Intent intent = getIntent();
-        lineName = getIntent().getStringExtra("lineName");
-
-        stops = findViewById(R.id.stops);
-        stops.setLayoutManager(new LinearLayoutManager(getParent()));
-        stops.setAdapter(new StopAdapter(new ArrayList<Stop>(), lineName));
-
-        seeOnMapButton = findViewById(R.id.seeOnMapButton);
-        seeOnMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(StopActivity.this, MapActivity.class);
-                intent.putExtra("lineName",lineName);
-                startActivity(intent);
-            }
-        });
+        fragment = new StopFragment(getIntent().getStringExtra("lineName"));
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.frameContainer, fragment).commit();
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, Converter.lineNameToLineLetter(lineName), 0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, Converter.lineNameToLineLetter(fragment.getLineName()), 0), new ObservableListener<Line>() {
 
             @Override
             public void onLoading()
@@ -77,11 +62,11 @@ public class StopActivity extends AppCompatActivity
             public void onSuccess(Line data)
             {
                 //call once the network call has responded with a success
+                //Set the right title to the app
+                getSupportActionBar().setTitle("Ligne " + Converter.lineNameToLineLetter(fragment.getLineName()));
+
                 //Dismiss the loading dialog
                 loadingDialog.dismiss();
-
-                //Set the right title to the app
-                getSupportActionBar().setTitle("Ligne " + Converter.lineNameToLineLetter(lineName));
 
                 //Only keep stops with a no-null departure time
                 ArrayList<Stop> stopWithDeparture = new ArrayList<Stop>();
@@ -90,8 +75,7 @@ public class StopActivity extends AppCompatActivity
                         stopWithDeparture.add(item);
 
                 //Update the recycler view through the adapter
-                ((StopAdapter) stops.getAdapter()).setStops(stopWithDeparture);
-                stops.getAdapter().notifyDataSetChanged();
+                fragment.updateWidgets(stopWithDeparture);
             }
 
             @Override
