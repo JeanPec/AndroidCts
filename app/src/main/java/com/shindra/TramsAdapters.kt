@@ -1,11 +1,16 @@
 package com.shindra
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View;
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.flow.DEFAULT_CONCURRENCY
 
-class TramsAdapters : RecyclerView.Adapter<TramsViewHolder>() {
+class TramsAdapters(_Context:Context): RecyclerView.Adapter<TramsViewHolder>() {
 
     val TramsList = arrayOf(Trams(ligne = "A"),
                             Trams(ligne = "B"),
@@ -13,6 +18,7 @@ class TramsAdapters : RecyclerView.Adapter<TramsViewHolder>() {
                             Trams(ligne = "D"),
                             Trams(ligne = "E"),
                             Trams(ligne = "F"))
+    val context=_Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TramsViewHolder {
         //Charger la cardview du tram en question
@@ -35,6 +41,12 @@ class TramsAdapters : RecyclerView.Adapter<TramsViewHolder>() {
 
         //Envoyer les infos du tram vers la cardview
         holder.PutTramInfoIntoCardView(Tram);
+
+        holder.ButtonHoraires.setOnClickListener{
+            val intent = Intent(context, horaires_activity::class.java)
+            intent.putExtra("Ligne", Tram.ligne);
+            context.startActivity(intent)
+        }
     }
 
 
