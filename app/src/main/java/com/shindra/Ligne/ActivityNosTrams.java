@@ -50,7 +50,7 @@ public class ActivityNosTrams extends AppCompatActivity
 
                 //Creation de la nouvelle Intent
                 Intent intent = new Intent(ActivityNosTrams.this, ActivityHoraire.class);
-                //intent.putExtra("LigneTram",ligne.getName());
+                intent.putExtra("LigneTram",ligne.getName());
                 startActivity(intent);
             }
         };

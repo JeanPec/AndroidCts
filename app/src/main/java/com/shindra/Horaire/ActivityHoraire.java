@@ -27,5 +27,4 @@ public class ActivityHoraire extends AppCompatActivity
         fragTran.commit();
     }
 
-
 }
