@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +24,6 @@ public class StartActivity extends AppCompatActivity {
 
     public RecyclerView recyclerView;
     public ArrayList<Line> lines;
-    //int pictures[] = {R.drawable.tram_a, R.drawable.tram_b, R.drawable.tram_c, R.drawable.tram_d, R.drawable.tram_e, R.drawable.tram_f};
 
 
     @Override
@@ -31,28 +31,26 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startactivity);
 
-
+        /* Intent used to pass LINE_NAME to Stop activity */
         Intent intent = new Intent(this, Stop.class);
 
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        /* ArrayList containing subway's lines received with network */
         lines = new ArrayList<Line>();
-        lines = getListOfLines();
 
-        // LineAdapter myAdapter = new LineAdapter(this, pictures);
-        LineAdapter myAdapter = new LineAdapter(lines, new LineClick(){
+
+        LineAdapter lineAdapter = new LineAdapter(lines, new LineClick(){
 
             @Override
             public void onLineClick(Line line) {
                 String name = line.getName();
                 intent.putExtra("LINE_NAME", name);
-               /* Log.d("StartActivity", "name = " + name); */
                 startActivity(intent);
             }
         });
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -60,21 +58,29 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                Log.i("StartActiviy", "Connexion in progress");
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
-
+                Log.i("StartActiviy", "Connexion established");
+                for(Line item : data)
+                {
+                    if(item.getRouteType().toString() == "TRAM")
+                        lines.add(item);
+                }
+                recyclerView.setAdapter(lineAdapter);
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
+                Log.i("StartActiviy", "Network Error !");
             }
         });
     }
-
+/*
     public ArrayList<Line> getListOfLines(){
 
         ArrayList<Line> lines = new ArrayList<Line>();
@@ -88,5 +94,7 @@ public class StartActivity extends AppCompatActivity {
 
         return lines;
     }
+
+ */
 }
 

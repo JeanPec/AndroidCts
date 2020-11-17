@@ -19,7 +19,7 @@ public class Stop extends AppCompatActivity {
         Intent intentStartActivity = getIntent();
         String name = intentStartActivity.getStringExtra("LINE_NAME");
 
-        /* Log.d("Stop", "name = " + name); */
+        /* Log.i("Stop", "name = " + name); */
 
         /* Initialize transaction */
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

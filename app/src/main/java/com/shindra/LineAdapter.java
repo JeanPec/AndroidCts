@@ -14,12 +14,11 @@ import java.util.ArrayList;
 
 public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>{
 
-    //int pictures[];
+
     private ArrayList<Line> lines;
     private LineClick callback;
 
     public LineAdapter(ArrayList<Line> lines, LineClick callback){
-        //this.pictures = pictures;
         this.lines = lines;
         this.callback = callback;
     }
@@ -33,14 +32,12 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position) {
-        //holder.onBind(pictures[position]);
         Line lines = this.lines.get(position);
         holder.onBind(lines, callback);
     }
 
     @Override
     public int getItemCount() {
-        //return pictures.length;
         return lines.size();
     }
 }
