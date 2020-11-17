@@ -45,7 +45,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/Background"
-            android:text="@string/button_schedule"
+            android:text="@string/line_card_view_button_schedule"
             android:textColor="@color/Primary"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"

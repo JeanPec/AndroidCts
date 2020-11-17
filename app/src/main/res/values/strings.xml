@@ -1,13 +1,32 @@
 <resources>
+    <!-- Application -->
     <string name="application_name">CtsAppFip3A</string>
-    <string name="button_schedule">Horaire</string>
+
+    <!-- Line activity -->
     <string name="line_activity_name">Nos Trams</string>
+    <!-- Line card view -->
+    <string name="line_card_view_button_schedule">Horaire</string>
+
+    <!-- Schedule activity -->
     <string name="schedule_activity_name">Horaires</string>
-    <string name="button_map">Voir sur la carte</string>
-    <string name="schedule_card_view_headline">Headline</string>
-    <string name="schedule_card_view_line">Line</string>
-    <string name="schedule_card_view_hour">Line</string>
+    <!-- Schedule fragment stop -->
+    <string name="schedule_fragment_stop_button_map">Voir sur la carte</string>
+    <!-- Schedule card view -->
+    <string name="schedule_card_view_headline_default">Headline</string>
+    <string name="schedule_card_view_line_default">Line</string>
+    <string name="schedule_card_view_hour_default">Hour</string>
     <string name="schedule_card_view_body">Prochain départ</string>
-    <string name="hour_unit">h</string>
-    <string name="schedule_default_line_name">Ligne Erreur</string>
+    <string name="schedule_card_view_line_name_default">Ligne Erreur</string>
+
+    <!-- Loading -->
+    <string name="loading_text">Veuillez patientez, chargement des données en cours</string>
+
+    <!-- Network call traduction -->
+    <string name="ligne_a">"Parc des Sports - Illkirch Graffenstaden"</string>
+    <string name="ligne_b">"Lingolsheim Tiergaertel - Hoenheim Gare"</string>
+    <string name="ligne_c">"Gare Centrale - Neuhof Rodolphe Reuss"</string>
+    <string name="ligne_d">"Poteries - Port du Rhin / Kehl Rathaus"</string>
+    <string name="ligne_e">"Robertsau l'Escale - Campus d'Illkirch"</string>
+    <string name="ligne_f">"Comtes - Place d'Islande"</string>
+
 </resources>

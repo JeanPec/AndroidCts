@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
 
-class LineAdapter(private val lines: ArrayList<Line>, val callback: LineViewHolder.OnLineClickListener) : RecyclerView.Adapter<LineViewHolder>() {
+class LineAdapter(var lines: ArrayList<Line>, val callback: LineViewHolder.OnLineClickListener) : RecyclerView.Adapter<LineViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineViewHolder {
         val lineView = LayoutInflater.from(parent.context).inflate(R.layout.line_card_view, parent, false)
@@ -25,12 +25,12 @@ class LineAdapter(private val lines: ArrayList<Line>, val callback: LineViewHold
 
     private fun getTramIcon(line: Line) : Int {
         return when (line.name){
-            "Ligne A" -> R.drawable.tram_a
-            "Ligne B" -> R.drawable.tram_b
-            "Ligne C" -> R.drawable.tram_c
-            "Ligne D" -> R.drawable.tram_d
-            "Ligne E" -> R.drawable.tram_e
-            "Ligne F" -> R.drawable.tram_f
+            "Parc des Sports - Illkirch Graffenstaden" -> R.drawable.tram_a
+            "Lingolsheim Tiergaertel - Hoenheim Gare" -> R.drawable.tram_b
+            "Gare Centrale - Neuhof Rodolphe Reuss" -> R.drawable.tram_c
+            "Poteries - Port du Rhin / Kehl Rathaus" -> R.drawable.tram_d
+            "Robertsau l'Escale - Campus d'Illkirch" -> R.drawable.tram_e
+            "Comtes - Place d'Islande" -> R.drawable.tram_f
             else -> R.drawable.tram
         }
     }

@@ -6,14 +6,15 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stop_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/stop_list">
+        android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         style="@style/button"
+        android:id="@+id/button_map"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,7 +23,7 @@
         android:backgroundTint="@color/Primary"
         android:textColor="@color/Background"
         android:elevation="4dp"
-        android:text="@string/button_map"
+        android:text="@string/schedule_fragment_stop_button_map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
