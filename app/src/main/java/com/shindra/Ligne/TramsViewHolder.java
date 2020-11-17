@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.Ligne;
 
 import android.widget.Button;
 import android.widget.ImageView;
@@ -7,11 +7,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
 public class TramsViewHolder extends RecyclerView.ViewHolder
 {
-    //Objets de la vue "Nos Trams"
+    //Widjets de la vue "Nos Trams"
     private final ImageView imagePhotoTram;
     private final ImageView imageLigneTram;
     private final Button button;
@@ -36,27 +37,27 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
     {
         switch (image.getName())
         {
-            case "Parc des Sports - Illkirch Graffenstaden":    //ligne A
+            case "A":    //ligne A
                 imageLigneTram.setImageResource(R.drawable.tram_a);
                 break;
 
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":    //ligne B
+            case "B":    //ligne B
                 imageLigneTram.setImageResource(R.drawable.tram_b);
                 break;
 
-            case "Gare Centrale - Neuhof Rodolphe Reuss":    //ligne C
+            case "C":    //ligne C
                 imageLigneTram.setImageResource(R.drawable.tram_c);
                 break;
 
-            case "Poteries - Port du Rhin / Kehl Rathaus":    //ligne D
+            case "D":    //ligne D
                 imageLigneTram.setImageResource(R.drawable.tram_d);
                 break;
 
-            case "Robertsau l'Escale - Campus d'Illkirch":    //ligne E
+            case "E":    //ligne E
                 imageLigneTram.setImageResource(R.drawable.tram_e);
                 break;
 
-            case "Comtes - Place d'Islande":    //ligne F
+            case "F":    //ligne F
                 imageLigneTram.setImageResource(R.drawable.tram_f);
                 break;
 

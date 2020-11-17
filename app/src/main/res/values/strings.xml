@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
 
-<!--    Page Name-->
+    <!--    Page Name-->
     <string name="page_NosTrams">Nos Trams</string>
     <string name="page_Horaires">Horaires</string>
 
@@ -14,5 +14,6 @@
         <item>LigneE</item>
         <item>LigneF</item>
     </string-array>
+    
 
 </resources>

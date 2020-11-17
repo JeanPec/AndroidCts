@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".ActivityNosTrams">
+        <activity android:name=".Ligne.ActivityNosTrams">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ActivityHoraire">
-
-        </activity>
-
+        <activity android:name=".Horaire.ActivityHoraire"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

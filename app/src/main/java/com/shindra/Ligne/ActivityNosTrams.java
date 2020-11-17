@@ -1,5 +1,6 @@
-package com.shindra;
+package com.shindra.Ligne;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,6 +10,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.Horaire.ActivityHoraire;
+import com.shindra.MyViewModel;
+import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -27,7 +31,7 @@ public class ActivityNosTrams extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_horaire_tram);
+        setContentView(R.layout.activity_ligne_tram);
 
         setTitle(NomPage);  //Ecriture du titre de la vue
 
@@ -42,11 +46,12 @@ public class ActivityNosTrams extends AppCompatActivity
             public void onHoraireLineClick(Line ligne)
             {
                 Log.i(NomPage,"Appuie BTN : " + ligne.getName());
-                //Toast.makeText(getApplicationContext(), ligne.getName(), Toast.LENGTH_SHORT).show();
-                //Creation de la nouvelle Intent
-                //Intent intent = new Intent(this, ActivityHoraire.this);
 
-                //startActivity(intent);
+
+                //Creation de la nouvelle Intent
+                Intent intent = new Intent(ActivityNosTrams.this, ActivityHoraire.class);
+                //intent.putExtra("LigneTram",ligne.getName());
+                startActivity(intent);
             }
         };
 
