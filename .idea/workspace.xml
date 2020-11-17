@@ -34,12 +34,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="test">
+    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CtsLibrary/src/main/java/com/shindra/ctslibrary/mapper/LinesMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CtsLibrary/src/main/java/com/shindra/ctslibrary/mapper/LinesMapper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/LineViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/LineViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/RecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/RecyclerViewAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/line_recycler_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_chargement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_chargement.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/line_recycler_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/line_recycler_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +71,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -90,7 +95,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="625b92290706" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-13T10:31:41.446Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-17T13:11:50.143Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -98,6 +103,11 @@
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.1827571226">
+      <recent name="com.shindra" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -183,7 +193,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604922027847</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données">
+      <created>1605464680088</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605464680088</updated>
+    </task>
+    <task id="LOCAL-00003" summary="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données">
+      <created>1605464806892</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605464806892</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,7 +241,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données" />
+    <option name="LAST_COMMIT_MESSAGE" value="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données" />
   </component>
   <component name="WindowStateProjectService">
     <state x="714" y="271" key="#PSD" timestamp="1605097118118">
@@ -237,22 +262,38 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="620" y="280" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1605283206901" />
-    <state width="818" height="285" key="GridCell.Tab.0.bottom" timestamp="1605464332871">
+    <state width="1636" height="285" key="GridCell.Tab.0.bottom" timestamp="1605630850392">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="818" height="285" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605464332871" />
-    <state width="818" height="285" key="GridCell.Tab.0.center" timestamp="1605464332871">
+    <state width="1636" height="285" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605630850392" />
+    <state width="1636" height="285" key="GridCell.Tab.0.center" timestamp="1605630850391">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="818" height="285" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605464332871" />
-    <state width="818" height="285" key="GridCell.Tab.0.left" timestamp="1605464332871">
+    <state width="1636" height="285" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605630850391" />
+    <state width="1636" height="285" key="GridCell.Tab.0.left" timestamp="1605630850391">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="818" height="285" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605464332871" />
-    <state width="818" height="285" key="GridCell.Tab.0.right" timestamp="1605464332871">
+    <state width="1636" height="285" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605630850391" />
+    <state width="1636" height="285" key="GridCell.Tab.0.right" timestamp="1605630850391">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="818" height="285" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605464332871" />
+    <state width="1636" height="285" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605630850391" />
+    <state width="1636" height="285" key="GridCell.Tab.1.bottom" timestamp="1605630863753">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="285" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605630863753" />
+    <state width="1636" height="285" key="GridCell.Tab.1.center" timestamp="1605630863753">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="285" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605630863753" />
+    <state width="1636" height="285" key="GridCell.Tab.1.left" timestamp="1605630863752">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="285" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605630863752" />
+    <state width="1636" height="285" key="GridCell.Tab.1.right" timestamp="1605630863753">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1636" height="285" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605630863753" />
     <state x="184" y="29" key="SettingsEditor" timestamp="1604777621429">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -273,9 +314,34 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="198" y="198" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1605458148984" />
+    <state x="649" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605616570854">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="649" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605616570854" />
     <state x="496" y="243" key="run.anything.popup" timestamp="1605460962106">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="496" y="243" key="run.anything.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1605460962106" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

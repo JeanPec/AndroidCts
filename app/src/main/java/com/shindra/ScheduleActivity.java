@@ -2,8 +2,8 @@ package com.shindra;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.shindra.Misc.LoadingDialog;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,45 +15,22 @@ import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.Misc.LoadingDialog;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StartActivity extends AppCompatActivity {
-    private ArrayList<Line> tramLines =  new ArrayList<Line>();
-
-    private  ArrayList<Line> getListOfTramLines(){
-        return tramLines;
-    }
-    private void setTramList(ArrayList<Line> lines){
-        for(int i = 0; i < lines.size(); i++){
-            if (lines.get(i).getRouteType() == RouteType.TRAM){
-                tramLines.add(lines.get(i));
-
-            }
-        }
-    }
-
+public class ScheduleActivity extends AppCompatActivity{
+    private String lineName;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView recyclerView = findViewById(R.id.recycler_lines);
+
         LoadingDialog loadingDialog = new LoadingDialog(this);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecyclerViewAdapter(getListOfTramLines(), new RecyclerButtonClick() {
-            @Override
-            public void onLineClick(Line line) {
-
-                Intent intent = new Intent(StartActivity.this, ScheduleActivity.class);
-                intent.putExtra("lineName", line.getName());
-                startActivity(intent);
-
-            }
-        }));
+        Intent intent = getIntent();
+        lineName = getIntent().getStringExtra("lineName");
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -67,8 +44,7 @@ public class StartActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
                 loadingDialog.dismiss();
-                setTramList(data);
-                recyclerView.getAdapter().notifyDataSetChanged();
+
             }
 
             @Override
@@ -78,7 +54,5 @@ public class StartActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
 

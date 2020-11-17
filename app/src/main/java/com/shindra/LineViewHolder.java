@@ -1,6 +1,7 @@
 package com.shindra;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
@@ -9,18 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Line;
 
-import java.util.Objects;
-
 public class LineViewHolder extends RecyclerView.ViewHolder {
 
     private final ImageView lineName;
+    public final Button button;
 
     public LineViewHolder(@NonNull View itemView){
         super(itemView);
         lineName = itemView.findViewById(R.id.logo_ligne);
+        button = itemView.findViewById(R.id.schedule_button);
     }
-    public void onBind(Line ligne){
-        switch(ligne.getName()) {
+    public void onBind(Line line, RecyclerButtonClick callback){
+        switch(line.getName()) {
             case "A":
                 lineName.setImageResource(R.drawable.ic_tram_a);
                 break;
@@ -42,6 +43,12 @@ public class LineViewHolder extends RecyclerView.ViewHolder {
             default:
                 lineName.setImageResource(R.drawable.ic_tram);
         }
-        // TODO modifier switch cqse qvec bon nom de ligne
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                callback.onLineClick(line);
+            }
+        });
+        // TODO modifier switch case avec bon nom de ligne
     }
 }

@@ -13,9 +13,12 @@ import com.shindra.ctslibrary.bo.Line;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<LineViewHolder> {
+    private final RecyclerButtonClick callBack;
     private ArrayList<Line>lines;
-    RecyclerViewAdapter(ArrayList<Line> lines){
+    RecyclerViewAdapter(ArrayList<Line> lines, RecyclerButtonClick callBack){
+
         this.lines = lines;
+        this.callBack = callBack;
     }
 
     @NonNull
@@ -29,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<LineViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position){
-        holder.onBind(lines.get(position));
+        holder.onBind(lines.get(position), callBack);
     }
 
     @Override
