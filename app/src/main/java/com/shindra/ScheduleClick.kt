@@ -2,6 +2,6 @@ package com.shindra
 
 import com.shindra.ctslibrary.bo.Line
 
-interface RecyclerItemClick {
+interface ScheduleClick {
     fun onScheduleClick(line: Line?)
 }

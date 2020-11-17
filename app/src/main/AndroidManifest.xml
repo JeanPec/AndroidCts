@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-
-
+        <activity android:name=".Map.MapActivity"></activity>
         <activity android:name=".Lines.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

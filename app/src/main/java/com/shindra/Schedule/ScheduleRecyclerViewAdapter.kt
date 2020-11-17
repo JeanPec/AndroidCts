@@ -1,18 +1,25 @@
 package com.shindra.Schedule
 
+import android.content.DialogInterface
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.MapClick
 import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
 
-class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID: String) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
+class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID: String, val callback: MapClick) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.schedule_cardview, parent, false)
+
+        //v.findViewById<Button>(R.id.map_button).setOnClickListener { callback.onMapClick(lineID) }
+
         return ScheduleViewHolder(v)
     }
 
@@ -36,6 +43,8 @@ class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID
             holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.Body2))
         }
         holder.scheduleTime.text = convert(stop.estimatedArrivalTime)
+
+        //holder.onBind(lineID, callback)
     }
 
     override fun getItemCount(): Int {
@@ -53,3 +62,5 @@ class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID
         }
     }
 }
+
+

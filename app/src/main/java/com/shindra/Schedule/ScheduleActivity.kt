@@ -1,12 +1,15 @@
 package com.shindra.Schedule
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Map.MapActivity
+import com.shindra.MapClick
 import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.observable.ObservableListener
@@ -16,7 +19,7 @@ import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
 
-class ScheduleActivity : AppCompatActivity() {
+class ScheduleActivity : AppCompatActivity(), MapClick {
 
     val stops = ArrayList<Stop>()
 
@@ -51,7 +54,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         val scheduleRecyclerList = findViewById<RecyclerView>(R.id.cardListSchedule)
         scheduleRecyclerList.layoutManager = LinearLayoutManager(this)
-        scheduleRecyclerList.adapter = ScheduleRecyclerViewAdapter(stops, lineID)
+        scheduleRecyclerList.adapter = ScheduleRecyclerViewAdapter(stops, lineID, this)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithEstimatedTimeTable(RouteType.TRAM, lineID, 0).observe(object : ObservableListener<Line> {
@@ -64,7 +67,6 @@ class ScheduleActivity : AppCompatActivity() {
                 val stops = ArrayList<Stop>()
                 for (stop in data.stops!!) {
                     stops.add(stop)
-                    //ScheduleRecyclerView.setAdapter(ScheduleAdapter);
                 }
                 (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).stops = stops
                 (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).notifyDataSetChanged()
@@ -77,4 +79,12 @@ class ScheduleActivity : AppCompatActivity() {
             }
         })
     }
+
+    override fun onMapClick(lineID: String) {
+        val intent = Intent(this@ScheduleActivity, MapActivity::class.java)
+        println(lineID)
+        intent.putExtra("LINE_ID", lineID)
+        startActivity(intent)
+    }
+
 }

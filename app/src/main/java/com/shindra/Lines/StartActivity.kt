@@ -16,7 +16,7 @@ import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import java.util.ArrayList
 
-class StartActivity : AppCompatActivity(), RecyclerItemClick {
+class StartActivity : AppCompatActivity(), ScheduleClick {
     val lines = ArrayList<Line>()
 
 
