@@ -17,11 +17,11 @@ interface CtsApiService {
 
     @GET("/v1/siri/2.0/stoppoints-discovery")
     fun stopPoints(
-        @Query("latitude") latitude: Double,
-        @Query("longitude") longitude: Double,
-        @Query("distance") distance: Int,
-        @Query("includeLinesDestinations") includeLinesDestinations: Boolean = true,
-        @Query("stopCode") stopCode: String?
+            @Query("latitude") latitude: Double,
+            @Query("longitude") longitude: Double,
+            @Query("distance") distance: Int,
+            @Query("includeLinesDestinations") includeLinesDestinations: Boolean = true,
+            @Query("stopCode") stopCode: String?
     ): Single<StopsApi>
 
     @GET("v1/siri/2.0/lines-discovery")
@@ -29,9 +29,7 @@ interface CtsApiService {
 
     @GET("/v1/siri/2.0/estimated-timetable")
     fun estimatedTimeTable(@Query("VehicleMode") routeType: RouteType,
-                           @Query("LineRef") lineRef: String,
                            @Query("DirectionRef") directionRef: Int) : Single<EstimatedTimeTable>
-
 }
 
 object CtsService : RetrofitServices<CtsApiService>() {
@@ -62,10 +60,8 @@ object CtsService : RetrofitServices<CtsApiService>() {
     fun estimatedTimeTable(routeType: RouteType,
                            lineRef: String,
                            directionRef: Int) : Single<EstimatedTimeTable> {
-        return service.estimatedTimeTable(routeType, lineRef, directionRef)
+        return service.estimatedTimeTable(routeType, directionRef)
     }
-
-
 }
 
 class BasicAuthenticator(private val userName: String, private val userPassword: String) : Authenticator {

@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,26 +25,27 @@ public class StartActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager LinesLayoutManager;
 
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.fragment_tram);
+        setContentView(R.layout.fragment_lines);
 
         ArrayList<Line> lines = new ArrayList<Line>();
 
         setTitle("Nos Trams");
 
-        LinesRecyclerView = findViewById(R.id.cardList);
+        LinesRecyclerView = findViewById(R.id.cardListLines);
         LinesRecyclerView.setHasFixedSize(true);
         LinesLayoutManager = new LinearLayoutManager(this);
-        //mAdapter = new RecyclerViewAdapter(getListOfTramLines());
-        LinesAdapter = new LinesRecyclerViewAdapter(lines);
+        //LinesAdapter = new LinesRecyclerViewAdapter(lines);
         LinesRecyclerView.setLayoutManager(LinesLayoutManager);
-        //mRecyclerView.setAdapter(mAdapter);
+        LinesRecyclerView.setAdapter(LinesAdapter);
 
-
+        Intent intent = new Intent(StartActivity.this, ScheduleActivity.class);
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -57,17 +59,24 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                data.size();//call once the network call has responded with a success
+                //call once the network call has responded with a success
 
-                ArrayList<String> names = new ArrayList<String>();
-                for( Line line : data ) {
-                    if (line.getRouteType() == RouteType.TRAM){
+                for (Line line : data) {
+                    if (line.getRouteType() == RouteType.TRAM) {
                         lines.add(line);
-                        names.add(line.getName());
-                        //System.out.println(line.getName());
-                        LinesRecyclerView.setAdapter(LinesAdapter);
                     }
                 }
+
+
+               LinesRecyclerView.setAdapter(new LinesRecyclerViewAdapter(lines, new RecyclerItemClick() {
+                    @Override
+                    public void onScheduleClick(Line line) {
+                        System.out.println(line.getName());
+                        intent.putExtra("LINE", line.getName());
+                        startActivity(intent);
+                    }
+                }));
+
             }
 
             @Override
@@ -79,15 +88,7 @@ public class StartActivity extends AppCompatActivity {
 
     }
 
-    /*private ArrayList<Line> getListOfTramLines(){
-        ArrayList<Line> lines = new ArrayList<Line>();
-
-        lines.add(new Line("Tram A", RouteType.TRAM, null));
-        lines.add(new Line("Tram B", RouteType.TRAM, null));
-        lines.add(new Line("Tram C", RouteType.TRAM, null));
 
 
-        return lines;
-    }*/
 }
 

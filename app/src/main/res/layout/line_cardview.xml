@@ -37,7 +37,8 @@
             app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
         <Button
-            android:id="@+id/time_button"
+            style="@style/Button"
+            android:id="@+id/schedule_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tramPicture"

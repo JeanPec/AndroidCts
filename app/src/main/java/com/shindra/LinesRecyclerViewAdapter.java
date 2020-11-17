@@ -1,8 +1,10 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,21 +13,33 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
-public class LinesRecyclerViewAdapter extends RecyclerView.Adapter<LinesRecyclerViewAdapter.LinesViewHolder> {
+
+
+public class LinesRecyclerViewAdapter extends RecyclerView.Adapter<LinesViewHolder> {
     private ArrayList<Line> lines;
-    public static class LinesViewHolder extends RecyclerView.ViewHolder {
+
+    /*public static class LinesViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
+
+        Button schedule_button;
+
         public LinesViewHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.tramLine);
+
+            //this.schedule_button = (Button) itemView.findViewById(R.id.schedule_button);
         }
-    }
-    public LinesRecyclerViewAdapter(ArrayList<Line> mlines) {
-        lines = mlines;
+    }*/
+
+    private RecyclerItemClick callback;
+
+    public LinesRecyclerViewAdapter(ArrayList<Line> lines, RecyclerItemClick callback) {
+        this.lines = lines;
+        this.callback = callback;
     }
     @Override
     public LinesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.line_cardview, parent, false);
         LinesViewHolder evh = new LinesViewHolder(v);
         return evh;
     }
@@ -53,49 +67,13 @@ public class LinesRecyclerViewAdapter extends RecyclerView.Adapter<LinesRecycler
         else{
             holder.mImageView.setImageResource(R.drawable.tram);//currentItem.getImageResource());
         }
+
+        holder.onBind(currentItem, callback);
+
     }
+
     @Override
     public int getItemCount() {
         return lines.size();
     }
 }
-
-/*
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.shindra.ctslibrary.bo.Line;
-
-import java.util.ArrayList;
-
-class RecyclerViewAdapter extends RecyclerView.Adapter<LineViewHolder> {
-
-    private ArrayList<Line> lines;
-
-    RecyclerViewAdapter(ArrayList<Line> lines){
-        this.lines = lines;
-    }
-
-    @NonNull
-    @Override
-    public LineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View linesView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview,parent,false);
-
-        return new LineViewHolder(linesView);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull LineViewHolder holder, int position) {
-        //holder.onBind();
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-}*/

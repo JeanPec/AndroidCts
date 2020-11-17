@@ -7,8 +7,8 @@
     tools:context=".StartActivity">
 
     <fragment
-        android:id="@+id/fragmentTram"
-        android:name="com.shindra.FragmentTram"
+        android:id="@+id/fragmentSchedule"
+        android:name="com.shindra.FragmentSchedule"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
