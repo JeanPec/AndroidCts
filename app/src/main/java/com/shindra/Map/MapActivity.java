@@ -31,18 +31,15 @@ public class MapActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_activity);
 
-        fragment = new MapLineFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.frameContainer, fragment).commit();
-
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);
 
-        Intent intent = getIntent();
-        lineName = getIntent().getStringExtra("lineName");
+        fragment = new MapLineFragment(getIntent().getStringExtra("lineName"));
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.frameContainer, fragment).commit();
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, lineName), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, fragment.getLineName()), new ObservableListener<Line>() {
 
             @Override
             public void onLoading()
@@ -56,11 +53,11 @@ public class MapActivity extends AppCompatActivity
             public void onSuccess(Line data)
             {
                 //call once the network call has responded with a success
+                //Set the right title to the app
+                getSupportActionBar().setTitle("Ligne " + fragment.getLineName());
+
                 //Dismiss the loading dialog
                 loadingDialog.dismiss();
-
-                //Set the right title to the app
-                getSupportActionBar().setTitle("Ligne " + lineName);
 
                 //Add Stops icon on map
                 fragment.addStopsOnMap(data);

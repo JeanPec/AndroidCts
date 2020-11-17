@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
 import com.shindra.Stop.StopActivity;
+import com.shindra.Stop.StopFragment;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.Coordinate;
@@ -30,9 +32,9 @@ import java.util.Date;
 
 public class LineActivity extends AppCompatActivity
 {
-    public RecyclerView lines;
     public LoadingDialog loadingDialog;
     public ErrorDialog errorDialog;
+    public LineFragment fragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -43,18 +45,9 @@ public class LineActivity extends AppCompatActivity
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);
 
-        lines = findViewById(R.id.lines);
-        lines.setLayoutManager(new LinearLayoutManager(this));
-        lines.setAdapter(new LineAdapter(new ArrayList<Line>(), new ILineClickable() {
-            @Override
-            public void OnLineClick(Line line)
-            {
-                //Launch the stop activity here
-                Intent intent = new Intent(LineActivity.this, StopActivity.class);
-                intent.putExtra("lineName", line.getName());
-                startActivity(intent);
-            }
-        }));
+        fragment = new LineFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.frameContainer, fragment).commit();
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
@@ -71,11 +64,11 @@ public class LineActivity extends AppCompatActivity
             public void onSuccess(ArrayList<Line> data)
             {
                 //call once the network call has responded with a success
-                //Dismiss the loading dialog
-                loadingDialog.dismiss();
-
                 //Set the right title to the app
                 getSupportActionBar().setTitle(R.string.lines);
+                
+                //Dismiss the loading dialog
+                loadingDialog.dismiss();
 
                 //Only keep Tram lines
                 ArrayList<Line> tramLines = new ArrayList<Line>();
@@ -84,8 +77,7 @@ public class LineActivity extends AppCompatActivity
                         tramLines.add(item);
 
                 //Update the recycler view through the adapter
-                ((LineAdapter) lines.getAdapter()).setLines(tramLines);
-                lines.getAdapter().notifyDataSetChanged();
+                fragment.updateWidgets(tramLines);
             }
 
             @Override

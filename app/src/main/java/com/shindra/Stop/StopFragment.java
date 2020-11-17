@@ -21,16 +21,17 @@ import java.util.ArrayList;
 
 public class StopFragment extends Fragment
 {
-    public RecyclerView stops;
-    public Button seeOnMapButton;
+    private RecyclerView stops;
+    private Button seeOnMapButton;
 
-    public String lineName;
+    private String lineName;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.stop_fragment, container, false);
+
         stops = view.findViewById(R.id.stops);
         stops.setLayoutManager(new LinearLayoutManager(getContext()));
         stops.setAdapter(new StopAdapter(new ArrayList<Stop>(), lineName));
