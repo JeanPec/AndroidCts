@@ -5,5 +5,8 @@
     <string name="txtDescr">Ceci est un txt</string>
     <string name="buttonSeeOnMap">VOIR SUR LA CARTE</string>
     <string name="lineStop_txt">lineStop</string>
+    <string name="schedule_station_line">Ligne A</string>
+    <string name="schedule_time_txt">Hours</string>
+    <string name="schedule_nextstation_txt">TextView</string>
 
 </resources>

@@ -53,22 +53,22 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
     int getLineImg(Line currentTramLine)
     {
         switch (currentTramLine.getName()) {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 return (R.drawable.tram_a);
 
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 return(R.drawable.tram_b);
 
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 return (R.drawable.tram_c);
 
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 return(R.drawable.tram_d);
 
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 return(R.drawable.tram_e);
 
-            case "Comtes - Place d'Islande":
+            case "F":
                 return(R.drawable.tram_f);
 
             default:
