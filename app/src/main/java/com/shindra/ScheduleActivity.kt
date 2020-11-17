@@ -1,6 +1,8 @@
 package com.shindra
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,11 +16,7 @@ import java.util.*
 
 class ScheduleActivity : AppCompatActivity() {
 
-
     val stops = ArrayList<Stop>()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +43,9 @@ class ScheduleActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_schedule)
         title = "Ligne $lineID"
 
-        /*private var ScheduleRecyclerView: RecyclerView? = null
-        private var ScheduleAdapter: RecyclerView.Adapter<*>? = null
-        private var ScheduleLayoutManager: RecyclerView.LayoutManager? = null*/
+        val loadingDialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog,null)
+        val dialogBuilder = AlertDialog.Builder(this).setView(loadingDialogView)
+        val loadingDialog = dialogBuilder.create()
 
         val scheduleRecyclerList = findViewById<RecyclerView>(R.id.cardListSchedule)
         scheduleRecyclerList.layoutManager = LinearLayoutManager(this)
@@ -57,6 +55,7 @@ class ScheduleActivity : AppCompatActivity() {
         model.lineWithEstimatedTimeTable(RouteType.TRAM, lineID, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: Line) {
@@ -65,21 +64,15 @@ class ScheduleActivity : AppCompatActivity() {
                     stops.add(stop)
                     //ScheduleRecyclerView.setAdapter(ScheduleAdapter);
                 }
-                /*ScheduleAdapter = ScheduleRecyclerViewAdapter(stops, lineID)
-                ScheduleRecyclerView!!.layoutManager = ScheduleLayoutManager
-                ScheduleRecyclerView!!.adapter = ScheduleAdapter*/
-
-
                 (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).stops = stops
                 (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).notifyDataSetChanged()
+
+                loadingDialog.dismiss()
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
             }
         })
-        /*ScheduleRecyclerView = findViewById(R.id.cardListSchedule)
-        ScheduleRecyclerView.setHasFixedSize(true)
-        ScheduleLayoutManager = LinearLayoutManager(this)*/
     }
 }

@@ -1,11 +1,13 @@
 package com.shindra
 
+import android.app.AlertDialog
 import com.shindra.arrakis.observable.observe
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.content.Intent
+import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.ctslibrary.apibo.RouteType
@@ -21,6 +23,10 @@ class StartActivity : AppCompatActivity(), RecyclerItemClick {
         setContentView(R.layout.fragment_lines)
         title = "Nos Trams"
 
+        val loadingDialogView = LayoutInflater.from(this).inflate(R.layout.loading_dialog,null)
+        val dialogBuilder = AlertDialog.Builder(this).setView(loadingDialogView)
+        val loadingDialog = dialogBuilder.create()
+
         val tramRecyclerList = findViewById<RecyclerView>(R.id.cardListLines)
         tramRecyclerList.layoutManager = LinearLayoutManager(this)
         tramRecyclerList.adapter = LinesRecyclerViewAdapter(lines, this)
@@ -29,6 +35,7 @@ class StartActivity : AppCompatActivity(), RecyclerItemClick {
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
@@ -42,6 +49,8 @@ class StartActivity : AppCompatActivity(), RecyclerItemClick {
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).lines = lines
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).notifyDataSetChanged()
 
+                loadingDialog.dismiss()
+
             }
 
             override fun onError(throwable: Throwable) {
@@ -51,9 +60,11 @@ class StartActivity : AppCompatActivity(), RecyclerItemClick {
     }
 
     override fun onScheduleClick(line: Line?) {
-        val intent = Intent(this, ScheduleActivity::class.java)
+        val intent = Intent(this@StartActivity, ScheduleActivity::class.java)
         println(line?.name)
         intent.putExtra("LINE", line?.name)
         startActivity(intent)
     }
+
+
 }
