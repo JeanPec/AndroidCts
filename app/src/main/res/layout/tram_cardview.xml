@@ -32,6 +32,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:src="@drawable/tram"
                  />
 
             <ImageView
@@ -41,7 +42,7 @@
                 android:adjustViewBounds="true"
                 android:layout_below="@+id/image_ligne"
                 android:layout_marginTop="8dp"
-                android:src=""/>  //Todo : solve res problem
+                android:src="@drawable/nouveau_tram_strasbourg"/>
 
             <Button
                 android:id="@+id/button"

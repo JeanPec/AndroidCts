@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="loading_text">Veuillez patientez, chargement des données en cours</string>
+
+    <string name="schedule_cardview_linename_default">Erreur Ligne</string>
+    <string name="schedule_cardview_hour">Heure</string>
+    <string name="schedule_cardview_headline">Headline</string>
+    <string name="schedule_cardview_body">Body</string>
+
+    <string name="tram_activity_name">Nos Trams</string>
+
+    <string name="button_map">Voir sur la carte</string>
 </resources>
