@@ -1,60 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="8sp"
+    android:elevation="4sp"
+    android:layout_width="0sp">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Card"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/Card"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/image_tram"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#F2f2f2">
+            android:layout_marginStart="8sp"
+            android:layout_marginTop="8sp"
+            android:contentDescription="@string/imagetram"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/tram_a" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8sp"
-                android:layout_marginTop="8sp"
-                android:contentDescription="@string/imagetram"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/tram_a" />
+        <ImageView
+            android:id="@+id/illustration"
+            android:layout_width="393sp"
+            android:layout_height="212sp"
+            android:layout_marginTop="8sp"
+            android:contentDescription="@string/illustrationtram"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_tram"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="393sp"
-                android:layout_height="212sp"
-                android:layout_marginTop="8sp"
-                android:contentDescription="@string/illustrationtram"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/nouveau_tram_strasbourg" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="16sp"
-                android:layout_marginBottom="16sp"
-                android:backgroundTint="#f2f2f2"
-                android:text="@string/horaire"
-                android:textColor="b50017"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="16sp"
+            android:backgroundTint="#f2f2f2"
+            android:text="@string/horaire"
+            android:textColor="#b50017"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/illustration" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
