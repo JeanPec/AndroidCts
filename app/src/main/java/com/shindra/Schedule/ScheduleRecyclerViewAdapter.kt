@@ -17,8 +17,8 @@ class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        val (name, _, estimatedDepartureTime) = stops[position]
-        holder.scheduleStop.text = name
+        val stop = stops[position]
+        holder.scheduleStop.text = stop.name
         holder.scheduleLine.text = "Ligne $lineID"
         if (lineID == "A") {
             holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_A))
@@ -35,7 +35,7 @@ class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID
         } else {
             holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.Body2))
         }
-        holder.scheduleTime.text = convert(estimatedDepartureTime)
+        holder.scheduleTime.text = convert(stop.estimatedArrivalTime)
     }
 
     override fun getItemCount(): Int {
