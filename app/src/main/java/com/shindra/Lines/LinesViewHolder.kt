@@ -1,9 +1,11 @@
-package com.shindra
+package com.shindra.Lines
 
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
+import com.shindra.RecyclerItemClick
 import com.shindra.ctslibrary.bo.Line
 
 class LinesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

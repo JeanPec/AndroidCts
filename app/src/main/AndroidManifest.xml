@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shindra">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,26 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
 
-        <!--
-               Set to true if your app is Standalone, that is, it does not require the handheld
-               app to run.
-        -->
 
-
-        <activity android:name=".StartActivity">
+        <activity android:name=".Lines.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScheduleActivity"
+        <activity
+            android:name=".Schedule.ScheduleActivity"
             android:label="@string/title_activity_schedule"
-            android:parentActivityName=".StartActivity">
+            android:parentActivityName=".Lines.StartActivity">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StartActivity" />
+                android:value=".Lines.StartActivity" />
         </activity>
 
         <meta-data

@@ -1,9 +1,9 @@
-package com.shindra
+package com.shindra.Schedule
 
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 
 class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

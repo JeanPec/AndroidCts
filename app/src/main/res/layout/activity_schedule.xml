@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity">
+    tools:context=".Lines.StartActivity">
 
     <fragment
         android:id="@+id/fragmentSchedule"
-        android:name="com.shindra.FragmentSchedule"
+        android:name="com.shindra.Schedule.FragmentSchedule"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"

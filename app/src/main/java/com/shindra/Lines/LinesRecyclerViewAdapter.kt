@@ -1,8 +1,10 @@
-package com.shindra
+package com.shindra.Lines
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
+import com.shindra.RecyclerItemClick
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
 

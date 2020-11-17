@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.Lines
 
 import android.app.AlertDialog
 import com.shindra.arrakis.observable.observe
@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.content.Intent
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.*
+import com.shindra.Schedule.ScheduleActivity
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line

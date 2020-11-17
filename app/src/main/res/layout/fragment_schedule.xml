@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSchedule"
+    tools:context=".Schedule.FragmentSchedule"
     android:background="@color/activity_background">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cardListSchedule"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/mapButton"/>
 
     <Button
+        android:id="@+id/mapButton"
         android:text="VOIR SUR LA CARTE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

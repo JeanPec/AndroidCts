@@ -1,10 +1,11 @@
-package com.shindra
+package com.shindra.Schedule
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.shindra.R
 
 class FragmentSchedule : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
