@@ -14,7 +14,7 @@
             android:id="@+id/cvTramline_tramlogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="tramline logo"
+            android:contentDescription="@string/cvTramline_linelogo_desc"
             app:layout_constraintBottom_toTopOf="@+id/cvTramline_tramphoto"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_tram_a" />
@@ -23,7 +23,7 @@
             android:id="@+id/cvTramline_tramphoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="tram picture"
+            android:contentDescription="@string/cvTramline_tramphoto_desc"
             app:layout_constraintTop_toBottomOf="@id/cvTramline_tramlogo"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/tram"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:text="Button"
+            android:text="@string/cvTramline_button_text"
             app:layout_constraintTop_toBottomOf="@id/cvTramline_tramphoto"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

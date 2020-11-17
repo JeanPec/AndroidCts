@@ -1,33 +1,28 @@
 package com.shindra
 
-import android.util.Log
+import android.content.Context
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val TAG = "timetableViewHolder"
+    private val logTag = "timetableViewHolder"
 
-    var stopName: TextView
-    var lineName: TextView
-    var timeView: TextView
-    var nextStart: TextView
+    private var stopName: TextView
+    private var lineName: TextView
+    private var timeView: TextView
+    private var nextStart: TextView
 
 
-    fun onBind(s: Stop) {
+    fun onBind(c: Context, s: Stop, name: String) {
         //Log.d(TAG, "onBind")
         //affect the value in s to the views contained in this this holder
-        stopName.setText(s.name)
-        lineName.setText("test")
-        timeView.setText(GetSimpleTimeStringFromDate(s.estimatedDepartureTime))
-        nextStart.setText("test2")
+        stopName.text = s.name
+        lineName.text = c.getString(R.string.cvTimetable_LineNamePrefix, name)
+        timeView.text = getSimpleTimeStringFromDate(s.estimatedDepartureTime)
     }
 
     init {
@@ -38,7 +33,7 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
         nextStart = itemView.findViewById(R.id.cvTimetable_nextStart)
     }
 
-    fun GetSimpleTimeStringFromDate(d : Date?) : String {
+    private fun getSimpleTimeStringFromDate(d : Date?) : String {
         if(d == null) return "ND"
 
         val calendar = Calendar.getInstance()

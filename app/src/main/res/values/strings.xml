@@ -4,4 +4,10 @@
     <string name="activity_name_trams">Nos trams</string>
     <string name="activity_name_horaires">Horaires</string>
 
+    <string name="cvTimetable_NextStart">Prochain départ</string>
+    <string name="cvTimetable_LineNamePrefix">Ligne %s</string>
+
+    <string name="cvTramline_linelogo_desc">Image logo</string>
+    <string name="cvTramline_tramphoto_desc">Illustration tram</string>
+    <string name="cvTramline_button_text">Horaires</string>
 </resources>

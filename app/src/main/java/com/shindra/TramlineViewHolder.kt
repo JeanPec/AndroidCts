@@ -10,7 +10,7 @@ import com.shindra.ctslibrary.bo.Line
 // stores and recycles views as they are scrolled off screen
 class TramlineViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     interface RecyclerItemClick {
-        fun OnTramlineClick(l: Line?)
+        fun onTramlineClick(l: Line?)
     }
 
     internal interface LineNames {
@@ -30,12 +30,11 @@ class TramlineViewHolder internal constructor(itemView: View) : RecyclerView.Vie
         }
     }
 
-    var lineLogo: ImageView
-    var tramPhoto: ImageView
-    var button: Button
+    private var lineLogo: ImageView
+    private var tramPhoto: ImageView
+    private var button: Button
     fun onBind(l: Line, callback: RecyclerItemClick) {
-        val s = l.name
-        when (s) {
+        when (l.name) {
             LineNames.LineA ->                 //LineA
                 lineLogo.setImageResource(R.drawable.ic_tram_a)
             LineNames.LineB ->                 //LineB
@@ -51,7 +50,7 @@ class TramlineViewHolder internal constructor(itemView: View) : RecyclerView.Vie
         }
 
         //register onclick callback
-        button.setOnClickListener { callback.OnTramlineClick(l) }
+        button.setOnClickListener { callback.onTramlineClick(l) }
     }
 
     companion object {

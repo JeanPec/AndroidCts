@@ -3,10 +3,7 @@ package com.shindra
 import androidx.lifecycle.ViewModel
 import com.shindra.arrakis.observable.convertToBehaviorSubject
 import com.shindra.arrakis.observable.subscribeOnAndObserveOn
-import com.shindra.ctslibrary.apibo.EstimatedTimeTable
-import com.shindra.ctslibrary.apibo.Lines
 import com.shindra.ctslibrary.apibo.RouteType
-import com.shindra.ctslibrary.apibo.VeloParcs
 import com.shindra.ctslibrary.bo.*
 import com.shindra.ctslibrary.repository.CtsRepository
 import io.reactivex.rxjava3.subjects.BehaviorSubject
