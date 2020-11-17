@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -57,8 +58,11 @@ public class StartActivity extends AppCompatActivity {
                     }
                 }
 
-                recyclerViewLineTram.setAdapter(new recyclerMenuAdapter(linesTram,line ->  {
+                recyclerViewLineTram.setAdapter(new RecyclerMenuAdapter(linesTram, line ->  {
                     //setTitle("Click");
+                    Intent scheduleActivity = new Intent(StartActivity.this, ScheduleActivity.class);
+                    scheduleActivity.putExtra("lineNameSelected", line.getName());
+                    startActivity(scheduleActivity);
 
                 }));
             }

@@ -11,12 +11,12 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
-public class recyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
+public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
 
     private ArrayList<Line> tramLines;
     ScheduleButtonListener callback;
 
-    public recyclerMenuAdapter(ArrayList<Line> tramLines1, ScheduleButtonListener callback1) {
+    public RecyclerMenuAdapter(ArrayList<Line> tramLines1, ScheduleButtonListener callback1) {
         tramLines = tramLines1;
         callback = callback1;
     }
