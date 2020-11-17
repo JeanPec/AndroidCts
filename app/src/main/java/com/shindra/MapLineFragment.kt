@@ -1,5 +1,6 @@
 package com.shindra
 
+import androidx.core.content.ContextCompat
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
 import com.shindra.ctslibrary.bo.Line
@@ -17,12 +18,12 @@ class MapLineFragment : MapFragment() {
 
     private fun getLineColor(line: String) : Int {
         return when (line){
-            "Parc des Sports - Illkirch Graffenstaden" -> R.color.LigneA
-            "Lingolsheim Tiergaertel - Hoenheim Gare" -> R.color.LigneB
-            "Gare Centrale - Neuhof Rodolphe Reuss" -> R.color.LigneC
-            "Poteries - Port du Rhin / Kehl Rathaus" -> R.color.LigneD
-            "Robertsau l'Escale - Campus d'Illkirch" -> R.color.LigneE
-            "Comtes - Place d'Islande" -> R.color.LigneF
+            "A" -> R.color.LigneA
+            "B" -> R.color.LigneB
+            "C" -> R.color.LigneC
+            "D" -> R.color.LigneD
+            "E" -> R.color.LigneE
+            "F" -> R.color.LigneF
             else -> R.color.Body2
         }
     }
