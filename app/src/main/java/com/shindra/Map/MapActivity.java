@@ -1,7 +1,6 @@
 package com.shindra.Map;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +28,7 @@ public class MapActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map_activity);
+        setContentView(R.layout.activity_map);
 
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);

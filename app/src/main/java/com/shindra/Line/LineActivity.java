@@ -1,34 +1,24 @@
 package com.shindra.Line;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.Misc.ErrorDialog;
 import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
-import com.shindra.Stop.StopActivity;
-import com.shindra.Stop.StopFragment;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
-import com.shindra.ctslibrary.apibo.Coordinate;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.ctslibrary.bo.Stop;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class LineActivity extends AppCompatActivity
 {
@@ -40,7 +30,7 @@ public class LineActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.line_activity);
+        setContentView(R.layout.activity_line);
 
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);
@@ -66,7 +56,7 @@ public class LineActivity extends AppCompatActivity
                 //call once the network call has responded with a success
                 //Set the right title to the app
                 getSupportActionBar().setTitle(R.string.lines);
-                
+
                 //Dismiss the loading dialog
                 loadingDialog.dismiss();
 

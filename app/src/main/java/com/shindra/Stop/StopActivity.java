@@ -29,7 +29,7 @@ public class StopActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.stop_activity);
+        setContentView(R.layout.activity_stop);
 
         loadingDialog = new LoadingDialog(this);
         errorDialog = new ErrorDialog(this);

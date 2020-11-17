@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
 import com.shindra.Stop.StopActivity;
-import com.shindra.Stop.StopAdapter;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;
 
@@ -28,7 +26,7 @@ public class LineFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.line_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_line, container, false);
 
         lines = view.findViewById(R.id.lines);
         lines.setLayoutManager(new LinearLayoutManager(getContext()));

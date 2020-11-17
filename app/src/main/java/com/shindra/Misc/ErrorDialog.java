@@ -1,7 +1,6 @@
 package com.shindra.Misc;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ public class ErrorDialog
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.error_view, null);
+        dialogView = inflater.inflate(R.layout.dialog_error, null);
         builder.setView(dialogView);
         builder.setCancelable(false);
         dialog = builder.create();
