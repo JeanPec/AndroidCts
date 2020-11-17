@@ -1,7 +1,9 @@
 package com.shindra;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import java.util.Date;
 
 //https://www.programmationfacile.com/android-recyclerview-cardview-tutoriel.html
 //https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
+//https://www.journaldev.com/10024/android-recyclerview-android-cardview-example-tutorial
 
 public class StartActivity extends AppCompatActivity {
 
@@ -37,7 +40,10 @@ public class StartActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Nos trams");
         Log.d("info", "je suis la startactivity");
+
+        //myOnClickListener = new MyOnClickListener(this);
 
 
 
@@ -89,12 +95,32 @@ public class StartActivity extends AppCompatActivity {
 
         //Setup the RecyclerView like slide 110
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LignesAdapter( getListLines());
+        //recyclerView.setAdapter(adapter);
         recyclerView.setAdapter(adapter);
 
     }
 
+
+    private static class MyOnClickListener implements View.OnClickListener {
+
+        private final Context context;
+
+        private MyOnClickListener(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View v) {
+            removeItem(v);
+        }
+
+        private void removeItem(View v) {
+
+        }
+    }
 
     private ArrayList<Stop> getListStops() {
         ArrayList<Stop> Stops = new ArrayList<>();
@@ -109,6 +135,14 @@ public class StartActivity extends AppCompatActivity {
         Lines.add(new Line("Tram B", RouteType.TRAM, this.getListStops()));
         return Lines;
     }
+
+//TO BE CONTINUATED BELOW :
+    private ArrayList<Tram> getListReturnInfo() {
+        ArrayList<Tram> Trams = new ArrayList<>();
+        Trams.add(new Tram("Tram A", R.drawable.ic_tram_a));
+    }
+
+
 
 }
 
