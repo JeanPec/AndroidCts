@@ -1,7 +1,8 @@
 package com.shindra
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.shindra.arrakis.observable.ObservableListener
@@ -9,7 +10,7 @@ import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 
-class ScheduleActivity : AppCompatActivity() {
+class ScheduleActivity : AppCompatActivity(), ScheduleFragmentStop.OnMapClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,13 @@ class ScheduleActivity : AppCompatActivity() {
                 //call if the network call has responded with an error
             }
         })
+    }
+
+    override fun onItemClick(lineName: String) {
+        val intent = Intent(this, MapLineActivity::class.java)
+        intent.putExtra("lineName", lineName)
+        startActivity(intent)
+        Toast.makeText(this, lineName, Toast.LENGTH_SHORT).show()
     }
 
     private fun getTramLetter(line: String?) : String {

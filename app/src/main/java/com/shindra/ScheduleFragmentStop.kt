@@ -25,18 +25,21 @@ class ScheduleFragmentStop() : Fragment(){
         stopRecyclerList.layoutManager = LinearLayoutManager(activity)
         stopRecyclerList.adapter = lineName?.let { ScheduleAdapter(it,stopList,activity) }
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         view.findViewById<Button>(R.id.button_map).setOnClickListener{
-
+            if (lineName != null) {
+                (activity as OnMapClickListener).onItemClick(lineName)
+            }
         }
+
+        return view
     }
 
     fun addStop(line: Line) {
         (stopRecyclerList.adapter as ScheduleAdapter).stops = line.stops!!
         (stopRecyclerList.adapter as ScheduleAdapter).notifyDataSetChanged()
+    }
+
+    interface OnMapClickListener{
+        fun onItemClick(lineName: String)
     }
 }

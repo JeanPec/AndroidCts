@@ -19,7 +19,7 @@ class ScheduleAdapter(private val line: String, var stops: ArrayList<Stop>, priv
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val stop = stops[position]
         holder.textHeadline.text = stop.name
-        holder.textLine.text = getLineNameLetter(line)
+        holder.textLine.text = getLineName(line)
         holder.textLine.setTextColor(ContextCompat.getColor(holder.textLine.context,getLineColor(line)))
         if (stop.estimatedDepartureTime != null){
             holder.textHour.text = SimpleDateFormat("HH'h'mm").format(stop.estimatedDepartureTime?.time)
@@ -43,7 +43,7 @@ class ScheduleAdapter(private val line: String, var stops: ArrayList<Stop>, priv
         }
     }
 
-    private fun getLineNameLetter(line: String) : String {
+    private fun getLineName(line: String) : String {
         return when (line){
             "Parc des Sports - Illkirch Graffenstaden" -> "Ligne A"
             "Lingolsheim Tiergaertel - Hoenheim Gare" -> "Ligne B"
