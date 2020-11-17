@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Background"
-    tools:context=".MainActivity">
+    tools:context=".StartActivity">
 
     <TextView
         android:id="@+id/Trams"
@@ -20,6 +20,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.shindra.TramFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="97dp"
+        tools:ignore="MissingConstraints" />
 
     <!--    <Button
             android:id="@+id/button"
