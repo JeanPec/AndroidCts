@@ -1,35 +1,29 @@
 package com.shindra
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
+import com.shindra.ApiLinesConvertor
 
 class LineTramViewHolder(inflater: LayoutInflater, parent: ViewGroup)
     : RecyclerView.ViewHolder(inflater.inflate(R.layout.line_tram, parent, false)) {
 
-    private var iconTram: ImageView
-    private var imagetram: ImageView? = null
-    private var btnSchedule: Button? = null
-
-    init {
-        iconTram = itemView.findViewById(R.id.iconTram)
-        imagetram = itemView.findViewById(R.id.imageTram)
-        btnSchedule = itemView.findViewById(R.id.btnSchedule)
+    interface OnClickListener{
+        fun onClick(lineTram: Line)
     }
 
-    fun initializeCardView(lineTram: Line) {
-        // "switch" is "when" in Kotlin
-        when(lineTram.name) {
-            "A" -> iconTram.setImageResource(R.drawable.ic_tram_a)
-            "B" -> iconTram.setImageResource(R.drawable.ic_tram_b)
-            "C" -> iconTram.setImageResource(R.drawable.ic_tram_c)
-            "D" -> iconTram.setImageResource(R.drawable.ic_tram_d)
-            "E" -> iconTram.setImageResource(R.drawable.ic_tram_e)
-            "F" -> iconTram.setImageResource(R.drawable.ic_tram_f)
-        }
+    var iconTram: ImageView = itemView.findViewById(R.id.iconTram)
+    var imagetram: ImageView = itemView.findViewById(R.id.imageTram)
+    var btnSchedule: Button = itemView.findViewById(R.id.btnSchedule)
+
+    fun onBind(lineTram: Line, listener: OnClickListener) {
+        // It's {} not () ...
+        btnSchedule.setOnClickListener {listener.onClick(lineTram)}
     }
 }
 

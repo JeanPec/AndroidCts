@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 
 
-class LineTramAdapter(private val lineTramList: List<Line>)
+class LineTramAdapter(private var lineTramList: List<Line>, private val listener: LineTramViewHolder.OnClickListener)
     : RecyclerView.Adapter<LineTramViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineTramViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -18,10 +19,11 @@ class LineTramAdapter(private val lineTramList: List<Line>)
 
     override fun onBindViewHolder(holder: LineTramViewHolder, position: Int) {
         val lineOfTram = lineTramList[position]
-        holder.initializeCardView(lineOfTram)
+        holder.iconTram.setImageResource(ApiLinesConvertor().apiLineToIcon(lineOfTram))
+        //holder.initializeCardView(lineOfTram)
+        holder.onBind(lineOfTram, listener)
     }
 
     override fun getItemCount(): Int = lineTramList.size
 
 }
-

@@ -32,7 +32,7 @@
             android:layout_below="@id/iconTram"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/icon_tram"
+            android:contentDescription="@string/image_tram"
             app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
         <Button
