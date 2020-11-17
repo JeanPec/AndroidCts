@@ -45,7 +45,6 @@ class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerI
                 val list = ArrayList<Line>()
                 for (line in data) {
                     if (line.routeType == RouteType.TRAM) {
-                        Log.i("name", line.name)
                         list += line
                     }
                 }

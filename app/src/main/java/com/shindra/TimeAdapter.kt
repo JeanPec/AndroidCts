@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class TimeAdapter(private val stopList: ArrayList<Stop>, val lineName : String?) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
+class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.horraire,
@@ -27,7 +27,9 @@ class TimeAdapter(private val stopList: ArrayList<Stop>, val lineName : String?)
         holder.textStop.setText(currentStop.name)
         holder.textLine.setText(getLineName(lineName))
         holder.textLine.setTextColor(getColor(holder.context, getColorId(lineName)))
-        holder.textTime.setText(SimpleDateFormat("HH'h'mm").format(currentStop.estimatedDepartureTime))
+        if (currentStop.estimatedDepartureTime != null){
+            holder.textTime.setText(SimpleDateFormat("HH'h'mm").format(currentStop.estimatedDepartureTime))
+        }
     }
 
     override fun getItemCount() = stopList.size
@@ -43,12 +45,12 @@ class TimeAdapter(private val stopList: ArrayList<Stop>, val lineName : String?)
 private fun getColorId( lineName : String?) : Int
 {
     when (lineName) {
-        "tram_a" -> return R.color.Ligne_A
-        "tram_b" -> return R.color.Ligne_B
-        "tram_c" -> return R.color.Ligne_C
-        "tram_d" -> return R.color.Ligne_D
-        "tram_e" -> return R.color.Ligne_E
-        "tram_f" -> return R.color.Ligne_F
+        "Parc des Sports - Illkirch Graffenstaden" -> return R.color.Ligne_A
+        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return R.color.Ligne_B
+        "Gare Centrale - Neuhof Rodolphe Reuss" -> return R.color.Ligne_C
+        "Poteries - Port du Rhin / Kehl Rathaus" -> return R.color.Ligne_D
+        "Robertsau l'Escale - Campus d'Illkirch" -> return R.color.Ligne_E
+        "Comtes - Place d'Islande" -> return R.color.Ligne_F
         else -> {
             return R.color.Primary
         }

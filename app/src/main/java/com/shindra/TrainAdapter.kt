@@ -41,10 +41,8 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
         interface RecyclerItemClick{
             fun onItemClick(line :Line)
         }
-        }
-
-
     }
+}
 private fun getImagesRessource(line_name : String) : Int{
     when (line_name){
         "Parc des Sports - Illkirch Graffenstaden" -> return R.drawable.tram_a

@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.apibo.Coordinate
+import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.collections.ArrayList
 
 class TimeFragment : Fragment() {
 
@@ -22,25 +24,24 @@ class TimeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val listStop = ArrayList<Stop>()
         val line_name= this.arguments?.getString("name")
-
-        val listStop :ArrayList<Stop> = initList()
-
-        val stops = this.activity?.findViewById<RecyclerView>(R.id.fragment_container)
-        if (stops != null) {
-            stops.adapter = TimeAdapter(listStop, line_name)
-            stops.layoutManager = LinearLayoutManager(activity )
-            stops.setHasFixedSize(true)
+        val stops_recylcer_view = this.activity?.findViewById<RecyclerView>(R.id.fragment_container)
+        if (stops_recylcer_view != null) {
+            stops_recylcer_view.adapter = TimeAdapter(listStop, line_name)
+            stops_recylcer_view.layoutManager = LinearLayoutManager(activity )
+            stops_recylcer_view.setHasFixedSize(true)
         }
+
+
     }
 
-}
-
-private fun initList(): ArrayList<Stop>{
-
-    val list = ArrayList<Stop>()
-    list += Stop("Berlioz", Date(12), Date(14),"devant", Coordinate(12.3,13.3))
-    list += Stop("Anemones",Date(12), Date(24),"devant", Coordinate(14.3,93.3))
-    return list
+    fun setListStop(list : ArrayList<Stop>){
+        val stops_recylcer_view = this.activity?.findViewById<RecyclerView>(R.id.fragment_container)
+        if (stops_recylcer_view != null) {
+            (stops_recylcer_view.adapter as TimeAdapter).stopList = list
+            (stops_recylcer_view.adapter as TimeAdapter).notifyDataSetChanged()
+        }
+    }
 
 }

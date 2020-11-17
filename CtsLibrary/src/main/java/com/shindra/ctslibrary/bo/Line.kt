@@ -1,5 +1,6 @@
 package com.shindra.ctslibrary.bo
 
+import android.os.Parcelable
 import com.shindra.ctslibrary.apibo.Coordinate
 import com.shindra.ctslibrary.apibo.RouteType
 import java.util.*
@@ -12,7 +13,7 @@ data class Line(
 
 )
 
-data class Stop(
+data class Stop (
     val name: String?,
     val estimatedArrivalTime: Date? = null,
     val estimatedDepartureTime : Date? = null,
