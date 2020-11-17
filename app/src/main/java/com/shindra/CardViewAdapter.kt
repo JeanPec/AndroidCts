@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CardViewAdapter : RecyclerView.Adapter<CardViewAdapter.CardViewHolder>() {
-val _tramList = arrayOf(Tram("Ligne A","tram_a"),
+val _tramList = arrayOf(Tram("Ligne A",""),
     Tram("Ligne B","tram_b"),
     Tram("Ligne C","tram_c"),
     Tram("Ligne D","tram_d"),
@@ -35,12 +35,19 @@ val _tramList = arrayOf(Tram("Ligne A","tram_a"),
         //1- Obtenir la ligne.
         //2- Envoyer les information de la ligne dans la cellule.
         //3-
+        holder.onBind(_tramList.get(position))
     }
-    class CardViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView)
+
+
+    class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         var ligne:ImageView = itemView.findViewById(R.id.ligne)
         var image:ImageView = itemView.findViewById(R.id.image)
 
+        public fun  onBind(tram:Tram)
+        {
+            ligne.setImageResource(R.drawable.tram_a)
+            image.setImageResource(R.drawable.nouveau_tram_strasbourg)
+        }
     }
-
 }
