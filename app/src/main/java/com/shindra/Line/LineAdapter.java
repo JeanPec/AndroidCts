@@ -34,7 +34,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position)
     {
         Line item = lines.get(position);
-        holder.tramIcon.setImageResource(Converter.lineNameToLineIcon(item.getName()));
+        holder.tramIcon.setImageResource(Converter.lineLetterToLineIcon(item.getName()));
         holder.OnBind(item, callback);
     }
 

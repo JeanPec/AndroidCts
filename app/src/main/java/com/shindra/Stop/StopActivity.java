@@ -1,23 +1,14 @@
 package com.shindra.Stop;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.shindra.Map.MapActivity;
-import com.shindra.Map.MapLineFragment;
 import com.shindra.Misc.ErrorDialog;
 import com.shindra.Misc.LoadingDialog;
 import com.shindra.Misc.MyViewModel;
 import com.shindra.R;
-import com.shindra.Service.Converter;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -48,7 +39,7 @@ public class StopActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.frameContainer, fragment).commit();
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, Converter.lineNameToLineLetter(fragment.getLineName()), 0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, fragment.getLineName(), 0), new ObservableListener<Line>() {
 
             @Override
             public void onLoading()
@@ -63,7 +54,7 @@ public class StopActivity extends AppCompatActivity
             {
                 //call once the network call has responded with a success
                 //Set the right title to the app
-                getSupportActionBar().setTitle("Ligne " + Converter.lineNameToLineLetter(fragment.getLineName()));
+                getSupportActionBar().setTitle("Ligne " + fragment.getLineName());
 
                 //Dismiss the loading dialog
                 loadingDialog.dismiss();

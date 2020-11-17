@@ -3,17 +3,13 @@ package com.shindra.Stop;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.shindra.R;
 import com.shindra.Service.Converter;
 import com.shindra.ctslibrary.bo.Stop;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
 {
@@ -39,8 +35,8 @@ public class StopAdapter extends RecyclerView.Adapter<StopViewHolder>
     {
         Stop item = stops.get(position);
         holder.stopName.setText(item.getName());
-        holder.lineName.setText("Ligne " + Converter.lineNameToLineLetter(lineName));
-        holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.getContext(), Converter.lineNameToLineColor(lineName)));
+        holder.lineName.setText("Ligne " + lineName);
+        holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.getContext(), Converter.lineLetterToLineColor(lineName)));
         holder.stopTime.setText(Converter.dateToTime(item.getEstimatedDepartureTime()));
         holder.information.setText("Prochain départ");
     }
