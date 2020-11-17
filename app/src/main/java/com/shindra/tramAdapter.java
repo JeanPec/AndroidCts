@@ -1,7 +1,5 @@
 package com.shindra;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +9,16 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.bo.Line;
+
 import java.util.ArrayList;
 
 public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder> {
-    private ArrayList<tramCardview> _tramList;
+    private ArrayList<Line> _lineList;
     private RecyclerItemClick _callBack;
 
     public interface RecyclerItemClick{
-        void onDiaryButtonClick(tramCardview tram);
+        void onDiaryButtonClick(Line tram);
     }
 
     public static class tramViewHolder extends RecyclerView.ViewHolder{
@@ -33,7 +33,7 @@ public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder
             buttonToStationDiary = itemView.findViewById(R.id.diaryStationButton);
         }
 
-        public void onBind(tramCardview tram, RecyclerItemClick callback){
+        public void onBind(Line tram, RecyclerItemClick callback){
             buttonToStationDiary.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -44,8 +44,8 @@ public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder
         }
     }
 
-    public tramAdapter(ArrayList<tramCardview> tramList, RecyclerItemClick callBack) {
-        _tramList = tramList;
+    public tramAdapter(ArrayList<Line> lineList, RecyclerItemClick callBack) {
+        _lineList = lineList;
         _callBack = callBack;
     }
 
@@ -59,15 +59,41 @@ public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull tramViewHolder holder, int position) {
-        tramCardview currentTram = _tramList.get(position);
 
-        holder.tramLineView.setImageResource(currentTram.getTramLinePicture());
-        holder.tramIllustrationView.setImageResource(currentTram.getIllustrationPicture());
+        Line currentTram = _lineList.get(position);
+        switch (currentTram.getName())
+        {
+            case "Parc des Sports - Illkirch Graffenstaden":
+                holder.tramLineView.setImageResource(R.drawable.tram_a);
+                break;
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+                holder.tramLineView.setImageResource(R.drawable.tram_b);
+                break;
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
+                holder.tramLineView.setImageResource(R.drawable.tram_c);
+                break;
+            case "Poteries - Port du Rhin / Kehl Rathaus":
+                holder.tramLineView.setImageResource(R.drawable.tram_d);
+                break;
+            case "Robertsau l'Escale - Campus d'Illkirch":
+                holder.tramLineView.setImageResource(R.drawable.tram_e);
+                break;
+            case "Comtes - Place d'Islande":
+                holder.tramLineView.setImageResource(R.drawable.tram_f);
+                break;
+            default:
+                holder.tramLineView.setImageResource(R.drawable.tram);
+                break;
+
+        }
+
+        //holder.tramLineView.setImageResource(currentTram.getTramLinePicture());
+        holder.tramIllustrationView.setImageResource(R.drawable.nouveau_tram_strasbourg);
         holder.onBind(currentTram, _callBack);
     }
 
     @Override
     public int getItemCount() {
-        return _tramList.size();
+        return _lineList.size();
     }
 }

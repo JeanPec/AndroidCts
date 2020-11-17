@@ -14,12 +14,14 @@ class LineStopEstimatedTimeMapper(private val routeTypeFilter: RouteType, privat
 
     override fun apply(t: EstimatedTimeTable?): Line {
         val stops = t?.serviceDelivery
-            ?.estimatedTimetableDelivery?.first()
-            ?.estimatedJourneyVersionFrame?.first()
-            ?.estimatedVehicleJourney?.first()
-            ?.estimatedCalls?.map {
-                Stop(it.stopPointName, it.expectedArrivalTime?.toDate(T_DATE_FORMAT), it.expectedDepartureTime?.toDate(T_DATE_FORMAT), it.destinationName)
-            }.toArrayList()
+                ?.estimatedTimetableDelivery?.first()
+                ?.estimatedJourneyVersionFrame?.filter {
+                    ref -> ref?.estimatedVehicleJourney?.first()?.lineRef == routeName
+                }?.first()
+                ?.estimatedVehicleJourney?.first()
+                ?.estimatedCalls?.map {
+                    Stop(it.stopPointName, it.expectedArrivalTime?.toDate(T_DATE_FORMAT), it.expectedDepartureTime?.toDate(T_DATE_FORMAT), it.destinationName)
+                }.toArrayList()
 
         return Line(routeName, routeTypeFilter, stops)
 
