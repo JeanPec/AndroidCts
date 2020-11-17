@@ -11,7 +11,9 @@ import com.shindra.R;
 public class ActivityHoraire extends AppCompatActivity
 {
 
-    private String NomPage = "Horaire";
+    private String NomPage = "Horaire";  //this.getString(R.string.page_Horaires);
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)

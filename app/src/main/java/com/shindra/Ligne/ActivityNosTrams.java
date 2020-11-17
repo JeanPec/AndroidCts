@@ -3,8 +3,10 @@ package com.shindra.Ligne;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +27,9 @@ import java.util.ArrayList;
 public class ActivityNosTrams extends AppCompatActivity
 {
     private ArrayList<Line> ligneTram;  //Liste contenant les lignes de trams
-    private String NomPage = "Nos Trams";
+    private String NomPage = "Nos Trams";   //this.getString(R.string.page_NosTrams);
+
+    private AlertDialog CircularProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -39,6 +43,13 @@ public class ActivityNosTrams extends AppCompatActivity
         RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);   //Referencement vers la recyclerview "NosTrams"
         ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
 
+        //Alert dialog, chargement de vue
+        AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
+        CircularProgressBar = CreateProgressBar.create();
+
+
         // callback de detection du bouton appuyé
         TramsViewHolder.RecyclerHoraireClick callBack = new TramsViewHolder.RecyclerHoraireClick()
         {
@@ -46,8 +57,6 @@ public class ActivityNosTrams extends AppCompatActivity
             public void onHoraireLineClick(Line ligne)
             {
                 Log.i(NomPage,"Appuie BTN : " + ligne.getName());
-
-
                 //Creation de la nouvelle Intent
                 Intent intent = new Intent(ActivityNosTrams.this, ActivityHoraire.class);
                 intent.putExtra("LigneTram",ligne.getName());
@@ -63,12 +72,19 @@ public class ActivityNosTrams extends AppCompatActivity
             {
                 //call once we started the network called. Indicate that the network call is in progress
                 Log.i(NomPage,"Chargement de la page Nos Trams");
+
+                //Affiche la ProgressBar
+                CircularProgressBar.show();
             }
 
             @Override
-            public void onSuccess(ArrayList<Line> data) {
+            public void onSuccess(ArrayList<Line> data)
+            {
                 //call once the network call has responded with a success
                 Log.i(NomPage,"Recupération des Lignes de Trams");
+
+                //Enleve l'affichage de la ProgressBar
+                CircularProgressBar.dismiss();
 
                 //Remplissage dynamique des tableaux des lignes de trams
                 ligneTram = new ArrayList<Line>();
