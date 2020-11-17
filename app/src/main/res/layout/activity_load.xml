@@ -23,5 +23,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Veuillez patienter, chargement des donnnées en cours" />
+        android:text="Veuillez patienter, chargement des donnnées en cours"
+        style="@style/body2"/>
 </RelativeLayout>

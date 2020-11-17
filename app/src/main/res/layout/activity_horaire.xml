@@ -14,5 +14,6 @@
         android:name="com.shindra.HoraireFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_horaire" />
+        tools:layout="@layout/fragment_horaire"
+        android:layout_marginBottom="8dp"/>
 </RelativeLayout>

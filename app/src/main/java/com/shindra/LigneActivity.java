@@ -40,7 +40,6 @@ public class LigneActivity extends AppCompatActivity {
         }));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {loadPage.showLoadingScreen();}
