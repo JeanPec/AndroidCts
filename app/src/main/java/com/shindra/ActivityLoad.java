@@ -13,7 +13,6 @@ public class ActivityLoad
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.activity_load, null));
-        builder.setCancelable(false);
         loadPage = builder.create();
     }
 

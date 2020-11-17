@@ -3,6 +3,7 @@ package com.shindra;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
@@ -31,26 +32,23 @@ public class HoraireActivity extends AppCompatActivity {
 
         lineName = getIntent().getStringExtra("lineName");
         //use fragment
-        bundle.putString("lineName",lineName);
         horaireFragment = new HoraireFragment();
-        horaireFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container_view_tag, horaireFragment).commit();
+        fragmentTransaction.add(R.id.fragmentHoraire, horaireFragment).commit();
+
+        arrets = findViewById(R.id.recyclerView2);
+        lineName = getIntent().getStringExtra("lineName");
+        arrets.setLayoutManager(new LinearLayoutManager(this));
+        arrets.setAdapter(new HoraireAdapter(new ArrayList<Stop>(), lineName));
 
         loadPage = new ActivityLoad(this);
-
-
-        //arrets = findViewById(R.id.recyclerView2);
-        //arrets.setLayoutManager(new LinearLayoutManager(getParent()));
-        //arrets.setAdapter(new HoraireAdapter(new ArrayList<Stop>(), lineName));
+        getSupportActionBar().setTitle("Ligne " + getInfos(lineName));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, getInfos(lineName), 0), new ObservableListener<Line>() {
 
             @Override
-            public void onError(@NotNull Throwable throwable) {
-                loadPage.showLoadingScreen();
-            }
+            public void onError(@NotNull Throwable throwable) {}
 
             @Override
             public void onLoading()
@@ -61,9 +59,6 @@ public class HoraireActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Line data)
             {
-                loadPage.HideLoadingScreen();
-                getSupportActionBar().setTitle("Ligne " + getInfos(lineName));
-                
                 ArrayList<Stop> listArrets = new ArrayList<Stop>();
                 for (Stop stop : data.getStops())
                     if (stop.getEstimatedDepartureTime() != null)
@@ -71,6 +66,7 @@ public class HoraireActivity extends AppCompatActivity {
 
                 ((HoraireAdapter) arrets.getAdapter()).setArrets(listArrets);
                 arrets.getAdapter().notifyDataSetChanged();
+                loadPage.HideLoadingScreen();
             }
         });
     }

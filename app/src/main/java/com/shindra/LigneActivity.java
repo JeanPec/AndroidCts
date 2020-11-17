@@ -43,11 +43,12 @@ public class LigneActivity extends AppCompatActivity {
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
-            public void onLoading() {}
+            public void onLoading() {loadPage.showLoadingScreen();}
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 getSupportActionBar().setTitle("Nos trams");
+                loadPage.HideLoadingScreen();
 
                 ArrayList<Line> lineTram = new ArrayList<Line>();
                 for (Line line : data)
@@ -56,6 +57,7 @@ public class LigneActivity extends AppCompatActivity {
 
                 ((LigneAdapter) recyclerView.getAdapter()).setLine(lineTram);
                 recyclerView.getAdapter().notifyDataSetChanged();
+
             }
             @Override
             public void onError(@NotNull Throwable throwable) {}

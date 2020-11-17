@@ -10,8 +10,9 @@
 
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragmentHoraire"
         android:name="com.shindra.HoraireFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_horaire" />
 </RelativeLayout>
