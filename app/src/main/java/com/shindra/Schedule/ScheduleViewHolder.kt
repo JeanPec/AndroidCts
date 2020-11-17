@@ -13,9 +13,4 @@ class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var scheduleStop = itemView.findViewById<TextView>(R.id.Schedule_stop)
     var scheduleLine = itemView.findViewById<TextView>(R.id.Schedule_line)
     var scheduleTime = itemView.findViewById<TextView>(R.id.Schedule_time)
-    /*private var mapButton = itemView.findViewById<Button>(R.id.map_button)
-
-    fun onBind(lineID: String, callback: MapClick) {
-        callback.onMapClick(lineID)
-    }*/
 }
