@@ -15,11 +15,13 @@ import java.util.ArrayList;
 public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>{
 
     //int pictures[];
-    ArrayList<Line> lines;
+    private ArrayList<Line> lines;
+    private LineClick callback;
 
-    public LineAdapter(ArrayList<Line> lines){
+    public LineAdapter(ArrayList<Line> lines, LineClick callback){
         //this.pictures = pictures;
         this.lines = lines;
+        this.callback = callback;
     }
 
     @NonNull
@@ -33,7 +35,7 @@ public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>{
     public void onBindViewHolder(@NonNull LineViewHolder holder, int position) {
         //holder.onBind(pictures[position]);
         Line lines = this.lines.get(position);
-        holder.onBind(lines);
+        holder.onBind(lines, callback);
     }
 
     @Override

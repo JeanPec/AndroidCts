@@ -1,6 +1,7 @@
 package com.shindra;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -10,15 +11,26 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class LineViewHolder extends RecyclerView.ViewHolder {
 
-    private final ImageView picture;
+    private ImageView picture;
+    private Button button;
 
     public LineViewHolder(@NonNull View itemView) {
         super(itemView);
         picture = itemView.findViewById(R.id.Subway_number);
+        button = itemView.findViewById(R.id.Button);
     }
 
-    public void onBind(Line lines){
+    public void onBind(Line lines, LineClick callback){
+
         this.picture.setImageResource(LineToPicture(lines));
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callback.onLineClick(lines);
+            }
+        });
+
     }
 
     public int LineToPicture(Line lines){

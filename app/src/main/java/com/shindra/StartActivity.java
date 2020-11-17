@@ -1,6 +1,8 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,9 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startactivity);
 
+
+        Intent intent = new Intent(this, Stop.class);
+
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -36,7 +41,15 @@ public class StartActivity extends AppCompatActivity {
         lines = getListOfLines();
 
         // LineAdapter myAdapter = new LineAdapter(this, pictures);
-        LineAdapter myAdapter = new LineAdapter(lines);
+        LineAdapter myAdapter = new LineAdapter(lines, new LineClick(){
+
+            @Override
+            public void onLineClick(Line line) {
+                String name = line.getName();
+               /* Log.d("StartActivity", "name = " + name); */
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
