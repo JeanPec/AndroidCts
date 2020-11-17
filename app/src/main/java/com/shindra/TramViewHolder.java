@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TramViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView img1,img2;
+    private ImageView ivTextTram;
 
-    public TramViewHolder(@NonNull View iView){
-        super(iView);
-        img1 = iView.findViewById(R.id.imageView3);
-        img2 = iView.findViewById(R.id.imageView4);
+    public TramViewHolder(@NonNull View view){
+        super(view);
+        ivTextTram = view.findViewById(R.id.imageView3);
     }
 
+    public void onBind(Integer iLine) {
+        ivTextTram.setImageResource(iLine);
+    }
 }

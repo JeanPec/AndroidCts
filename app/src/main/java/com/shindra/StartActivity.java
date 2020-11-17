@@ -19,22 +19,22 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    int Tram[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
+    RecyclerView rTramList;
+    int iTrams[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.Nos_trams);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
-        recyclerView = findViewById(R.id.RecyclerView);
+        rTramList = findViewById(R.id.RecyclerView);
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, img1, img2);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        rTramList.setAdapter(new RecyclerViewAdapter(getListTrams()));
+        rTramList.setLayoutManager(new LinearLayoutManager(this));
 
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -54,5 +54,18 @@ public class StartActivity extends AppCompatActivity {
             }
         });
     }
+
+    private ArrayList<Integer> getListTrams(){
+        ArrayList<Integer> iTramsArray = new ArrayList<>();
+        iTramsArray.add(R.drawable.tram_a);
+        iTramsArray.add(R.drawable.tram_b);
+        iTramsArray.add(R.drawable.tram_c);
+        iTramsArray.add(R.drawable.tram_d);
+        iTramsArray.add(R.drawable.tram_e);
+        iTramsArray.add(R.drawable.tram_f);
+
+        return iTramsArray;
+    }
+
 }
 

@@ -7,4 +7,5 @@
     <string name="Ligne_D">Ligne D</string>
     <string name="Ligne_E">Ligne E</string>
     <string name="Ligne_F">Ligne F</string>
+    <string name="schedule_button_text">Horaire</string>
 </resources>
