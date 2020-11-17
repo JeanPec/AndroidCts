@@ -16,11 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.Coordinate;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 //https://www.programmationfacile.com/android-recyclerview-cardview-tutoriel.html
 //https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
@@ -30,24 +34,12 @@ public class StartActivity extends AppCompatActivity {
     LignesAdapter adapter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("info", "je suis la startactivity");
 
-        //Test-data to populate the RecyclerView with
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Cheval");
-        animalNames.add("Vache");
-        animalNames.add("Chameau");
-        animalNames.add("Mouton");
-        animalNames.add("Chevre");
 
-        //Setup the RecyclerView like slide 110
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LignesAdapter(this, animalNames);
-        recyclerView.setAdapter(adapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -70,7 +62,12 @@ public class StartActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
                 Log.d("info", "appel à API reussi");
-                Log.d("info", model.toString());
+                @io.reactivex.rxjava3.annotations.Nullable ArrayList<Line> linesList = new ArrayList<>();
+                MyViewModel mvm = new MyViewModel();
+                linesList = mvm.lines().getValue();
+                //Log.d("CTS", mvm.lines().blockingFirst(ArrayList<line>, 1));
+                Log.d("CTS", String.valueOf(linesList.get(0)));
+                Log.d("CTS", String.valueOf(linesList.get(1)));
 
            }
 
@@ -80,6 +77,37 @@ public class StartActivity extends AppCompatActivity {
                 Log.d("=erreur", "Erreur appel API");
             }
         });
+
+        //Test-data to populate the RecyclerView with
+        ArrayList<Line> animalNames = getListLines(); /*new ArrayList<>();
+        animalNames.add("Cheval");
+        animalNames.add("Vache");
+        animalNames.add("Chameau");
+        animalNames.add("Mouton");
+        animalNames.add("Chevre");
+        */
+
+        //Setup the RecyclerView like slide 110
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new LignesAdapter( getListLines());
+        recyclerView.setAdapter(adapter);
+
+    }
+
+
+    private ArrayList<Stop> getListStops() {
+        ArrayList<Stop> Stops = new ArrayList<>();
+        Stops.add(new Stop("Gare centrale", new Date(), new Date(), "Parc des Sports", new Coordinate()));
+        Stops.add(new Stop("Laiterie", new Date(), new Date(), "Lingolsheim Alouettes", new Coordinate()));
+        return Stops;
+    }
+
+    private ArrayList<Line> getListLines() {
+        ArrayList<Line> Lines = new ArrayList<>();
+        Lines.add(new Line("Tram A", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram B", RouteType.TRAM, this.getListStops()));
+        return Lines;
     }
 
 }
