@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
-    <string name="horaire">horaire</string>
-    <string-array name="lignes">
-        <item>@drawable/a</item>
-    </string-array>
+    <string name="mainLayout">mainLayout</string>
+    <string name="nosTram">Nos tram</string>
+    <string name="horaire">Horaire</string>
+
+    <string name="imageViewNewTram">imageViewNewTram</string>
+    <string name="imageViewLine">imageViewLine</string>
+
+    <string name="StationTram">StationTram</string>
+    <string name="LineTram">LineTram</string>
+    <string name="HourTram">HourTram</string>
+    <string name="NextTram">NextTram</string>
+
+    <string name="progressbar">Veuillez patienter, chargement des données en cours</string>
+
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
