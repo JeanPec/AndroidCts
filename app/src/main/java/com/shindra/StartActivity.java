@@ -21,8 +21,8 @@ public class StartActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    int images1[] ={R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
-    int images2[] ={R.drawable.nouveau_tram_strasbourg};
+    /*int images1[] ={R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
+    int images2[] ={R.drawable.nouveau_tram_strasbourg};*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class StartActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        RVAdapter rvAdapter = new RVAdapter(this, images1, images2);
+        RVAdapter rvAdapter = new RVAdapter(this, MesDonnees.Images1, MesDonnees.Image2);
         recyclerView.setAdapter(rvAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -55,5 +55,6 @@ public class StartActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
