@@ -32,7 +32,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        // setContentView(R.layout.fragment_first);
 
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+        setTitle("Nos trams");
 
 
         List<TramCard> tramCardList = new ArrayList<TramCard>();
@@ -45,14 +45,17 @@ public class StartActivity extends AppCompatActivity {
         tramCardList.add(new TramCard("Ligne G"));
         tramCardList.add(new TramCard("Ligne H"));
 
-        //recyclerView = findViewById(R.id.);
+        recyclerView = findViewById(R.id.appCts_recyclerview);
+        tramCardAdapter = new TramCardAdapter(tramCardList);
+        recyclerView.setAdapter(tramCardAdapter);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        tramCardAdapter = new TramCardAdapter(tramCardList);
-        recyclerView.setAdapter(tramCardAdapter);
 
+
+
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
