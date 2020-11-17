@@ -14,10 +14,13 @@ import java.util.ArrayList;
 public class recyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
 
     private ArrayList<Line> tramLines;
+    ScheduleButtonListener callback;
 
-    public recyclerMenuAdapter(ArrayList<Line> tramLines1) {
+    public recyclerMenuAdapter(ArrayList<Line> tramLines1, ScheduleButtonListener callback1) {
         tramLines = tramLines1;
+        callback = callback1;
     }
+
 
 
     @NonNull
@@ -28,38 +31,54 @@ public class recyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
         return new viewHolderMenu(TramView);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull viewHolderMenu holder, int position) {
         Line currentTramLine = tramLines.get(position);
+        holder.iconLineTram.setImageResource(getLineImg(currentTramLine));
+        holder.bindClick(currentTramLine, callback);
+    }
 
-        switch (currentTramLine.getName()) {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                holder.iconLineTram.setImageResource(R.drawable.tram_a);
-                break;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                holder.iconLineTram.setImageResource(R.drawable.tram_b);
-                break;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                holder.iconLineTram.setImageResource(R.drawable.tram_c);
-                break;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                holder.iconLineTram.setImageResource(R.drawable.tram_d);
-                break;
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                holder.iconLineTram.setImageResource(R.drawable.tram_e);
-                break;
-            case "Comtes - Place d'Islande":
-                holder.iconLineTram.setImageResource(R.drawable.tram_f);
-                break;
-            default:
-                break;
-
-        }
+    public void setTramLine(ArrayList<Line> tramLine1)
+    {
+        tramLines = tramLine1;
     }
 
     @Override
     public int getItemCount() {
         return tramLines.size();
     }
+
+    int getLineImg(Line currentTramLine)
+    {
+        switch (currentTramLine.getName()) {
+            case "Parc des Sports - Illkirch Graffenstaden":
+                return (R.drawable.tram_a);
+
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+                return(R.drawable.tram_b);
+
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
+                return (R.drawable.tram_c);
+
+            case "Poteries - Port du Rhin / Kehl Rathaus":
+                return(R.drawable.tram_d);
+
+            case "Robertsau l'Escale - Campus d'Illkirch":
+                return(R.drawable.tram_e);
+
+            case "Comtes - Place d'Islande":
+                return(R.drawable.tram_f);
+
+            default:
+                return(R.drawable.tram);
+
+        }
+
+}
+
+
+
 
 }
