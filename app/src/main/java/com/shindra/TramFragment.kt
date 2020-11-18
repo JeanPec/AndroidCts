@@ -1,5 +1,6 @@
 package com.shindra
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -48,7 +49,9 @@ class TramFragment : Fragment() {
         recyclerView.adapter = CardViewAdapter(_tramList, object : com.shindra.RecyclerItemClick {
             override fun onScheduleClick(tram: Tram) {
                 Toast.makeText(context, tram.line.toString(),Toast.LENGTH_SHORT).show()
-
+                val intent : Intent = Intent(context,ScheduleActivity::class.java)
+                intent.putExtra("line",tram.line)
+                startActivity(intent)
             }
 
         })

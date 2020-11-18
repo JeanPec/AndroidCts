@@ -18,24 +18,7 @@ class StartActivity : AppCompatActivity() {
 
 
         setContentView(R.layout.activity_main)
-        val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lines().observe(object :
-            ObservableListener<ArrayList<Line>> {
-            override fun onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
-            }
 
-            override fun onSuccess(data: ArrayList<Line>) {
-                //call once the network call has responded with a success
-                var lines = model.lineWithStop(RouteType.TRAM,"A")
-                var filtered = data.filter({it.routeType == RouteType.TRAM})
-
-            }
-
-            override fun onError(throwable: Throwable) {
-                //call if the network call has responded with an error
-            }
-        })
     }
 }
 
