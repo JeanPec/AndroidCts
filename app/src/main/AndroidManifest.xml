@@ -22,6 +22,7 @@
         </activity>
 
         <activity android:name=".Horaire.ActivityHoraire"/>
+        <activity android:name=".Carte.ActivityCarte"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

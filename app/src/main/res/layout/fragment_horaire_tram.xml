@@ -5,29 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundFragments"
-    tools:context=".Horaire.FragmentHoraireTram" >
+    tools:context=".Horaire.FragmentHoraireTram">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView_Horaire_Tram"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="750dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/button"
-        android:theme="@style/Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="voir sur la carte"
-        android:textColor="@color/white"
         android:background="@color/TramPrimary"
         android:elevation="4dp"
+        android:text="voir sur la carte"
+        android:textColor="@color/white"
+        android:theme="@style/Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

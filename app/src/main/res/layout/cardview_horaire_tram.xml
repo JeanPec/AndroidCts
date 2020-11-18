@@ -63,7 +63,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="TextView"
-                    android:textColor="@color/black"
                     android:theme="@style/Body2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

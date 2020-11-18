@@ -5,12 +5,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
 import com.shindra.ctslibrary.bo.Stop;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<HoraireViewHolder>
 {
@@ -34,8 +37,12 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position)
     {
-        Stop requestStopLigne = ListArretTram.get(position);
-        holder.onBind(requestStopLigne,NomLigne);
+        Stop requestStopTram = ListArretTram.get(position);
+        holder.horaire.setText(DateToString(requestStopTram.getEstimatedDepartureTime()));
+        holder.arret.setText(requestStopTram.getName());
+        holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), GetLineColor(NomLigne)));
+        holder.ligne.setText("Ligne " +NomLigne);
+
     }
 
     @Override
@@ -54,4 +61,49 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
         this.NomLigne = Valeur;
     }
 
+
+    //Permet la converssion d'un format date en un format string
+    private String DateToString(Date date)
+    {
+        SimpleDateFormat Conv = new SimpleDateFormat("HH'h'mm");
+        return Conv.format(date);
+    }
+
+    //Permet d'obtenir la couleur en fonction de la ligne
+    private int GetLineColor(String LineLetter)
+    {
+        int color;
+
+        switch (LineLetter)
+        {
+            case "A":
+                color = R.color.TramLineA;
+            break;
+
+            case "B":
+                color = R.color.TramLineB;
+            break;
+
+            case "C":
+                color = R.color.TramLineC;
+            break;
+
+            case "D":
+                color = R.color.TramLineD;
+            break;
+
+            case "E":
+                color = R.color.TramLineE;
+            break;
+
+            case "F":
+                color = R.color.TramLineF;
+            break;
+
+            default:
+                color = R.color.black;
+            break;
+        }
+        return color;
+    }
 }
