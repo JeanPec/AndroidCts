@@ -62,7 +62,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
             super(itemView);
             //set values to views
             imageTram = itemView.findViewById(R.id.imageTram);
-            imageLetter = itemView.findViewById(R.id.imageLetter);
 
             itemView.setOnClickListener(this);
         }
@@ -70,20 +69,32 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
         public void onBind(Line line) {
             //Populate elements
             imageTram.setImageResource(R.drawable.ic_tram);
-            imageLetter.setImageResource(R.drawable.ic_a);
-
-            /*
+            String lineName = line.getName();
             int listSize = lines.size();
             for (int i=0 ; i<listSize ; i++) {
-                switch(lines.get(i).getName()) {
+                imageLetter = itemView.findViewById(R.id.imageLetter);
+                switch(lineName) {
                     case "Tram A":
                         imageLetter.setImageResource(R.drawable.ic_a);
                         break;
                     case "Tram B" :
                         imageLetter.setImageResource(R.drawable.ic_b);
+                        break;
+                    case "Tram C" :
+                        imageLetter.setImageResource(R.drawable.ic_c);
+                        break;
+                    case "Tram D" :
+                        imageLetter.setImageResource(R.drawable.ic_d);
+                        break;
+                    case "Tram E" :
+                        imageLetter.setImageResource(R.drawable.ic_e);
+                        break;
+                    case "Tram F" :
+                        imageLetter.setImageResource(R.drawable.ic_f);
+                        break;
                 }
             }
-            */
+
 
         }
 

@@ -98,7 +98,6 @@ public class StartActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LignesAdapter( getListLines());
-        //recyclerView.setAdapter(adapter);
         recyclerView.setAdapter(adapter);
 
     }
@@ -133,16 +132,12 @@ public class StartActivity extends AppCompatActivity {
         ArrayList<Line> Lines = new ArrayList<>();
         Lines.add(new Line("Tram A", RouteType.TRAM, this.getListStops()));
         Lines.add(new Line("Tram B", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram C", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram D", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram E", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram F", RouteType.TRAM, this.getListStops()));
         return Lines;
     }
-
-    /*
-    private ArrayList<Tram> getListReturnInfo() {
-        ArrayList<Tram> Trams = new ArrayList<>();
-        Trams.add(new Tram("Tram A", R.drawable.ic_tram_a));
-    }
-    */
-
 
 }
 
