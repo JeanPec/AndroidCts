@@ -1,15 +1,26 @@
 package com.shindra;
 
+import android.graphics.drawable.Drawable;
+import android.widget.Button;
+
 public class TramCard {
 
-    private String nomLigne;
+    private Drawable imgNomLigne;
+    private Drawable imgTram;
 
 
-    public TramCard(String nomLigne) {
-        this.nomLigne = nomLigne;
+
+    public TramCard(Drawable imgNomLigne, Drawable imgTram) {
+        this.imgNomLigne = imgNomLigne;
+        this.imgTram = imgTram;
     }
-    public String getNomLigne() {
-        return nomLigne;
+
+    public Drawable getImgTram() {
+        return imgTram;
+    }
+
+    public Drawable getImgNomLigne() {
+        return imgNomLigne;
     }
 
 

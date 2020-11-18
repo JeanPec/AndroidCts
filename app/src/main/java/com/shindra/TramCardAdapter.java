@@ -1,14 +1,21 @@
 package com.shindra;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import static com.shindra.R.id.imgTram;
 
 public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramViewHolder> {
 
@@ -16,11 +23,15 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
 
     public static class TramViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nomLigne;
+        //TextView nomLigne;
+        ImageView imgNomLigne, imgTram;
 
+        @SuppressLint("WrongViewCast")
         public TramViewHolder(@NonNull View itemView) {
             super(itemView);
-            nomLigne = itemView.findViewById(R.id.nomLigne);
+           // nomLigne = itemView.findViewById(R.id.nomLigne);
+            imgTram = itemView.findViewById(R.id.imgTram);
+            imgNomLigne = itemView.findViewById(R.id.imgLigne);
         }
     }
 
@@ -39,7 +50,9 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
     @Override
     public void onBindViewHolder(@NonNull TramViewHolder holder, int position) {
         TramCard tramCard = listeTramCard.get(position);
-        holder.nomLigne.setText(tramCard.getNomLigne());
+        //holder.nomLigne.setText(tramCard.getNomLigne());
+        holder.imgTram.setImageDrawable(tramCard.getImgTram());
+        holder.imgNomLigne.setImageDrawable(tramCard.getImgNomLigne());
     }
 
     @Override

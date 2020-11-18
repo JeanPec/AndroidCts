@@ -1,10 +1,11 @@
 package com.shindra;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,15 +36,19 @@ public class StartActivity extends AppCompatActivity {
         setTitle("Nos trams");
 
 
+        Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
+
+
+
+
         List<TramCard> tramCardList = new ArrayList<TramCard>();
-        tramCardList.add(new TramCard("Ligne A"));
-        tramCardList.add(new TramCard("Ligne B"));
-        tramCardList.add(new TramCard("Ligne C"));
-        tramCardList.add(new TramCard("Ligne D"));
-        tramCardList.add(new TramCard("Ligne E"));
-        tramCardList.add(new TramCard("Ligne F"));
-        tramCardList.add(new TramCard("Ligne G"));
-        tramCardList.add(new TramCard("Ligne H"));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_a), imgTram));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_b), imgTram));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_c), imgTram));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_d), imgTram));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_e), imgTram));
+        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_f), imgTram));
+
 
         recyclerView = findViewById(R.id.appCts_recyclerview);
         tramCardAdapter = new TramCardAdapter(tramCardList);
