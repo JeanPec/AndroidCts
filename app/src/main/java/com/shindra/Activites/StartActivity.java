@@ -1,30 +1,21 @@
 package com.shindra.Activites;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.shindra.Activites.MyViewModel;
 import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
-import com.shindra.ctslibrary.apibo.Coordinate;
-import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.ctslibrary.bo.Stop;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class StartActivity extends AppCompatActivity {
 
