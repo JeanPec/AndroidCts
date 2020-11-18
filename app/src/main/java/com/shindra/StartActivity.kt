@@ -15,6 +15,7 @@ import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerLineClick {
@@ -25,10 +26,10 @@ class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerL
         title = "Nos trams"
         val listInit = ArrayList<Line>()
 
-        val lineRecylcerView = findViewById<RecyclerView>(R.id.recycler_view)
-        lineRecylcerView.adapter = TrainAdapter(listInit, this)
-        lineRecylcerView.layoutManager = LinearLayoutManager(this)
-        lineRecylcerView.setHasFixedSize(true)
+        val lineRecyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        lineRecyclerView.adapter = TrainAdapter(listInit, this)
+        lineRecyclerView.layoutManager = LinearLayoutManager(this)
+        lineRecyclerView.setHasFixedSize(true)
         val dialog = LoadingClass(this)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
@@ -40,14 +41,8 @@ class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerL
             override fun onSuccess(data: ArrayList<Line>) {
                 dialog.dismiss()
                 //call once the network call has responded with a success
-                val list = ArrayList<Line>()
-                for (line in data) {
-                    if (line.routeType == RouteType.TRAM) {
-                        list += line
-                    }
-                }
-                (lineRecylcerView.adapter as TrainAdapter).lineList = list
-                (lineRecylcerView.adapter as TrainAdapter).notifyDataSetChanged()
+                (lineRecyclerView.adapter as TrainAdapter).lineList = (data.filter{it.routeType == RouteType.TRAM } )as ArrayList<Line>
+                (lineRecyclerView.adapter as TrainAdapter).notifyDataSetChanged()
             }
 
             override fun onError(throwable: Throwable) {

@@ -36,21 +36,12 @@ class TimeActivity : AppCompatActivity() {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 dialog.show()
-                Log.i("Loading","Loading")
             }
 
             override fun onSuccess(data: Line) {
                 dialog.dismiss()
-                Log.i("Loading","onSuccess")
                 //call once the network call has responded with a success
-                for (stop in data.stops!!) {
-                    if(stop.name == null){
-                        // handle null result, eg. throw exception, return default, etc
-                    }  else {
-                        listStop+=(stop)
-                    }
-                }
-                fragment.setListStop(listStop)
+                fragment.setListStop(data.stops!!)
             }
 
             override fun onError(throwable: Throwable) {

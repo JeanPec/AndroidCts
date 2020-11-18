@@ -24,6 +24,7 @@
 
         <activity android:name=".Time.TimeActivity">
         </activity>
+        <activity android:name=".Map.MapActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

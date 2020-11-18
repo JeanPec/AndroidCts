@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Map.MapActivity
 import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 import kotlin.collections.ArrayList
@@ -21,9 +23,7 @@ class TimeFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.i("info","test2")
         val view= inflater.inflate(R.layout.time_fragment_stop, container, false)
-        Log.i("info","test")
         val listStop = ArrayList<Stop>()
         val line_name= this.arguments?.getString("name")
         val stops_recylcer_view = view.findViewById<RecyclerView>(R.id.stop_container)
@@ -35,8 +35,9 @@ class TimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
          view.findViewById<Button>(R.id.button_map).setOnClickListener{
-             val intent = Intent(activity, TimeActivity::class.java)
-             intent.putExtra("name", this.arguments?.getString("name"))
+             val intent = Intent(activity, MapActivity::class.java)
+             intent.putExtra("name", view.findViewById<TextView>(R.id.text_body_line).text)
+             //intent.putExtra
              startActivity(intent)
          }
     }
@@ -48,10 +49,8 @@ class TimeFragment : Fragment() {
 
     fun setListStop(list : ArrayList<Stop>){
         val stops_recylcer_view = this.activity?.findViewById<RecyclerView>(R.id.stop_container)
-        if (stops_recylcer_view != null) {
-            (stops_recylcer_view.adapter as TimeAdapter).stopList = list
-            (stops_recylcer_view.adapter as TimeAdapter).notifyDataSetChanged()
-        }
+        (stops_recylcer_view?.adapter as TimeAdapter).stopList = list
+        (stops_recylcer_view?.adapter as TimeAdapter).notifyDataSetChanged()
     }
 
 

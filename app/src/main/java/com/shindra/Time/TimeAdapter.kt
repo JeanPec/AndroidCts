@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder {
@@ -27,7 +28,7 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
         holder.textLine.setText(getLineName(lineName))
         holder.textLine.setTextColor(getColor(holder.context, getColorId(lineName)))
         if (currentStop.estimatedDepartureTime != null){
-            holder.textTime.setText(SimpleDateFormat("HH'h'mm").format(currentStop.estimatedDepartureTime))
+            holder.textTime.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(currentStop.estimatedDepartureTime)
         }
     }
 
