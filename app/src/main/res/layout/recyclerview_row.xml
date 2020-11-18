@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scheduleBtn"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/cardview_compat_inset_shadow"
+    tools:visibility="visible">
 
-    <ImageView
-        android:id="@+id/imageTram"
-        android:tag="image_tag"
+    <Button
+        android:id="@+id/scheduleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_tram"/>
+        android:layout_below="@id/newTram"
+        android:layout_marginTop="-64dp"
+        android:text="Horaire" />
 
     <ImageView
         android:id="@+id/imageLetter"
-        android:tag="image_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageTram"
-        android:src="@drawable/ic_a"/>
+        android:src="@drawable/ic_a"
+        android:tag="image_tag" />
 
-     <ImageView
+    <ImageView
         android:id="@+id/newTram"
         android:layout_width="match_parent"
-        android:layout_height="323dp"
+        android:layout_height="359dp"
         android:src="@drawable/nouveau_tram_strasbourg" />
+
+    <ImageView
+        android:id="@+id/imageTram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_tram"
+        android:tag="image_tag" />
+
 
 </RelativeLayout>
