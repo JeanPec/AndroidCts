@@ -19,13 +19,11 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
     private ArrayList<Line> tram_lines;
     Context context;
 
-    //Constructeur
-    RecyclerViewAdapter_Tram_lines(ArrayList<Line> listelignetrams)
+    RecyclerViewAdapter_Tram_lines(ArrayList<Line> List_Tram_Lines)
     {
-        this.tram_lines= listelignetrams;
+        this.tram_lines= List_Tram_Lines;
     }
 
-    //Liaison avec la RecyclerView du fichier xml
     @NonNull
     @Override
     public Trams_View_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -34,7 +32,6 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
         return new Trams_View_Holder(TramView);
     }
 
-    //Liaison entre les donnees et les differente lignes sur la RecyclerView
     @Override
     public void onBindViewHolder(@NonNull Trams_View_Holder holder, int position)
     {
@@ -42,7 +39,6 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
         holder.onBind(requestTramLine);
     }
 
-    //Nombre de lignes sur la RecyclerView
     @Override
     public int getItemCount()
     {

@@ -31,12 +31,9 @@ public class StartActivity extends AppCompatActivity
 
         setTitle("Nos Trams");
 
-        //RecyclerView, ligne de tram
         RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);
         ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines);
-
-        //ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(getListOfLines()));
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -44,19 +41,16 @@ public class StartActivity extends AppCompatActivity
         {
             @Override
             public void onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                //call once the network call has responded with a success
                 tram_lines = new ArrayList<Line>();
                 for (Line ligne : data)
                 {
                     if(ligne.getRouteType() == RouteType.TRAM)
                     {
                         tram_lines.add(ligne);
-                        //ListeLigneTram.setAdapter(ligneTram);
                     }
 
                 }
@@ -65,7 +59,6 @@ public class StartActivity extends AppCompatActivity
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-                //call if the network call has responded with an error
             }
         });
     }

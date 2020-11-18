@@ -28,27 +28,27 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
         String txt = image.getName();
         switch (txt)
         {
-            case "Parc des Sports - Illkirch Graffenstaden":    //ligne A
+            case "Parc des Sports - Illkirch Graffenstaden":
                 tram_logo.setImageResource(R.drawable.tram_a);
                 break;
 
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":    //ligne B
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
                 tram_logo.setImageResource(R.drawable.tram_b);
                 break;
 
-            case "Gare Centrale - Neuhof Rodolphe Reuss":    //ligne C
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
                 tram_logo.setImageResource(R.drawable.tram_c);
                 break;
 
-            case "Poteries - Port du Rhin / Kehl Rathaus":    //ligne D
+            case "Poteries - Port du Rhin / Kehl Rathaus":
                 tram_logo.setImageResource(R.drawable.tram_d);
                 break;
 
-            case "Robertsau l'Escale - Campus d'Illkirch":    //ligne E
+            case "Robertsau l'Escale - Campus d'Illkirch":
                 tram_logo.setImageResource(R.drawable.tram_e);
                 break;
 
-            case "Comtes - Place d'Islande":    //ligne F
+            case "Comtes - Place d'Islande":
                 tram_logo.setImageResource(R.drawable.tram_f);
                 break;
 
