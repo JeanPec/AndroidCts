@@ -136,12 +136,12 @@ public class StartActivity extends AppCompatActivity {
         return Lines;
     }
 
-//TO BE CONTINUATED BELOW :
+    /*
     private ArrayList<Tram> getListReturnInfo() {
         ArrayList<Tram> Trams = new ArrayList<>();
         Trams.add(new Tram("Tram A", R.drawable.ic_tram_a));
     }
-
+    */
 
 
 }

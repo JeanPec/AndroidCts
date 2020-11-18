@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.apibo.Lines;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     //Data is passed into the constructor like slide 104
     LignesAdapter(List<Line> lines) {
         this.lines=lines;
+        int listSize = lines.size();
+        for (int i = 0 ; i<listSize ; i++) {
+            Log.d("CTS", lines.get(i).getName()); //test with only i if nothing
+        }
     }
 
     //Inflates the row layout from xml when needed
@@ -55,22 +60,31 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.myLine);
+            //set values to views
+            imageTram = itemView.findViewById(R.id.imageTram);
+            imageLetter = itemView.findViewById(R.id.imageLetter);
+
             itemView.setOnClickListener(this);
         }
 
         public void onBind(Line line) {
-            //set values to views
-            imageTram.setImageIcon(R.drawable.ic_tram);
-            imageLetter.setImageIcon(R.drawable.ic_a);
-            //2 errors : make a list of trams in StartActivity to get tram.something here ?
-            myTextView.setText(line.getName());
-            Log.d("CTS", "Ligne : " + line.getName());
-            switch(line.getName()) {
-                case "Parc des Sports - Illkirch Graffenstaden":
-                    //lineName.setImageResource(R.drawable.ic_tram_a);
-                    break;
+            //Populate elements
+            imageTram.setImageResource(R.drawable.ic_tram);
+            imageLetter.setImageResource(R.drawable.ic_a);
+
+            /*
+            int listSize = lines.size();
+            for (int i=0 ; i<listSize ; i++) {
+                switch(lines.get(i).getName()) {
+                    case "Tram A":
+                        imageLetter.setImageResource(R.drawable.ic_a);
+                        break;
+                    case "Tram B" :
+                        imageLetter.setImageResource(R.drawable.ic_b);
+                }
             }
+            */
+
         }
 
         @Override
