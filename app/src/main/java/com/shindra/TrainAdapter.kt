@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 
 
-class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.RecyclerItemClick) : RecyclerView.Adapter<TrainAdapter.TrainViewHolder>(){
+class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.RecyclerLineClick) : RecyclerView.Adapter<TrainAdapter.TrainViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.nos_trams,
@@ -33,13 +33,13 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
         val imageView: ImageView = itemView.findViewById(R.id.image_view)
         private val button: Button = itemView.findViewById(R.id.button_horraires)
 
-        fun onBind(line : Line,callback : RecyclerItemClick) {
+        fun onBind(line : Line,callback : RecyclerLineClick) {
             button.setOnClickListener{
-                callback.onItemClick(line)
+                callback.onLineClick(line)
             }
         }
-        interface RecyclerItemClick{
-            fun onItemClick(line :Line)
+        interface RecyclerLineClick{
+            fun onLineClick(line :Line)
         }
     }
 }

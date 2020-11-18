@@ -5,13 +5,11 @@ package com.shindra
 //import com.shindra.MyViewModel.lines
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Time.TimeActivity
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -19,7 +17,7 @@ import com.shindra.ctslibrary.bo.Line
 import java.util.*
 
 
-class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerItemClick {
+class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerLineClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +56,7 @@ class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerI
         })
     }
 
-    override fun onItemClick(line: Line) {
+    override fun onLineClick(line: Line) {
         val intent = Intent(this, TimeActivity::class.java)
         intent.putExtra("name", line.name)
         startActivity(intent)

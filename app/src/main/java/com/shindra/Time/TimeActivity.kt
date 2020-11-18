@@ -1,10 +1,12 @@
-package com.shindra
+package com.shindra.Time
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.LoadingClass
+import com.shindra.MyViewModel
+import com.shindra.R
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -16,7 +18,7 @@ class TimeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragment)
+        setContentView(R.layout.time_fragment_holder)
         title = "Horaire"
 
         val line_name : String? = intent.getStringExtra("name")
@@ -27,10 +29,10 @@ class TimeActivity : AppCompatActivity() {
         bundle.putString("name",line_name)
         val fragment = TimeFragment()
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container,fragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.time_frameLayout,fragment).commit()
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithEstimatedTimeTable(RouteType.TRAM,getLineRef(line_name),0).observe(object : ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, getLineRef(line_name),0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 dialog.show()
@@ -58,6 +60,9 @@ class TimeActivity : AppCompatActivity() {
 
     }
 }
+
+
+
 
 fun getLineRef(line_name : String?):String{
     when (line_name) {
