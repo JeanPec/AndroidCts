@@ -24,6 +24,7 @@ public class FragmentHoraireTram extends Fragment
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_horaire_tram, container, false);
 
+        ///Creation d'un liste et d'une ligne vide
         ArrayList<Stop> ListArretTram = new ArrayList<Stop>();
         String LettreLigneTram = "A";
 
