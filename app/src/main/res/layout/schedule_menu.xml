@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scheduleMainMenu"
+    android:id="@+id/fragScheduleContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScheduleFragment" >
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/schedulefragment"
-        android:name="com.shindra.ScheduleFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+    tools:context=".ScheduleActivity" >
+</FrameLayout>
 
