@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Line;
 
-public class TramsViewHolder extends RecyclerView.ViewHolder
+public class Trams_View_Holder extends RecyclerView.ViewHolder
 {
     private final ImageView tram_view;
     private final ImageView tram_logo;
     private final Button button;
 
-    public TramsViewHolder(@NonNull View itemView)
+    public Trams_View_Holder(@NonNull View itemView)
     {
         super(itemView);
         this.tram_logo = itemView.findViewById(R.id.Tram_Logo);

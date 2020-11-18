@@ -14,7 +14,7 @@ import com.shindra.ctslibrary.bo.Line;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<TramsViewHolder>
+public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_View_Holder>
 {
     private ArrayList<Line> tram_lines;
     Context context;
@@ -28,15 +28,15 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<TramsVi
     //Liaison avec la RecyclerView du fichier xml
     @NonNull
     @Override
-    public TramsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public Trams_View_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View TramView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tram_lines_view, parent, false);
-        return new TramsViewHolder(TramView);
+        return new Trams_View_Holder(TramView);
     }
 
     //Liaison entre les donnees et les differente lignes sur la RecyclerView
     @Override
-    public void onBindViewHolder(@NonNull TramsViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull Trams_View_Holder holder, int position)
     {
         Line requestTramLine = tram_lines.get(position);
         holder.onBind(requestTramLine);
