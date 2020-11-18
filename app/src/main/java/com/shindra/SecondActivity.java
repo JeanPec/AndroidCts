@@ -22,11 +22,11 @@ public class SecondActivity extends AppCompatActivity {
         setTitle(R.string.horaire);
         setContentView(R.layout.activity_second);
 
-        textTramLine = findViewById(R.id.LineTram);
-        //getDataStartActivity();
-        //setDataStartActivity();
+        textTramLine = findViewById(R.id.LineLettre);
+        getDataStartActivity();
+        setDataStartActivity();
 
-        Frag();
+        //Frag();
 
 
 
@@ -39,8 +39,8 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void getDataStartActivity(){
-        if(getIntent().hasExtra("textTramLine")){
-            StringTramLine = getIntent().getStringExtra("textTramLine");
+        if(getIntent().hasExtra("textLine")){
+            StringTramLine = getIntent().getStringExtra("textLine");
         }else{
             Toast.makeText(this,"No data passed", Toast.LENGTH_SHORT).show();
         }

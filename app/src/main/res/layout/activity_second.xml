@@ -19,10 +19,11 @@
         android:layout_height="match_parent"
         android:id="@+id/framlayout">
 
-        <Button
-            android:id="@+id/bt"
+        <TextView
+            android:id="@+id/LineLettre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="TEST FOR USE"
             android:layout_gravity="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
