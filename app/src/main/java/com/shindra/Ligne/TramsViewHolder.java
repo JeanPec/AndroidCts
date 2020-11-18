@@ -33,9 +33,9 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
 
 
     // Retourne le ViewHolder des données sur lequels elles sont liées / Appelé pour chaque elements dans la liste
-    public void onBind(Line image, RecyclerHoraireClick callBack)
+    public void onBind(Line Ligne, RecyclerHoraireClick callBack)
     {
-        switch (image.getName())
+        switch (Ligne.getName())
         {
             case "A":    //ligne A
                 imageLigneTram.setImageResource(R.drawable.tram_a);
@@ -71,7 +71,7 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
             @Override
             public void onClick(View v)
             {
-                callBack.onHoraireLineClick(image);
+                callBack.onHoraireLineClick(Ligne);
             }
         });
     }

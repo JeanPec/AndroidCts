@@ -37,7 +37,7 @@ public class ActivityNosTrams extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ligne_tram);
 
-        setTitle(NomPage);  //Ecriture du titre de la vue
+        getSupportActionBar().setTitle(getString(R.string.page_NosTrams));  //Ecriture du titre de la vue
 
         //RecyclerView, ligne de tram
         RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);   //Referencement vers la recyclerview "NosTrams"
@@ -83,8 +83,7 @@ public class ActivityNosTrams extends AppCompatActivity
                 //call once the network call has responded with a success
                 Log.i(NomPage,"Recupération des Lignes de Trams");
 
-                //Enleve l'affichage de la ProgressBar
-                CircularProgressBar.dismiss();
+
 
                 //Remplissage dynamique des tableaux des lignes de trams
                 ligneTram = new ArrayList<Line>();
@@ -96,14 +95,18 @@ public class ActivityNosTrams extends AppCompatActivity
                     }
                 }
                 ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(ligneTram, callBack));
+
                 Log.i(NomPage,"Recupération des Lignes de Trams Validé");
+
+                //Enleve l'affichage de la ProgressBar
+                CircularProgressBar.dismiss();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                Log.e(NomPage,"Erreur Application");
+                Log.e(NomPage,"Erreur Application, Vue: Nos Trams");
             }
         });
     }

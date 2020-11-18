@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Horaire.ActivityHoraire">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fragmentHoraire"
         android:name="com.shindra.Horaire.FragmentHoraireTram"
         android:layout_width="match_parent"

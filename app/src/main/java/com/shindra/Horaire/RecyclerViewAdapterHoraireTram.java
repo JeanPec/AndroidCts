@@ -27,18 +27,31 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
     @NonNull
     @Override
     public HoraireViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View HoraireView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_horaire_tram, parent, false);
+        View HoraireView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_horaire_tram, parent, false);
         return new HoraireViewHolder(HoraireView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position)
     {
-
+        Stop requestStopLigne = ListArretTram.get(position);
+        holder.onBind(requestStopLigne,NomLigne);
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return ListArretTram.size();
     }
+
+    public void SetListArretTram(ArrayList<Stop> Valeur)
+    {
+        ListArretTram = Valeur;
+    }
+
+    public void SetNomLigne(String Valeur)
+    {
+        this.NomLigne = Valeur;
+    }
+
 }
