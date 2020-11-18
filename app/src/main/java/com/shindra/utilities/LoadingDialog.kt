@@ -1,10 +1,10 @@
-package com.shindra
+package com.shindra.utilities
 
 import android.app.Activity
 import android.app.AlertDialog
+import com.shindra.R
 
 class LoadingDialog(val context: Activity) {
-
     private val alertDialog: AlertDialog
 
     init{

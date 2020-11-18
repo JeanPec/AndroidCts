@@ -1,8 +1,9 @@
-package com.shindra
+package com.shindra.schedules
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 
 class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val textHeadline: TextView = itemView.findViewById(R.id.text_headline)

@@ -1,9 +1,10 @@
-package com.shindra
+package com.shindra.lines
 
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Line
 
 class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -11,11 +12,13 @@ class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val scheduleButton: Button = itemView.findViewById(R.id.button_schedule)
 
     fun onBind(line: Line, callback: OnLineClickListener) {
+        //set Button listener
         scheduleButton.setOnClickListener{
             callback.onItemClick(line)
         }
     }
 
+    //callback interface
     interface OnLineClickListener{
         fun onItemClick(line: Line)
     }

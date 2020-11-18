@@ -1,11 +1,12 @@
-package com.shindra
+package com.shindra.map
 
-import androidx.core.content.ContextCompat
+import com.shindra.R
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
 import com.shindra.ctslibrary.bo.Line
 
 class MapLineFragment : MapFragment() {
+
     fun addPointOnMap(line: Line){
         val positionList = ArrayList<Poi>()
         for (stop in line.stops!!){

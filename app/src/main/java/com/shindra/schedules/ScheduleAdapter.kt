@@ -1,10 +1,11 @@
-package com.shindra
+package com.shindra.schedules
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
@@ -12,11 +13,12 @@ import kotlin.collections.ArrayList
 class ScheduleAdapter(private val line: String, var stops: ArrayList<Stop>, private val context: FragmentActivity?) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        val lineView = LayoutInflater.from(parent.context).inflate(R.layout.schedule_card_view, parent, false)
-        return ScheduleViewHolder(lineView)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.schedule_card_view, parent, false)
+        return ScheduleViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
+        //set ScheduleViewHolder data
         val stop = stops[position]
         holder.textHeadline.text = stop.name
         holder.textLine.text = getLineName(line)

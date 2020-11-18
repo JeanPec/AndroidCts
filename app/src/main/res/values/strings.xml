@@ -20,6 +20,7 @@
 
     <!-- Loading -->
     <string name="loading_text">Veuillez patientez, chargement des données en cours</string>
+    <string name="loading_text_error">Erreur de chargement</string>
 
     <!-- Network call traduction -->
     <string name="ligne_a">"Parc des Sports - Illkirch Graffenstaden"</string>
