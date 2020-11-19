@@ -6,8 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
+import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -24,11 +33,12 @@ public class ScheduleFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     String lineName;
     RecyclerView recyclerScheduleView;
-    ArrayList<myStop> myStops;
+    //ArrayList<myStop> myStops;
+    ArrayList<Stop> lineStops;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+  //  private String mParam1;
+    //private String mParam2;
 
     public ScheduleFragment() {
         // Required empty public constructor
@@ -55,10 +65,7 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -69,11 +76,37 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.schedule_frag, container , false);
         recyclerScheduleView = view.findViewById(R.id.recyclerViewScheduleFrag);
         recyclerScheduleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        myStops = new ArrayList<>();
-        myStops.add(new myStop(lineName,"cdjfoj","18H"));
-        myStops.add(new myStop("A","df","20H"));
 
-        recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter((myStops)));
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class); // recupere l'objet class d'un modele
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM , lineName , 0) , new ObservableListener<Line>() {
+
+            @Override
+            public void onSuccess(Line data) {
+                lineStops = new ArrayList<Stop>();
+                for (Stop oneStop : data.getStops()) {
+                    if (oneStop.getEstimatedDepartureTime() != null) {
+
+                        lineStops.add(oneStop);
+                    }
+                    recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName));
+                }
+            }
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+
+            }
+
+            @Override
+            public void onLoading() {
+
+            }
+        });
     }
 }

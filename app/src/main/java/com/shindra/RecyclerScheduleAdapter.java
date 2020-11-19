@@ -8,18 +8,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.bo.Stop;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSchedule>{
 
-    private ArrayList<myStop> tramStops;
+    private ArrayList<Stop> tramStops;
     private String tramLineSelected;
     private TextView stopName;
     private TextView stopScheduleTime;
 
-    public RecyclerScheduleAdapter(ArrayList<myStop> tramStops1) {
+    public RecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1) {
 
         tramStops = tramStops1;
+        tramLineSelected = tramLineSelected1;
     }
 
    /* public RecyclerScheduleAdapter(ArrayList<myStop> tramStops1, String tramLineSelected1) {
@@ -38,11 +43,19 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
 
     @Override
     public void onBindViewHolder(@NonNull viewHolderSchedule holder , int position) {
-        myStop currentStop = tramStops.get(position);
-        holder.lineTram.setText(currentStop.getLineName());
-        holder.lineStation.setText(currentStop.getLineStation());
-        holder.stopScheduleTime.setText(currentStop.getHours());
+        Stop currentStop = tramStops.get(position);
+        holder.lineTram.setText(tramLineSelected);
+        holder.lineStation.setText(currentStop.getName());
+        holder.stopScheduleTime.setText(getDate(currentStop.getEstimatedDepartureTime()));
     }
+
+    public String getDate(Date date)
+    {
+        SimpleDateFormat s = new SimpleDateFormat("h:mm");
+        return s.format(date);
+    }
+
+
 
 
 

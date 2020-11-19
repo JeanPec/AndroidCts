@@ -51,12 +51,11 @@ public class StartActivity extends AppCompatActivity {
                 //call once the network call has responded with a success
                 linesTram = new ArrayList<Line>();
 
-                for (int i = 0; i < data.size(); i++) {
-                    if (data.get(i).getRouteType().name() == "TRAM") {
+                for (Line oneLine : data)
+                    if (oneLine.getRouteType().name() == "TRAM") {
                         //Log.d("MSG", data.get(i).getName());
-                        linesTram.add(data.get(i));
+                        linesTram.add(oneLine);
                     }
-                }
 
                 recyclerViewLineTram.setAdapter(new RecyclerMenuAdapter(linesTram, line ->  {
                     //setTitle("Click");
