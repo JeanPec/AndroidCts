@@ -33,10 +33,9 @@ public class LineViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public int LineToPicture(Line lines){
+    public int LineToPicture(Line lines) {
         String name = lines.getName();
-        switch (name)
-        {
+        switch (name) {
             case "A":
                 return R.drawable.tram_a;
             case "B":

@@ -6,11 +6,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stop" >
+    tools:context=".StopActivity" >
 
-    <fragment
-        android:id="@+id/stop_fragment"
-        android:name="com.shindra.StopFragment"
+    <FrameLayout
+        android:id="@+id/FrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+    </FrameLayout>
 </LinearLayout>

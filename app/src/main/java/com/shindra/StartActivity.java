@@ -1,6 +1,5 @@
 package com.shindra;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
-import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +30,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.startactivity);
 
         /* Intent used to pass LINE_NAME to Stop activity */
-        Intent intent = new Intent(this, Stop.class);
+        Intent intent = new Intent(this, StopActivity.class);
 
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);

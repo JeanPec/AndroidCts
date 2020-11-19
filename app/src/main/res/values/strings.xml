@@ -6,6 +6,8 @@
     <string name="title_activity_line">Nos trams</string>
     <string name="line_button">Horaire</string>
     <string name="title_activity_stop">Horaire</string>
+    <string name="stop_view_holer_info">Prochain départ</string>
+    <string name="stop_view_holer_line">Ligne</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

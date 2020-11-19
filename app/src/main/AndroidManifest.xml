@@ -3,7 +3,6 @@
     package="com.shindra">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-
-
+        <activity android:name=".StopAdapter"></activity>
+        <activity android:name=".StopViewHolder" />
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_line">
@@ -25,11 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".Stop"
-            android:label="@string/title_activity_stop">
-        </activity>
+            android:name=".StopActivity"
+            android:label="@string/title_activity_stop" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
