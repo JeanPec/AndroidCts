@@ -22,7 +22,6 @@ class TramCard extends RecyclerView.ViewHolder{
 
     public TramCard(@NonNull View itemView) {
         super(itemView);
-
         imageTRAM = itemView.findViewById(R.id.image_tram);
     }
 

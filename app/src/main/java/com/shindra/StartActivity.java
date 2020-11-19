@@ -65,9 +65,12 @@ public class StartActivity extends AppCompatActivity {
         ArrayList<Tram> trams = new ArrayList<>();
         trams.add(new Tram("A",R.drawable.tram_a));
         trams.add(new Tram("B",R.drawable.tram_b));
+        trams.add(new Tram("C",R.drawable.tram_c));
+        trams.add(new Tram("D",R.drawable.tram_d));
+        trams.add(new Tram("E",R.drawable.tram_e));
+        trams.add(new Tram("F",R.drawable.tram_f));
 
         return trams;
-
     }
 }
 
