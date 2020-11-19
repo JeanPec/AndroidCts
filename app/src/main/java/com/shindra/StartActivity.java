@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_container);
         setTitle(R.string.menu_name);
 
         LoadingDialog loadingDialog = new LoadingDialog(StartActivity.this);
@@ -76,7 +76,7 @@ public class StartActivity extends AppCompatActivity {
                     public void run() {
                         loadingDialog.dismissDialog();
                     }
-                }, 1000);
+                }, 500);
             }
             @Override
             public void onError(@NotNull Throwable throwable) {

@@ -1,9 +1,11 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,8 +35,8 @@ public class ScheduleFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     String lineName;
     RecyclerView recyclerScheduleView;
-    //ArrayList<myStop> myStops;
     ArrayList<Stop> lineStops;
+    Button seeOnMapButton;
 
     // TODO: Rename and change types of parameters
   //  private String mParam1;
@@ -76,6 +78,15 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.schedule_frag, container , false);
         recyclerScheduleView = view.findViewById(R.id.recyclerViewScheduleFrag);
         recyclerScheduleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        seeOnMapButton = view.findViewById(R.id.seeOnMapButton);
+        seeOnMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapActivity = new Intent(getActivity(), MapActivity.class);
+                mapActivity.putExtra("lineNameSelected", lineName);
+                startActivity(mapActivity);
+            }
+        });
 
         return view;
     }

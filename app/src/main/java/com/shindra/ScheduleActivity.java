@@ -18,7 +18,7 @@ public class ScheduleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.schedule_menu);
+        setContentView(R.layout.schedule_container);
         setTitle(R.string.schedule_name);
 
 //recupere le intent de StartActivity + recuperation de la ligne sélectionné
