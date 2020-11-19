@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
+import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
@@ -17,31 +18,36 @@ public class OurTramsAdapter extends RecyclerView.Adapter<OurTramsViewHolder>{
     private OnItemClickListener mListener;
 
     // Constructor
-    public OurTramsAdapter(ArrayList<OurTramsItem> arrayList) { mOurTramsList = arrayList; }
+    public OurTramsAdapter(ArrayList<OurTramsItem> arrayList, OnItemClickListener listener) {
+        mOurTramsList = arrayList;
+        mListener = listener;
+    }
 
     // Methods
     @NonNull
     @Override
     public OurTramsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Called to create each ViewHolder in RecyclerView
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_our_trams, parent, false);
-        OurTramsViewHolder tramVH = new OurTramsViewHolder(v, mListener);
+        OurTramsViewHolder tramVH = new OurTramsViewHolder(v);
         return tramVH;
     }
     @Override
     public void onBindViewHolder(@NonNull OurTramsViewHolder holder, int position) {
+        // Called after onCreateViewHolder, to bind data for each ViewHolder in RecyclerView
         OurTramsItem currentItem = mOurTramsList.get(position);
-        holder.onBind(currentItem);
+        holder.onBind(currentItem, mListener);
     }
     @Override
     public int getItemCount() {
         return mOurTramsList.size();
     }
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
+    public void SetOurTramsList(ArrayList<OurTramsItem> list){
+        mOurTramsList = list;
     }
 
-    // Interface
+    // Interface to handle event (observer pattern)
     public interface OnItemClickListener{
-        void onButtonScheduleClick(int position);
+        void onButtonScheduleClick(String tramLineName);
     }
 }

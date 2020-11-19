@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 
 public class LoadingScreen {
-    private AlertDialog dialog;
+    private AlertDialog alertDial;
 
     public LoadingScreen(Activity myActivity)
     {
@@ -12,16 +12,16 @@ public class LoadingScreen {
         LayoutInflater inflater = myActivity.getLayoutInflater();
         alertDialBuilder.setView(inflater.inflate(R.layout.loading_screen, null));
         alertDialBuilder.setCancelable(false);
-        dialog = alertDialBuilder.create();
+        alertDial = alertDialBuilder.create();
     }
 
     public void display()
     {
-        dialog.show();
+        alertDial.show();
     }
 
     public void dismiss()
     {
-        dialog.dismiss();
+        alertDial.dismiss();
     }
 }

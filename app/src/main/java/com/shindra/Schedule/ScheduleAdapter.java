@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.OurTrams.OurTramsItem;
 import com.shindra.R;
 
 import java.util.ArrayList;
@@ -34,4 +35,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder>{
     }
     @Override
     public int getItemCount() { return mScheduleList.size(); }
+    public void SetScheduleList(ArrayList<ScheduleItem> list){
+        mScheduleList = list;
+    }
 }

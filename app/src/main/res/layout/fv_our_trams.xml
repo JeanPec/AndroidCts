@@ -4,28 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".OurTrams.OurTramsActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/fv_our_trams_RecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/ActivityBackground"
             android:scrollbars="vertical"
             app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/rv_schedule"
-            style="@style/body2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/Primary"
-            android:text="VOIR SUR LA CARTE"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
