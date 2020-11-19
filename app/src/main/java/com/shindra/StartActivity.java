@@ -1,10 +1,13 @@
 package com.shindra;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -21,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d(tag:"info", msg:"")
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -30,6 +33,11 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+            Log.d(tag:"info", msg:"");
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            FragementA fragement = new FragementA();
+            fragmentTransaction.add(R.id.fragment_container_view,fragement);
             }
 
             @Override

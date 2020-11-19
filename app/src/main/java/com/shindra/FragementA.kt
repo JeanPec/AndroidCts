@@ -1,21 +1,20 @@
 package com.shindra
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
-class FragementA : FragementA {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstabceState: Bundle?
-    ): View? {
+import androidx.fragement.app.Fragement;
+
+public class FragementA : Fragement {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancesState){
         return inflater.inflate(R.layout.fragmenta, container)
     }
-
-    override fun onViewCreated(view: View, savedInstabceState: Bundle?) {
+    @Override
+    public View onViewCreated(view: View, savedInstabceState: Bundle?) {
         super.onViewCreated(view, savedInstabceState)
 
         view.findViewById<Button>(R.id.button).setOnClickListener {
