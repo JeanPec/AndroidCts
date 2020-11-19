@@ -25,7 +25,7 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
     override fun onBindViewHolder(holder: TimeViewHolder, position: Int) {
         val currentStop : Stop = stopList[position]
         holder.textStop.setText(currentStop.name)
-        holder.textLine.setText(getLineName(lineName))
+        holder.textLine.setText("Ligne".plus(" ").plus(lineName))
         holder.textLine.setTextColor(getColor(holder.context, getColorId(lineName)))
         if (currentStop.estimatedDepartureTime != null){
             holder.textTime.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(currentStop.estimatedDepartureTime)
@@ -45,29 +45,14 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
 private fun getColorId( lineName : String?) : Int
 {
     when (lineName) {
-        "Parc des Sports - Illkirch Graffenstaden" -> return R.color.Ligne_A
-        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return R.color.Ligne_B
-        "Gare Centrale - Neuhof Rodolphe Reuss" -> return R.color.Ligne_C
-        "Poteries - Port du Rhin / Kehl Rathaus" -> return R.color.Ligne_D
-        "Robertsau l'Escale - Campus d'Illkirch" -> return R.color.Ligne_E
-        "Comtes - Place d'Islande" -> return R.color.Ligne_F
+        "A" -> return R.color.Ligne_A
+        "B" -> return R.color.Ligne_B
+        "C" -> return R.color.Ligne_C
+        "D" -> return R.color.Ligne_D
+        "E" -> return R.color.Ligne_E
+        "F" -> return R.color.Ligne_F
         else -> {
             return R.color.Primary
-        }
-    }
-}
-
-private fun getLineName( lineName : String?) : String
-{
-    when (lineName) {
-        "Parc des Sports - Illkirch Graffenstaden" -> return "Ligne A"
-        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return "Ligne B"
-        "Gare Centrale - Neuhof Rodolphe Reuss" -> return "Ligne C"
-        "Poteries - Port du Rhin / Kehl Rathaus" -> return "Ligne D"
-        "Robertsau l'Escale - Campus d'Illkirch" -> return "Ligne E"
-        "Comtes - Place d'Islande" -> return "Ligne F"
-        else -> {
-            return "Ligne "
         }
     }
 }

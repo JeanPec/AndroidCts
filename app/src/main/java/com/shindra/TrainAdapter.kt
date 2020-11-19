@@ -45,12 +45,12 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
 }
 private fun getImagesRessource(line_name : String) : Int{
     when (line_name){
-        "Parc des Sports - Illkirch Graffenstaden" -> return R.drawable.tram_a
-        "Lingolsheim Tiergaertel - Hoenheim Gare" -> return R.drawable.tram_b
-        "Gare Centrale - Neuhof Rodolphe Reuss" -> return R.drawable.tram_c
-        "Poteries - Port du Rhin / Kehl Rathaus" -> return R.drawable.tram_d
-        "Robertsau l'Escale - Campus d'Illkirch" -> return R.drawable.tram_e
-        "Comtes - Place d'Islande" -> return R.drawable.tram_f
+        "A" -> return R.drawable.tram_a
+        "B" -> return R.drawable.tram_b
+        "C" -> return R.drawable.tram_c
+        "D" -> return R.drawable.tram_d
+        "E" -> return R.drawable.tram_e
+        "F" -> return R.drawable.tram_f
         else -> {
             return R.drawable.tram
         }
