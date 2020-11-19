@@ -5,7 +5,9 @@
     <string name="page_NosTrams">Nos Trams</string>
     <string name="page_Horaires">Horaires</string>
 
-    <string name="Widjet_Chargement">Veuillez patientez, chargement des données en cours</string>;
+    <string name="Widjet_Chargement">Veuillez patientez, chargement des données en cours</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>;
 
 
 </resources>
