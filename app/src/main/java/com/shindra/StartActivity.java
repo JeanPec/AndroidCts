@@ -39,8 +39,6 @@ public class StartActivity extends AppCompatActivity {
         Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
 
 
-
-
         List<TramCard> tramCardList = new ArrayList<TramCard>();
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_a), imgTram));
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_b), imgTram));
@@ -51,11 +49,10 @@ public class StartActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.appCts_recyclerview);
-        tramCardAdapter = new TramCardAdapter(tramCardList);
-        recyclerView.setAdapter(tramCardAdapter);
+        recyclerView.setAdapter(new TramCardAdapter(tramCardList));
 
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 

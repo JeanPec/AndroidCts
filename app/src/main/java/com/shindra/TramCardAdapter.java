@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.bo.Line;
+
 import java.util.List;
 
 import static com.shindra.R.id.imgTram;
@@ -33,6 +35,8 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
             imgTram = itemView.findViewById(R.id.imgTram);
             imgNomLigne = itemView.findViewById(R.id.imgLigne);
         }
+
+
     }
 
     public TramCardAdapter(List<TramCard> listeTramCard) {
@@ -51,8 +55,9 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
     public void onBindViewHolder(@NonNull TramViewHolder holder, int position) {
         TramCard tramCard = listeTramCard.get(position);
         //holder.nomLigne.setText(tramCard.getNomLigne());
-        holder.imgTram.setImageDrawable(tramCard.getImgTram());
-        holder.imgNomLigne.setImageDrawable(tramCard.getImgNomLigne());
+        holder.imgTram.setImageDrawable(tramCard.imgTram);
+        holder.imgNomLigne.setImageDrawable(tramCard.imgNomLigne);
+
     }
 
     @Override
