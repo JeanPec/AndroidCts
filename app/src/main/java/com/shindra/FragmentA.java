@@ -16,25 +16,17 @@ import android.widget.ListAdapter;
 import android.widget.QuickContactBadge;
 
 
-/*public class FragmentA extends Fragment {
+public class FragmentA extends Fragment {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
-    public View rootView;
-
-    public static FragmentA newInstance(){
-        return new FragmentA();
-    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
 
-        rootView = inflater.inflate(R.layout.card, container,false);
+        View rootView = inflater.inflate(R.layout.fragment_a, container,false);
 
-        recyclerView =  rootView.findViewById(R.id.listeTramRV);
+        /*recyclerView =  rootView.findViewById(R.id.listeTramRV);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -44,7 +36,8 @@ import android.widget.QuickContactBadge;
 
 
 
-        return super.onCreateView(inflater,container,savedInstanceState);
+        return super.onCreateView(inflater,container,savedInstanceState);*/
+        return rootView;
     }
 
 
@@ -54,4 +47,9 @@ import android.widget.QuickContactBadge;
         public void onClick(View v) {
 
         }*/
-    //}
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+}

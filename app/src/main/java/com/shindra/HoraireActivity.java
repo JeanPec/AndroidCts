@@ -5,19 +5,97 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
+import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 public class HoraireActivity extends AppCompatActivity {
 
-    private TextView mTextView;
+    public RecyclerView arretTram;
+    public String nomLigne;
+    ChargementActivity loadPage;
+    Bundle bundle;
+    FragmentA fragmentA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horaire);
 
-        mTextView = (TextView) findViewById(R.id.text);
+        nomLigne = getIntent().getStringExtra("nomLigne");
+
+        fragmentA = new FragmentA();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.FragmentA,fragmentA).commit();
+
+        arretTram = findViewById(R.id.listeTramRV2);
+        nomLigne = getIntent().getStringExtra("nomLigne");
+        arretTram.setLayoutManager(new LinearLayoutManager(this));
+        arretTram.setAdapter(new HoraireAdapter(new ArrayList<Stop>(),nomLigne));
+
+        loadPage = new ChargementActivity(this);
+        getSupportActionBar().setTitle("Ligne " + getInfo(nomLigne));
+
+        MyViewModel myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        ObservableExtensionKt.observe(myViewModel.lineWithEstimatedTimeTable(RouteType.TRAM, getInfo(nomLigne), 0), new ObservableListener<Line>() {
+            @Override
+            public void onLoading() {
+                loadPage.showChargement();
+            }
+
+            @Override
+            public void onSuccess(Line data) {
+                ArrayList<Stop> Arrets = new ArrayList<Stop>();
+                for (Stop stop : data.getStops())
+                    if (stop.getEstimatedDepartureTime() != null)
+                        Arrets.add(stop);
+
+                ((HoraireAdapter) arretTram.getAdapter()).setArrets(Arrets);
+                arretTram.getAdapter().notifyDataSetChanged();
+                loadPage.hideChargement();
+
+            }
+
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+
+            }
+        });
+
+
 
         // Enables Always-on
         //setAmbientEnabled();
+    }
+    private String getInfo(String nomLigne){
+        switch (nomLigne){
+            case "Parc des Sports - Illkirch Graffenstaden":
+                return "A";
+            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+                return "B";
+            case "Gare Centrale - Neuhof Rodolphe Reuss":
+                return "C";
+            case "Poteries - Port du Rhin / Kehl Rathaus":
+                return "D";
+            case "Robertsau l'Escale - Campus d'Illkirch":
+                return "E";
+            case "Comtes - Place d'Islande":
+                return "F";
+            default:
+                return "Inconnu";
+
+        }
     }
 }
