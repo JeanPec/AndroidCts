@@ -10,6 +10,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- User-Defined  Color . -->
+    <color name="Background">#F2F2F2</color>
     <color name="Ligne_A">#D8232A</color>
     <color name="Ligne_B">#00A3DA</color>
     <color name="Ligne_C">#EB8B2D</color>

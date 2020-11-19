@@ -6,15 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.shindra.arrakis.observable.ObservableExtensionKt;
-import com.shindra.arrakis.observable.ObservableListener;
-import com.shindra.ctslibrary.apibo.RouteType;
-import com.shindra.ctslibrary.bo.Line;
-
-import org.jetbrains.annotations.NotNull;
 
 
 public class ScheduleActivity extends AppCompatActivity {
@@ -41,26 +33,6 @@ public class ScheduleActivity extends AppCompatActivity {
         fragmentSchedule.setArguments(scheduleBundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragScheduleContainer,fragmentSchedule).commit();
 
-
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class); // recupere l'objet class d'un modele
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM , lineName , 0), new ObservableListener<Line>()
-        {
-
-            @Override
-            public void onError(@NotNull Throwable throwable) {
-
-            }
-
-            @Override
-            public void onSuccess(Line data) {
-
-            }
-
-            @Override
-            public void onLoading() {
-
-            }
-        });
     }
 }
 
