@@ -13,21 +13,21 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/text_headline"
+            android:id="@+id/schedule_stopname"
             style="@style/HeadLine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/schedule_cardview_headline"
-            card_view:layout_constraintEnd_toStartOf="@+id/text_hour"
+            card_view:layout_constraintEnd_toStartOf="@+id/schedule_hour"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
         <TextView
-            android:id="@+id/text_line"
+            android:id="@+id/schedule_linename"
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,13 +35,13 @@
             android:layout_marginBottom="8dp"
             android:text="@string/schedule_cardview_linename_default"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toStartOf="@+id/text_body"
+            card_view:layout_constraintEnd_toStartOf="@+id/schedule_nextdeparture"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/text_headline"
+            card_view:layout_constraintTop_toBottomOf="@+id/schedule_stopname"
             card_view:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/text_hour"
+            android:id="@+id/schedule_hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -52,7 +52,7 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_body"
+            android:id="@+id/schedule_nextdeparture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -61,7 +61,7 @@
             android:text="@string/schedule_cardview_body"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/text_hour" />
+            card_view:layout_constraintTop_toBottomOf="@+id/schedule_hour" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

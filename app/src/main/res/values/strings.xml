@@ -10,4 +10,6 @@
     <string name="tram_activity_name">Nos Trams</string>
 
     <string name="button_map">Voir sur la carte</string>
+
+    <string name="Schedule_LineName">Ligne %s</string>
 </resources>

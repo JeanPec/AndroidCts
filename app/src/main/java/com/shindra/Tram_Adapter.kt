@@ -28,9 +28,8 @@ class LineAdapter(var lines: ArrayList<Line>, val callback: Tram_ViewHolder.OnLi
         return lines.size
     }
     override fun onBindViewHolder(holder: Tram_ViewHolder, position: Int) {
-        val line = lines[position]
-        holder.tramIcon.setImageResource(getTramImage(line))
-        holder.onBind(line,callback)
+        holder.tramIcon.setImageResource(getTramImage(lines[position]))
+        holder.onBind(lines[position],callback)
     }
 
 

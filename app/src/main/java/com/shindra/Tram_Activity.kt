@@ -1,7 +1,5 @@
 package com.shindra
 
-package com.shindra
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -41,9 +39,10 @@ class LineActivity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
                         tramList.add(line)
                     }
                 }
+                loadingDialog.dismissDialog()
                 (tramRecyclerList.adapter as LineAdapter).lines = tramList
                 (tramRecyclerList.adapter as LineAdapter).notifyDataSetChanged()
-                loadingDialog.dismissDialog()
+
             }
 
             override fun onError(throwable: Throwable) {
