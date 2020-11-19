@@ -11,16 +11,16 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class Trams_View_Holder extends RecyclerView.ViewHolder
 {
-    private final ImageView tram_view;
+    //private final ImageView tram_view;
     private final ImageView tram_logo;
-    private final Button button;
+    //private final Button button;
 
     public Trams_View_Holder(@NonNull View itemView)
     {
         super(itemView);
         this.tram_logo = itemView.findViewById(R.id.Tram_Logo);
-        this.tram_view = itemView.findViewById(R.id.Tram_Line_View);
-        this.button = itemView.findViewById(R.id.Tram_view_button);
+        //this.tram_view = itemView.findViewById(R.id.Tram_Line_View);
+        //this.button = itemView.findViewById(R.id.Tram_view_button);
     }
 
     public void onBind_logo(Line image)
@@ -28,27 +28,27 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
         String line_name = image.getName();
         switch (line_name)
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 tram_logo.setImageResource(R.drawable.tram_a);
                 break;
 
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 tram_logo.setImageResource(R.drawable.tram_b);
                 break;
 
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 tram_logo.setImageResource(R.drawable.tram_c);
                 break;
 
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 tram_logo.setImageResource(R.drawable.tram_d);
                 break;
 
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 tram_logo.setImageResource(R.drawable.tram_e);
                 break;
 
-            case "Comtes - Place d'Islande":
+            case "F":
                 tram_logo.setImageResource(R.drawable.tram_f);
                 break;
 
@@ -56,10 +56,6 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
                 tram_logo.setImageResource(R.drawable.tram);
                 break;
         }
-    }
-    public void onClick(View v)
-    {
-
     }
 }
 

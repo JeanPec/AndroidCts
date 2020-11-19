@@ -17,7 +17,7 @@ import java.util.List;
 public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_View_Holder>
 {
     private ArrayList<Line> tram_lines;
-    Context context;
+    //Context context;
 
     RecyclerViewAdapter_Tram_lines(ArrayList<Line> List_Tram_Lines)
     {

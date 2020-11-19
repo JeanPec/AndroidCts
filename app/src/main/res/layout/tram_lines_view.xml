@@ -4,23 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/FragBackground"
+    android:background="#DCD4D4"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="387dp"
-        android:layout_height="346dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8sp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="#E8E1E1"
         android:elevation="4dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="0dp">
 
             <ImageView
                 android:id="@+id/Tram_Logo"
@@ -43,21 +50,23 @@
                 android:layout_marginTop="12dp"
                 android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Tram_Logo"
                 app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
             <Button
                 android:id="@+id/Tram_view_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/roboto"
                 android:text="Horaire"
                 android:textColor="@color/Primary"
                 android:theme="@style/Button"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Tram_Line_View" />
