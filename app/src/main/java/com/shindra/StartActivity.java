@@ -38,10 +38,10 @@ public class StartActivity extends AppCompatActivity {
 
         ArrayList<NosTramsItem> nosTramsList = new ArrayList<>(); //Initialization of an array containing "NosTramsItem" object
         //Manually adding object in the array
-        nosTramsList.add(new NosTramsItem(R.drawable.icon, "Logo", "Image Tram"));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram, "Logo", "Image Tram"));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram, "Logo", "Image Tram"));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram, "Logo", "Image Tram"));
+        nosTramsList.add(new NosTramsItem(R.drawable.tram_a, R.drawable.tram));
+        nosTramsList.add(new NosTramsItem(R.drawable.tram_b,  R.drawable.tram));
+        nosTramsList.add(new NosTramsItem(R.drawable.tram_c,  R.drawable.tram));
+        nosTramsList.add(new NosTramsItem(R.drawable.tram_d,  R.drawable.tram));
 
         recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setHasFixedSize(true);

@@ -4,6 +4,7 @@ package com.shindra;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,19 +15,17 @@ import java.util.ArrayList;
 
 public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTramsViewHolder> {
 
-    private ArrayList <NosTramsItem> nosTramsList;
+    ArrayList <NosTramsItem> nosTramsList;
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
+        public ImageView ligneTram;
         public ImageView imageTram;
-        public TextView textView1;
-        public TextView textView2;
 
         public NosTramsViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageTram = itemView.findViewById(R.id.imageView);
-            textView1 = itemView.findViewById(R.id.textView1);
-            textView2 = itemView.findViewById(R.id.textView2);
+            ligneTram = itemView.findViewById(R.id.imageLigneTram);
+            imageTram = itemView.findViewById(R.id.imageTram);
         }
     }
 
@@ -46,9 +45,10 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     public void onBindViewHolder(@NonNull NosTramsViewHolder holder, int position) {
         NosTramsItem currentTram = nosTramsList.get(position);
 
-        holder.imageTram.setImageResource (currentTram.getImageTram());
-        holder.textView1.setText(currentTram.getText1());
-        holder.textView2.setText(currentTram.getText2());
+
+        holder.ligneTram.setImageResource (currentTram.imageLigne);
+        holder.imageTram.setImageResource(currentTram.imageTram);
+
     }
 
     @Override
