@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shindra">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -12,15 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
+
         <activity android:name=".LineTramActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ScheduleActivity">
+        <activity android:name=".ScheduleActivity"
+            android:parentActivityName=".LineTramActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LineTramActivity" />
 
         </activity>
 
@@ -29,7 +34,4 @@
             android:value="AIzaSyB-PUj9rWHjXJveAxRnMtHGM54ZpxmEGDU"/>
 
     </application>
-
-
-
 </manifest>

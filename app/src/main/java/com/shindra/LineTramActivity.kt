@@ -23,10 +23,11 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_tram_activity)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        var context = this
+        val context = this
 
         recyclerView = findViewById(R.id.LineTramRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = LineTramAdapter(listOfLines, this)
 
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
             override fun onLoading() {
@@ -55,7 +56,7 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
     }
 
     override fun onClick(lineTram: Line) {
-        var intent = Intent(this, ScheduleActivity::class.java)
+        val intent = Intent(this, ScheduleActivity::class.java)
         intent.putExtra("lineTramName", lineTram.name)
         startActivity(intent)
     }

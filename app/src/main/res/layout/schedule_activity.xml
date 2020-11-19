@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/scheduleFragment"
         android:name="Fragments.ScheduleFragment"
         android:layout_height="wrap_content"
