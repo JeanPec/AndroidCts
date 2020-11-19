@@ -59,7 +59,6 @@ class FragmentLine : Fragment(), ScheduleClick {
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).notifyDataSetChanged()
 
                 loadingDialog.dismiss()
-
             }
 
             override fun onError(throwable: Throwable) {
