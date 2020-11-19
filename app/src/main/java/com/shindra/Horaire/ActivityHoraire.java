@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.shindra.Carte.ActivityCarte;
 import com.shindra.MyViewModel;
 import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -33,6 +35,7 @@ public class ActivityHoraire extends AppCompatActivity
 
     private AlertDialog CircularProgressBar;
 
+    private Button BtnCarte;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -57,6 +60,17 @@ public class ActivityHoraire extends AppCompatActivity
         LayoutInflater inflater = this.getLayoutInflater();
         CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
         CircularProgressBar = CreateProgressBar.create();
+
+//        BtnCarte = findViewById(R.id.button_Map);
+//        BtnCarte.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                onMapClick(LettreLigne);
+//            }
+//        });
+
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, LettreLigne, 0), new ObservableListener<Line>()
@@ -102,5 +116,14 @@ public class ActivityHoraire extends AppCompatActivity
             }
         });
 
+    }
+
+    public void onMapClick(String Ligne)
+    {
+        Log.i(NomPage,"Appuie BTN Map Ligne " + Ligne);
+        //Creation de la nouvelle Intent
+        Intent intent = new Intent(ActivityHoraire.this, ActivityCarte.class);
+        intent.putExtra("LettreLigneTram",Ligne);
+        startActivity(intent);
     }
 }

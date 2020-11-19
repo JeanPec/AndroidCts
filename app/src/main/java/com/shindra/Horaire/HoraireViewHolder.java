@@ -16,7 +16,6 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder
     public final TextView depart;
     public final TextView ligne;
 
-
     public HoraireViewHolder(@NonNull View itemView)
     {
         super(itemView);
@@ -25,4 +24,5 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder
         depart = itemView.findViewById(R.id.depart);
         ligne = itemView.findViewById(R.id.ligne);
     }
+
 }
