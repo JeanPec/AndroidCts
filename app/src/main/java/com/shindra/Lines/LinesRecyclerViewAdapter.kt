@@ -19,22 +19,22 @@ class LinesRecyclerViewAdapter(var lines: ArrayList<Line>, val callback: Schedul
     override fun onBindViewHolder(holder: LinesViewHolder, position: Int) {
         val currentItem = lines[position]
         when (currentItem.name) {
-            "Parc des Sports - Illkirch Graffenstaden" -> {
+            "A" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_a) //currentItem.getImageResource());
             }
-            "Lingolsheim Tiergaertel - Hoenheim Gare" -> {
+            "B" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_b) //currentItem.getImageResource());
             }
-            "Gare Centrale - Neuhof Rodolphe Reuss" -> {
+            "C" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_c) //currentItem.getImageResource());
             }
-            "Poteries - Port du Rhin / Kehl Rathaus" -> {
+            "D" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_d) //currentItem.getImageResource());
             }
-            "Robertsau l'Escale - Campus d'Illkirch" -> {
+            "E" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_e) //currentItem.getImageResource());
             }
-            "Comtes - Place d'Islande" -> {
+            "F" -> {
                 holder.mImageView.setImageResource(R.drawable.tram_f) //currentItem.getImageResource());
             }
             else -> {

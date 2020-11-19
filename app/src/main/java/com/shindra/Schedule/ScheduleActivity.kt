@@ -29,24 +29,9 @@ class ScheduleActivity : AppCompatActivity(), MapClick {
         super.onCreate(savedInstanceState)
 
         val intent = intent
-        val lineName = intent.getStringExtra("LINE")
-        val lineID: String
-        println("OUT $lineName")
-        lineID = if ("Parc des Sports - Illkirch Graffenstaden" == lineName) {
-            "A"
-        } else if ("Lingolsheim Tiergaertel - Hoenheim Gare" == lineName) {
-            "B"
-        } else if ("Gare Centrale - Neuhof Rodolphe Reuss" == lineName) {
-            "C"
-        } else if ("Poteries - Port du Rhin / Kehl Rathaus" == lineName) {
-            "D"
-        } else if ("Robertsau l'Escale - Campus d'Illkirch" == lineName) {
-            "E"
-        } else if ("Comtes - Place d'Islande" == lineName) {
-            "F"
-        } else {
-            ""
-        }
+        val lineID = intent.getStringExtra("LINE")!!
+        println("OUT $lineID")
+
         setContentView(R.layout.fragment_schedule)
         title = "Ligne $lineID"
 
