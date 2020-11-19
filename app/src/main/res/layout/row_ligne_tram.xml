@@ -12,7 +12,9 @@
         android:id="@+id/carteTram"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="8sp">
+        android:layout_marginVertical="8dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,7 +42,7 @@
                 tools:layout_editor_absoluteX="-1dp" />
 
             <Button
-                android:id="@+id/horaire"
+                android:id="@+id/horaireButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

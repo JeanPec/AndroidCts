@@ -48,9 +48,19 @@ public class StartActivity extends AppCompatActivity {
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_f), imgTram));
 
 
-        recyclerView = findViewById(R.id.appCts_recyclerview);
-        recyclerView.setAdapter(new TramCardAdapter(tramCardList));
 
+
+        setTitle("Horaire");
+
+        List<HoraireCard> horaireCardList = new ArrayList<HoraireCard>();
+
+        horaireCardList.add(new HoraireCard("Arret 1", "19h00", "A"));
+        horaireCardList.add(new HoraireCard("Arret 2", "19h15", "B"));
+
+
+        recyclerView = findViewById(R.id.appCts_recyclerview);
+        //recyclerView.setAdapter(new TramCardAdapter(tramCardList));
+        recyclerView.setAdapter(new HoraireAdapter(horaireCardList));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

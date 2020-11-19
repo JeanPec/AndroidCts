@@ -28,12 +28,14 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
         //TextView nomLigne;
         ImageView imgNomLigne, imgTram;
 
+
         @SuppressLint("WrongViewCast")
         public TramViewHolder(@NonNull View itemView) {
             super(itemView);
            // nomLigne = itemView.findViewById(R.id.nomLigne);
             imgTram = itemView.findViewById(R.id.imgTram);
             imgNomLigne = itemView.findViewById(R.id.imgLigne);
+
         }
 
 
