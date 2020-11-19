@@ -49,6 +49,8 @@ class FragmentLine : Fragment(), ScheduleClick {
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
+                lines.clear()
+
                 for (line in data) {
                     if (line.routeType === RouteType.TRAM) {
                         lines.add(line)

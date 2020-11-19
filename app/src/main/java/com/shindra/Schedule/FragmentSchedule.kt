@@ -62,6 +62,7 @@ class FragmentSchedule : Fragment() {
             }
 
             override fun onSuccess(data: Line) {
+                stops.clear()
 
                 for (stop in data.stops!!) {
                     stops.add(stop)
