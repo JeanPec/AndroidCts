@@ -48,11 +48,7 @@ class LineActivity : AppCompatActivity(), LineViewHolder.OnLineClickListener {
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
                 //RouteType check
-                for (line in data) {
-                    if (line.routeType == RouteType.TRAM) {
-                        lineList.add(line)
-                    }
-                }
+                lineList = (data.filter { it.routeType == RouteType.TRAM } as ArrayList<Line>)
 
                 //adapter data change
                 (lineRecyclerList.adapter as LineAdapter).lines = lineList

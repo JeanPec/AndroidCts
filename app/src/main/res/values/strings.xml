@@ -23,11 +23,19 @@
     <string name="loading_text_error">Erreur de chargement</string>
 
     <!-- Network call traduction -->
-    <string name="ligne_a">"Parc des Sports - Illkirch Graffenstaden"</string>
-    <string name="ligne_b">"Lingolsheim Tiergaertel - Hoenheim Gare"</string>
-    <string name="ligne_c">"Gare Centrale - Neuhof Rodolphe Reuss"</string>
-    <string name="ligne_d">"Poteries - Port du Rhin / Kehl Rathaus"</string>
-    <string name="ligne_e">"Robertsau l'Escale - Campus d'Illkirch"</string>
-    <string name="ligne_f">"Comtes - Place d'Islande"</string>
+    <string name="line_a">A</string>
+    <string name="line_b">B</string>
+    <string name="line_c">C</string>
+    <string name="line_d">D</string>
+    <string name="line_e">E</string>
+    <string name="line_f">F</string>
+    <!-- Line name display-->
+    <string name="line_a_display">Ligne A</string>
+    <string name="line_b_display">Ligne B</string>
+    <string name="line_c_display">Ligne C</string>
+    <string name="line_d_display">Ligne D</string>
+    <string name="line_e_display">Ligne E</string>
+    <string name="line_f_display">Ligne F</string>
+    <string name="line_error_display">Ligne Erreur</string>
 
 </resources>

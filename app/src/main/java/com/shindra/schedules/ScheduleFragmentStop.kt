@@ -52,7 +52,7 @@ class ScheduleFragmentStop() : Fragment(){
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
         //perform network call
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, getTramLetter(lineName),0).observe(object : ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName,0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 //display LoadingDialog
@@ -80,17 +80,5 @@ class ScheduleFragmentStop() : Fragment(){
         })
 
         return view
-    }
-
-    private fun getTramLetter(line: String?) : String {
-        return when (line){
-            "Parc des Sports - Illkirch Graffenstaden" -> "A"
-            "Lingolsheim Tiergaertel - Hoenheim Gare" -> "B"
-            "Gare Centrale - Neuhof Rodolphe Reuss" -> "C"
-            "Poteries - Port du Rhin / Kehl Rathaus" -> "D"
-            "Robertsau l'Escale - Campus d'Illkirch" -> "E"
-            "Comtes - Place d'Islande" -> "F"
-            else -> "X"
-        }
     }
 }

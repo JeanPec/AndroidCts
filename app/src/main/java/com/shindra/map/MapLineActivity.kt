@@ -35,7 +35,7 @@ class MapLineActivity: AppCompatActivity() {
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
         //perform network call
-        model.lineWithStop(RouteType.TRAM,getTramLetter(lineName)).observe(object : ObservableListener<Line> {
+        model.lineWithStop(RouteType.TRAM,lineName).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 //display LoadingDialog
@@ -64,25 +64,13 @@ class MapLineActivity: AppCompatActivity() {
 
     private fun getLineName(line: String) : String {
         return when (line){
-            "Parc des Sports - Illkirch Graffenstaden" -> "Ligne A"
-            "Lingolsheim Tiergaertel - Hoenheim Gare" -> "Ligne B"
-            "Gare Centrale - Neuhof Rodolphe Reuss" -> "Ligne C"
-            "Poteries - Port du Rhin / Kehl Rathaus" -> "Ligne D"
-            "Robertsau l'Escale - Campus d'Illkirch" -> "Ligne E"
-            "Comtes - Place d'Islande" -> "Ligne F"
-            else -> "Ligne Erreur"
-        }
-    }
-
-    private fun getTramLetter(line: String?) : String {
-        return when (line){
-            "Parc des Sports - Illkirch Graffenstaden" -> "A"
-            "Lingolsheim Tiergaertel - Hoenheim Gare" -> "B"
-            "Gare Centrale - Neuhof Rodolphe Reuss" -> "C"
-            "Poteries - Port du Rhin / Kehl Rathaus" -> "D"
-            "Robertsau l'Escale - Campus d'Illkirch" -> "E"
-            "Comtes - Place d'Islande" -> "F"
-            else -> "X"
+            getString(R.string.line_a) -> getString(R.string.line_a_display)
+            getString(R.string.line_b) -> getString(R.string.line_b_display)
+            getString(R.string.line_c) -> getString(R.string.line_c_display)
+            getString(R.string.line_d) -> getString(R.string.line_d_display)
+            getString(R.string.line_e) -> getString(R.string.line_e_display)
+            getString(R.string.line_f) -> getString(R.string.line_f_display)
+            else -> getString(R.string.line_error_display)
         }
     }
 }

@@ -19,12 +19,12 @@ class MapLineFragment : MapFragment() {
 
     private fun getLineColor(line: String) : Int {
         return when (line){
-            "A" -> R.color.LigneA
-            "B" -> R.color.LigneB
-            "C" -> R.color.LigneC
-            "D" -> R.color.LigneD
-            "E" -> R.color.LigneE
-            "F" -> R.color.LigneF
+            context?.getString(R.string.line_a) -> R.color.LigneA
+            context?.getString(R.string.line_b) -> R.color.LigneB
+            context?.getString(R.string.line_c) -> R.color.LigneC
+            context?.getString(R.string.line_d) -> R.color.LigneD
+            context?.getString(R.string.line_e) -> R.color.LigneE
+            context?.getString(R.string.line_f) -> R.color.LigneF
             else -> R.color.Body2
         }
     }
