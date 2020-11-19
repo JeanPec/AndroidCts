@@ -2,6 +2,7 @@ package com.shindra.Lines
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.R
 import com.shindra.ScheduleClick

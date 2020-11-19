@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
 
-        <activity android:name=".Lines.StartActivity">
+        <activity android:name=".Lines.LinesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
