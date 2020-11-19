@@ -62,7 +62,7 @@
                 android:background="#00000000"
                 android:text="HORAIRE"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/Primary"
+                android:textColor="@color/primary"
                 app:iconTint="@color/Background" />
 
         </RelativeLayout>

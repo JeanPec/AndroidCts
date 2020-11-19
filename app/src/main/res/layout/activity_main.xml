@@ -7,19 +7,6 @@
     android:background="@color/Background"
     tools:context=".StartActivity">
 
-    <TextView
-        android:id="@+id/Trams"
-        android:layout_width="0dp"
-        android:layout_height="27sp"
-        android:background="@color/Primary"
-        android:fontFamily="@font/roboto_medium"
-        android:text=" Nos trams"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/fragment2"
@@ -29,13 +16,5 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="97dp"
         tools:ignore="MissingConstraints" />
-
-    <!--    <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

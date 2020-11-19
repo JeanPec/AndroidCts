@@ -1,6 +1,8 @@
 package com.shindra;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,19 +17,25 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_tram);
-        ArrayList<Line> Tram = new ArrayList<>();
+
+        setTitle("Nos Trams");
+
+        ArrayList<Line> TramList = new ArrayList<Line>();
+        TramList.add(new Line("A", RouteType.TRAM, null));
+        TramList.add(new Line("B", RouteType.TRAM, null));
+        TramList.add(new Line("C", RouteType.TRAM, null));
+
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.CardViewList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerViewAdapter(Tram);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(TramList);
         recyclerView.setAdapter(adapter);
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -43,6 +51,13 @@ public class StartActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
                 // data to populate the RecyclerView with
+                for (Line l : data) {
+                    if (l.getRouteType() == RouteType.TRAM)
+                    {
+                        TramList.add(l);
+                    }
+                }
+                recyclerView.setAdapter(new RecyclerViewAdapter(TramList));
             }
 
             @Override
@@ -52,4 +67,3 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 }
-
