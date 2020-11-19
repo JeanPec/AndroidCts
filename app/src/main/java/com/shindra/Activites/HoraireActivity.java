@@ -2,7 +2,10 @@ package com.shindra.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.shindra.Fragments.horaire_fragment;
@@ -13,9 +16,11 @@ public class HoraireActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_horaire);
-
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.fragment_horaire, horaire_fragment.newInstance("coucou","coucou2","coucou3","coucou4")).commit();
+        // faire le point entre les 2 activités
+        Intent intentA = getIntent();
+         String nomline = intentA.getStringExtra("STRING10");
+        ft.add(R.id.fragment_horaire, horaire_fragment.newInstance(nomline)).commit();
+
     }
 }

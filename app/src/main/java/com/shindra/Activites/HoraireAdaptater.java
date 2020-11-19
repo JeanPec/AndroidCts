@@ -1,16 +1,19 @@
 package com.shindra.Activites;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.shindra.R;
+import java.util.ArrayList;
 
 public class HoraireAdaptater extends RecyclerView.Adapter<HoraireViewHolder> {
 
+    private ArrayList<TrameStop> TramStop;
+
+    public HoraireAdaptater(ArrayList<TrameStop> StopsInfo){
+        this.TramStop = StopsInfo ;
+    }
 
     @NonNull
     @Override
@@ -22,12 +25,11 @@ public class HoraireAdaptater extends RecyclerView.Adapter<HoraireViewHolder> {
     }
 
     @Override
-    public void onBinViewHolder(@NonNull HoraireViewHolder, int position){
-        holder.onBind()
+    public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position) {
+        holder.onBind(TramStop.get(position));
     }
+
 
     @Override
-    public int getItemCount() {
-
-    }
+    public int getItemCount() {return TramStop.size();}
 }

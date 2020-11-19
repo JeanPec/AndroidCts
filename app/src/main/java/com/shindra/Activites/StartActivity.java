@@ -28,8 +28,6 @@ public class StartActivity extends AppCompatActivity {
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
-
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
@@ -70,6 +68,7 @@ public class StartActivity extends AppCompatActivity {
                         //on creer une nouvelle intent on definit la class de depart ici this et la class d'arrivé ici SecondActivite
                         Intent myIntent = new Intent(getBaseContext(), HoraireActivity.class);
                         startActivityForResult(myIntent, 0);
+                        myIntent.putExtra("STRING10", trames.getNomImage());
                     }
                 }));
             }
