@@ -23,10 +23,10 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
         this.button = itemView.findViewById(R.id.Tram_view_button);
     }
 
-    public void onBind(Line image)
+    public void onBind_logo(Line image)
     {
-        String txt = image.getName();
-        switch (txt)
+        String line_name = image.getName();
+        switch (line_name)
         {
             case "Parc des Sports - Illkirch Graffenstaden":
                 tram_logo.setImageResource(R.drawable.tram_a);

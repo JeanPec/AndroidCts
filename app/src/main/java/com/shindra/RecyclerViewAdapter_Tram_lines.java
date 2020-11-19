@@ -36,7 +36,8 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
     public void onBindViewHolder(@NonNull Trams_View_Holder holder, int position)
     {
         Line requestTramLine = tram_lines.get(position);
-        holder.onBind(requestTramLine);
+        holder.onBind_logo(requestTramLine);
+
     }
 
     @Override

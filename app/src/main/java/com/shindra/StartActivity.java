@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class StartActivity extends AppCompatActivity
 {
 
-    private ArrayList<Line> tram_lines;
+    private ArrayList<Line> tram_lines_list;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -31,9 +31,9 @@ public class StartActivity extends AppCompatActivity
 
         setTitle("Nos Trams");
 
-        RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);
-        ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines);
+        RecyclerView Tram_Line_List = findViewById(R.id.RecyclerView_Tram_Line);
+        Tram_Line_List.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines_list);
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -45,16 +45,16 @@ public class StartActivity extends AppCompatActivity
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                tram_lines = new ArrayList<Line>();
-                for (Line ligne : data)
+                tram_lines_list = new ArrayList<Line>();
+                for (Line Tram_line : data)
                 {
-                    if(ligne.getRouteType() == RouteType.TRAM)
+                    if(Tram_line.getRouteType() == RouteType.TRAM)
                     {
-                        tram_lines.add(ligne);
+                        tram_lines_list.add(Tram_line);
                     }
 
                 }
-                ListeLigneTram.setAdapter(new RecyclerViewAdapter_Tram_lines(tram_lines));
+                Tram_Line_List.setAdapter(new RecyclerViewAdapter_Tram_lines(tram_lines_list));
             }
 
             @Override
