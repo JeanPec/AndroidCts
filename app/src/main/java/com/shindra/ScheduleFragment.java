@@ -22,6 +22,7 @@ public class ScheduleFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    String lineName;
     RecyclerView recyclerScheduleView;
     ArrayList<myStop> myStops;
 
@@ -64,12 +65,12 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater , ViewGroup container ,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+         lineName = this.getArguments().getString("lineName");
         View view = inflater.inflate(R.layout.schedule_frag, container , false);
         recyclerScheduleView = view.findViewById(R.id.recyclerViewScheduleFrag);
         recyclerScheduleView.setLayoutManager(new LinearLayoutManager(getContext()));
         myStops = new ArrayList<>();
-        myStops.add(new myStop("A","cdjfoj","18H"));
+        myStops.add(new myStop(lineName,"cdjfoj","18H"));
         myStops.add(new myStop("A","df","20H"));
 
         recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter((myStops)));

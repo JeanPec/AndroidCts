@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
     <string name="menu_name">Nos Trams</string>
+    <string name="schedule_name">Nos Horaires</string>
     <string name="buttonForTime">HORAIRE</string>
     <string name="txtDescr">Ceci est un txt</string>
     <string name="buttonSeeOnMap">VOIR SUR LA CARTE</string>
@@ -8,7 +9,5 @@
     <string name="schedule_station_line">Ligne A</string>
     <string name="schedule_time_txt">Hours</string>
     <string name="schedule_nextstation_txt">TextView</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

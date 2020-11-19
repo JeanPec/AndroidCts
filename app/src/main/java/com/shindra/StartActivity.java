@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Nos Trams");
+        setTitle(R.string.menu_name);
 
         //RecyclerView
         recyclerViewLineTram = findViewById(R.id.recyclerViewTram);

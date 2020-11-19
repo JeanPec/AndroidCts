@@ -1,6 +1,7 @@
 package com.shindra
 
 import androidx.lifecycle.ViewModel
+import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.convertToBehaviorSubject
 import com.shindra.arrakis.observable.subscribeOnAndObserveOn
 import com.shindra.ctslibrary.apibo.EstimatedTimeTable
@@ -27,7 +28,11 @@ class MyViewModel : ViewModel() {
             .convertToBehaviorSubject()
     }
 
-    fun lineWithEstimatedTimeTable(routeType: RouteType, lineRef: String, direction: Int): BehaviorSubject<Line> {
+    fun lineWithEstimatedTimeTable(
+        routeType: RouteType,
+        lineRef: String,
+        direction: Int
+    ): BehaviorSubject<Line> {
         return ctsRepository.lineWithEstimatedTime(routeType, lineRef, direction).subscribeOnAndObserveOn()
             .convertToBehaviorSubject()
     }
