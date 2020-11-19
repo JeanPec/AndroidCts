@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Nos trams</string>
     <string name="message_onload">Veuillez patienter, chargement des données en cours </string>
+    <string name="lignedetram">Ligne de Tram</string>
+    <string name="photo_de_tram">Photo de tram</string>
+    <string name="texte_bouton_horaire">Horaire</string>
 </resources>

@@ -1,4 +1,4 @@
 package com.shindra
 
-data class RecyclerTram(val nom_tram: Int ) {
+data class RecyclerTram(val nom_tram: Int) {
 }

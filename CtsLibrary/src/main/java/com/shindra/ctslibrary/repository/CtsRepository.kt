@@ -3,7 +3,7 @@ package com.shindra.ctslibrary.repository
 import com.google.gson.reflect.TypeToken
 import com.shindra.arrakis.repository.Repository
 import com.shindra.ctslibrary.apibo.*
-import com.shindra.ctslibrary.bo.*
+import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.mapper.DiscoverLineMapper
 import com.shindra.ctslibrary.mapper.LineStopEstimatedTimeMapper
 import com.shindra.ctslibrary.mapper.LinesMapper
@@ -30,7 +30,7 @@ class CtsRepository : Repository() {
     }
 
    private  fun estimatedTimeTable(routeType: RouteType, lineRef: String, directionRef: Int): Observable<EstimatedTimeTable> {
-        return withPersistentCache(ESTIMATED_TIME_TABLE, CtsService.estimatedTimeTable(routeType, lineRef, directionRef), object : TypeToken<EstimatedTimeTable>() {}.type).toObservable()
+        return withPersistentCache("$ESTIMATED_TIME_TABLE$lineRef", CtsService.estimatedTimeTable(routeType, lineRef, directionRef), object : TypeToken<EstimatedTimeTable>() {}.type).toObservable()
     }
 
     fun lineWithStops(routeType: RouteType, routeName : String) : Observable<Line> {
