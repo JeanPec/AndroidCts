@@ -1,5 +1,6 @@
 package com.shindra
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -14,10 +15,10 @@ class ScheduleViewHolder(inflater: LayoutInflater, parent: ViewGroup)
     var textStopHour: TextView = itemView.findViewById(R.id.stopHour)
     var textInformation: TextView = itemView.findViewById(R.id.stopInformation)
 
-    fun onBind(stop: Stop) {
-        textStop.setText("stpo")
-        textLineTram.setText("stop")
-        textStopHour.setText("stop")
+    fun onBind(stop: Stop, lineTramName: String) {
+        textStop.setText(stop.name)
+        textLineTram.setText("Ligne " + lineTramName)
+        textStopHour.text = ApiLinesConvertor().getDateText(stop.estimatedArrivalTime)
         textInformation.setText("stop")
     }
 }

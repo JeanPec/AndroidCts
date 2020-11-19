@@ -42,15 +42,12 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
                         listOfLines.add(item)
                 }
 
-                Log.i("LIGNE", listOfLines.toString())
                 recyclerView.adapter = LineTramAdapter(listOfLines, context)
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
             }
-
-
         })
 
     }

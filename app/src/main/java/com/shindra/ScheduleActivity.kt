@@ -2,6 +2,7 @@ package com.shindra
 
 import Fragments.ScheduleFragment
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ class ScheduleActivity : AppCompatActivity(){
         setContentView(R.layout.schedule_activity)
 
         val lineTramName = intent.getStringExtra("lineTramName")
+        Log.i("FDSFDSFSD", lineTramName.toString())
 
         // https://stackoverflow.com/questions/12739909/send-data-from-activity-to-fragment-in-android
         val bundle = Bundle()

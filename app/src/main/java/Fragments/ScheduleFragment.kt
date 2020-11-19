@@ -37,11 +37,11 @@ class ScheduleFragment : Fragment() {
 
         recyclerView = fragmentView.findViewById(R.id.ScheduleRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = ScheduleAdapter(listOfStop)
+        recyclerView.adapter = ScheduleAdapter(listOfStop, lineTramName!!)
         Log.i("COUNT", listOfStop.toString())
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, "A", 0).observe(object: ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineTramName!!, 0).observe(object: ObservableListener<Line> {
             override fun onLoading() {
                 //start loading here
             }
@@ -60,12 +60,5 @@ class ScheduleFragment : Fragment() {
         })
 
         return fragmentView
-    }
-
-    fun addStop(lineTram: Line) {
-        Log.i("CREAdqdsqdqsTE", "stop.name.toSdsqdsqdsqtring()")
-
-        adapter.lineStops = lineTram.stops!!
-        adapter.notifyDataSetChanged()
     }
 }

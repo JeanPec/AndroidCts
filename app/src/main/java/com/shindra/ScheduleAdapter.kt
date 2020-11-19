@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 
-class ScheduleAdapter(var lineStops: List<Stop>)
+class ScheduleAdapter(var lineStops: List<Stop>, var lineTramName: String)
     : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
@@ -22,7 +22,7 @@ class ScheduleAdapter(var lineStops: List<Stop>)
 
         val stop = lineStops[position]
 
-        holder.onBind(stop)
+        holder.onBind(stop, lineTramName)
     }
 
     override fun getItemCount(): Int {
