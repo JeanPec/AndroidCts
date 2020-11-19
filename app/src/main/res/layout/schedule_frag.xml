@@ -7,21 +7,26 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewScheduleFrag"
-        android:background="@color/Background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seeOnMapButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/Background" />
 
     <Button
         android:id="@+id/seeOnMapButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/white"
-        android:text="@string/buttonSeeOnMap" />
+        android:text="@string/buttonSeeOnMap"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

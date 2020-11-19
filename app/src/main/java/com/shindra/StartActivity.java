@@ -62,7 +62,6 @@ public class StartActivity extends AppCompatActivity {
                     Intent scheduleActivity = new Intent(StartActivity.this, ScheduleActivity.class);
                     scheduleActivity.putExtra("lineNameSelected", line.getName());
                     startActivity(scheduleActivity);
-
                 }));
             }
             @Override

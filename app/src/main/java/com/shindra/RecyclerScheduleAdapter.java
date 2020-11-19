@@ -3,9 +3,9 @@ package com.shindra;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Stop;
@@ -18,8 +18,6 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
 
     private ArrayList<Stop> tramStops;
     private String tramLineSelected;
-    private TextView stopName;
-    private TextView stopScheduleTime;
 
     public RecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1) {
 
@@ -44,7 +42,8 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
     @Override
     public void onBindViewHolder(@NonNull viewHolderSchedule holder , int position) {
         Stop currentStop = tramStops.get(position);
-        holder.lineTram.setText(tramLineSelected);
+        holder.lineTram.setText("TRAM "+ tramLineSelected);
+        holder.lineTram.setTextColor(ContextCompat.getColor(holder.lineTram.getContext(),getColor(tramLineSelected)));
         holder.lineStation.setText(currentStop.getName());
         holder.stopScheduleTime.setText(getDate(currentStop.getEstimatedDepartureTime()));
     }
@@ -55,6 +54,35 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
         return s.format(date);
     }
 
+
+    public int getColor(String tramLineSelected)
+    {
+        switch  (tramLineSelected)
+        {
+        case "A":
+        return (R.color.Ligne_A);
+
+        case "B":
+        return(R.color.Ligne_B);
+
+        case "C":
+        return (R.color.Ligne_C);
+
+        case "D":
+        return(R.color.Ligne_D);
+
+        case "E":
+        return(R.color.Ligne_E);
+
+        case "F":
+        return(R.color.Ligne_F);
+
+        default:
+        return(R.color.black);
+
+         }
+
+    }
 
 
 
