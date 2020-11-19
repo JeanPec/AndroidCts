@@ -13,12 +13,12 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewTram"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/nouveau_tram_strasbourg"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:layout_margin="0dp">
+            android:layout_margin="8dp">
 
         </androidx.appcompat.widget.AppCompatImageView>
 
@@ -35,10 +35,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="@string/horaire"
-            android:textColor="@color/cPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
-            android:layout_margin="8dp"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/horaire"
+            android:textColor="@color/cPrimary"/>
 
         <TextView
             android:visibility="invisible"

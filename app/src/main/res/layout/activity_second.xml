@@ -7,29 +7,20 @@
     tools:context=".SecondActivity">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="voir sur la carte"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="8dp"/>
 
     <FrameLayout
+        android:id="@+id/frame_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/framlayout">
-
-        <TextView
-            android:id="@+id/LineLettre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TEST FOR USE"
-            android:layout_gravity="center"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
     </FrameLayout>
+
 
 </RelativeLayout>

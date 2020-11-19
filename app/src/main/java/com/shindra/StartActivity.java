@@ -35,6 +35,7 @@ public class StartActivity extends AppCompatActivity {
 
     RecyclerView firstRecyclerView;;
     ArrayList<Line> dataCTS;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,8 @@ public class StartActivity extends AppCompatActivity {
         firstRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
+
+            ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
@@ -74,7 +76,7 @@ public class StartActivity extends AppCompatActivity {
                     public void onHoraireClick(Line line) {
                         Intent intent = new Intent(StartActivity.this,SecondActivity.class);
                         //dynamicaly get data from the string array
-                        intent.putExtra("textLine", line.getName().toString());
+                        intent.putExtra("textLine", line.getName());
                         //intent.putExtra("imagesTramLine",imagesTramLine);
                         StartActivity.this.startActivity(intent); //open the TimeActivity with the intent
                     }
