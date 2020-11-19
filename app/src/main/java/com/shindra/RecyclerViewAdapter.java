@@ -9,9 +9,10 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.*;
 
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<TramViewHolder> {
 
-    public ArrayList<Line> listTrams;
+    ArrayList<Line> listTrams;
     TramViewHolder.onButtonClickListener callback;
 
     RecyclerViewAdapter(ArrayList<Line> listTrams, TramViewHolder.onButtonClickListener callback){
@@ -23,17 +24,45 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<TramViewHolder> {
     @Override
     public TramViewHolder onCreateViewHolder(@NonNull ViewGroup vgParent, int iViewType) {
         View vTrams = LayoutInflater.from(vgParent.getContext()).inflate(R.layout.tramlayout,vgParent,false);
-
         return new TramViewHolder(vTrams);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TramViewHolder holder, int iPosition) {
-        holder.onBind(listTrams.get(iPosition),callback);
+        Line lLine = listTrams.get(iPosition);
+        holder.ivTextTram.setImageResource(getTramIcon(lLine.getName()));
+        holder.onBind(lLine,callback);
+    }
+
+    private int getTramIcon(String strLineName) {
+        int iPosition;
+        switch (strLineName) {
+
+            case "A":
+                iPosition = R.drawable.tram_a;
+            case "B":
+                iPosition = R.drawable.tram_b;
+            case "C":
+                iPosition = R.drawable.tram_c;
+            case "D":
+                iPosition = R.drawable.tram_d;
+            case "E":
+                iPosition = R.drawable.tram_e;
+            case "F":
+                iPosition = R.drawable.tram_f;
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + strLineName);
+        }
+        return (iPosition);
     }
 
     @Override
     public int getItemCount() {
         return listTrams.size();
+    }
+
+    public void setListTrams(ArrayList<Line> listTrams) {
+        this.listTrams = listTrams;
     }
 }

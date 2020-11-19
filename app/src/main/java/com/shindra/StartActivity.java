@@ -2,6 +2,7 @@ package com.shindra;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,15 +18,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+
 public class StartActivity extends AppCompatActivity implements TramViewHolder.onButtonClickListener {
 
     RecyclerView rTramList;
-    ArrayList<Line> lTrams;
-    int iTrams[] = {R.drawable.tram_a,R.drawable.tram_b,R.drawable.tram_c,R.drawable.tram_d,R.drawable.tram_e,R.drawable.tram_f};
-
+    LoadingDialog loadDiag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        ArrayList<Line> lTrams = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.Nos_trams);
@@ -33,32 +34,44 @@ public class StartActivity extends AppCompatActivity implements TramViewHolder.o
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
         rTramList = findViewById(R.id.RecyclerView);
-
         rTramList.setLayoutManager(new LinearLayoutManager(this));
         rTramList.setAdapter(new RecyclerViewAdapter(lTrams, this));
+
+
+        loadDiag = new LoadingDialog(this);
+
+
 
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                loadDiag.show();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                loadDiag.dismiss();
                 for (Line lTram : data){
-                    if(lTram.getRouteType()== RouteType.TRAM){
+                    if(lTram.getRouteType() == RouteType.TRAM){
                         lTrams.add(lTram);
+                        Log.d("nom ligne:",lTram.getName());
                     }
                 }
+                ((RecyclerViewAdapter) rTramList.getAdapter()).setListTrams(lTrams);
+                rTramList.getAdapter().notifyDataSetChanged();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
+                loadDiag.dismiss();
             }
         });
+
+
     }
 
     public void onButtonClick(Line iLine) {
@@ -66,18 +79,4 @@ public class StartActivity extends AppCompatActivity implements TramViewHolder.o
         intent.putExtra("lineName", iLine.getName());
         startActivity(intent);
     }
-
-    private ArrayList<Integer> getListTrams(){
-        ArrayList<Integer> iTramsArray = new ArrayList<>();
-        iTramsArray.add(R.drawable.tram_a);
-        iTramsArray.add(R.drawable.tram_b);
-        iTramsArray.add(R.drawable.tram_c);
-        iTramsArray.add(R.drawable.tram_d);
-        iTramsArray.add(R.drawable.tram_e);
-        iTramsArray.add(R.drawable.tram_f);
-
-        return iTramsArray;
-    }
-
 }
-

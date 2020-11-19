@@ -11,22 +11,19 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class TramViewHolder extends RecyclerView.ViewHolder {
 
-    private ImageView ivTextTram;
-    private Button bHours;
+    ImageView ivTextTram;
+    ImageView ivIconTram;
+    Button bHours;
 
     public TramViewHolder(@NonNull View view){
         super(view);
         ivTextTram = view.findViewById(R.id.imageView3);
+        ivIconTram = view.findViewById(R.id.imageView4);
         bHours = view.findViewById(R.id.button);
     }
 
-    public void onBind(Line iLine, onButtonClickListener callback) {
-        bHours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-                callback.onButtonClick(iLine);
-            }
-        });
+    public void onBind(Line lLine, onButtonClickListener callback) {
+        bHours.setOnClickListener(v -> callback.onButtonClick(lLine));
     }
 
     interface onButtonClickListener {
