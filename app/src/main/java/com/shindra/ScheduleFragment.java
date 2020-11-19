@@ -84,6 +84,9 @@ public class ScheduleFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startAnimation();
+
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class); // recupere l'objet class d'un modele
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM , lineName , 0) , new ObservableListener<Line>() {
 
@@ -97,6 +100,7 @@ public class ScheduleFragment extends Fragment {
                     }
                     recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName));
                 }
+                loadingDialog.dismissDialog();
             }
             @Override
             public void onError(@NotNull Throwable throwable) {

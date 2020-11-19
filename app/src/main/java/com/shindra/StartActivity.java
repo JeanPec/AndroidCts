@@ -2,6 +2,7 @@ package com.shindra;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,10 +31,15 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle(R.string.menu_name);
 
+        LoadingDialog loadingDialog = new LoadingDialog(StartActivity.this);
+        loadingDialog.startAnimation();
+
+
+
+
         //RecyclerView
         recyclerViewLineTram = findViewById(R.id.recyclerViewTram);
         recyclerViewLineTram.setLayoutManager(new LinearLayoutManager(this));
-
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -63,6 +69,14 @@ public class StartActivity extends AppCompatActivity {
                     scheduleActivity.putExtra("lineNameSelected", line.getName());
                     startActivity(scheduleActivity);
                 }));
+
+                Handler handlerLoadingView = new Handler();
+                handlerLoadingView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingDialog.dismissDialog();
+                    }
+                }, 1000);
             }
             @Override
             public void onError(@NotNull Throwable throwable) {

@@ -9,5 +9,6 @@
     <string name="schedule_station_line">Ligne</string>
     <string name="schedule_time_txt">Hours</string>
     <string name="schedule_nextstation_txt">Prochain depart</string>
+    <string name="loading_text">Veuillez patienter, chargement des données en cours ...</string>
 
 </resources>
