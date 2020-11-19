@@ -12,9 +12,9 @@ class TramsViewHolder(GenericCardView: View) : RecyclerView.ViewHolder(GenericCa
     val ButtonHoraires: Button = GenericCardView.findViewById(R.id.BoutonHoraires);
 
 
-    fun PutTramInfoIntoCardView(tram : Trams) {
+    fun PutTramInfoIntoCardView(TramLineLetter : String) {
         //En fonction du nom de la ligne, on doit envoyer la bonne image (A CORRIGER POUR QUE CE SOIT DYNAMIQUE SI ON RAJOTE UNE STATION
-        when (tram.ligne) {
+        when (TramLineLetter) {
             "A" -> TramLineImage.setImageResource(R.drawable.ic_tram_a);
             "B" -> TramLineImage.setImageResource(R.drawable.ic_tram_b);
             "C" -> TramLineImage.setImageResource(R.drawable.ic_tram_c);

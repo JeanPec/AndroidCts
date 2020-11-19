@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
+        <activity android:name=".MapActivity"></activity>
         <activity
             android:name=".horaires_activity"
             android:label="@string/title_activity_horaires_activity">

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.ctslibrary.bo.Line
 
 class HorairesViewHolder (GenericCardView: View, _Context:Context) : RecyclerView.ViewHolder(GenericCardView){
 
@@ -15,14 +16,14 @@ val Line_TextView: TextView = GenericCardView.findViewById(R.id.textView_Line);
 val Time_TextView: TextView = GenericCardView.findViewById(R.id.textView_Time);
 val context = _Context;
 
-    fun PutTimeInfoIntoCardView(horaire : Horaires) {
+    fun PutTimeInfoIntoCardView(StopName : String, DepartureTime : String, LineName : String) {
 
-        Stop_TextView.setText(horaire.stop)
-        Time_TextView.setText(horaire.time)
-        Line_TextView.setText("Ligne " + horaire.line)
+        Stop_TextView.setText(StopName)
+        Time_TextView.setText(DepartureTime)
+        Line_TextView.setText("Ligne " + LineName)
 
         //En fonction du nom de la ligne, on doit afficher le texte de la bonne couleur
-        when (horaire.line) {
+        when (LineName) {
             "A" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneA));
             "B" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneB));
             "C" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneC));

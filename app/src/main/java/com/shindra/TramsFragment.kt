@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TramsFragment : Fragment() {
 
+    public var TramLinesNames : MutableList<String> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,7 +31,7 @@ class TramsFragment : Fragment() {
         val _RecyclerView = view.findViewById(R.id.TramsRecyclerView) as RecyclerView;
 
         _RecyclerView.layoutManager = LinearLayoutManager(activity)
-        _RecyclerView.adapter = context?.let { TramsAdapters(it) }
+        _RecyclerView.adapter = context?.let { TramsAdapters(it,TramLinesNames) }
     }
 
 }
