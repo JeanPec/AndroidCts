@@ -32,6 +32,8 @@ public class StartActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = SetUpRecyclerView();
 
+        LoadingDialog loadingDialog = new LoadingDialog(this);
+
         //Call api for available lines
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -39,12 +41,14 @@ public class StartActivity extends AppCompatActivity {
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 Log.i(TAG, "Waiting for answer...");
+                loadingDialog.showLoadingScreen();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> receivedData) {
                 //call once the network call has responded with a success
                 Log.i(TAG, "Received data from network");
+                loadingDialog.hideLoadingScreen();
 
                 //Filter to get only trams
                 for(Line l : receivedData) {
