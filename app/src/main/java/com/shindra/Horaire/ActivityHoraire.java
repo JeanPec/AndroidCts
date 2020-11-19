@@ -23,7 +23,7 @@ public class ActivityHoraire extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horaire_tram);
 
-        //getSupportActionBar().setTitle(NomPage); //Ecriture du titre de la vue
+        getSupportActionBar().setTitle(NomPage); //Ecriture du titre de la vue
 
         //Recuperation de la ligne de tram de l'activite precedente
         Intent intentNosTramLigne = getIntent();
@@ -39,14 +39,3 @@ public class ActivityHoraire extends AppCompatActivity
     }
 }
 
-
-//
-//    public void onMapClick(String Ligne)
-//    {
-//        Log.i(NomPage,"Appuie BTN Map Ligne " + Ligne);
-//        //Creation de la nouvelle Intent
-//        Intent intent = new Intent(ActivityHoraire.this, ActivityCarte.class);
-//        intent.putExtra("LettreLigneTram",Ligne);
-//        startActivity(intent);
-//    }
-//}

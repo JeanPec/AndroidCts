@@ -1,5 +1,6 @@
 package com.shindra.Horaire;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.Carte.ActivityCarte;
 import com.shindra.MyViewModel;
 import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -138,12 +140,12 @@ public class FragmentHoraireTram extends Fragment {
         });
     }
 
-//    public void onMapClick(String Ligne)
-//    {
-//        Log.i(NomPage,"Appuie BTN Map Ligne " + Ligne);
-//        //Creation de la nouvelle Intent
-//        //Intent intent = new Intent(ActivityHoraire.F.this, ActivityCarte.class);
-//        intent.putExtra("LettreLigneTram",Ligne);
-//        startActivity(intent);
-//    }
+    public void onMapClick(String Ligne)
+    {
+        Log.i(NomPage,"Appuie BTN Map Ligne " + Ligne);
+        //Creation de la nouvelle Intent
+        Intent intent = new Intent(getActivity(), ActivityCarte.class);
+        intent.putExtra("LettreLigneTram",Ligne);
+        startActivity(intent);
+    }
 }
