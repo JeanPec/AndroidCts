@@ -35,7 +35,7 @@ public class LigneActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new LigneAdapter(new ArrayList<Line>(), line -> {
             Intent intent = new Intent(LigneActivity.this, HoraireActivity.class);
-            intent.putExtra("lineName", line.getName());
+            intent.putExtra("lineRef", line.getName());
             startActivity(intent);
         }));
 
@@ -59,7 +59,7 @@ public class LigneActivity extends AppCompatActivity {
 
             }
             @Override
-            public void onError(@NotNull Throwable throwable) {}
+            public void onError(@NotNull Throwable throwable) {loadPage.HideLoadingScreen();}
         });
     }
 }

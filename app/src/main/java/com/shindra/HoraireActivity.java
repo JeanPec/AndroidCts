@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class HoraireActivity extends AppCompatActivity {
 
     public RecyclerView arrets;
-    public  String lineName;
+    public  String lineRef;
     public ActivityLoad loadPage;
     public HoraireFragment horaireFragment;
     public Button seeMap;
@@ -34,31 +34,30 @@ public class HoraireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horaire);
 
-        lineName = getIntent().getStringExtra("lineName");
+        lineRef = getIntent().getStringExtra("lineRef");
         horaireFragment = new HoraireFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragmentHoraire, horaireFragment).commit();
 
         arrets = findViewById(R.id.recyclerView2);
         arrets.setLayoutManager(new LinearLayoutManager(this));
-        arrets.setAdapter(new HoraireAdapter(new ArrayList<Stop>(), lineName));
+        arrets.setAdapter(new HoraireAdapter(new ArrayList<Stop>(), lineRef));
 
         loadPage = new ActivityLoad(this);
-        getSupportActionBar().setTitle("Ligne " + getInfos(lineName));
+        getSupportActionBar().setTitle("Ligne " + lineRef);
 
         seeMap = findViewById(R.id.carteButton);
         seeMap.setOnClickListener(v -> {
             Intent intent = new Intent(HoraireActivity.this, MapActivity.class);
-            intent.putExtra("lineName", lineName);
+            intent.putExtra("lineRef", lineRef);
             startActivity(intent);
         });
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, getInfos(lineName), 0), new ObservableListener<Line>() {
-
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, lineRef, 0), new ObservableListener<Line>() {
             @Override
-            public void onError(@NotNull Throwable throwable) {}
+            public void onError(@NotNull Throwable throwable) {loadPage.HideLoadingScreen();}
 
             @Override
             public void onLoading()
@@ -79,26 +78,5 @@ public class HoraireActivity extends AppCompatActivity {
                 loadPage.HideLoadingScreen();
             }
         });
-    }
-
-    private String getInfos(String lineName)
-    {
-        switch (lineName)
-        {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return "A";
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return "B";
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return "C";
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return "D";
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return "E";
-            case "Comtes - Place d'Islande":
-                return "F";
-            default:
-                return "?";
-        }
     }
 }

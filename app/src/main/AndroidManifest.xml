@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".HoraireActivity"></activity>
         <activity android:name=".LigneActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HoraireActivity"></activity>
+        <activity android:name=".MapActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

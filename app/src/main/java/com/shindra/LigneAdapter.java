@@ -13,7 +13,7 @@ import com.shindra.ctslibrary.bo.Line;
 import java.util.ArrayList;
 
 public class LigneAdapter extends RecyclerView.Adapter<LigneViewHolder> {
-    ArrayList<Line> line;
+    public ArrayList<Line> line;
     RecyclerItemClick callback;
 
     LigneAdapter(ArrayList<Line> line, RecyclerItemClick callback){
@@ -49,17 +49,17 @@ public class LigneAdapter extends RecyclerView.Adapter<LigneViewHolder> {
     {
         switch (line.getName())
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 return R.drawable.ic_tram_a;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 return R.drawable.ic_tram_b;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 return R.drawable.ic_tram_c;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 return R.drawable.ic_tram_d;
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 return R.drawable.ic_tram_e;
-            case "Comtes - Place d'Islande":
+            case "F":
                 return R.drawable.ic_tram_f;
             default:
                 return R.drawable.ic_tram;

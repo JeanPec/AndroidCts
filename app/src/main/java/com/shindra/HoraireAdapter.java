@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
     ArrayList<Stop> arrets;
-    String lineName;
+    String lineRef;
 
-    public HoraireAdapter(ArrayList<Stop> arrets, String lineName){
+    public HoraireAdapter(ArrayList<Stop> arrets, String lineRef){
         this.arrets = arrets;
-        this.lineName = lineName;
+        this.lineRef = lineRef;
     }
 
     @NonNull
@@ -34,8 +34,8 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position) {
         Stop newArret = arrets.get(position);
         holder.Headline1.setText(newArret.getName());
-        holder.Ligne.setText(getInfos(lineName));
-        holder.Ligne.setTextColor(ContextCompat.getColor(holder.Ligne.getContext(), getColor(lineName)));
+        holder.Ligne.setText(getInfos(lineRef));
+        holder.Ligne.setTextColor(ContextCompat.getColor(holder.Ligne.getContext(), getColor(lineRef)));
         SimpleDateFormat fmt = new SimpleDateFormat("HH'h'mm");
         holder.Time.setText(fmt.format(newArret.getEstimatedDepartureTime()));
 
@@ -52,42 +52,42 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
     }
 
 
-    private String getInfos(String lineName)
+    private String getInfos(String lineRef)
     {
-        switch (lineName)
+        switch (lineRef)
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 return "Ligne A";
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 return "Ligne B";
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 return "Ligne C";
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 return "Ligne D";
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 return "Ligne E";
-            case "Comtes - Place d'Islande":
+            case "F":
                 return "Ligne F";
             default:
                 return " ";
         }
     }
 
-    private int getColor(String lineName)
+    private int getColor(String lineRef)
     {
-        switch (lineName)
+        switch (lineRef)
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 return R.color.ligne_a;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 return R.color.ligne_b;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 return R.color.ligne_c;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 return R.color.ligne_d;
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 return R.color.ligne_e;
-            case "Comtes - Place d'Islande":
+            case "F":
                 return R.color.ligne_f;
             default:
                 return R.color.black;
