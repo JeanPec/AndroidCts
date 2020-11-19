@@ -11,43 +11,82 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.bo.Line;
+
 import java.util.ArrayList;
 
 public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTramsViewHolder> {
 
-    ArrayList <NosTramsItem> nosTramsList;
+    private ArrayList <Line> nosTramsList;
+
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView ligneTram;
-        public ImageView imageTram;
+        public final ImageView ligneTram;
+        //public final ImageView imageTram;
 
         public NosTramsViewHolder(@NonNull View itemView) {
             super(itemView);
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
-            imageTram = itemView.findViewById(R.id.imageTram);
+            //imageTram = itemView.findViewById(R.id.imageTram);
         }
+        public void TramsOnBind(Line image)
+        {
+            String line_name = image.getName();
+            switch (line_name)
+            {
+                case "A":
+                    ligneTram.setImageResource(R.drawable.tram_a);
+                    break;
+
+                case "B":
+                    ligneTram.setImageResource(R.drawable.tram_b);
+                    break;
+
+                case "C":
+                    ligneTram.setImageResource(R.drawable.tram_c);
+                    break;
+
+                case "D":
+                    ligneTram.setImageResource(R.drawable.tram_d);
+                    break;
+
+                case "E":
+                    ligneTram.setImageResource(R.drawable.tram_e);
+                    break;
+
+                case "F":
+                    ligneTram.setImageResource(R.drawable.tram_f);
+                    break;
+
+                default:
+                    ligneTram.setImageResource(R.drawable.tram);
+                    break;
+            }
+        }
+
+
     }
 
-    public NosTramsAdapter (ArrayList<NosTramsItem> nosTramsList) {
+    public NosTramsAdapter (ArrayList<Line> nosTramsList) {
         this.nosTramsList = nosTramsList;
     }
 
     @NonNull
     @Override
     public NosTramsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.nos_trams_item,parent,false);
-        NosTramsViewHolder ntvh = new NosTramsViewHolder (v);
+        View tramV = LayoutInflater.from(parent.getContext()).inflate(R.layout.nos_trams_item,parent,false);
+        NosTramsViewHolder ntvh = new NosTramsViewHolder (tramV);
         return ntvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull NosTramsViewHolder holder, int position) {
-        NosTramsItem currentTram = nosTramsList.get(position);
+        Line currentTram = nosTramsList.get(position);
+        holder.TramsOnBind(currentTram);
 
-
-        holder.ligneTram.setImageResource (currentTram.imageLigne);
-        holder.imageTram.setImageResource(currentTram.imageTram);
+        //holder.ligneTram.setImageResource (currentTram.imageLigne);
+        //holder.imageTram.setImageResource(currentTram.imageTram);
 
     }
 
@@ -55,8 +94,5 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     public int getItemCount() {
         return nosTramsList.size();
     }
-
-
-
 
 }

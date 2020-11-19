@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
+    private ArrayList<Line> nosTramsList; //Initialization of an array containing "NosTramsItem" object
     //Ajout 18/11/2020
     private String NomVue = "Nos Trams";    // Insert the name of the view
 
@@ -36,19 +38,21 @@ public class StartActivity extends AppCompatActivity {
         //Ajout 18/11/2020
         setTitle(NomVue); //Change the name of the view
 
-        ArrayList<NosTramsItem> nosTramsList = new ArrayList<>(); //Initialization of an array containing "NosTramsItem" object
-        //Manually adding object in the array
-        nosTramsList.add(new NosTramsItem(R.drawable.tram_a, R.drawable.tram));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram_b,  R.drawable.tram));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram_c,  R.drawable.tram));
-        nosTramsList.add(new NosTramsItem(R.drawable.tram_d,  R.drawable.tram));
 
-        recyclerView = findViewById(R.id.recyclerView);
+        //Manually adding object in the array
+        //nosTramsList.add(new NosTramsItem(R.drawable.tram_a, R.drawable.tram));
+        //nosTramsList.add(new NosTramsItem(R.drawable.tram_b,  R.drawable.tram));
+        //nosTramsList.add(new NosTramsItem(R.drawable.tram_c,  R.drawable.tram));
+        //nosTramsList.add(new NosTramsItem(R.drawable.tram_d,  R.drawable.tram));
+
+        RecyclerView nosTramList = findViewById(R.id.recyclerView);
         //recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager (this);
-        adapter = new NosTramsAdapter (nosTramsList);
+        nosTramList.setLayoutManager (layoutManager); //J'attribue le linearlayoumanager à nosTramsList
+        RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList);
+        adapter = LinesAdapter;
 
-        recyclerView.setLayoutManager (layoutManager);
+
         recyclerView.setAdapter (adapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -61,6 +65,18 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+
+                nosTramsList =  new ArrayList<Line>();//Crée une liste contenant des objets de type Line
+                for (Line LignesCTS : data)
+                {
+                    if (LignesCTS.getRouteType() == RouteType.TRAM)
+                    {
+                        nosTramsList.add(LignesCTS);
+                    }
+                }
+
+                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList));
+
             }
 
             @Override
