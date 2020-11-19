@@ -13,7 +13,7 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
-public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder> {
+public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdapter.tramViewHolder> {
     private ArrayList<Line> _lineList;
     private RecyclerItemClick _callBack;
 
@@ -44,7 +44,7 @@ public class tramAdapter extends RecyclerView.Adapter<tramAdapter.tramViewHolder
         }
     }
 
-    public tramAdapter(ArrayList<Line> lineList, RecyclerItemClick callBack) {
+    public StartActivityAdapter(ArrayList<Line> lineList, RecyclerItemClick callBack) {
         _lineList = lineList;
         _callBack = callBack;
     }

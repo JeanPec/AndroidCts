@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
     <string name="tramLinesActivityName">Nos trams</string>
-    <string name="stationDiaryActivityName">Horaire</string>
+    <string name="stationActivityName">Horaire</string>
     <string name="seeOnTheMapButton">Voir sur la carte</string>
     <string name="loadingProcessBarText">Veuillez patienter, chargement des données en cours</string>
 </resources>

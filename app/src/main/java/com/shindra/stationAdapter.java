@@ -15,7 +15,7 @@ import com.shindra.ctslibrary.bo.Stop;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class stationDiaryAdapter extends RecyclerView.Adapter<stationDiaryAdapter.stationDiaryViewHolder>{
+public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationDiaryViewHolder>{
 
     private ArrayList<Stop> _listOfStop;
     private Line _line;
@@ -33,7 +33,7 @@ public class stationDiaryAdapter extends RecyclerView.Adapter<stationDiaryAdapte
         }
     }
 
-    public stationDiaryAdapter(Line line) {
+    public stationAdapter(Line line) {
         _line = line;
         _listOfStop = fillStopListFromLine(line);
     }
@@ -42,7 +42,7 @@ public class stationDiaryAdapter extends RecyclerView.Adapter<stationDiaryAdapte
     @Override
     public stationDiaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View stationCardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_station, parent, false);
-        stationDiaryAdapter.stationDiaryViewHolder stationDiaryCardVH = new stationDiaryAdapter.stationDiaryViewHolder(stationCardView);
+        stationAdapter.stationDiaryViewHolder stationDiaryCardVH = new stationAdapter.stationDiaryViewHolder(stationCardView);
         return stationDiaryCardVH;
     }
 
