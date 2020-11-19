@@ -61,7 +61,7 @@ public class StartActivity extends AppCompatActivity {
                     @Override
                     public void onDiaryButtonClick(Line tram) {
                         Intent intent = new Intent(StartActivity.this, stationActivity.class);
-                        intent.putExtra("TRAM_LINE",getLineLetterFrom(tram));
+                        intent.putExtra("TRAM_LINE",tram.getName());
                         startActivity(intent);
                     }
                 });
@@ -76,26 +76,6 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public String getLineLetterFrom(Line tramLine){
-        switch(tramLine.getName())
-        {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return "A";
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return "B";
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return "C";
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return "D";
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return "E";
-            case "Comtes - Place d'Islande":
-                return "F";
-            default:
-                return "G";
-        }
     }
 }
 

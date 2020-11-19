@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -50,6 +52,16 @@ public class stationActivity extends AppCompatActivity {
 
                 RecyclerView.Adapter _adapter = new stationAdapter(data);
                 recyclerView.setAdapter(_adapter);
+
+                Button buttonToMapStation = (Button) findViewById(R.id.buttonToMapActivity);
+                buttonToMapStation.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(stationActivity.this, mapActivity.class);
+                        intent.putExtra("LINE_NAME",data.getName());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

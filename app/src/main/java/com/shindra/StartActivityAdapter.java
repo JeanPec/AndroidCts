@@ -40,7 +40,6 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
                     callback.onDiaryButtonClick(tram);
                 }
             });
-
         }
     }
 
@@ -63,22 +62,22 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
         Line currentTram = _lineList.get(position);
         switch (currentTram.getName())
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 holder.tramLineView.setImageResource(R.drawable.tram_a);
                 break;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 holder.tramLineView.setImageResource(R.drawable.tram_b);
                 break;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 holder.tramLineView.setImageResource(R.drawable.tram_c);
                 break;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 holder.tramLineView.setImageResource(R.drawable.tram_d);
                 break;
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 holder.tramLineView.setImageResource(R.drawable.tram_e);
                 break;
-            case "Comtes - Place d'Islande":
+            case "F":
                 holder.tramLineView.setImageResource(R.drawable.tram_f);
                 break;
             default:
@@ -87,7 +86,6 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
 
         }
 
-        //holder.tramLineView.setImageResource(currentTram.getTramLinePicture());
         holder.tramIllustrationView.setImageResource(R.drawable.nouveau_tram_strasbourg);
         holder.onBind(currentTram, _callBack);
     }
