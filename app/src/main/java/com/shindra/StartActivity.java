@@ -2,8 +2,6 @@ package com.shindra;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +13,10 @@ import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.Misc.LoadingDialog;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
     private ArrayList<Line> tramLines =  new ArrayList<Line>();
@@ -40,11 +37,12 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         RecyclerView recyclerView = findViewById(R.id.recycler_lines);
-        LoadingDialog loadingDialog = new LoadingDialog(this);
+        com.shindra.Misc.LoadingDialogForActivity loadingDialogForActivity = new com.shindra.Misc.LoadingDialogForActivity(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new RecyclerViewAdapter(getListOfTramLines(), new RecyclerButtonClick() {
+        recyclerView.setAdapter(new LinesRecyclerViewAdapter(getListOfTramLines(), new RecyclerButtonClick() {
             @Override
             public void onLineClick(Line line) {
 
@@ -60,13 +58,16 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                loadingDialog.show();
+                loadingDialogForActivity.show();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
+
                 //call once the network call has responded with a success
-                loadingDialog.dismiss();
+                loadingDialogForActivity.dismiss();
+                getSupportActionBar().setTitle(R.string.main_view_name);
+
                 setTramList(data);
                 recyclerView.getAdapter().notifyDataSetChanged();
             }

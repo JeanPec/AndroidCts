@@ -2,5 +2,8 @@
     <string name="app_name">CtsAppFip3A</string>
     <string name="main_view_name">Nos trams</string>
     <string name="chargement">Veuillez patienter, chargement des données en cours ...</string>
-    <string name="horaire">HORAIRE</string>
+    <string name="voir_horaire">HORAIRE</string>
+    <string name="voir_carte">VOIR SUR LA CARTE</string>
+    <string name="prochain_depart"> Prochain départ</string>
+    <string name="schedule_view_name">Horaire</string>
 </resources>

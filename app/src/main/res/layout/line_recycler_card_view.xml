@@ -39,7 +39,7 @@
             android:layout_below="@id/photo_tram"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/horaire"></Button>
+            android:text="@string/voir_horaire"></Button>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

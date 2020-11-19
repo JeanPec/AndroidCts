@@ -3,12 +3,14 @@ package com.shindra.Misc;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import com.shindra.R;
 
-public class LoadingDialog{
+public class LoadingDialogForActivity {
     private AlertDialog dialog;
 
-    public LoadingDialog(Activity activity) {
+    public LoadingDialogForActivity(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.layout_chargement, null));
