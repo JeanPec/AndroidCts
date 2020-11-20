@@ -5,29 +5,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.CT;
 import com.shindra.R;
-import com.shindra.Schedule.ScheduleItem;
 
 public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
     // Attributes
-    public TextView mTextLocation;
-    public TextView mTextNextDepartureTime;
-    public TextView mTextTramLine;
+    private TextView mNextDepartureTime;
+    private TextView mTramStationName;
+    private TextView mTramLineLetter;
 
     // Constructor
     public ScheduleViewHolder(@NonNull View itemView) {
         super(itemView);
-        mTextLocation = itemView.findViewById(R.id.cv_schedule_textLocation);
-        mTextNextDepartureTime = itemView.findViewById(R.id.cv_schedule_textNextDepartureTime);
-        mTextTramLine = itemView.findViewById(R.id.cv_schedule_textTramLine);
+        mTramStationName = itemView.findViewById(R.id.cv_schedule_textTramStation);
+        mNextDepartureTime = itemView.findViewById(R.id.cv_schedule_textNextDepartureTime);
+        mTramLineLetter = itemView.findViewById(R.id.cv_schedule_textTramLineLetter);
     }
 
     // Methods
-    public void onBind(ScheduleItem arret)
-    {
-        mTextLocation.setText(arret.getmTextLocation());
-        mTextNextDepartureTime.setText(arret.getmTextNextDepartureTime());
-        mTextTramLine.setText(arret.getmTextTramLine());
+    public void onBind(ScheduleItem item) {
+        mTramStationName.setText(item.GetTramStationName());
+        mNextDepartureTime.setText(item.GetNextDepartureTime());
+        mTramLineLetter.setText("Ligne " + item.GetTramLineLetter());
+        int testcolor = CT.GetLineColor(item.GetTramLineLetter());
+        mTramLineLetter.setTextColor(CT.GetLineColor(item.GetTramLineLetter()));
     }
 }

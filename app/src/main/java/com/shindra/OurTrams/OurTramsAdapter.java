@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
-import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,8 @@ public class OurTramsAdapter extends RecyclerView.Adapter<OurTramsViewHolder>{
     public int getItemCount() {
         return mOurTramsList.size();
     }
-    public void SetOurTramsList(ArrayList<OurTramsItem> list){
+    public void SetOurTramsList(ArrayList<OurTramsItem> list)
+    {
         mOurTramsList = list;
     }
 

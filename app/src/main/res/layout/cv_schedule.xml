@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/cv_schedule_textLocation"
+                android:id="@+id/cv_schedule_textTramStation"
                 style="@style/headline6"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/cv_schedule_textTramLine"
+                android:id="@+id/cv_schedule_textTramLineLetter"
                 style="@style/body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

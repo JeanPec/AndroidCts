@@ -35,7 +35,5 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleViewHolder>{
     }
     @Override
     public int getItemCount() { return mScheduleList.size(); }
-    public void SetScheduleList(ArrayList<ScheduleItem> list){
-        mScheduleList = list;
-    }
+    public void SetScheduleList(ArrayList<ScheduleItem> list){ mScheduleList = list; }
 }

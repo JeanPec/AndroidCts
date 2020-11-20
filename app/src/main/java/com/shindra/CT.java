@@ -39,23 +39,4 @@ public abstract class CT {
                 return R.color.Headline;
         }
     }
-
-    public static String GetLineRef(String tramName) {
-        switch (tramName) {
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return "A";
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return "B";
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return "C";
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return "D";
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return "E";
-            case "Comtes - Place d'Islande":
-                return "F";
-            default:
-                return "notExistingYet";
-        }
-    }
 }

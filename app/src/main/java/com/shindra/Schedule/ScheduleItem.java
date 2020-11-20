@@ -3,19 +3,19 @@ package com.shindra.Schedule;
 public class ScheduleItem {
 
     // Attributes
-    private String mTextLocation;
-    private String mTextNextDepartureTime;
-    private String mTextTramLine;
+    private String mNextDepartureTime;
+    private String mTramStationName;
+    private String mTramLineLetter;
 
     // Constructor
-    public ScheduleItem(String textLocation, String textNextDepartureTime, String textTramLine) {
-        mTextLocation = textLocation;
-        mTextNextDepartureTime = textNextDepartureTime;
-        mTextTramLine = textTramLine;
+    public ScheduleItem(String tramLineLetter, String tramStationName, String nextDepartureTime) {
+        mNextDepartureTime = nextDepartureTime;
+        mTramStationName = tramStationName;
+        mTramLineLetter = tramLineLetter;
     }
 
     // Methods
-    public String getmTextLocation() { return mTextLocation; }
-    public String getmTextNextDepartureTime() { return mTextNextDepartureTime; }
-    public String getmTextTramLine() { return mTextTramLine; }
+    public String GetNextDepartureTime() { return mNextDepartureTime; }
+    public String GetTramStationName() { return mTramStationName; }
+    public String GetTramLineLetter() {return mTramLineLetter;}
 }

@@ -4,6 +4,6 @@
     <FrameLayout
         android:id="@+id/av_our_trams_fragmentHolder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     </FrameLayout>
 </RelativeLayout>

@@ -29,8 +29,8 @@ class CtsRepository : Repository() {
         return withPersistentCache(LINE_STREAM_ID, CtsService.linesDiscovery(), object : TypeToken<Lines>() {}.type).toObservable()
     }
 
-   private  fun estimatedTimeTable(routeType: RouteType, lineRef: String, directionRef: Int): Observable<EstimatedTimeTable> {
-        return withPersistentCache(ESTIMATED_TIME_TABLE, CtsService.estimatedTimeTable(routeType, lineRef, directionRef), object : TypeToken<EstimatedTimeTable>() {}.type).toObservable()
+    private  fun estimatedTimeTable(routeType: RouteType, lineRef: String, directionRef: Int): Observable<EstimatedTimeTable> {
+        return withPersistentCache("$ESTIMATED_TIME_TABLE$lineRef", CtsService.estimatedTimeTable(routeType, lineRef, directionRef), object : TypeToken<EstimatedTimeTable>() {}.type).toObservable()
     }
 
     fun lineWithStops(routeType: RouteType, routeName : String) : Observable<Line> {

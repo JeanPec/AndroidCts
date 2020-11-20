@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,13 +14,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.shindra.CT;
 import com.shindra.LoadingScreen;
-import com.shindra.OurTrams.OurTramsAdapter;
+import com.shindra.MyViewModel;
 import com.shindra.OurTrams.OurTramsItem;
 import com.shindra.R;
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
+import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ScheduleFragment extends Fragment {
     private static final String TAG = "ScheduleFragment";
@@ -32,9 +43,8 @@ public class ScheduleFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         Log.i(TAG, "onCreateView");
-        AppCompatActivity upper = (AppCompatActivity)getContext();
-        String tramLineName = getArguments().getString("tramLineName");
-        upper.getSupportActionBar().setTitle(tramLineName);
+        ((AppCompatActivity) getContext()).getSupportActionBar().setTitle("Horaire");
+        String tramLineLetter = getArguments().getString("tramLineLetter");
         mLoadingScreen = new LoadingScreen((Activity)getContext());
 
         // View configurations
@@ -42,8 +52,9 @@ public class ScheduleFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.fv_schedule_RecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Adapter
-        ScheduleAdapter adapter = new ScheduleAdapter(new ArrayList<ScheduleItem>());
+        // Adapter: scheduleList will automatically be updated with Update function
+        ArrayList<ScheduleItem> scheduleList = new ArrayList<>();
+        ScheduleAdapter adapter = new ScheduleAdapter(scheduleList);
         mRecyclerView.setAdapter(adapter);
 
         // Handle view map button
@@ -55,28 +66,44 @@ public class ScheduleFragment extends Fragment {
             }
         });
 
-        
+        // Network calls
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, tramLineLetter, 0), new ObservableListener<Line>() {@Override
+        public void onLoading() {
+            Log.i(TAG, "onLoading");
+            mLoadingScreen.display();
+        }
 
-        // Fake schedule Items
-        ArrayList<ScheduleItem> scheduleList = new ArrayList<>();
-        scheduleList.add(new ScheduleItem("Parc malraux","18H55","Tram A"));
-        scheduleList.add(new ScheduleItem("Parc Bellevue","18H45","Tram B"));
-        scheduleList.add(new ScheduleItem("Haguenau","20H55","Tram C"));
-        scheduleList.add(new ScheduleItem("Strasbourg","21H55","Tram D"));
-        scheduleList.add(new ScheduleItem("Oui","22H55","Tram E"));
-        scheduleList.add(new ScheduleItem("Non","23H55","Tram F"));
-        scheduleList.add(new ScheduleItem("Rome","19H55","Tram G"));
-        scheduleList.add(new ScheduleItem("Planete","18H55","Tram H"));
-        scheduleList.add(new ScheduleItem("Mars","17H55","Tram I"));
-        scheduleList.add(new ScheduleItem("Humour","16H55","Tram J"));
-        scheduleList.add(new ScheduleItem("Drole","15H55","Tram K"));
+            @Override
+            public void onSuccess(Line data) {
+                Log.i(TAG, "onSuccess");
+                mLoadingScreen.dismiss();
 
-        Update(scheduleList);
+                for (Stop element : data.getStops()){
+                    try {
+                        Date date = element.getEstimatedDepartureTime();
+                        String dateFormatted = date.toString().substring(11,16).replace(':','h');
+                        scheduleList.add(new ScheduleItem(tramLineLetter, element.getName(), dateFormatted));
+                    }
+                    catch (Exception e){
+                        scheduleList.add(new ScheduleItem(tramLineLetter, element.getName(), "Terminus"));
+                    }
+                }
+                UpdateView(scheduleList);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+                Log.i(TAG, "onError");
+                Log.i(TAG, throwable.getCause().toString());
+            }
+        });
+
         return view;
     }
 
-    public void Update(ArrayList<ScheduleItem> scheduleList) {
-        Log.i("OurTramsFragment", "UpdateMethod");
+    public void UpdateView(ArrayList<ScheduleItem> scheduleList) {
+        Log.i("ScheduleFragment", "UpdateMethod");
         ScheduleAdapter tmp = (ScheduleAdapter) mRecyclerView.getAdapter();
         tmp.SetScheduleList(scheduleList);
 

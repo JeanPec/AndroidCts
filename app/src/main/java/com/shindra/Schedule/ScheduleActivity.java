@@ -23,12 +23,12 @@ public class ScheduleActivity extends AppCompatActivity {
 
         // Get tramLineName
         Intent intent = getIntent();
-        String tramLineName = intent.getStringExtra("tramLineName");
+        String tramLineLetter = intent.getStringExtra("tramLineLetter");
 
         // Create & call our fragment
         mFragment = new ScheduleFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("tramLineName", tramLineName);
+        bundle.putString("tramLineLetter", tramLineLetter);
         mFragment.setArguments(bundle);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.av_schedule_fragmentHolder, mFragment).commit();
