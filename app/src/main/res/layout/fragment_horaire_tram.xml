@@ -30,7 +30,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/TramPrimary"
         android:elevation="4dp"
-        android:text="voir sur la carte"
+        android:text="@string/TxtBtnCarte"
         android:textColor="@color/white"
         android:theme="@style/Button"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -20,6 +20,7 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder
     public final TextView depart;
     public final TextView ligne;
 
+    //Constructeur de la vue
     public HoraireViewHolder(@NonNull View itemView)
     {
         super(itemView);

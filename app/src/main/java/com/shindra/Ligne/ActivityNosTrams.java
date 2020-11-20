@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class ActivityNosTrams extends AppCompatActivity
 {
     private ArrayList<Line> ligneTram;  //Liste contenant les lignes de trams
-    private String NomPage = "Nos Trams";   //this.getString(R.string.page_NosTrams);
+    private String NomPage;
 
     private AlertDialog CircularProgressBar;
 
@@ -35,22 +35,26 @@ public class ActivityNosTrams extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        //Configuration de l'activité
         setContentView(R.layout.activity_ligne_tram);
 
-        getSupportActionBar().setTitle(getString(R.string.page_NosTrams));  //Ecriture du titre de la vue
+        //Ecriture du titre de la vue
+        NomPage = getString(R.string.Txt_page_NosTrams);
+        getSupportActionBar().setTitle(NomPage);
 
-        //RecyclerView, ligne de tram
+        //Configuration de la RecyclerView, ligne de tram
         RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);   //Referencement vers la recyclerview "NosTrams"
         ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
 
-        //Alert dialog, chargement de vue
+        //Alert dialog, Creation de la ProgressBar de chargement
         AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
         CircularProgressBar = CreateProgressBar.create();
 
 
-        // callback de detection du bouton appuyé
+        // Callback de detection du bouton appuyé
         TramsViewHolder.RecyclerHoraireClick callBack = new TramsViewHolder.RecyclerHoraireClick()
         {
             @Override
@@ -64,6 +68,7 @@ public class ActivityNosTrams extends AppCompatActivity
             }
         };
 
+        //Realisation de l'appel réseau
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>()
         {
@@ -82,7 +87,6 @@ public class ActivityNosTrams extends AppCompatActivity
             {
                 //call once the network call has responded with a success
                 Log.i(NomPage,"Recupération des Lignes de Trams");
-
 
 
                 //Remplissage dynamique des tableaux des lignes de trams

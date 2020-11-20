@@ -5,12 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.MyViewModel;
 import com.shindra.R;
@@ -33,19 +31,13 @@ import java.util.ArrayList;
  */
 public class FragmentCarte extends MapFragment {
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String LettreLigne;
     private ArrayList<Poi> ListeCoorArretTram;  //Liste contenant les Arrets d'une ligne de tram
     private AlertDialog CircularProgressBar;
-    private String NomPage = "Carte Arret";  //this.getString(R.string.page_Horaires);
-    RecyclerView ListeHoraireTramRV;
-    private Button BtnCarteLigneTram;
+    private String NomPage = getString(R.string.Txt_page_Carte);
 
     /**
      * Use this factory method to create a new instance of
@@ -54,7 +46,7 @@ public class FragmentCarte extends MapFragment {
      * @param Ligne Parameter 1.
      * @return A new instance of fragment BlankFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentCarte newInstance(String Ligne) {
         FragmentCarte fragment = new FragmentCarte();
         Bundle args = new Bundle();
@@ -71,6 +63,7 @@ public class FragmentCarte extends MapFragment {
         }
     }
 
+    //Liaison avec le fragment de la carte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,17 +74,17 @@ public class FragmentCarte extends MapFragment {
         return CarteView;
     }
 
-
     public void onStart()
     {
         super.onStart();
 
-        //Alert dialog, chargement de vue
+        //Alert dialog, Creation de la ProgressBar de chargement
         AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
         CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
         CircularProgressBar = CreateProgressBar.create();
 
+        //Realisation de l'appel réseau
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, LettreLigne), new ObservableListener<Line>()
         {

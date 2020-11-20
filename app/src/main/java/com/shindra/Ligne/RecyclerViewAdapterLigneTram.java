@@ -17,7 +17,7 @@ public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsView
     private ArrayList<Line> LigneTrams;
     private TramsViewHolder.RecyclerHoraireClick callBack;
 
-    //Constructeur
+    //Constructeur de la class
     public RecyclerViewAdapterLigneTram(ArrayList<Line> listelignetrams, TramsViewHolder.RecyclerHoraireClick callBack)
     {
         this.LigneTrams = listelignetrams;

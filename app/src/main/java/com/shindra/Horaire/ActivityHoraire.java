@@ -14,22 +14,26 @@ import com.shindra.R;
 public class ActivityHoraire extends AppCompatActivity
 {
 
-    private String NomPage = "Horaire";  //this.getString(R.string.page_Horaires);
+    private String NomPage;
     private String LettreLigne;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        //Configuration de l'activité
         setContentView(R.layout.activity_horaire_tram);
 
-        getSupportActionBar().setTitle(NomPage); //Ecriture du titre de la vue
+        //Ecriture du titre de la vue
+        NomPage = getString(R.string.Txt_page_Horaires);
+        getSupportActionBar().setTitle(NomPage);
 
-        //Recuperation de la ligne de tram de l'activite precedente
+        //Recuperation de la ligne de tram de l'activite précedente
         Intent intentNosTramLigne = getIntent();
         LettreLigne = intentNosTramLigne.getStringExtra("LigneTram");
 
-        //Fragment, horaire de tram
+        //Configuration du Fragment, horaire de tram
         Bundle BundleHoraire = new Bundle();
         BundleHoraire.putString("LettreLigne", LettreLigne);
         FragmentHoraireTram FragHoraireTram = new FragmentHoraireTram();

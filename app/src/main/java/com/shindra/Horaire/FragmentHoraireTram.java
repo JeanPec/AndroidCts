@@ -34,12 +34,8 @@ import java.util.ArrayList;
  */
 public class FragmentHoraireTram extends Fragment {
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String LettreLigne;
     private ArrayList<Stop> ListeArretTram;  //Liste contenant les Arrets d'une ligne de tram
@@ -55,7 +51,7 @@ public class FragmentHoraireTram extends Fragment {
      * @param Ligne Parameter 1.
      * @return A new instance of fragment BlankFragment.
      */
-    // TODO: Rename and change types and number of parameters
+    //Creation de l'instance du fragment
     public static FragmentHoraireTram newInstance(String Ligne) {
         FragmentHoraireTram fragment = new FragmentHoraireTram();
         Bundle args = new Bundle();
@@ -81,6 +77,7 @@ public class FragmentHoraireTram extends Fragment {
         ListeHoraireTramRV = HoraireView.findViewById(R.id.RecyclerView_Horaire_Tram);   //Referencement vers la recyclerview "Horaires"
         ListeHoraireTramRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Callback de detection du bouton appuyé
         BtnCarteLigneTram = HoraireView.findViewById(R.id.button_Map);
         BtnCarteLigneTram.setOnClickListener(new View.OnClickListener()
         {
@@ -98,19 +95,17 @@ public class FragmentHoraireTram extends Fragment {
         return HoraireView;
     }
 
-
-
-
     public void onStart()
     {
         super.onStart();
 
-        //Alert dialog, chargement de vue
+        //Alert dialog, Creation de la ProgressBar de chargement
         AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = this.getLayoutInflater();
         CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
         CircularProgressBar = CreateProgressBar.create();
 
+        //Realisation de l'appel réseau
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, LettreLigne, 0), new ObservableListener<Line>()
         {

@@ -17,6 +17,7 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
     private final ImageView imageLigneTram;
     private final Button button;
 
+    //Interface pour la détection de l'appuie du bouton
     interface RecyclerHoraireClick
     {
         void onHoraireLineClick(Line ligne);

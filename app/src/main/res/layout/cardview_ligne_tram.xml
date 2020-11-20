@@ -45,7 +45,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageLigneTram"
-                app:srcCompat="@drawable/nouveau_tram_strasbourg"/>
+                app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
             <Button
                 android:id="@+id/buttonlignetram"
@@ -55,7 +55,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="Horaire"
+                android:text="@string/TxtBtnHoraire"
                 android:textColor="@color/TramPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

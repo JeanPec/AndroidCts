@@ -31,7 +31,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/Widjet_Chargement" />
+            android:text="@string/Txt_Widjet_Chargement" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
-import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
     private ArrayList<Stop> ListArretTram;
     private String NomLigne;
 
+    //Constructeur de la class
     public RecyclerViewAdapterHoraireTram(ArrayList<Stop> listArretTram, String nomLigne)
     {
         this.ListArretTram = listArretTram;
@@ -32,6 +32,7 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
         return new HoraireViewHolder(HoraireView);
     }
 
+    //Liaison entre les donnees et les differents arrets sur la RecyclerView
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position)
     {
@@ -39,6 +40,7 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
         holder.onBind(requestStopTram, NomLigne);
     }
 
+    //Nombre de lignes sur la RecyclerView
     @Override
     public int getItemCount()
     {
