@@ -1,6 +1,5 @@
 package com.shindra.ctslibrary.bo
 
-import android.os.Parcelable
 import com.shindra.ctslibrary.apibo.Coordinate
 import com.shindra.ctslibrary.apibo.RouteType
 import java.util.*
