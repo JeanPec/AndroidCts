@@ -72,22 +72,22 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
             for (int i=0 ; i<listSize ; i++) {
                 imageLetter = itemView.findViewById(R.id.imageLetter);
                 switch(lineName) {
-                    case "Tram A":
+                    case "A":
                         imageLetter.setImageResource(R.drawable.ic_a);
                         break;
-                    case "Tram B" :
+                    case "B" :
                         imageLetter.setImageResource(R.drawable.ic_b);
                         break;
-                    case "Tram C" :
+                    case "C" :
                         imageLetter.setImageResource(R.drawable.ic_c);
                         break;
-                    case "Tram D" :
+                    case "D" :
                         imageLetter.setImageResource(R.drawable.ic_d);
                         break;
-                    case "Tram E" :
+                    case "E" :
                         imageLetter.setImageResource(R.drawable.ic_e);
                         break;
-                    case "Tram F" :
+                    case "F" :
                         imageLetter.setImageResource(R.drawable.ic_f);
                         break;
                 }

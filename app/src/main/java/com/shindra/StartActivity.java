@@ -71,17 +71,19 @@ public class StartActivity extends AppCompatActivity {
 
                 Log.d("CTS", "Taille de tramLine avant boucle:"+tramLine.size());
                 Log.d("CTS", "Taille de data:"+tailleData);
-                tramLine.addAll(data);
+                //tramLine.addAll(data);
 
-                /*
-                for (int i=0 ; i<30 ; i++) {
-                    if (data.get(i).getRouteType() == TRAM) {
-                        Log.d("CTS", "Ligne recuperee:" + data.get(i).toString());
-                        tramLine.add(i, data.get(i));
+                int indexTramLine = 0;
+                for (int i=0 ; i<tailleData ; i++) {
+                    if (data.get(i).getRouteType().compareTo(TRAM) == 0) {
+                        //Log.d("CTS", "Ligne recuperee:" + data.get(i).toString() + " /Val du booleen:" + data.get(i).getRouteType().compareTo(TRAM));
+                        tramLine.add(indexTramLine, data.get(i));
+                        indexTramLine++;
                     }
 
                 }
-                */
+
+
                 Log.d("CTS", "Taille de tramLine apres boucle:"+tramLine.size());
             }
 
@@ -91,15 +93,6 @@ public class StartActivity extends AppCompatActivity {
                 Log.d("=erreur", "Erreur appel API");
             }
         });
-
-        //Test-data to populate the RecyclerView with
-        /*ArrayList<Line> animalNames = getListLines(); new ArrayList<>();
-        animalNames.add("Cheval");
-        animalNames.add("Vache");
-        animalNames.add("Chameau");
-        animalNames.add("Mouton");
-        animalNames.add("Chevre");
-        */
 
         //Setup the RecyclerView like slide 110
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
@@ -128,7 +121,6 @@ public class StartActivity extends AppCompatActivity {
 
         private void removeItem(View v) {
             /*
-            REPRENDRE ICI
             int selectedItemPosition = recyclerView.getChildPosition(v);
              */
         }
@@ -139,18 +131,6 @@ public class StartActivity extends AppCompatActivity {
         Stops.add(new Stop("Gare centrale", new Date(), new Date(), "Parc des Sports", new Coordinate()));
         Stops.add(new Stop("Laiterie", new Date(), new Date(), "Lingolsheim Alouettes", new Coordinate()));
         return Stops;
-    }
-
-
-    private ArrayList<Line> getListLines() {
-        ArrayList<Line> Lines = new ArrayList<>();
-        Lines.add(new Line("Tram A", TRAM, this.getListStops()));
-        Lines.add(new Line("Tram B", TRAM, this.getListStops()));
-        Lines.add(new Line("Tram C", TRAM, this.getListStops()));
-        Lines.add(new Line("Tram D", TRAM, this.getListStops()));
-        Lines.add(new Line("Tram E", TRAM, this.getListStops()));
-        Lines.add(new Line("Tram F", TRAM, this.getListStops()));
-        return Lines;
     }
 
 }
