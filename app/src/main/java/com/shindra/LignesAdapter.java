@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,9 +22,9 @@ import java.util.List;
 
 public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder> {
 
+    private Context context;
     private List<Line> lines;
     private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
 
     //Data is passed into the constructor like slide 104
     LignesAdapter(List<Line> lines) {
@@ -42,6 +43,16 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(lines.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, "Bouton appuye", Toast.LENGTH_SHORT).show();
+                Log.d("button", "Bouton presse");
+            }
+
+        });
+
     }
 
     //Total number of rows
@@ -51,7 +62,7 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     }
 
     //Stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView myTextView;
         ImageView imageTram;
         ImageView imageLetter;
@@ -60,8 +71,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
             super(itemView);
             //set values to views
             imageTram = itemView.findViewById(R.id.imageTram);
-
-            itemView.setOnClickListener(this);
         }
 
         public void onBind(Line line) {
@@ -96,24 +105,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
 
         }
 
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
-
-
-    }
-
-    //Convenience method for getting data at click position deleted
-
-    //Allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    //Parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 
 }

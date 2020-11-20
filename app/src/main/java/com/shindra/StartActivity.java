@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +36,7 @@ import static com.shindra.ctslibrary.apibo.RouteType.*;
 public class StartActivity extends AppCompatActivity {
 
     private static LignesAdapter adapter;
+    private static RecyclerView recyclerView;
     private static ArrayList<Line>tramLine = new ArrayList<>();
     private static ArrayList<Integer> removedItems;
     static View.OnClickListener myOnClickListener;
@@ -43,7 +47,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Nos trams");
         Log.d("info", "je suis la startactivity");
-        myOnClickListener = new MyOnClickListener(this);
+        //myOnClickListener = new MyOnClickListener(this);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -95,35 +99,14 @@ public class StartActivity extends AppCompatActivity {
         });
 
         //Setup the RecyclerView like slide 110
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
+        recyclerView = (RecyclerView) findViewById(R.id.cardList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         removedItems = new ArrayList<Integer>();
-        //adapter = new LignesAdapter( getListLines());
         adapter = new LignesAdapter(tramLine);
         recyclerView.setAdapter(adapter);
 
-    }
-
-
-    private static class MyOnClickListener implements View.OnClickListener {
-
-        private final Context context;
-
-        private MyOnClickListener(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public void onClick(View v) {
-            removeItem(v);
-        }
-
-        private void removeItem(View v) {
-            /*
-            int selectedItemPosition = recyclerView.getChildPosition(v);
-             */
-        }
     }
 
     private ArrayList<Stop> getListStops() {

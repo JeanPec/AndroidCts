@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="Android Name"
+                    android:text="TextView from cards_layout"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
