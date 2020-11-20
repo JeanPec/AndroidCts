@@ -3,8 +3,6 @@ package com.shindra.Map
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.shindra.R
-import com.shindra.Time.TimeFragment
-import com.shindra.arrakis.controls.MapFragment
 
 class MapActivity : AppCompatActivity(){
 

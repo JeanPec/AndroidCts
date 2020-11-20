@@ -21,8 +21,7 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
 
     override fun onBindViewHolder(holder: TrainViewHolder, position: Int) {
         val currentLine : Line = lineList[position]
-        holder.imageView.setImageResource(getImagesRessource(currentLine.name))
-        holder.onBind(currentLine,callback)
+        holder.onBind(currentLine,callback,currentLine.name)
     }
 
     override fun getItemCount() = lineList.size
@@ -33,7 +32,8 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
         val imageView: ImageView = itemView.findViewById(R.id.image_view)
         private val button: Button = itemView.findViewById(R.id.button_horraires)
 
-        fun onBind(line : Line,callback : RecyclerLineClick) {
+        fun onBind(line : Line,callback : RecyclerLineClick, nameLine : String) {
+            imageView.setImageResource(getImagesRessource(nameLine))
             button.setOnClickListener{
                 callback.onLineClick(line)
             }
@@ -44,15 +44,15 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
     }
 }
 private fun getImagesRessource(line_name : String) : Int{
-    when (line_name){
-        "A" -> return R.drawable.tram_a
-        "B" -> return R.drawable.tram_b
-        "C" -> return R.drawable.tram_c
-        "D" -> return R.drawable.tram_d
-        "E" -> return R.drawable.tram_e
-        "F" -> return R.drawable.tram_f
+    return when (line_name){
+        "A" -> R.drawable.tram_a
+        "B" -> R.drawable.tram_b
+        "C" -> R.drawable.tram_c
+        "D" -> R.drawable.tram_d
+        "E" -> R.drawable.tram_e
+        "F" -> R.drawable.tram_f
         else -> {
-            return R.drawable.tram
+            R.drawable.tram
         }
 
 

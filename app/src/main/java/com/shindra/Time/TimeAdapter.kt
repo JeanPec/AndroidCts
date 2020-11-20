@@ -24,12 +24,7 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
 
     override fun onBindViewHolder(holder: TimeViewHolder, position: Int) {
         val currentStop : Stop = stopList[position]
-        holder.textStop.setText(currentStop.name)
-        holder.textLine.setText("Ligne".plus(" ").plus(lineName))
-        holder.textLine.setTextColor(getColor(holder.context, getColorId(lineName)))
-        if (currentStop.estimatedDepartureTime != null){
-            holder.textTime.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(currentStop.estimatedDepartureTime)
-        }
+        holder.onBind(currentStop,lineName)
     }
 
     override fun getItemCount() = stopList.size
@@ -39,20 +34,28 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
         val textLine : TextView = itemView.findViewById(R.id.text_body_line)
         val textTime : TextView = itemView.findViewById(R.id.text_time)
         val context : Context = itemView.context
+
+        fun onBind(current_stop : Stop, line_name : String?){
+            textStop.setText(current_stop.name)
+            textLine.setText("Ligne".plus(" ").plus(line_name))
+            textLine.setTextColor(getColor(context, getColorId(line_name)))
+            current_stop.estimatedDepartureTime?.let{ textTime.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(current_stop.estimatedDepartureTime)}
         }
+
+    }
 }
 
 private fun getColorId( lineName : String?) : Int
 {
-    when (lineName) {
-        "A" -> return R.color.Ligne_A
-        "B" -> return R.color.Ligne_B
-        "C" -> return R.color.Ligne_C
-        "D" -> return R.color.Ligne_D
-        "E" -> return R.color.Ligne_E
-        "F" -> return R.color.Ligne_F
+    return when (lineName) {
+        "A" -> R.color.Ligne_A
+        "B" -> R.color.Ligne_B
+        "C" -> R.color.Ligne_C
+        "D" -> R.color.Ligne_D
+        "E" -> R.color.Ligne_E
+        "F" -> R.color.Ligne_F
         else -> {
-            return R.color.Primary
+            R.color.Primary
         }
     }
 }

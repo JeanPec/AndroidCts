@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.Time.TimeActivity
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -41,7 +42,7 @@ class StartActivity : AppCompatActivity(),TrainAdapter.TrainViewHolder.RecyclerL
             override fun onSuccess(data: ArrayList<Line>) {
                 dialog.dismiss()
                 //call once the network call has responded with a success
-                (lineRecyclerView.adapter as TrainAdapter).lineList = (data.filter{it.routeType == RouteType.TRAM } )as ArrayList<Line>
+                (lineRecyclerView.adapter as TrainAdapter).lineList = data.filter{it.routeType == RouteType.TRAM }.toArrayList()!!
                 (lineRecyclerView.adapter as TrainAdapter).notifyDataSetChanged()
             }
 

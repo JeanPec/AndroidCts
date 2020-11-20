@@ -62,7 +62,7 @@ class TimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
          view.findViewById<Button>(R.id.button_map).setOnClickListener{
-             val intent = Intent(activity, MapActivity::class.java)
+             val intent = Intent(context, MapActivity::class.java)
              intent.putExtra("name", this.arguments?.getString("name"))
              startActivity(intent)
          }
