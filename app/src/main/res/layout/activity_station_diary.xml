@@ -6,11 +6,10 @@
     android:background="@color/background"
     tools:context=".stationActivity">
 
-
-    <fragment
-        android:id="@+id/fragmentStationActivity"
-        android:name="com.shindra.stationFragment"
+    <FrameLayout
+        android:id="@+id/container_station"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
+    </FrameLayout>
 </RelativeLayout>

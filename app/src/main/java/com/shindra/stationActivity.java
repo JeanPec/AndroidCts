@@ -2,7 +2,6 @@ package com.shindra;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -19,27 +18,25 @@ import org.jetbrains.annotations.NotNull;
 
 public class stationActivity extends AppCompatActivity {
 
+    private stationFragment frag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_diary);
         getSupportActionBar().setTitle(getString(R.string.stationActivityName));
 
-        //Used to pass data to the fragment
-        //FragmentTransaction fragmentT = getSupportFragmentManager().beginTransaction();
-
-        loadingWindow window = new loadingWindow(stationActivity.this);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_stations);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-
+        frag = new stationFragment();
+        Bundle bundle = new Bundle();
         Intent intentFromStartActivity = getIntent();
-        String _lineName = intentFromStartActivity.getStringExtra("TRAM_LINE") ;
+        bundle.putString("lineName",intentFromStartActivity.getStringExtra("TRAM_LINE"));
+        frag.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.container_station,frag).commit();
+        loadingWindow window = new loadingWindow(stationActivity.this);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM,_lineName,0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM,intentFromStartActivity.getStringExtra("TRAM_LINE"),0), new ObservableListener<Line>() {
 
             @Override
             public void onError(@NotNull Throwable throwable) {
@@ -51,7 +48,7 @@ public class stationActivity extends AppCompatActivity {
                 window.dismissLoadingWindow();
 
                 RecyclerView.Adapter _adapter = new stationAdapter(data);
-                recyclerView.setAdapter(_adapter);
+                frag.recycler.setAdapter(_adapter);
 
                 Button buttonToMapStation = (Button) findViewById(R.id.buttonToMapActivity);
                 buttonToMapStation.setOnClickListener(new View.OnClickListener() {
@@ -70,4 +67,6 @@ public class stationActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
