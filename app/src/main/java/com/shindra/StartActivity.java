@@ -81,8 +81,8 @@ public class StartActivity extends AppCompatActivity {
                     }
 
                 }
-                Log.d("CTS", "Taille de tramLine apres boucle:"+tramLine.size());
                 */
+                Log.d("CTS", "Taille de tramLine apres boucle:"+tramLine.size());
             }
 
             @Override
