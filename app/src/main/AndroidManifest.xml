@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".stationActivity" />
-        <activity android:name=".mapActivity"></activity>
+        <activity android:name=".mapActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
