@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.apibo.LineApi;
 import com.shindra.ctslibrary.apibo.Lines;
 import com.shindra.ctslibrary.bo.Line;
 
@@ -27,10 +28,7 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     //Data is passed into the constructor like slide 104
     LignesAdapter(List<Line> lines) {
         this.lines=lines;
-        int listSize = lines.size();
-        for (int i = 0 ; i<listSize ; i++) {
-            Log.d("CTS", lines.get(i).getName()); //test with only i if nothing
-        }
+
     }
 
     //Inflates the row layout from xml when needed

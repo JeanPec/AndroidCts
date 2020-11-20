@@ -4,14 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.Coordinate;
+import com.shindra.ctslibrary.apibo.LineApi;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
@@ -28,13 +24,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.shindra.ctslibrary.apibo.RouteType.*;
+
 //https://www.programmationfacile.com/android-recyclerview-cardview-tutoriel.html
 //https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
 //https://www.journaldev.com/10024/android-recyclerview-android-cardview-example-tutorial
 
 public class StartActivity extends AppCompatActivity {
 
-    LignesAdapter adapter;
+    private static LignesAdapter adapter;
+    private static ArrayList<Line>tramLine = new ArrayList<>();
+    private static ArrayList<Integer> removedItems;
+    static View.OnClickListener myOnClickListener;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,13 +43,9 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Nos trams");
         Log.d("info", "je suis la startactivity");
-
-        //myOnClickListener = new MyOnClickListener(this);
-
-
+        myOnClickListener = new MyOnClickListener(this);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
@@ -68,14 +65,25 @@ public class StartActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
                 Log.d("info", "appel à API reussi");
-                @io.reactivex.rxjava3.annotations.Nullable ArrayList<Line> linesList = new ArrayList<>();
-                MyViewModel mvm = new MyViewModel();
-                linesList = mvm.lines().getValue();
-                //Log.d("CTS", mvm.lines().blockingFirst(ArrayList<line>, 1));
-                Log.d("CTS", String.valueOf(linesList.get(0)));
-                Log.d("CTS", String.valueOf(linesList.get(1)));
+                //Log.d("CTS", data.get(0).toString());
+                //Log.d("CTS", data.get(1).toString());
+                int tailleData = data.size();
 
-           }
+                Log.d("CTS", "Taille de tramLine avant boucle:"+tramLine.size());
+                Log.d("CTS", "Taille de data:"+tailleData);
+                tramLine.addAll(data);
+
+                /*
+                for (int i=0 ; i<30 ; i++) {
+                    if (data.get(i).getRouteType() == TRAM) {
+                        Log.d("CTS", "Ligne recuperee:" + data.get(i).toString());
+                        tramLine.add(i, data.get(i));
+                    }
+
+                }
+                Log.d("CTS", "Taille de tramLine apres boucle:"+tramLine.size());
+                */
+            }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
@@ -85,7 +93,7 @@ public class StartActivity extends AppCompatActivity {
         });
 
         //Test-data to populate the RecyclerView with
-        ArrayList<Line> animalNames = getListLines(); /*new ArrayList<>();
+        /*ArrayList<Line> animalNames = getListLines(); new ArrayList<>();
         animalNames.add("Cheval");
         animalNames.add("Vache");
         animalNames.add("Chameau");
@@ -97,7 +105,9 @@ public class StartActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cardList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LignesAdapter( getListLines());
+        removedItems = new ArrayList<Integer>();
+        //adapter = new LignesAdapter( getListLines());
+        adapter = new LignesAdapter(tramLine);
         recyclerView.setAdapter(adapter);
 
     }
@@ -117,7 +127,10 @@ public class StartActivity extends AppCompatActivity {
         }
 
         private void removeItem(View v) {
-
+            /*
+            REPRENDRE ICI
+            int selectedItemPosition = recyclerView.getChildPosition(v);
+             */
         }
     }
 
@@ -128,14 +141,15 @@ public class StartActivity extends AppCompatActivity {
         return Stops;
     }
 
+
     private ArrayList<Line> getListLines() {
         ArrayList<Line> Lines = new ArrayList<>();
-        Lines.add(new Line("Tram A", RouteType.TRAM, this.getListStops()));
-        Lines.add(new Line("Tram B", RouteType.TRAM, this.getListStops()));
-        Lines.add(new Line("Tram C", RouteType.TRAM, this.getListStops()));
-        Lines.add(new Line("Tram D", RouteType.TRAM, this.getListStops()));
-        Lines.add(new Line("Tram E", RouteType.TRAM, this.getListStops()));
-        Lines.add(new Line("Tram F", RouteType.TRAM, this.getListStops()));
+        Lines.add(new Line("Tram A", TRAM, this.getListStops()));
+        Lines.add(new Line("Tram B", TRAM, this.getListStops()));
+        Lines.add(new Line("Tram C", TRAM, this.getListStops()));
+        Lines.add(new Line("Tram D", TRAM, this.getListStops()));
+        Lines.add(new Line("Tram E", TRAM, this.getListStops()));
+        Lines.add(new Line("Tram F", TRAM, this.getListStops()));
         return Lines;
     }
 
