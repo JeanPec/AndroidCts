@@ -18,7 +18,10 @@ class TramsSchedulesActivity : AppCompatActivity() {
         associatedLinename = intent.getStringExtra(StartActivity.LINENAME_MESSAGE).toString()
         Log.i(logTag, "Created second activity with tramline : " + associatedLinename)
 
-        //Fragment get started automatically
+        //Change title of activity
+        supportActionBar?.title = getString(R.string.cvTimetable_LineNamePrefix, associatedLinename)
+
+        //Fragment get started automatically because it is inside the layout file
 
         //When everything has finished creating, we can start the request to the api
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentTramTimetable) as TimetableFragment

@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".StopsMapActivity"></activity>
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".TramsSchedulesActivity"
             android:parentActivityName=".StartActivity">
@@ -22,13 +29,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartActivity" />
         </activity>
-        <activity android:name=".StartActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".StopsMapActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

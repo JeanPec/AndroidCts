@@ -7,47 +7,25 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 
-// stores and recycles views as they are scrolled off screen
 class TramlineViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
     interface RecyclerItemClick {
         fun onTramlineClick(l: Line?)
     }
 
-    internal interface LineNames {
-        companion object {
-//            const val LineA = "Parc des Sports - Illkirch Graffenstaden"
-//            const val LineB = "Lingolsheim Tiergaertel - Hoenheim Gare"
-//            const val LineC = "Gare Centrale - Neuhof Rodolphe Reuss"
-//            const val LineD = "Poteries - Port du Rhin / Kehl Rathaus"
-//            const val LineE = "Robertsau l'Escale - Campus d'Illkirch"
-//            const val LineF = "Comtes - Place d'Islande"
-            const val LineA = "A"
-            const val LineB = "B"
-            const val LineC = "C"
-            const val LineD = "D"
-            const val LineE = "E"
-            const val LineF = "F"
-        }
-    }
-
     private var lineLogo: ImageView
     private var tramPhoto: ImageView
     private var button: Button
+
     fun onBind(l: Line, callback: RecyclerItemClick) {
-        when (l.name) {
-            LineNames.LineA ->                 //LineA
-                lineLogo.setImageResource(R.drawable.ic_tram_a)
-            LineNames.LineB ->                 //LineB
-                lineLogo.setImageResource(R.drawable.ic_tram_b)
-            LineNames.LineC ->                 //LineC
-                lineLogo.setImageResource(R.drawable.ic_tram_c)
-            LineNames.LineD ->                 //LineD
-                lineLogo.setImageResource(R.drawable.ic_tram_d)
-            LineNames.LineE ->                 //LineE
-                lineLogo.setImageResource(R.drawable.ic_tram_e)
-            LineNames.LineF ->                 //LineF
-                lineLogo.setImageResource(R.drawable.ic_tram_f)
-        }
+        lineLogo.setImageResource(when(l.name) {
+            LineA -> R.drawable.ic_tram_a
+            LineB -> R.drawable.ic_tram_b
+            LineC -> R.drawable.ic_tram_c
+            LineD -> R.drawable.ic_tram_d
+            LineE -> R.drawable.ic_tram_e
+            LineF -> R.drawable.ic_tram_f
+            else -> R.drawable.ic_tram
+        })
 
         //register onclick callback
         button.setOnClickListener { callback.onTramlineClick(l) }

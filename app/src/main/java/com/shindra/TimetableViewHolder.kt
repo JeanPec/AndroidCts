@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Stop
+import java.text.SimpleDateFormat
 import java.util.*
 
 class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,9 +37,7 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
     private fun getSimpleTimeStringFromDate(d : Date?) : String {
         if(d == null) return "ND"
 
-        val calendar = Calendar.getInstance()
-        calendar.time = d
-
-        return calendar.get(Calendar.HOUR_OF_DAY).toString()+"h"+calendar.get(Calendar.MINUTE).toString()
+        var sdf = SimpleDateFormat("h'h'mm")
+        return sdf.format(d)
     }
 }
