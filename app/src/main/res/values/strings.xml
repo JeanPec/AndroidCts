@@ -25,4 +25,8 @@
     <!-- Error messages -->
     <string name="error_fragment_message">An error occurred</string>
     <string name="dismiss_error">Dismiss</string>
+    <string name="Headline">Parc des sports</string>
+    <string name="BodyLine">Ligne A</string>
+    <string name="Heure">18h35</string>
+    <string name="Body2">Prochain Départ</string>
 </resources>
