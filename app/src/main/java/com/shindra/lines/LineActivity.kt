@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.utilities.LoadingDialog
 import com.shindra.utilities.MyViewModel
 import com.shindra.R
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.schedules.ScheduleActivity
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
@@ -42,20 +43,20 @@ class LineActivity : AppCompatActivity(), LineViewHolder.OnLineClickListener {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 //display LoadingDialog
-                loadingDialog.showDialog()
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
                 //RouteType check
-                lineList = (data.filter { it.routeType == RouteType.TRAM } as ArrayList<Line>)
+                lineList = (data.filter { it.routeType == RouteType.TRAM }).toArrayList()!! //(data.filter { it.routeType == RouteType.TRAM } as ArrayList<Line>)
 
                 //adapter data change
                 (lineRecyclerList.adapter as LineAdapter).lines = lineList
                 (lineRecyclerList.adapter as LineAdapter).notifyDataSetChanged()
 
                 //remove LoadingDialog
-                loadingDialog.dismissDialog()
+                loadingDialog.dismiss()
             }
 
             override fun onError(throwable: Throwable) {
@@ -64,7 +65,7 @@ class LineActivity : AppCompatActivity(), LineViewHolder.OnLineClickListener {
                 Toast.makeText(applicationContext, R.string.loading_text_error, Toast.LENGTH_LONG).show()
 
                 //remove LoadingDialog
-                loadingDialog.dismissDialog()
+                loadingDialog.dismiss()
             }
         })
     }

@@ -20,9 +20,7 @@ class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         textHeadline.text = stop.name
         textLine.text = getLineName(line)
         textLine.setTextColor(ContextCompat.getColor(textLine.context,getLineColor(line)))
-        if (stop.estimatedDepartureTime != null){
-            textHour.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(stop.estimatedDepartureTime?.time)
-        }
+        textHour.text = stop.estimatedDepartureTime?.let{ SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(stop.estimatedDepartureTime?.time) }
         textBody.text = itemView.context.getString(R.string.schedule_card_view_body)
     }
 

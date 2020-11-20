@@ -35,7 +35,7 @@ class ScheduleFragmentStop() : Fragment(){
         //RecyclerView configuration
         val stopRecyclerList = view.findViewById<RecyclerView>(R.id.stop_list)
         stopRecyclerList.layoutManager = LinearLayoutManager(activity)
-        stopRecyclerList.adapter = ScheduleAdapter(lineName!!,stopList,activity)
+        stopRecyclerList.adapter = lineName?.let { ScheduleAdapter(it,stopList,activity) }
 
         //set Button listener
         view.findViewById<Button>(R.id.button_map).setOnClickListener{
@@ -52,11 +52,12 @@ class ScheduleFragmentStop() : Fragment(){
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
         //perform network call
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName,0).observe(object : ObservableListener<Line> {
+        lineName?.let {
+            model.lineWithEstimatedTimeTable(RouteType.TRAM, it,0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 //display LoadingDialog
-                loadingDialog.showDialog()
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: Line) {
@@ -66,7 +67,7 @@ class ScheduleFragmentStop() : Fragment(){
                 (stopRecyclerList.adapter as ScheduleAdapter).notifyDataSetChanged()
 
                 //remove LoadingDialog
-                loadingDialog.dismissDialog()
+                loadingDialog.dismiss()
             }
 
             override fun onError(throwable: Throwable) {
@@ -75,9 +76,10 @@ class ScheduleFragmentStop() : Fragment(){
                 Toast.makeText(activity, R.string.loading_text_error, Toast.LENGTH_LONG).show()
 
                 //remove LoadingDialog
-                loadingDialog.dismissDialog()
+                loadingDialog.dismiss()
             }
-        })
+            })
+        }
 
         return view
     }
