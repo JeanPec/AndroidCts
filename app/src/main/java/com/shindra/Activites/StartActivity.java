@@ -2,6 +2,7 @@ package com.shindra.Activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 
 import androidx.annotation.Nullable;
@@ -61,14 +62,18 @@ public class StartActivity extends AppCompatActivity {
                     }
                 }
                 list.setAdapter(new TramLineRecyclerViewAdaptater(Trames, new TramLineViewHolder.RecyclerItemClick() {
+                    final Intent myIntent = new Intent().setClass(StartActivity.this, HoraireActivity.class);
+
                     @Override
                     public void onHoraireClick( Tram trames) {
                     /* c'est la qu'on définit les actions qui seront déclenchées au moment du click*/
                         /* et contient l'objet tram associé à la vue*/
                         //on creer une nouvelle intent on definit la class de depart ici this et la class d'arrivé ici SecondActivite
-                        Intent myIntent = new Intent(getBaseContext(), HoraireActivity.class);
-                        startActivityForResult(myIntent, 0);
+
                         myIntent.putExtra("STRING10", trames.getNomImage());
+                        startActivity(myIntent);
+
+                        Log.d("StartActivity","c" );
                     }
                 }));
             }

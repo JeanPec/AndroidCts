@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static android.content.ContentValues.TAG;
@@ -33,13 +34,13 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(TrameStop trameStop) {
-        stop.setText(trameStop.nomArrêt);
+        stop.setText(trameStop.nomArret);
         ligneTram.setText(trameStop.nomLine);
         datetoString(trameStop.horaire);
         /*nextHoraire.setText(datetoString(trameStop.horaire));*/
         //appliquer une conversion sur l'horaire en format sString voulu
 
-    }
+    };
 
     public void datetoString (Date horaire ) {
 

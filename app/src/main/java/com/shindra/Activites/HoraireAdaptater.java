@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class HoraireAdaptater extends RecyclerView.Adapter<HoraireViewHolder> {
 
-    private ArrayList<TrameStop> TramStop;
+    private final ArrayList<TrameStop> TramStop;
 
     public HoraireAdaptater(ArrayList<TrameStop> StopsInfo){
         this.TramStop = StopsInfo ;
