@@ -109,8 +109,9 @@ public class ScheduleFragment extends Fragment {
 
                         lineStops.add(oneStop);
                     }
-                    recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName));
+
                 }
+                recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName));
                 loadingDialog.dismissDialog();
             }
             @Override

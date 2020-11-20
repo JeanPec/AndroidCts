@@ -50,7 +50,7 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
 
     public String getDate(Date date)
     {
-        SimpleDateFormat s = new SimpleDateFormat("HH:MM");
+        SimpleDateFormat s = new SimpleDateFormat("HH'h'mm");
         return s.format(date);
     }
 
