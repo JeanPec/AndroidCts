@@ -75,7 +75,7 @@ public class MyMapFragment extends MapFragment {
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-
+                loadingDialog.dismissDialog();
             }
         });
     }

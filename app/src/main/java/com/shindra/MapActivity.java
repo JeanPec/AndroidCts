@@ -23,6 +23,8 @@ public class MapActivity extends AppCompatActivity {
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineNameSelected");
 
+        setTitle(getString(R.string.map_name) +" "+ lineName );
+
         mapFragment = new MyMapFragment();
 
         Bundle mapBundle = new Bundle();

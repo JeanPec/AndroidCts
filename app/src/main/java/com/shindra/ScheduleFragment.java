@@ -111,12 +111,12 @@ public class ScheduleFragment extends Fragment {
                     }
 
                 }
-                recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName));
+                recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName,getString(R.string.map_name)));
                 loadingDialog.dismissDialog();
             }
             @Override
             public void onError(@NotNull Throwable throwable) {
-
+                loadingDialog.dismissDialog();
             }
 
             @Override

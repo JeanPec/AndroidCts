@@ -1,21 +1,23 @@
 package com.shindra;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 
-public class LoadingDialog {
-    private Activity activity;
+public class LoadingDialog extends AlertDialog {
     private AlertDialog loadingDialog;
 
-    public LoadingDialog(Activity activity) {
-        this.activity = activity;
+
+    protected LoadingDialog(Context context)
+    {
+        super(context);
     }
+
 
     void startAnimation(){
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-    LayoutInflater inflater = activity.getLayoutInflater();
+    Builder builder = new Builder(getContext());
+    LayoutInflater inflater = getLayoutInflater();
     builder.setView(inflater.inflate(R.layout.loading_dialog, null));
     builder.setCancelable(false);
 

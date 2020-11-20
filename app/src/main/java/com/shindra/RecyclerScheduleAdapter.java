@@ -18,17 +18,14 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
 
     private ArrayList<Stop> tramStops;
     private String tramLineSelected;
+    private String lineText;
 
-    public RecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1) {
+    public RecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1, String lineText1) {
 
         tramStops = tramStops1;
         tramLineSelected = tramLineSelected1;
+        lineText = lineText1;
     }
-
-   /* public RecyclerScheduleAdapter(ArrayList<myStop> tramStops1, String tramLineSelected1) {
-        tramStops = tramStops1;
-        tramLineSelected = tramLineSelected1;
-    }*/
 
 
     @NonNull
@@ -42,7 +39,7 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
     @Override
     public void onBindViewHolder(@NonNull viewHolderSchedule holder , int position) {
         Stop currentStop = tramStops.get(position);
-        holder.lineTram.setText("TRAM "+ tramLineSelected);
+        holder.lineTram.setText(lineText + " " + tramLineSelected);
         holder.lineTram.setTextColor(ContextCompat.getColor(holder.lineTram.getContext(),getColor(tramLineSelected)));
         holder.lineStation.setText(currentStop.getName());
         holder.stopScheduleTime.setText(getDate(currentStop.getEstimatedDepartureTime()));
