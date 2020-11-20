@@ -52,8 +52,12 @@ public class StartActivity extends AppCompatActivity {
         RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList);
         adapter = LinesAdapter;
 
+        //Suppression de l'erreur si un objet de référence nulle
+       try{
+            recyclerView.setAdapter (adapter);
+        }catch (NullPointerException ignored){
+        }
 
-        recyclerView.setAdapter (adapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -69,13 +73,15 @@ public class StartActivity extends AppCompatActivity {
                 nosTramsList =  new ArrayList<Line>();//Crée une liste contenant des objets de type Line
                 for (Line LignesCTS : data)
                 {
+
                     if (LignesCTS.getRouteType() == RouteType.TRAM)
                     {
+                        //Rajout d'un test pour vérifier si l'objet ajouté est nul pour éviter la "NullPointerException"?
                         nosTramsList.add(LignesCTS);
                     }
                 }
 
-                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList));
+                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList)); //Création de la vue Nos Trams avec l'ensemble des trams de la liste
 
             }
 

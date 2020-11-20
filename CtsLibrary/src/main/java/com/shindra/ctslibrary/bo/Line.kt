@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 data class Line(
     val name: String,
     val routeType: RouteType,
-    val stops: ArrayList<Stop>? = null
+    val stops: ArrayList<Stop>? = null //dernier élément de la liste nulle
 
 )
 

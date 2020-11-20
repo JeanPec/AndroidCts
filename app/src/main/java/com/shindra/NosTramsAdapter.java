@@ -22,6 +22,7 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
+        // La seul référence d'image qu'il faut changer et celle des trams.
         public final ImageView ligneTram;
         //public final ImageView imageTram;
 
@@ -30,6 +31,7 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
             //imageTram = itemView.findViewById(R.id.imageTram);
         }
+        //La réponse de l'appel réseau permet de choisir l'image du tram à afficher
         public void TramsOnBind(Line image)
         {
             String line_name = image.getName();
