@@ -49,7 +49,7 @@ public class HoraireActivity extends AppCompatActivity {
         arretTram.setAdapter(new HoraireAdapter(new ArrayList<Stop>(),nomLigne));
 
         loadPage = new ChargementActivity(this);
-        getSupportActionBar().setTitle("Ligne " + nomLigne);
+        getSupportActionBar().setTitle("Horaires");
 
         carte = findViewById(R.id.BoutonCarte);
         carte.setOnClickListener(v -> {

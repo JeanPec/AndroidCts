@@ -70,7 +70,7 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.MyViewHo
         {
             Stop NouvArret = arrets.get(position);
             HeadLine1.setText(NouvArret.getName());
-            Ligne.setText(nomLigne);
+            Ligne.setText("Ligne "+nomLigne);
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH'h'mm");
             Temps.setText(simpleDateFormat.format(NouvArret.getEstimatedDepartureTime()));
         }
