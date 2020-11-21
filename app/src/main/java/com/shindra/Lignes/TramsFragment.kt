@@ -1,6 +1,5 @@
-package com.shindra
+package com.shindra.Lignes
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 
 class TramsFragment : Fragment() {
 
@@ -19,7 +19,6 @@ class TramsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
          //Inflate the layout for this fragment
         val FragmentView = inflater.inflate(R.layout.fragment_trams, container, false);
         return FragmentView
@@ -31,7 +30,7 @@ class TramsFragment : Fragment() {
         val _RecyclerView = view.findViewById(R.id.TramsRecyclerView) as RecyclerView;
 
         _RecyclerView.layoutManager = LinearLayoutManager(activity)
-        _RecyclerView.adapter = context?.let { TramsAdapters(it,TramLinesNames) }
+        _RecyclerView.adapter = context?.let { TramsAdapters(it, TramLinesNames) }
     }
 
 }

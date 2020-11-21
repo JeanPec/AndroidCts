@@ -1,13 +1,11 @@
-package com.shindra
+package com.shindra.Horaires
 
 import android.content.Context
-import android.graphics.Color
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.ctslibrary.bo.Line
+import com.shindra.R
 
 class HorairesViewHolder (GenericCardView: View, _Context:Context) : RecyclerView.ViewHolder(GenericCardView){
 
@@ -23,20 +21,17 @@ val context = _Context;
         Line_TextView.setText("Ligne " + LineName)
 
         //En fonction du nom de la ligne, on doit afficher le texte de la bonne couleur
-        when (LineName) {
-            "A" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneA));
-            "B" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneB));
-            "C" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneC));
-            "D" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneD));
-            "E" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneE));
-            "F" -> Line_TextView.setTextColor(ContextCompat.getColor(context,R.color.LigneF));
+        Line_TextView.setTextColor(ContextCompat.getColor(context,  when (LineName) {
+            "A" -> R.color.LigneA
+            "B" -> R.color.LigneB
+            "C" -> R.color.LigneC
+            "D" -> R.color.LigneD
+            "E" -> R.color.LigneE
+            "F" -> R.color.LigneF
             else -> {
-                print("Erreur, nom de ligne de tram non reconnue")
+                R.color.black
             }
-
-        }
+        }))
     }
-
-
 
 }

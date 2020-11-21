@@ -20,10 +20,11 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_medium"
+            android:layout_toLeftOf="@id/textView_Time"
+            android:layout_alignParentLeft="true"
             android:text="Default Stop"
             android:textColor="@color/Headline"
-            android:textSize="20dp"
-            android:maxWidth="250dp"/>
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/textView_Line"

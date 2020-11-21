@@ -1,39 +1,36 @@
-package com.shindra
+package com.shindra.Horaires
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.Dialogs.LoadingDialog
+import com.shindra.MyViewModel
+import com.shindra.R
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.collections.ArrayList
 
-class horaires_activity : AppCompatActivity() {
+class HorairesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_horaires)
 
         val SelectedTramLine: String? = intent.extras?.getString("Ligne")
-        setTitle("Horaires - Ligne " + SelectedTramLine)
+        setTitle(getString(R.string.horaires_header) + " " + SelectedTramLine)
 
-        //Lancement du dialogue de chargement
-        val DialogBuilder= AlertDialog.Builder(this)
-        val dialogView=layoutInflater.inflate(R.layout.loading_dialog,null)
-        DialogBuilder.setView(dialogView)
-        DialogBuilder.setCancelable(false)
-        val Dialog = DialogBuilder.create()
+        //Creation du dialogue de chargement
+        val LoadingDialog = LoadingDialog()
+        LoadingDialog.CreateDialog(this)
+
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
 
         model.lineWithEstimatedTimeTable(RouteType.TRAM, SelectedTramLine.toString(),0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                Dialog.show()
+                LoadingDialog.ShowDialog()
             }
 
             override fun onSuccess(data: Line) {
@@ -50,7 +47,7 @@ class horaires_activity : AppCompatActivity() {
                     }
                 }
 
-                //Appeler et afficher le fragment uniquement quand on a fini l'appel réseau, pour éviter les conflits entre les différentes instances du fragment
+                //Appeler et afficher le fragment des horaires
                 var HorairesFragment = HorairesFragment()
                 HorairesFragment.StopsNames = StopsNames
                 HorairesFragment.DeparturesTimes = EstimatedDepartureTimes
@@ -61,11 +58,14 @@ class horaires_activity : AppCompatActivity() {
                         .commitAllowingStateLoss()
 
                 //Fermer le dialogue de chargement à la fin de la fonction
-                Dialog.dismiss()
+                LoadingDialog.CloseDialog()
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+
+                //Fermer le dialogue de chargement en cas d'erreur
+                LoadingDialog.CloseDialog()
             }
         })
     }

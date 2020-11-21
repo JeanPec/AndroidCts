@@ -1,10 +1,12 @@
-package com.shindra
+package com.shindra.Lignes
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
+import com.shindra.Horaires.HorairesActivity
 
 class TramsAdapters(_Context:Context, _TramLinesNames: List<String>): RecyclerView.Adapter<TramsViewHolder>() {
 
@@ -34,7 +36,7 @@ class TramsAdapters(_Context:Context, _TramLinesNames: List<String>): RecyclerVi
         holder.PutTramInfoIntoCardView(TramLine);
 
         holder.ButtonHoraires.setOnClickListener{
-            val intent = Intent(context, horaires_activity::class.java)
+            val intent = Intent(context, HorairesActivity::class.java)
             intent.putExtra("Ligne",TramLine);
             context.startActivity(intent)
         }

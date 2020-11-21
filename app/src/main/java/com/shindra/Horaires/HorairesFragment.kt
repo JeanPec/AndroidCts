@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.Horaires
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Map.MapActivity
+import com.shindra.R
 
 
 class HorairesFragment : Fragment() {
@@ -33,7 +35,7 @@ class HorairesFragment : Fragment() {
         val _RecyclerView = view.findViewById(R.id.recylerview_horaires) as RecyclerView;
 
         _RecyclerView.layoutManager = LinearLayoutManager(activity)
-        _RecyclerView.adapter = context?.let { HorairesAdapter(it,StopsNames,DeparturesTimes,LineName) }
+        _RecyclerView.adapter = context?.let { HorairesAdapter(it, StopsNames, DeparturesTimes, LineName) }
 
         val MapButton = view.findViewById(R.id.buttonMap) as Button
 
