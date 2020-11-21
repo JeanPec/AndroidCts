@@ -36,8 +36,7 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
     @Override
     public void onBindViewHolder(@NonNull viewHolderMenu holder, int position) {
         Line currentTramLine = tramLines.get(position);
-        holder.iconLineTram.setImageResource(getLineImg(currentTramLine));
-        holder.bindClick(currentTramLine, callback);
+        holder.onBind(currentTramLine, callback);
     }
 
     public void setTramLine(ArrayList<Line> tramLine1)
@@ -50,35 +49,9 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
         return tramLines.size();
     }
 
-    int getLineImg(Line currentTramLine)
-    {
-        switch (currentTramLine.getName()) {
-            case "A":
-                return (R.drawable.tram_a);
-
-            case "B":
-                return(R.drawable.tram_b);
-
-            case "C":
-                return (R.drawable.tram_c);
-
-            case "D":
-                return(R.drawable.tram_d);
-
-            case "E":
-                return(R.drawable.tram_e);
-
-            case "F":
-                return(R.drawable.tram_f);
-
-            default:
-                return(R.drawable.tram);
-
-        }
 
 }
 
 
 
 
-}

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
@@ -58,7 +59,7 @@ public class StartActivity extends AppCompatActivity {
                 linesTram = new ArrayList<Line>();
 
                 for (Line oneLine : data)
-                    if (oneLine.getRouteType().name() == "TRAM") {
+                    if (oneLine.getRouteType() == RouteType.TRAM) {
                         //Log.d("MSG", data.get(i).getName());
                         linesTram.add(oneLine);
                     }

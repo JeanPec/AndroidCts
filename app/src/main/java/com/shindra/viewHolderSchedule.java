@@ -19,4 +19,5 @@ public class viewHolderSchedule extends RecyclerView.ViewHolder {
         stopScheduleTime = itemView.findViewById(R.id.scheduleTime_txt);
         nextStation = itemView.findViewById(R.id.nextStation_txt);
     }
+
 }

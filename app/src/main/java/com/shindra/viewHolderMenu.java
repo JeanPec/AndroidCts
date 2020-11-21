@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Line;
 
-public class viewHolderMenu extends RecyclerView.ViewHolder  {
+public class viewHolderMenu extends RecyclerView.ViewHolder {
 
     ImageView iconLineTram;
     ImageView imgTram;
@@ -22,13 +22,41 @@ public class viewHolderMenu extends RecyclerView.ViewHolder  {
         scheduleTimeButton = itemView.findViewById(R.id.scheduleTimeButton);
     }
 
-    void bindClick(Line line, ScheduleButtonListener callback)
-    {
+    void onBind(Line line , ScheduleButtonListener callback) {
+
+        iconLineTram.setImageResource(getLineImg(line));
+
         scheduleTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.onClick(line);
             }
         });
+    }
+
+    int getLineImg(Line currentTramLine) {
+        switch (currentTramLine.getName()) {
+            case "A":
+                return (R.drawable.tram_a);
+
+            case "B":
+                return (R.drawable.tram_b);
+
+            case "C":
+                return (R.drawable.tram_c);
+
+            case "D":
+                return (R.drawable.tram_d);
+
+            case "E":
+                return (R.drawable.tram_e);
+
+            case "F":
+                return (R.drawable.tram_f);
+
+            default:
+                return (R.drawable.tram);
+
+        }
     }
 }
