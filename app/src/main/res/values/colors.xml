@@ -10,4 +10,16 @@
     <color name="Primary">#EF2B3E</color>
     <color name="Primary_variant">#B50017</color>
     <color name="Background">#F2F2F2</color>
+    <color name="Headline">#000000</color>
+    <color name="Body2">#99000000</color>
+    <color name="LigneA">#D8232A</color>
+    <color name="LigneB">#00A3DA</color>
+    <color name="LigneC">#EB8B2D</color>
+    <color name="LigneD">#009F4A</color>
+    <color name="LigneE">#7F78AB</color>
+    <color name="LigneF">#84BF41</color>
+
+
+
+
 </resources>

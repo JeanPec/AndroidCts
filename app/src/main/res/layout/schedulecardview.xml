@@ -20,6 +20,7 @@
             <TextView
                 android:id="@+id/stopTextView"
                 style="@style/H6"
+                android:textColor="@color/Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -35,24 +36,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="TextView"
-                android:textColor="@color/Primary"
+                android:textColor="@color/Headline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stopTextView" />
 
             <TextView
                 android:id="@+id/hoursTextView"
-                style="H6"
+                style="@style/H6"
+                android:textColor="@color/Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="8dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <TextView
                 android:id="@+id/indicationTextView"
                 style="@style/Body2"
+                android:textColor="@color/Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
