@@ -21,6 +21,7 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_tram_activity)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
+        val loadingDialog = LoadingDialog(this)
 
         recyclerView = findViewById(R.id.LineTramRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -29,17 +30,19 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
-
+                loadingDialog.dismiss()
                 listOfLines = data.filter{ it.routeType == RouteType.TRAM }
                 recyclerView.adapter = LineTramAdapter(listOfLines, this@LineTramActivity)
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+                loadingDialog.dismiss()
             }
         })
 

@@ -1,5 +1,6 @@
 package Fragments
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.shindra.ApiLinesConvertor
+import com.shindra.LoadingDialog
 import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.controls.MapFragment
@@ -47,19 +49,23 @@ class LineMapFragment : MapFragment() {
     override fun onStart() {
         super.onStart()
 
+        val loadingDialog = LoadingDialog(activity as Activity)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, lineTramName!!).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                loadingDialog.show()
             }
 
             override fun onSuccess(data: Line) {
                 //call once the network call has responded with a success
+                loadingDialog.dismiss()
                 addStop(data)
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+                loadingDialog.dismiss()
             }
         })
 
