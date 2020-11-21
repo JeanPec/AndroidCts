@@ -16,11 +16,13 @@ import com.shindra.Misc.MyViewModel
 import com.shindra.R
 import com.shindra.Stop.StopActivity
 import com.shindra.Stop.StopFragment
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
+import kotlin.collections.ArrayList
 
 class LineFragment : Fragment()
 {
@@ -62,13 +64,10 @@ class LineFragment : Fragment()
                 loadingDialog.dismiss()
 
                 //Only keep Tram lines
-                val tramLines = ArrayList<Line>()
-                for (item in data)
-                    if (item.routeType === RouteType.TRAM)
-                        tramLines.add(item)
+                val tramLines = data.filter{ref -> ref.routeType==RouteType.TRAM}
 
                 //Update the recycler view through the adapter
-                updateWidgets(tramLines)
+                updateWidgets(ArrayList(tramLines))
             }
 
             override fun onError(throwable: Throwable)

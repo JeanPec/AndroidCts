@@ -22,6 +22,7 @@ import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
+import kotlin.collections.ArrayList
 
 class StopFragment() : Fragment()
 {
@@ -63,13 +64,10 @@ class StopFragment() : Fragment()
                 loadingDialog.dismiss()
 
                 //Only keep stops with a no-null departure time
-                val stopWithDeparture = ArrayList<Stop>()
-                for (item in data.stops!!)
-                    if (item.estimatedDepartureTime != null)
-                        stopWithDeparture.add(item)
+                val stopWithDeparture = data.stops!!.filter { ref -> ref.estimatedDepartureTime != null }
 
                 //Update the recycler view through the adapter
-                updateWidgets(stopWithDeparture)
+                updateWidgets(ArrayList(stopWithDeparture))
             }
 
             override fun onError(throwable: Throwable)
