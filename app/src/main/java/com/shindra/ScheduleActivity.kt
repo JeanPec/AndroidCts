@@ -8,7 +8,7 @@ class ScheduleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
-
+        setTitle("Horaires")
         val intent = intent
         val line = intent.getStringExtra("line")
         val fragmentTransaction : FragmentTransaction = supportFragmentManager.beginTransaction()

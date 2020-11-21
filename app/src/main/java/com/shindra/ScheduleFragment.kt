@@ -1,15 +1,15 @@
 package com.shindra
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -24,7 +24,8 @@ class ScheduleFragment : Fragment() {
     private lateinit var scheduleCardViewAdapter : ScheduleCardViewAdapter
     private var recyclerView : RecyclerView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             line = it.getString(ARG_PARAM1)!!
@@ -35,16 +36,28 @@ class ScheduleFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.scheduleRecyclerView)
+        var mapButton : Button = view.findViewById(R.id.mapButton)
+
+        mapButton.setOnClickListener{
+
+            val lineMapFragment = LineMapFragment.newInstance(line)
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.frameLayout, lineMapFragment)?.addToBackStack("tag")
+            transaction?.setReorderingAllowed(true)
+            transaction?.commit()
+        }
+
 
     }
 
     override fun onStart() {
         super.onStart()
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, line!!,0).observe(object : ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, line!!, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
 
@@ -81,8 +94,9 @@ class ScheduleFragment : Fragment() {
         fun newInstance(line: String?)=
                 ScheduleFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1,line)
+                    putString(ARG_PARAM1, line)
                 }
             }
     }
+
 }

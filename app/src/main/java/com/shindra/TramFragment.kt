@@ -30,8 +30,6 @@ class TramFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +51,6 @@ class TramFragment : Fragment() {
                 intent.putExtra("line",tram.name)
                 startActivity(intent)
             }
-
         })
         recyclerView?.layoutManager = LinearLayoutManager(activity)
         recyclerView?.adapter = cardViewAdapter
@@ -72,7 +69,7 @@ class TramFragment : Fragment() {
                 //call once the network call has responded with a success
                 _tramList = data.filter{ it.routeType == RouteType.TRAM}.toArrayList()
                 cardViewAdapter?.setTram(_tramList)
-               cardViewAdapter?.notifyDataSetChanged()
+                cardViewAdapter?.notifyDataSetChanged()
             }
 
             override fun onError(throwable: Throwable) {
