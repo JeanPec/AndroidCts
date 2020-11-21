@@ -1,26 +1,31 @@
 package com.shindra
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
+import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
-import kotlin.collections.ArrayList
+import java.nio.file.Files.lines
+
 
 class StartActivity : AppCompatActivity() {
 
-
-    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewTram)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val trams = ArrayList<Line>()
+        val adapter = RecyclerTramAdapter(trams)
+        recyclerView.adapter = adapter
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
@@ -31,6 +36,21 @@ class StartActivity : AppCompatActivity() {
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
+
+                Log.i("data", data.toString())
+
+                val trams = ArrayList<Line>()
+
+                for (Ligne in data) {
+                    if (Ligne.routeType === RouteType.TRAM) {
+                        trams.add(Ligne)
+                    }
+                }
+                Log.i("ligne", trams.toString())
+
+                val adapter = RecyclerTramAdapter(trams)
+                recyclerView.adapter = adapter
+
             }
 
             override fun onError(throwable: Throwable) {
@@ -38,23 +58,5 @@ class StartActivity : AppCompatActivity() {
             }
         })
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewTram)
-
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
-        /*val trams = ArrayList<RecyclerTram>()
-
-        trams.add(RecyclerTram(R.drawable.ic_tram_a))
-        trams.add(RecyclerTram(R.drawable.ic_tram_b))
-        trams.add(RecyclerTram(R.drawable.ic_tram_c))
-        trams.add(RecyclerTram(R.drawable.ic_tram_d))
-        trams.add(RecyclerTram(R.drawable.ic_tram_e))
-        trams.add(RecyclerTram(R.drawable.ic_tram_f))*/
-
-        val trams = ArrayList<Line>()
-
-
-        val adapter = RecyclerTramAdapter(trams)
-        recyclerView.adapter = adapter
     }
 }
