@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shindra.LoadingDialog;
+import com.shindra.Dialog.LoadingDialog;
 import com.shindra.MyViewModel;
 import com.shindra.R;
 import com.shindra.Schedule.ScheduleActivity;

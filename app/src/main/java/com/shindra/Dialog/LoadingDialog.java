@@ -1,8 +1,10 @@
-package com.shindra;
+package com.shindra.Dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+
+import com.shindra.R;
 
 public class LoadingDialog extends AlertDialog {
     private AlertDialog loadingDialog;
