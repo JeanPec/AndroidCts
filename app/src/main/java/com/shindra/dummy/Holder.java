@@ -39,4 +39,3 @@ public class Holder extends RecyclerView.ViewHolder{
         void onButtonClick(Tram tram);
     }
 }
-
