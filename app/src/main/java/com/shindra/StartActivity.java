@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -26,17 +27,13 @@ public class StartActivity extends AppCompatActivity {
         setTitle("Nos Trams");
 
         ArrayList<Line> TramList = new ArrayList<Line>();
-        TramList.add(new Line("A", RouteType.TRAM, null));
-        TramList.add(new Line("B", RouteType.TRAM, null));
-        TramList.add(new Line("C", RouteType.TRAM, null));
 
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.CardViewList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(TramList);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new RecyclerViewAdapter(this, TramList));
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
 
@@ -57,7 +54,7 @@ public class StartActivity extends AppCompatActivity {
                         TramList.add(l);
                     }
                 }
-                recyclerView.setAdapter(new RecyclerViewAdapter(TramList));
+                recyclerView.setAdapter(new RecyclerViewAdapter(this, TramList));
             }
 
             @Override

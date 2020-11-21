@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<Line> TramLines;
     private LayoutInflater mInflater;
 
+
     // data is passed into the constructor
-    public RecyclerViewAdapter(ArrayList<Line> mlines) {
+    public RecyclerViewAdapter(Context context, ArrayList<Line> mlines) {
         TramLines = mlines;
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
 
@@ -41,7 +44,35 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Line line = TramLines.get(position);
+        switch (line.getName()) {
+            case "Tram A":
+                holder.mImageView.setImageResource(R.drawable.tram_a);
+                break;
 
+            case "Tram B":
+                holder.mImageView.setImageResource(R.drawable.tram_b);
+                break;
+
+            case "Tram C":
+                holder.mImageView.setImageResource(R.drawable.tram_c);
+                break;
+
+            case "Tram D":
+                holder.mImageView.setImageResource(R.drawable.tram_d);
+                break;
+
+            case "Tram E":
+                holder.mImageView.setImageResource(R.drawable.tram_e);
+                break;
+
+            case "Tram F":
+                holder.mImageView.setImageResource(R.drawable.tram_f);
+                break;
+
+            default:
+                holder.mImageView.setImageResource(R.drawable.tram);
+                break;
+        }
     }
 
     // total number of rows
