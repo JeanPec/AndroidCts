@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.ctslibrary.bo.Line
 
-class CardViewAdapter(trams : ArrayList<Tram>,callBack : RecyclerItemClick) : RecyclerView.Adapter<CardViewAdapter.CardViewHolder>() {
+class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : RecyclerView.Adapter<CardViewAdapter.CardViewHolder>() {
     val callback : RecyclerItemClick = callBack
-    val trams = trams
+    var trams : ArrayList<Line>? = trams
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         //1- Charger la vue en xml.
@@ -23,14 +24,20 @@ class CardViewAdapter(trams : ArrayList<Tram>,callBack : RecyclerItemClick) : Re
     }
 
     override fun getItemCount(): Int {
-        return trams.size
+        return trams!!.size
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         //1- Obtenir la ligne.
         //2- Envoyer les information de la ligne dans la cellule.
         //3-
-        holder.onBind(trams.get(position),callback)
+        if (trams != null) {
+            holder.onBind(trams!!.get(position),callback)
+        }
+    }
+    fun setTram(lines: ArrayList<Line>?)
+    {
+        trams = lines
     }
 
 
@@ -45,14 +52,14 @@ class CardViewAdapter(trams : ArrayList<Tram>,callBack : RecyclerItemClick) : Re
         //Fonction permettant de récupérer l'id d'une image en fonction de son nom.
         fun getImageId(context: Context, pictureName: String) = context.getResources().getIdentifier("drawable/$pictureName", null, context.getPackageName())
 
-        public fun  onBind(tram: Tram,callback : RecyclerItemClick)
+        public fun  onBind(tram: Line,callback : RecyclerItemClick)
         {
             scheduleButton.setOnClickListener {
                     callback.onScheduleClick(tram)
             }
 
-            ligne.setImageResource(getImageId(context,tram.line))
-            image.setImageResource(getImageId(context,tram.picture))
+            ligne.setImageResource(getImageId(context,"tram_"+tram.name.toLowerCase()))
+            image.setImageResource(getImageId(context,"nouveau_tram_strasbourg"))
         }
     }
 }

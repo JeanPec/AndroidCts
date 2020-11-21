@@ -15,10 +15,7 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTitle("Nos Trams")
-
-
         setContentView(R.layout.activity_main)
-
     }
 }
 

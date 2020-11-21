@@ -1,17 +1,20 @@
 package com.shindra
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.RecyclerItemClick as RecyclerItemClick1
+import com.shindra.arrakis.extension.toArrayList
+import com.shindra.arrakis.observable.ObservableListener
+import com.shindra.arrakis.observable.observe
+import com.shindra.ctslibrary.apibo.RouteType
+import com.shindra.ctslibrary.bo.Line
 
 
 /**
@@ -21,16 +24,13 @@ import com.shindra.RecyclerItemClick as RecyclerItemClick1
  */
 class TramFragment : Fragment() {
 
-    private lateinit var cardViewAdapter: CardViewAdapter
-    val _tramList = arrayListOf<Tram>(Tram("tram_a", "nouveau_tram_strasbourg"),
-            Tram("tram_b", "nouveau_tram_strasbourg"),
-            Tram("tram_c", "nouveau_tram_strasbourg"),
-            Tram("tram_d", "nouveau_tram_strasbourg"),
-            Tram("tram_e", "nouveau_tram_strasbourg"),
-            Tram("tram_f", "nouveau_tram_strasbourg"))
+    private  var _tramList : ArrayList<Line>? = ArrayList()
+    private var  recyclerView : RecyclerView? = null
+    private var cardViewAdapter : CardViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -44,23 +44,40 @@ class TramFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var recyclerView:RecyclerView = view.findViewById(R.id.recyclerViewTram)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = CardViewAdapter(_tramList, object : com.shindra.RecyclerItemClick {
-            override fun onScheduleClick(tram: Tram) {
-                Toast.makeText(context, tram.line.toString(),Toast.LENGTH_SHORT).show()
+        recyclerView = view.findViewById(R.id.recyclerViewTram)
+        cardViewAdapter = CardViewAdapter(_tramList, object : com.shindra.RecyclerItemClick
+        {
+            override fun onScheduleClick(tram: Line) {
+                Toast.makeText(context, tram.name.toString(),Toast.LENGTH_SHORT).show()
                 val intent : Intent = Intent(context,ScheduleActivity::class.java)
-                intent.putExtra("line",tram.line)
+                intent.putExtra("line",tram.name)
                 startActivity(intent)
             }
 
         })
+        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        recyclerView?.adapter = cardViewAdapter
     }
 
-    private fun OnButtonClick(button : Button)
-    {
-        button.setBackgroundColor(Color.RED)
+    override fun onStart() {
+        super.onStart()
+        val model = ViewModelProvider(this).get(MyViewModel::class.java)
+        model.lines().observe(object : ObservableListener<ArrayList<Line>> {
+            override fun onLoading() {
+                //call once we started the network called. Indicate that the network call is in progress
 
+            }
+
+            override fun onSuccess(data: ArrayList<Line>) {
+                //call once the network call has responded with a success
+                _tramList = data.filter{ it.routeType == RouteType.TRAM}.toArrayList()
+                cardViewAdapter?.setTram(_tramList)
+               cardViewAdapter?.notifyDataSetChanged()
+            }
+
+            override fun onError(throwable: Throwable) {
+                //call if the network call has responded with an error
+            }
+        })
     }
-
 }

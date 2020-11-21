@@ -2,8 +2,7 @@ package com.shindra
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.shindra.ctslibrary.bo.Line
+import androidx.fragment.app.FragmentTransaction
 
 class ScheduleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +11,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         val intent = intent
         val line = intent.getStringExtra("line")
-        Toast.makeText(this,line,Toast.LENGTH_SHORT)
+        val fragmentTransaction : FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.frameLayout,ScheduleFragment.newInstance(line)).commit()
     }
 }
