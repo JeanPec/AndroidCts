@@ -13,8 +13,6 @@ import com.shindra.R;
 
 public class ActivityHoraire extends AppCompatActivity
 {
-
-    private String NomPage;
     private String LettreLigne;
 
     @Override
@@ -26,8 +24,7 @@ public class ActivityHoraire extends AppCompatActivity
         setContentView(R.layout.activity_horaire_tram);
 
         //Ecriture du titre de la vue
-        NomPage = getString(R.string.Txt_page_Horaires);
-        getSupportActionBar().setTitle(NomPage);
+        getSupportActionBar().setTitle(getString(R.string.Txt_page_Horaires));
 
         //Recuperation de la ligne de tram de l'activite précedente
         Intent intentNosTramLigne = getIntent();
@@ -42,4 +39,3 @@ public class ActivityHoraire extends AppCompatActivity
         fragTran.commit();
     }
 }
-

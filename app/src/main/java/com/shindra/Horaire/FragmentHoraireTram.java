@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.Carte.ActivityCarte;
 import com.shindra.MyViewModel;
 import com.shindra.R;
+import com.shindra.Utilites.DialogDeChargement;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -39,8 +39,6 @@ public class FragmentHoraireTram extends Fragment {
     private String mParam1;
     private String LettreLigne;
     private ArrayList<Stop> ListeArretTram;  //Liste contenant les Arrets d'une ligne de tram
-    private AlertDialog CircularProgressBar;
-    private String NomPage = "Horaire";  //this.getString(R.string.page_Horaires);
     RecyclerView ListeHoraireTramRV;
     private Button BtnCarteLigneTram;
 
@@ -84,7 +82,7 @@ public class FragmentHoraireTram extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Log.i(NomPage,"Appuie BTN Map Ligne " + LettreLigne);
+                Log.i(getString(R.string.Txt_page_Horaires),"Appuie BTN Map Ligne " + LettreLigne);
                 //Creation de la nouvelle Intent
                 Intent intent = new Intent(getActivity(), ActivityCarte.class);
                 intent.putExtra("LettreLigneTram",LettreLigne);
@@ -100,10 +98,7 @@ public class FragmentHoraireTram extends Fragment {
         super.onStart();
 
         //Alert dialog, Creation de la ProgressBar de chargement
-        AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = this.getLayoutInflater();
-        CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
-        CircularProgressBar = CreateProgressBar.create();
+        DialogDeChargement dialogDeChargement = new DialogDeChargement(getActivity());
 
         //Realisation de l'appel réseau
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -113,17 +108,17 @@ public class FragmentHoraireTram extends Fragment {
             public void onLoading()
             {
                 //call once we started the network called. Indicate that the network call is in progress
-                Log.i(NomPage,"Chargement de la page Horaire");
+                Log.i(getString(R.string.Txt_page_Horaires),"Chargement de la page Horaire");
 
                 //Affiche la ProgressBar
-                CircularProgressBar.show();
+                dialogDeChargement.AfficherPageChargement();
             }
 
             @Override
             public void onSuccess(Line data)
             {
                 //call once the network call has responded with a success
-                Log.i(LettreLigne,"Success reception des données");
+                Log.i(getString(R.string.Txt_page_Horaires),"Success reception des données");
 
                 //Remplissage dynamique des tableaux des lignes de trams
                 ListeArretTram = new ArrayList<Stop>();
@@ -136,17 +131,15 @@ public class FragmentHoraireTram extends Fragment {
                     ListeHoraireTramRV.setAdapter(new RecyclerViewAdapterHoraireTram(ListeArretTram, LettreLigne));
                 }
 
-
                 //Enleve l'affichage de la ProgressBar
-                CircularProgressBar.dismiss();
-
+                dialogDeChargement.EnleverPageChargement();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                Log.e(NomPage,"Erreur Application, Vue: Horaire");
+                Log.e(getString(R.string.Txt_page_Horaires),"Erreur Application");
             }
         });
     }

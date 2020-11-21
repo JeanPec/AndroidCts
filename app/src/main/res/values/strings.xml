@@ -11,6 +11,6 @@
     <string name="TxtBtnCarte">Voir sur la carte</string>
     <string name="TxtBtnHoraire">Horaire</string>
     <string name="TxtProchainDep">Prochain départ</string>
-
+    <string name="TxtVide">Txt Vide</string>
 
 </resources>

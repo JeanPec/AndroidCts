@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.shindra.MyViewModel;
 import com.shindra.R;
+import com.shindra.Utilites.DialogDeChargement;
 import com.shindra.arrakis.controls.MapFragment;
 import com.shindra.arrakis.controls.Poi;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -36,8 +36,6 @@ public class FragmentCarte extends MapFragment {
     private String mParam1;
     private String LettreLigne;
     private ArrayList<Poi> ListeCoorArretTram;  //Liste contenant les Arrets d'une ligne de tram
-    private AlertDialog CircularProgressBar;
-    private String NomPage = getString(R.string.Txt_page_Carte);
 
     /**
      * Use this factory method to create a new instance of
@@ -79,10 +77,7 @@ public class FragmentCarte extends MapFragment {
         super.onStart();
 
         //Alert dialog, Creation de la ProgressBar de chargement
-        AlertDialog.Builder CreateProgressBar = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = this.getLayoutInflater();
-        CreateProgressBar.setView(inflater.inflate(R.layout.loading_view, null));
-        CircularProgressBar = CreateProgressBar.create();
+        DialogDeChargement dialogDeChargement = new DialogDeChargement(getActivity());
 
         //Realisation de l'appel réseau
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -92,17 +87,17 @@ public class FragmentCarte extends MapFragment {
             public void onLoading()
             {
                 //call once we started the network called. Indicate that the network call is in progress
-                Log.i(NomPage,"Chargement de la page Carte");
+                Log.i(getString(R.string.Txt_page_Carte),"Chargement de la page Carte");
 
                 //Affiche la ProgressBar
-                CircularProgressBar.show();
+                dialogDeChargement.AfficherPageChargement();
             }
 
             @Override
             public void onSuccess(Line data)
             {
                 //call once the network call has responded with a success
-                Log.i(LettreLigne,"Success reception des données");
+                Log.i(getString(R.string.Txt_page_Carte),"Success reception des données");
 
                 //Remplissage dynamique des tableaux des lignes de trams
                 ListeCoorArretTram = new ArrayList<Poi>();
@@ -113,17 +108,15 @@ public class FragmentCarte extends MapFragment {
 
                 addPois(ListeCoorArretTram);
 
-
                 //Enleve l'affichage de la ProgressBar
-                CircularProgressBar.dismiss();
-
+                dialogDeChargement.EnleverPageChargement();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable)
             {
                 //call if the network call has responded with an error
-                Log.e(NomPage,"Erreur Application, Vue: Horaire");
+                Log.e(getString(R.string.Txt_page_Carte),"Erreur Application");
             }
         });
     }
@@ -165,5 +158,4 @@ public class FragmentCarte extends MapFragment {
         }
         return color;
     }
-
 }

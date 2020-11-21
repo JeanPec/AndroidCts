@@ -34,12 +34,11 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder
     {
         Integer CouleurLigne = itemView.getContext().getColor(GetLineColor(nomLigne));
         ligne.setTextColor(CouleurLigne);
-        ligne.setText("ligne " +nomLigne);
+        ligne.setText("Ligne " +nomLigne);
 
         horaire.setText(DateToString(requestStopTram.getEstimatedDepartureTime()));
         arret.setText(requestStopTram.getName());
     }
-
 
     //Permet la converssion d'un format date en un format string
     private String DateToString(Date date)
@@ -85,6 +84,4 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder
         }
         return color;
     }
-
-
 }

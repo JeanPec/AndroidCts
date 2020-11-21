@@ -47,5 +47,4 @@ public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsView
     {
         return LigneTrams.size();
     }
-
 }

@@ -32,7 +32,6 @@ public class TramsViewHolder extends RecyclerView.ViewHolder
         this.button = itemView.findViewById(R.id.buttonlignetram);
     }
 
-
     // Retourne le ViewHolder des données sur lequels elles sont liées / Appelé pour chaque elements dans la liste
     public void onBind(Line Ligne, RecyclerHoraireClick callBack)
     {

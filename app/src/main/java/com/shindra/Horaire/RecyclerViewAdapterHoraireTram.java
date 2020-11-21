@@ -46,7 +46,4 @@ public class RecyclerViewAdapterHoraireTram extends RecyclerView.Adapter<Horaire
     {
         return ListArretTram.size();
     }
-
-
-
 }
