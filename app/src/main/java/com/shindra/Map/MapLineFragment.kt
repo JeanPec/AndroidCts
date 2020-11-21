@@ -63,8 +63,7 @@ class MapLineFragment() : MapFragment()
     fun addStopsOnMap(line: Line?)
     {
         val pois = ArrayList<Poi>()
-        for ((_, _, _, _, position) in line?.stops!!)
-            pois.add(Poi(R.drawable.icon_maps_place_24px, Converter.lineLetterToLineColor(line.name), position?.latitude!!, position.longitude!!))
+        line?.stops?.map { Ref -> pois.add(Poi(R.drawable.icon_maps_place_24px, Converter.lineLetterToLineColor(line.name), Ref.position?.latitude!!, Ref.position?.longitude!!))}
         addPois(pois)
     }
 
