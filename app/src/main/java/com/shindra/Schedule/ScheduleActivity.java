@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.shindra.OurTrams.OurTramsFragment;
 import com.shindra.R;
 
 public class ScheduleActivity extends AppCompatActivity {
@@ -21,15 +20,12 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.av_schedule);
 
-        // Get tramLineName
+        // Retrieve intent data
         Intent intent = getIntent();
         String tramLineLetter = intent.getStringExtra("tramLineLetter");
 
-        // Create & call our fragment
-        mFragment = new ScheduleFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("tramLineLetter", tramLineLetter);
-        mFragment.setArguments(bundle);
+        // Create, pass args & call fragment
+        mFragment = ScheduleFragment.onInstance(tramLineLetter);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.av_schedule_fragmentHolder, mFragment).commit();
     }

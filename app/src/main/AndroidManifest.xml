@@ -14,7 +14,10 @@
         android:theme="@style/Theme.CtsAppFip3A" >
         <activity android:name=".Schedule.ScheduleActivity" >
         </activity>
+        <activity android:name=".Map.MapActivity" >
+        </activity>
         <activity android:name=".OurTrams.OurTramsActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

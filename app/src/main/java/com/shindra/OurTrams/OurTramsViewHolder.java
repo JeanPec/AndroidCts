@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shindra.CT;
+import com.shindra.HelperLine;
 import com.shindra.R;
 
 public class OurTramsViewHolder extends RecyclerView.ViewHolder{
@@ -25,9 +25,10 @@ public class OurTramsViewHolder extends RecyclerView.ViewHolder{
     // Methods
     public void onBind(OurTramsItem tram, OurTramsAdapter.OnItemClickListener listener)
     {
-        mImgTramLetter.setImageResource(CT.GetTramLetterImg(tram.GetTramLineLetter()));
+        mImgTramLetter.setImageResource(HelperLine.GetTramLetterImg(tram.GetTramLineLetter()));
 
-        // Add listener on mButtonSchedule in each ViewHolder
+        /* Add listener on mButtonSchedule in each ViewHolder. Allows us to retrieve
+           the ViewHolder which has been clicked to the Activity part */
         mButtonSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

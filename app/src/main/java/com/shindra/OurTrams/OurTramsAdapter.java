@@ -41,13 +41,16 @@ public class OurTramsAdapter extends RecyclerView.Adapter<OurTramsViewHolder>{
     public int getItemCount() {
         return mOurTramsList.size();
     }
+
     public void SetOurTramsList(ArrayList<OurTramsItem> list)
     {
+        // Update ViewHolders DataSet
         mOurTramsList = list;
+        notifyDataSetChanged();
     }
 
-    // Interface to handle event (observer pattern)
     public interface OnItemClickListener{
+        // Interface to handle event (observer pattern)
         void onButtonScheduleClick(String tramLineName);
     }
 }

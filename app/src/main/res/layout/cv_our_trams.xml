@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- VIEW PART :
-Create our own view which will be displayed to the user. All data needed for
-ImageView & TextView will be dynamically updated thanks to the Adapter.
-
-In our case, this View will be displayed multiple times in a RecyclerView. Each instance
-of this view in the RecyclerView is named an "Item" -->
-
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,15 +38,13 @@ of this view in the RecyclerView is named an "Item" -->
             style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="16dp"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:padding="0dp"
             android:background="@android:color/transparent"
             android:textColor="@color/Primary"
-            android:text="Horaire">
+            android:text="@string/schedule">
         </Button>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

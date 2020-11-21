@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shindra.ErrorScreen;
 import com.shindra.LoadingScreen;
 import com.shindra.MyViewModel;
 import com.shindra.R;
@@ -32,21 +33,23 @@ public class OurTramsFragment extends Fragment {
     private static final String TAG = "OurTramsFragment";
     private LoadingScreen mLoadingScreen;
     private RecyclerView mRecyclerView;
+    private ErrorScreen mErrorScreen;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         Log.i(TAG, "onCreateView");
-        ((AppCompatActivity) getContext()).getSupportActionBar().setTitle("Nos Trams");
+        ((AppCompatActivity) getContext()).getSupportActionBar().setTitle(getString(R.string.OurTrams));
         mLoadingScreen = new LoadingScreen((Activity)getContext());
+        mErrorScreen = new ErrorScreen((Activity)getContext());
 
         // View configurations
         View view = inflater.inflate(R.layout.fv_our_trams, container, false);
         mRecyclerView = view.findViewById(R.id.fv_our_trams_RecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Adapter: list will automatically be update with Update method
+        // Adapter: list will automatically be updated with Update function
         OurTramsAdapter adapter = new OurTramsAdapter(new ArrayList<OurTramsItem>(), new OurTramsAdapter.OnItemClickListener() {
             @Override
             public void onButtonScheduleClick(String tramLineLetter) {
@@ -86,17 +89,15 @@ public class OurTramsFragment extends Fragment {
             public void onError(@NotNull Throwable throwable) {
                 Log.i(TAG, "onError");
                 mLoadingScreen.dismiss();
+                mErrorScreen.display();
             }
         });
         return view;
     }
 
     public void UpdateView(ArrayList<OurTramsItem> ourTramsItemsList) {
-        Log.i("OurTramsFragment", "UpdateMethod");
+        Log.i(TAG, "UpdateMethod");
         OurTramsAdapter tmp = (OurTramsAdapter) mRecyclerView.getAdapter();
         tmp.SetOurTramsList(ourTramsItemsList);
-
-        // Recreate all ViewHolders
-        tmp.notifyDataSetChanged();
     }
 }

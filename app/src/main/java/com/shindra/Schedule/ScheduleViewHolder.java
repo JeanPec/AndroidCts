@@ -1,11 +1,13 @@
 package com.shindra.Schedule;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shindra.CT;
+import com.shindra.HelperLine;
 import com.shindra.R;
 
 public class ScheduleViewHolder extends RecyclerView.ViewHolder {
@@ -24,11 +26,10 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
     }
 
     // Methods
-    public void onBind(ScheduleItem item) {
+    public void onBind(ScheduleItem item, Context context) {
         mTramStationName.setText(item.GetTramStationName());
         mNextDepartureTime.setText(item.GetNextDepartureTime());
-        mTramLineLetter.setText("Ligne " + item.GetTramLineLetter());
-        int testcolor = CT.GetLineColor(item.GetTramLineLetter());
-        mTramLineLetter.setTextColor(CT.GetLineColor(item.GetTramLineLetter()));
+        mTramLineLetter.setText(context.getString(R.string.line) + " " + item.GetTramLineLetter());
+        mTramLineLetter.setTextColor(ContextCompat.getColor(context, HelperLine.GetLineColor(item.GetTramLineLetter())));
     }
 }

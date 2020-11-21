@@ -1,7 +1,7 @@
 package com.shindra;
 
-// Class used as a group of functions. CT = CorrespondanceTable
-public abstract class CT {
+// Class used as a group of functions
+public class HelperLine {
     public static int GetTramLetterImg(String tramLetter) {
         switch (tramLetter) {
             case "A":

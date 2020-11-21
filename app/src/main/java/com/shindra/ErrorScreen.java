@@ -3,14 +3,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 
-public class LoadingScreen extends AlertDialog{
+public class ErrorScreen extends AlertDialog{
     private AlertDialog alertDial;
 
-    public LoadingScreen(Context context){
+    public ErrorScreen(Context context){
         super(context);
         Builder builder = new Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.loading_screen, null));
+        builder.setView(inflater.inflate(R.layout.error_screen, null));
         builder.setCancelable(false);
         alertDial = builder.create();
     }

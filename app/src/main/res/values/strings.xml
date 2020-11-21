@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="schedule">Horaire</string>
+    <string name="nextDeparture">Prochain départ</string>
+    <string name="line">Ligne</string>
+    <string name="SeeMap">Voir sur la carte</string>
+    <string name="OurTrams">Nos trams</string>
+    <string name="PleaseWait">Veuillez patientez, chargement des données en cours</string>
+    <string name="ErrorMessage">Il y a eu une erreur lors de l\'appel réseau. Veuillez redémarrer l\'application</string>
 </resources>

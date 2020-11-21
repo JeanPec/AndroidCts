@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout
@@ -6,4 +6,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
