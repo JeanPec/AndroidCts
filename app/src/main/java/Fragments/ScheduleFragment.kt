@@ -50,7 +50,7 @@ class ScheduleFragment : Fragment() {
 
         recyclerView = fragmentView.findViewById(R.id.ScheduleRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = ScheduleAdapter(listOfStop, lineTramName!!)
+        recyclerView.adapter = ScheduleAdapter(listOfStop, getString(R.string.line_name, lineTramName))
         Log.i("COUNT", listOfStop.toString())
 
         val loadingDialog = LoadingDialog(requireActivity())

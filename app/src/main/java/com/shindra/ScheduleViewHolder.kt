@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Stop
 
@@ -14,12 +15,11 @@ class ScheduleViewHolder(inflater: LayoutInflater, parent: ViewGroup)
     var textStop: TextView = itemView.findViewById(R.id.stopName)
     var textLineTram: TextView = itemView.findViewById(R.id.lineTramName)
     var textStopHour: TextView = itemView.findViewById(R.id.stopHour)
-    var textInformation: TextView = itemView.findViewById(R.id.stopInformation)
 
     fun onBind(stop: Stop, lineTramName: String) {
-        textStop.setText(stop.name)
-        textLineTram.setText("Ligne " + lineTramName)
+        textStop.text = (stop.name)
+        textLineTram.text = lineTramName
+        textLineTram.setTextColor(ContextCompat.getColor(textLineTram.context, ApiLinesConvertor().lineToColor(lineTramName)))
         textStopHour.text = ApiLinesConvertor().getDateText(stop.estimatedArrivalTime)
-        textInformation.setText("stop")
     }
 }

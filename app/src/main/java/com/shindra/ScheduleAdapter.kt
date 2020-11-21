@@ -11,15 +11,11 @@ class ScheduleAdapter(var lineStops: List<Stop>, var lineTramName: String)
     : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        Log.i("CREATE", "stop.name.toString()")
-
         val inflater = LayoutInflater.from(parent.context)
         return ScheduleViewHolder(inflater, parent)
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        Log.i("BIND", "stop.name.toString()")
-
         holder.onBind(lineStops[position], lineTramName)
     }
 

@@ -25,21 +25,20 @@ class ApiLinesConvertor {
         return if(date === null) {
             "N/A"
         } else {
-            val simpleDateFormat = SimpleDateFormat("h'h'mm", Locale.FRANCE)
+            val simpleDateFormat = SimpleDateFormat("HH'h'mm", Locale.FRANCE)
             simpleDateFormat.format(date)
         }
     }
 
     fun lineToColor(lineName: String) : Int {
         return when (lineName) {
-            "A" -> R.color.line_a
-            "B" -> R.color.line_b
-            "C" -> R.color.line_c
-            "D" -> R.color.line_d
-            "E" -> R.color.line_e
-            "F" -> R.color.line_f
+            "A", "Ligne A" -> R.color.line_a
+            "B", "Ligne B" -> R.color.line_b
+            "C", "Ligne C" -> R.color.line_c
+            "D", "Ligne D" -> R.color.line_d
+            "E", "Ligne E" -> R.color.line_e
+            "F", "Ligne F" -> R.color.line_f
             else -> R.color.body2
         }
     }
-
 }

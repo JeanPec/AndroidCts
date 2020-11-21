@@ -18,12 +18,10 @@ class LineTramViewHolder(inflater: LayoutInflater, parent: ViewGroup)
     }
 
     var iconTram: ImageView = itemView.findViewById(R.id.iconTram)
-    var imagetram: ImageView = itemView.findViewById(R.id.imageTram)
     var btnSchedule: Button = itemView.findViewById(R.id.btnSchedule)
 
     fun onBind(lineTram: Line, listener: OnClickListener) {
         iconTram.setImageResource(ApiLinesConvertor().apiLineToIcon(lineTram))
-        // It's {} not () ...
         btnSchedule.setOnClickListener {listener.onClick(lineTram)}
     }
 }

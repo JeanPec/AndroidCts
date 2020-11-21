@@ -20,9 +20,9 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_tram_activity)
+        setTitle(R.string.tram_title)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         val loadingDialog = LoadingDialog(this)
-
         recyclerView = findViewById(R.id.LineTramRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = LineTramAdapter(listOfLines, this)

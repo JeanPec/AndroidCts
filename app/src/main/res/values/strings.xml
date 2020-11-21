@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
     <string name="loading_text">Veuillez patientez, chargement des données en cours</string>
-    <string name="tram_schedule">HORAIRE</string>
+    <string name="tram_schedule">Horaire</string>
     <string name="icon_tram">Icon of the tram</string>
     <string name="image_tram">Beautiful image of the tram which doesn\'t look like the one in strasbourg at all</string>
     <string name="hello_blank_fragment">Nothing to display</string>
     <string name="show_map">Voir sur la carte</string>
+    <string name="line_name">Ligne %1$s</string>
+    <string name="tram_title">Nos trams</string>
+    <string name="next_start">Prochain départ</string>
 </resources>

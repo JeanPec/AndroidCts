@@ -19,7 +19,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentStart="true"
             style="@style/H6"/>
 
         <TextView
@@ -27,27 +28,28 @@
             android:layout_below="@id/stopName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:id="@+id/stopHour"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             style="@style/H6"/>
 
         <TextView
             android:id="@+id/stopInformation"
-            android:layout_below="@id/stopHour"
-            android:layout_alignParentRight="true"
+            style="@style/Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/stopHour"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
-            style="@style/Body2"/>
+            android:text="@string/next_start" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
