@@ -13,6 +13,7 @@ import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -33,18 +34,20 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
     }
     public void onBind(Stop stop_element, String lineName){
-        lineNameView.setText("Ligne" + lineName);
+        lineNameView.setText("Ligne " + lineName);
         stop.setText(stop_element.getName());
         time.setText(convertDateToString(stop_element.getEstimatedDepartureTime()));
 
     }
 
     private String convertDateToString(Date date){
-        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
-        calendar.setTime(date);   // assigns calendar to given date
-        String hour = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
-        String minutes = String.valueOf(calendar.get(Calendar.MONTH));
-        return String.valueOf(hour + ":" + minutes);
+        SimpleDateFormat formatter = new SimpleDateFormat("h:mm");
+        String strDate= formatter.format(date);
+        //Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+        //calendar.setTime(date);   // assigns calendar to given date
+        //String hour = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
+        //String minutes = String.valueOf(calendar.get(Calendar.MONTH));
+        return strDate;
     }
 
 

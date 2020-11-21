@@ -13,6 +13,7 @@ import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,13 +23,13 @@ public class StartActivity extends AppCompatActivity {
     private ArrayList<Line> tramLines =  new ArrayList<Line>();
 
     private  ArrayList<Line> getListOfTramLines(){
+
         return tramLines;
     }
     private void setTramList(ArrayList<Line> lines){
-        for(int i = 0; i < lines.size(); i++){
-            if (lines.get(i).getRouteType() == RouteType.TRAM){
-                tramLines.add(lines.get(i));
-
+        for (Line line : lines) {
+            if (line.getRouteType() == RouteType.TRAM){
+                tramLines.add(line);
             }
         }
     }
@@ -37,6 +38,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle(R.string.main_view_name);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_lines);
         com.shindra.Misc.LoadingDialogForActivity loadingDialogForActivity = new com.shindra.Misc.LoadingDialogForActivity(this);
@@ -66,8 +68,6 @@ public class StartActivity extends AppCompatActivity {
 
                 //call once the network call has responded with a success
                 loadingDialogForActivity.dismiss();
-                getSupportActionBar().setTitle(R.string.main_view_name);
-
                 setTramList(data);
                 recyclerView.getAdapter().notifyDataSetChanged();
             }
