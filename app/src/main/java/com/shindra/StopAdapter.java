@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class StopAdapter extends RecyclerView.Adapter<StopViewHolder> {
 
-    public ArrayList<Stop> stops;
-    public String lineName;
+    private ArrayList<Stop> stops;
+    private String lineName;
 
   StopAdapter(ArrayList<Stop> stops, String lineName){
     this.stops = stops;

@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 public class LineMapActivity extends AppCompatActivity {
 
-    public LineMapFragment mapFragment;
+    private LineMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

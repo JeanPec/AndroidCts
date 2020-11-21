@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class LineAdapter extends RecyclerView.Adapter<LineViewHolder>{
 
-
     private ArrayList<Line> lines;
     private LineClick callback;
 

@@ -9,6 +9,7 @@
     <string name="stop_view_holer_info">Prochain départ</string>
     <string name="stop_view_holer_line">Ligne</string>
     <string name="button_map">Voir sur la carte</string>
+    <string name="dialog_text">Veuillez patienter, chargement des données en cours</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

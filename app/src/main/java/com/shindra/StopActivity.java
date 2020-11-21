@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class StopActivity extends AppCompatActivity {
 
-    public StopFragment stopFragment;
+    private StopFragment stopFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

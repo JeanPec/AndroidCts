@@ -3,6 +3,7 @@ package com.shindra;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,10 +28,11 @@ import java.util.ArrayList;
 
 public class StopFragment extends Fragment {
 
-    public RecyclerView stops;
-    public Button map;
-    public String lineName;
-    public ArrayList<Stop> stopsWithDepartureTime;
+    private RecyclerView stops;
+    private Button map;
+    private String lineName;
+    private ArrayList<Stop> stopsWithDepartureTime;
+    private DialogFragment dialogLoad;
 
 
     public StopFragment (String lineName){
@@ -40,9 +42,16 @@ public class StopFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         /* ArrayList containing subway's stops and their departure time received with network */
         stopsWithDepartureTime = new ArrayList<Stop>();
+
+        dialogLoad = new DialogLoadActivity(getActivity());
 
         /* Network call to CTS API */
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -50,11 +59,13 @@ public class StopFragment extends Fragment {
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName, 0), new ObservableListener<Line>() {
             @Override
             public void onLoading() {
+                dialogLoad.show(getActivity().getSupportFragmentManager(), "Stop");
                 Log.i("Stop", "Connexion in progress");
             }
 
             @Override
             public void onSuccess(Line data) {
+                dialogLoad.dismiss();
                 Log.i("Stop", "Connexion established");
 
                 for(Stop item : data.getStops())
@@ -69,10 +80,10 @@ public class StopFragment extends Fragment {
 
             @Override
             public void onError(@NotNull Throwable throwable) {
+                dialogLoad.dismiss();
                 Log.i("Stop", "Network Error !");
             }
         });
-
     }
 
     @Override

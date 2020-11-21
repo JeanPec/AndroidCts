@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,17 +22,14 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    public RecyclerView recyclerView;
-    public ArrayList<Line> lines;
-
+    private RecyclerView recyclerView;
+    private ArrayList<Line> lines;
+    private DialogFragment dialogLoad;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startactivity);
-
-        /* Intent used to pass LINE_NAME to Stop activity */
-        Intent intent = new Intent(this, StopActivity.class);
 
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
@@ -40,6 +38,16 @@ public class StartActivity extends AppCompatActivity {
         /* ArrayList containing subway's lines received with network */
         lines = new ArrayList<Line>();
 
+        dialogLoad = new DialogLoadActivity(StartActivity.this);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        /* Intent used to pass LINE_NAME to Stop activity */
+        Intent intent = new Intent(this, StopActivity.class);
 
         LineAdapter lineAdapter = new LineAdapter(lines, new LineClick(){
 
@@ -57,12 +65,15 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                dialogLoad.show(getSupportFragmentManager(), "Line");
                 Log.i("StartActiviy", "Connexion in progress");
+
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                dialogLoad.dismiss();
                 Log.i("StartActiviy", "Connexion established");
                 for(Line item : data)
                 {
@@ -75,25 +86,10 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
+                dialogLoad.dismiss();
                 Log.i("StartActiviy", "Network Error !");
             }
         });
     }
-/*
-    public ArrayList<Line> getListOfLines(){
-
-        ArrayList<Line> lines = new ArrayList<Line>();
-
-        lines.add(new Line("A", RouteType.TRAM, null));
-        lines.add(new Line("B", RouteType.TRAM, null));
-        lines.add(new Line("C", RouteType.TRAM, null));
-        lines.add(new Line("D", RouteType.TRAM, null));
-        lines.add(new Line("E", RouteType.TRAM, null));
-        lines.add(new Line("F", RouteType.TRAM, null));
-
-        return lines;
-    }
-
- */
 }
 

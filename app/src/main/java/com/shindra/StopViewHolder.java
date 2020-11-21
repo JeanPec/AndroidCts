@@ -19,10 +19,10 @@ import java.text.SimpleDateFormat;
 
 public class StopViewHolder extends RecyclerView.ViewHolder {
 
-    public TextView lineName;
-    public TextView stopName;
-    public TextView departureTime;
-    public TextView info;
+    private TextView lineName;
+    private TextView stopName;
+    private TextView departureTime;
+    private TextView info;
 
     public StopViewHolder(@NonNull View itemView) {
         super(itemView);
