@@ -1,32 +1,29 @@
 package com.shindra;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import com.shindra.dummy.Tram;
+import com.shindra.dummy.Holder;
 import com.shindra.dummy.tramAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.security.AccessController;
 import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-
+    ArrayList<Tram> Trams = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +36,7 @@ public class StartActivity extends AppCompatActivity {
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
 
+
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
@@ -48,7 +46,13 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
-                data.get(1).getName();
+                for (Line ITram : data){
+                    if(ITram.getRouteType() == RouteType.TRAM){
+                        Trams.add(new Tram(ITram));
+                    }
+                }
+                ((tramAdapter) recyclerView.getAdapter()).setTrams(Trams);
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -58,10 +62,15 @@ public class StartActivity extends AppCompatActivity {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new tramAdapter(getListTram()));
+        recyclerView.setAdapter(new tramAdapter(Trams,new Holder.onButtonClickListener(){
+            @Override
+            public void onButtonClick(Tram dtram){
+
+            }
+        }));
     }
 
-    private ArrayList<Tram> getListTram() {
+    /*private ArrayList<Tram> getListTram() {
         ArrayList<Tram> trams = new ArrayList<>();
         trams.add(new Tram("A",R.drawable.tram_a));
         trams.add(new Tram("B",R.drawable.tram_b));
@@ -71,6 +80,6 @@ public class StartActivity extends AppCompatActivity {
         trams.add(new Tram("F",R.drawable.tram_f));
 
         return trams;
-    }
+    }*/
 }
 

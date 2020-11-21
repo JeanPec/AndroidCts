@@ -11,30 +11,40 @@ import com.shindra.R;
 
 import java.util.ArrayList;
 
-public class tramAdapter extends RecyclerView.Adapter<TramCard>{
+public class tramAdapter extends RecyclerView.Adapter<Holder>{
     private ArrayList<Tram> trams;
+    Holder.onButtonClickListener callback;
 
 
-    public tramAdapter(ArrayList<Tram> trams) {
+    public tramAdapter(ArrayList<Tram> trams, Holder.onButtonClickListener callback) {
+        this.trams = trams;
+        this.callback = callback;
+    }
+
+    public void setTrams(ArrayList<Tram> trams) {
         this.trams = trams;
     }
 
     @NonNull
     @Override
-    public TramCard onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View tramView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cardview, parent,  false);
 
-        return new TramCard(tramView);
+        return new Holder(tramView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TramCard holder, int position) {
-        holder.onBind(trams.get(position));
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
+        holder.onBind(trams.get(position),callback);
+
+
     }
 
     @Override
     public int getItemCount() {
         return trams.size();
     }
+
+
 }

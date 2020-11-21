@@ -21,18 +21,25 @@ public class Tram {
         switch (data.getName()){
             case "A":
                 this.image = R.drawable.tram_a;
+                break;
             case "B":
                 this.image = R.drawable.tram_b;
+                break;
             case "C":
                 this.image = R.drawable.tram_c;
+                break;
             case "D":
                 this.image = R.drawable.tram_d;
+                break;
             case "E":
                 this.image = R.drawable.tram_e;
+                break;
             case "F":
                 this.image = R.drawable.tram_f;
+                break;
             default:
                 this.image = R.drawable.tram;
+                break;
         }
     }
 }
