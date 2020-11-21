@@ -30,10 +30,9 @@ public class StopActivity extends AppCompatActivity {
         Intent intentStartActivity = getIntent();
         String lineName = intentStartActivity.getStringExtra("LINE_NAME");
 
-        stopFragment = new StopFragment(lineName);
         /* Initialize transaction */
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.FrameLayout, stopFragment);
+        ft.add(R.id.FrameLayout, new StopFragment(lineName));
         ft.commit();
 
     }

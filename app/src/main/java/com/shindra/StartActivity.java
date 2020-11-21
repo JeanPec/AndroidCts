@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 
 import org.jetbrains.annotations.NotNull;
@@ -65,7 +66,7 @@ public class StartActivity extends AppCompatActivity {
                 Log.i("StartActiviy", "Connexion established");
                 for(Line item : data)
                 {
-                    if(item.getRouteType().toString() == "TRAM")
+                    if(item.getRouteType() == RouteType.TRAM)
                         lines.add(item);
                 }
                 recyclerView.setAdapter(lineAdapter);

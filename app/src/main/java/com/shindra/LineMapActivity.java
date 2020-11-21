@@ -18,10 +18,9 @@ public class LineMapActivity extends AppCompatActivity {
         Intent intentStopActivity = getIntent();
         String lineName = intentStopActivity.getStringExtra("LINE_NAME");
 
-        mapFragment = new LineMapFragment(lineName);
         /* Initialize transaction */
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.FrameLayoutMap, mapFragment);
+        ft.add(R.id.FrameLayoutMap, new LineMapFragment(lineName));
         ft.commit();
     }
 }

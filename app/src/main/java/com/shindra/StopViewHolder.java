@@ -68,7 +68,7 @@ public class StopViewHolder extends RecyclerView.ViewHolder {
             case "F":
                 return R.color.Ligne_F;
             default:
-                return R.color.Ligne_A;
+                return R.color.Default;
         }
 
     }
