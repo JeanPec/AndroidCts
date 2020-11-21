@@ -1,6 +1,6 @@
 package com.shindra.Lines
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.LoadingDialog
 import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.Schedule.ScheduleActivity
@@ -32,9 +33,7 @@ class FragmentLine : Fragment(), ScheduleClick {
     override fun onStart() {
         super.onStart()
 
-        val loadingDialogView = LayoutInflater.from(this.context).inflate(R.layout.loading_dialog,null)
-        val dialogBuilder = AlertDialog.Builder(this.context).setView(loadingDialogView)
-        val loadingDialog = dialogBuilder.create()
+        val loadingDialog = LoadingDialog(this.activity as Activity)
 
         val tramRecyclerList = viewOfLayout.findViewById<RecyclerView>(R.id.cardListLines)
         tramRecyclerList.layoutManager = LinearLayoutManager(this.context)
@@ -44,7 +43,7 @@ class FragmentLine : Fragment(), ScheduleClick {
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                loadingDialog.show()
+                loadingDialog.showLoadingDialog()
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
@@ -60,7 +59,7 @@ class FragmentLine : Fragment(), ScheduleClick {
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).lines = lines
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).notifyDataSetChanged()
 
-                loadingDialog.dismiss()
+                loadingDialog.dismissLoadingDialog()
             }
 
             override fun onError(throwable: Throwable) {

@@ -1,12 +1,10 @@
 package com.shindra.Map
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.LoadingDialog
 import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.controls.MapFragment
@@ -15,7 +13,6 @@ import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
-import com.shindra.ctslibrary.bo.Stop
 
 class FragmentMap : MapFragment() {
 
@@ -32,17 +29,14 @@ class FragmentMap : MapFragment() {
     override fun onStart() {
         super.onStart()
 
-        val loadingDialogView = LayoutInflater.from(this.context).inflate(R.layout.loading_dialog,null)
-        val dialogBuilder = AlertDialog.Builder(this.context).setView(loadingDialogView)
-        val loadingDialog = dialogBuilder.create()
-
+        val loadingDialog = LoadingDialog(this.activity as Activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         if (lineID != null) {
             model.lineWithStop(RouteType.TRAM, lineID!!).observe(object : ObservableListener<Line> {
                 override fun onLoading() {
                     //call once we started the network called. Indicate that the network call is in progress
-                    loadingDialog.show()
+                    loadingDialog.showLoadingDialog()
                 }
 
                 override fun onSuccess(data: Line) {
@@ -54,7 +48,7 @@ class FragmentMap : MapFragment() {
 
                     addPoi(pois)
 
-                    loadingDialog.dismiss()
+                    loadingDialog.dismissLoadingDialog()
                 }
 
                 override fun onError(throwable: Throwable) {
