@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Lines.LinesRecyclerViewAdapter
 import com.shindra.LoadingDialog
 import com.shindra.Map.MapActivity
 import com.shindra.MyViewModel
 import com.shindra.R
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -61,12 +63,12 @@ class FragmentSchedule : Fragment() {
             }
 
             override fun onSuccess(data: Line) {
-                stops.clear()
 
-                for (stop in data.stops!!) {
-                    stops.add(stop)
+                val stops = data.stops?.toArrayList()
+
+                stops?.let {
+                    (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).stops = it
                 }
-                (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).stops = stops
                 (scheduleRecyclerList.adapter as ScheduleRecyclerViewAdapter).notifyDataSetChanged()
 
                 loadingDialog.dismissLoadingDialog()

@@ -15,6 +15,7 @@ import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.Schedule.ScheduleActivity
 import com.shindra.ScheduleClick
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -48,15 +49,11 @@ class FragmentLine : Fragment(), ScheduleClick {
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
-                lines.clear()
+                val lines = data.filter{it.routeType == RouteType.TRAM}.toArrayList()
 
-                for (line in data) {
-                    if (line.routeType === RouteType.TRAM) {
-                        lines.add(line)
-                    }
+                lines?.let {
+                    (tramRecyclerList.adapter as LinesRecyclerViewAdapter).lines = it
                 }
-
-                (tramRecyclerList.adapter as LinesRecyclerViewAdapter).lines = lines
                 (tramRecyclerList.adapter as LinesRecyclerViewAdapter).notifyDataSetChanged()
 
                 loadingDialog.dismissLoadingDialog()

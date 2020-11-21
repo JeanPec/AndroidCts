@@ -9,6 +9,7 @@ import com.shindra.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
+import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -16,8 +17,6 @@ import com.shindra.ctslibrary.bo.Line
 
 class FragmentMap : MapFragment() {
 
-    private lateinit var viewOfLayout: View
-    val pois = java.util.ArrayList<Poi>()
     var lineID: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +40,17 @@ class FragmentMap : MapFragment() {
 
                 override fun onSuccess(data: Line) {
 
-                    for (stop in data.stops!!) {
-                        val poi = Poi(R.drawable.icon_maps_place_24px, getLineColor(lineID!!), (stop.position!!.latitude) as Double, stop.position!!.longitude as Double)
-                        pois.add(poi)
+                    val pois = java.util.ArrayList<Poi>()
+
+                    data.stops?.forEach{
+                        if (it.position?.latitude != null && it.position?.longitude != null && lineID != null) {
+                            val poi = Poi(R.drawable.icon_maps_place_24px, getLineColor(lineID), (it.position?.latitude) as Double, (it.position?.longitude) as Double)
+                            pois.add(poi)
+                        }
+
                     }
 
-                    addPoi(pois)
+                    addPois(pois)
 
                     loadingDialog.dismissLoadingDialog()
                 }
@@ -58,34 +62,16 @@ class FragmentMap : MapFragment() {
         }
     }
 
-    fun  getLineColor(lineID:String) : Int {
+    fun  getLineColor(lineID:String?) : Int {
         return when (lineID) {
-            "A" -> {
-                R.color.ligne_A
-            }
-            "B" -> {
-                R.color.ligne_B
-            }
-            "C" -> {
-                R.color.ligne_C
-            }
-            "D" -> {
-                R.color.ligne_D
-            }
-            "E" -> {
-                R.color.ligne_E
-            }
-            "F" -> {
-                R.color.ligne_F
-            }
-            else -> {
-                R.color.black
-            }
+            "A" -> R.color.ligne_A
+            "B" -> R.color.ligne_B
+            "C" -> R.color.ligne_C
+            "D" -> R.color.ligne_D
+            "E" -> R.color.ligne_E
+            "F" -> R.color.ligne_F
+            else -> R.color.black
         }
-    }
-
-    fun addPoi(pois: ArrayList<Poi>){
-        addPois(pois)
     }
 
 }
