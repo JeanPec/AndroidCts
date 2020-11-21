@@ -4,14 +4,10 @@
     <string name="empty">XXXXXXX</string>
     <string name="lines">Nos trams</string>
     <string name="seeOnMap">Voir sur la carte</string>
-    <string name="lineA">Ligne A</string>
-    <string name="lineB">Ligne B</string>
-    <string name="lineC">Ligne C</string>
-    <string name="lineD">Ligne D</string>
-    <string name="lineE">Ligne E</string>
-    <string name="lineF">Ligne F</string>
     <string name="unknownLine">Ligne ?</string>
     <string name="loading">Veuillez patienter, chargement de données en cours...</string>
     <string name="error">Erreur lors du chargement des données</string>
     <string name="back">Retour</string>
+    <string name="lineText">Ligne&#160;</string>
+    <string name="lineNameKey">lineName</string>
 </resources>

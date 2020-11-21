@@ -2,6 +2,7 @@ package com.shindra.Stop
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,7 @@ class StopFragment() : Fragment()
     {
         val view = inflater.inflate(R.layout.fragment_stop, container, false)
 
-        val lineName = arguments?.getString("lineName")
+        val lineName = arguments?.getString(getString(R.string.lineNameKey))
 
         stops = view.findViewById(R.id.stops)
         stops?.layoutManager = LinearLayoutManager(context)
@@ -41,7 +42,7 @@ class StopFragment() : Fragment()
         var seeOnMapButton : Button = view.findViewById(R.id.seeOnMapButton)
         seeOnMapButton.setOnClickListener(View.OnClickListener {
             val intent = Intent(activity, MapActivity::class.java)
-            intent.putExtra("lineName", lineName)
+            intent.putExtra(getString(R.string.lineNameKey), lineName)
             startActivity(intent)
         })
 

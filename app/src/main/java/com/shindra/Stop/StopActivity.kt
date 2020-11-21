@@ -11,12 +11,12 @@ class StopActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stop)
 
-        val lineName = intent.getStringExtra("lineName")
+        val lineName = intent.getStringExtra(getString(R.string.lineNameKey))
 
         val fragment = StopFragment.newInstance(lineName)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.frameContainer, fragment).commit()
 
-        setTitle("Ligne " + lineName)
+        setTitle(getString(R.string.lineText) + lineName)
     }
 }

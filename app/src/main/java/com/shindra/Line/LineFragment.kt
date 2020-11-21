@@ -39,7 +39,7 @@ class LineFragment : Fragment()
             override fun onLineClick(line: Line)
             {
                 val intent = Intent(activity, StopActivity::class.java)
-                intent.putExtra("lineName", line.name)
+                intent.putExtra(getString(R.string.lineNameKey), line.name)
                 startActivity(intent)
             }
         })
