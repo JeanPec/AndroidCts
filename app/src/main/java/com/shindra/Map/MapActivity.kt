@@ -32,7 +32,7 @@ class MapActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentMap, fragmentMap);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit()    ;
 
 
         val intent = intent
