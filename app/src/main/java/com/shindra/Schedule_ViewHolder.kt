@@ -5,9 +5,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Stop
+import java.text.SimpleDateFormat
 import java.util.*
 
-class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class Schedule_ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val logTag = "timetableViewHolder"
 
@@ -16,11 +17,13 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
     private var timeView: TextView
     private var nextStart: TextView
 
+    var simpleDateFormat = SimpleDateFormat("h:mm")
 
-    fun onBind(c: Context, s: Stop, name: String) {
+
+    fun onBind(view: Context, s: Stop, name: String) {
 
         stopName.text = s.name
-        lineName.text = c.getString(R.string.Schedule_LineName, name)
+        lineName.text = R.string.Schedule_LineName.toString()
         timeView.text = getSimpleTimeStringFromDate(s.estimatedDepartureTime)
     }
 
@@ -31,12 +34,12 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
         timeView = itemView.findViewById(R.id.schedule_hour)
     }
 
-    private fun getSimpleTimeStringFromDate(d : Date?) : String {
+    private fun getSimpleTimeStringFromDate(d: Date?) : String {
         if(d == null) return "ND"
 
         val calendar = Calendar.getInstance()
         calendar.time = d
 
-        return calendar.get(Calendar.HOUR_OF_DAY).toString()+"h"+calendar.get(Calendar.MINUTE).toString()
+        return simpleDateFormat.format(calendar.get(Calendar.HOUR_OF_DAY).toString()+calendar.get(Calendar.MINUTE).toString()) //calendar.get(Calendar.HOUR_OF_DAY).toString()+"h"+calendar.get(Calendar.MINUTE).toString()
     }
 }

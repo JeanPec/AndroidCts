@@ -11,7 +11,7 @@ import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 
-class LineActivity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
+class Tram_Activity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
 
     private var tramList = ArrayList<Line>()
 
@@ -23,7 +23,7 @@ class LineActivity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
         val loadingDialog = LoadingDialog(this)
         val tramRecyclerList = findViewById<RecyclerView>(R.id.tram_list)
         tramRecyclerList.layoutManager = LinearLayoutManager(this)
-        tramRecyclerList.adapter = LineAdapter(tramList, this)
+        tramRecyclerList.adapter = Tram_Adapter(tramList, this)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
 
@@ -35,13 +35,11 @@ class LineActivity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
                 for (line in data) {
-                    if (line.routeType == RouteType.TRAM) {
-                        tramList.add(line)
-                    }
+                    val tramList = data.filter {it.routeType== RouteType.TRAM }.toTypedArray()
                 }
                 loadingDialog.dismissDialog()
-                (tramRecyclerList.adapter as LineAdapter).lines = tramList
-                (tramRecyclerList.adapter as LineAdapter).notifyDataSetChanged()
+                (tramRecyclerList.adapter as Tram_Adapter).lines = tramList
+                (tramRecyclerList.adapter as Tram_Adapter).notifyDataSetChanged()
 
             }
 
@@ -52,9 +50,7 @@ class LineActivity : AppCompatActivity(), Tram_ViewHolder.OnLineClickListener {
     }
 
     override fun onItemClick(line: Line) {
-        //TODO : Create ScheduleActivity
-
-        //val intent = Intent(this, ScheduleActivity::class.java)
+        val intent = Intent(this, SchedulesActivity::class.java)
         intent.putExtra("lineName", line.name)
         startActivity(intent)
     }

@@ -53,7 +53,7 @@ class StopFragment : Fragment() {
 
         recyclerView = view?.findViewById(R.id.ScheduleFragment)
         recyclerView?.layoutManager = LinearLayoutManager(context)
-        recyclerView?.adapter = TimetableRecyclerViewAdaptater(lineWithTimetable, requireContext())
+        recyclerView?.adapter = Schedule_RecyclerViewAdaptater(lineWithTimetable, requireContext())
 
         return recyclerView
     }
