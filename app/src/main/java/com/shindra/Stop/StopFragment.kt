@@ -1,51 +1,53 @@
-package com.shindra.Line;
+package com.shindra.Stop
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Map.MapActivity
 import com.shindra.Misc.ErrorDialog
 import com.shindra.Misc.LoadingDialog
 import com.shindra.Misc.MyViewModel
 import com.shindra.R
-import com.shindra.Stop.StopActivity
-import com.shindra.Stop.StopFragment
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
+import com.shindra.ctslibrary.bo.Stop
 import java.util.*
 
-class LineFragment : Fragment()
+class StopFragment() : Fragment()
 {
-    private var lines : RecyclerView? = null
+    private var stops: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_line, container, false)
+        val view = inflater.inflate(R.layout.fragment_stop, container, false)
 
-        lines = view.findViewById(R.id.lines)
-        lines?.layoutManager = LinearLayoutManager(context)
-        lines?.adapter = LineAdapter(ArrayList(), object : ILineClickable
-        {
-            override fun onLineClick(line: Line)
-            {
-                val intent = Intent(activity, StopActivity::class.java)
-                intent.putExtra("lineName", line.name)
-                startActivity(intent)
-            }
+        val lineName = arguments?.getString("lineName")
+
+        stops = view.findViewById(R.id.stops)
+        stops?.layoutManager = LinearLayoutManager(context)
+        stops?.adapter = StopAdapter(ArrayList(), lineName)
+
+        var seeOnMapButton : Button = view.findViewById(R.id.seeOnMapButton)
+        seeOnMapButton.setOnClickListener(View.OnClickListener {
+            val intent = Intent(activity, MapActivity::class.java)
+            intent.putExtra("lineName", lineName)
+            startActivity(intent)
         })
 
         val loadingDialog = LoadingDialog(activity)
         val errorDialog = ErrorDialog(activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lines().observe(object : ObservableListener<ArrayList<Line>> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName!!, 0).observe(object : ObservableListener<Line> {
 
             override fun onLoading()
             {
@@ -54,20 +56,19 @@ class LineFragment : Fragment()
                 loadingDialog.show()
             }
 
-            override fun onSuccess(data: ArrayList<Line>)
-            {
+            override fun onSuccess(data: Line) {
                 //call once the network call has responded with a success
                 //Dismiss the loading dialog
                 loadingDialog.dismiss()
 
-                //Only keep Tram lines
-                val tramLines = ArrayList<Line>()
-                for (item in data)
-                    if (item.routeType === RouteType.TRAM)
-                        tramLines.add(item)
+                //Only keep stops with a no-null departure time
+                val stopWithDeparture = ArrayList<Stop>()
+                for (item in data.stops!!)
+                    if (item.estimatedDepartureTime != null)
+                        stopWithDeparture.add(item)
 
                 //Update the recycler view through the adapter
-                updateWidgets(tramLines)
+                updateWidgets(stopWithDeparture)
             }
 
             override fun onError(throwable: Throwable)
@@ -82,9 +83,21 @@ class LineFragment : Fragment()
         return view
     }
 
-    fun updateWidgets(tramLines : ArrayList<Line>)
+    fun updateWidgets(data: ArrayList<Stop>)
     {
-        (lines?.adapter as LineAdapter).lines = tramLines
-        lines?.adapter?.notifyDataSetChanged()
+        (stops?.adapter as StopAdapter?)?.stops = data
+        stops?.adapter?.notifyDataSetChanged()
+    }
+
+    companion object
+    {
+        fun newInstance(lineName : String?) : StopFragment
+        {
+            val fragment = StopFragment()
+            val args = Bundle()
+            args.putString("lineName", lineName)
+            fragment.arguments = args
+            return  fragment
+        }
     }
 }
