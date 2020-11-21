@@ -22,11 +22,13 @@ import static com.shindra.R.id.imgTram;
 public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramViewHolder> {
 
     List<TramCard> listeTramCard;
+    RecyclerItemClick callback;
 
     public static class TramViewHolder extends RecyclerView.ViewHolder {
 
         //TextView nomLigne;
         ImageView imgNomLigne, imgTram;
+        Button  horaireButton;
 
 
         @SuppressLint("WrongViewCast")
@@ -35,14 +37,32 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
            // nomLigne = itemView.findViewById(R.id.nomLigne);
             imgTram = itemView.findViewById(R.id.imgTram);
             imgNomLigne = itemView.findViewById(R.id.imgLigne);
+            horaireButton = itemView.findViewById(R.id.horaireButton);
+
+
+
+        }
+
+        public void onBind(TramCard tramCard, RecyclerItemClick callback) {
+            imgTram.setImageDrawable(tramCard.imgTram);
+            imgNomLigne.setImageDrawable(tramCard.imgNomLigne);
+
+            horaireButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callback.onHoraireButtonClick(tramCard);
+                }
+            });
+
 
         }
 
 
     }
 
-    public TramCardAdapter(List<TramCard> listeTramCard) {
+    public TramCardAdapter(List<TramCard> listeTramCard, RecyclerItemClick callback) {
         this.listeTramCard = listeTramCard;
+        this.callback = callback;
     }
 
     @NonNull
@@ -57,8 +77,8 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
     public void onBindViewHolder(@NonNull TramViewHolder holder, int position) {
         TramCard tramCard = listeTramCard.get(position);
         //holder.nomLigne.setText(tramCard.getNomLigne());
-        holder.imgTram.setImageDrawable(tramCard.imgTram);
-        holder.imgNomLigne.setImageDrawable(tramCard.imgNomLigne);
+        holder.onBind(tramCard, callback);
+
 
     }
 

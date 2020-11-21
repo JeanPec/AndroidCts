@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -14,7 +15,6 @@ import java.util.List;
 public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.HoraireViewHolder>{
 
     List<HoraireCard> listeHoraire;
-
 
     public static class HoraireViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,6 +32,41 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.HoraireV
 
         }
 
+        public void onBind(HoraireCard horaireCard)
+        {
+
+            String ligne = horaireCard.nomLigne;
+            //nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_B));
+
+            arret.setText(horaireCard.arret);
+            horaire.setText(horaireCard.horaire);
+
+
+            switch(ligne){
+                case "A":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_A));
+                    break;
+                case "B":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_B));
+                    break;
+                case "C":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_C));
+                    break;
+                case "D":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_D));
+                    break;
+                case "E":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_E));
+                    break;
+                case "F":
+                    nomLigne.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_F));
+                    break;
+            }
+            nomLigne.setText("Ligne "+ligne);
+
+           // arret.setTextColor(ContextCompat.getColor(itemView.getContext(),R.color.color_Ligne_B));
+
+        }
 
     }
     public HoraireAdapter(List<HoraireCard> listeHoraire) {
@@ -46,32 +81,16 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.HoraireV
         return horaireViewHolder;
     }
 
-    @SuppressLint("ResourceAsColor")
+
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position) {
 
         HoraireCard horaireCard = listeHoraire.get(position);
 
-        holder.arret.setText(horaireCard.arret);
-        holder.horaire.setText(horaireCard.horaire);
-        holder.nomLigne.setText("Ligne "+horaireCard.nomLigne);
 
-        switch (horaireCard.nomLigne){
-            case "A":
-                holder.nomLigne.setTextColor(R.color.color_Ligne_A);
-                break;
-            case "B":
-                holder.nomLigne.setTextColor(R.color.color_Ligne_B);
-                break;
-            case "C":
-                break;
-            case "D":
-                break;
-            case "E":
-                break;
-            case "F":
-                break;
-        }
+        holder.onBind(horaireCard);
+
+
 
 
     }

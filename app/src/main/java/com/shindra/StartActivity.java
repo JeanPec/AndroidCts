@@ -19,12 +19,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity implements RecyclerItemClick {
 
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private TramCardAdapter tramCardAdapter;
+
+
+
 
 
     @Override
@@ -33,7 +36,9 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        // setContentView(R.layout.fragment_first);
 
-        setTitle("Nos trams");
+        //setTitle("Nos trams");
+        getSupportActionBar().setTitle(getString(R.string.home_title));
+        //getSupportActionBar().setTitle(getString(R.string.horaire_title));
 
 
         Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
@@ -50,17 +55,16 @@ public class StartActivity extends AppCompatActivity {
 
 
 
-        setTitle("Horaire");
 
-        List<HoraireCard> horaireCardList = new ArrayList<HoraireCard>();
 
-        horaireCardList.add(new HoraireCard("Arret 1", "19h00", "A"));
-        horaireCardList.add(new HoraireCard("Arret 2", "19h15", "B"));
+
 
 
         recyclerView = findViewById(R.id.appCts_recyclerview);
-        //recyclerView.setAdapter(new TramCardAdapter(tramCardList));
-        recyclerView.setAdapter(new HoraireAdapter(horaireCardList));
+
+        TramCardAdapter tramCardAdapter = new TramCardAdapter(tramCardList, this);
+
+        recyclerView.setAdapter(tramCardAdapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -84,6 +88,24 @@ public class StartActivity extends AppCompatActivity {
                 //call if the network call has responded with an error
             }
         });
+    }
+
+    @Override
+    public void onHoraireButtonClick(TramCard tramCard) {
+        List<HoraireCard> horaireCardList = new ArrayList<HoraireCard>();
+
+
+        horaireCardList.add(new HoraireCard("Arret 1", "19h00", "A"));
+        horaireCardList.add(new HoraireCard("Arret 2", "19h15", "B"));
+        horaireCardList.add(new HoraireCard("Arret 1", "19h00", "C"));
+        horaireCardList.add(new HoraireCard("Arret 2", "19h15", "D"));
+        horaireCardList.add(new HoraireCard("Arret 1", "19h00", "E"));
+        horaireCardList.add(new HoraireCard("Arret 2", "19h15", "F"));
+
+
+
+
+        recyclerView.setAdapter(new HoraireAdapter(horaireCardList));
     }
 }
 

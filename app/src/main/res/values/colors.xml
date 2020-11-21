@@ -12,4 +12,8 @@
     <color name="Primary">#EF2B3E</color>
     <color name="Primary_Variant">#B50017</color>
     <color name="color_Ligne_B">#00A3DA</color>
+    <color name="color_Ligne_C">#EB8B2D</color>
+    <color name="color_Ligne_D">#009F4A</color>
+    <color name="color_Ligne_E">#7F78AB</color>
+    <color name="color_Ligne_F">#84BF41</color>
 </resources>

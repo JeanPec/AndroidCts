@@ -7,13 +7,14 @@ public class TramCard {
 
     public Drawable imgNomLigne;
     public Drawable imgTram;
-
+    //public Button horaireButton;
 
     public TramCard(Drawable imgNomLigne, Drawable imgTram) {
         this.imgNomLigne = imgNomLigne;
         this.imgTram = imgTram;
-    }
 
+
+    }
 
 
 
