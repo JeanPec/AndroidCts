@@ -1,5 +1,6 @@
 package com.shindra.Stop
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -43,8 +44,8 @@ class StopFragment() : Fragment()
             startActivity(intent)
         })
 
-        val loadingDialog = LoadingDialog(activity)
-        val errorDialog = ErrorDialog(activity)
+        val loadingDialog = LoadingDialog(activity as Activity)
+        val errorDialog = ErrorDialog(activity as Activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName!!, 0).observe(object : ObservableListener<Line> {

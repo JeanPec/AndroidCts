@@ -1,5 +1,6 @@
 package com.shindra.Line;
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,8 +42,8 @@ class LineFragment : Fragment()
             }
         })
 
-        val loadingDialog = LoadingDialog(activity)
-        val errorDialog = ErrorDialog(activity)
+        val loadingDialog = LoadingDialog(activity as Activity)
+        val errorDialog = ErrorDialog(activity as Activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {

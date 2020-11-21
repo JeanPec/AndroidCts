@@ -1,5 +1,6 @@
 package com.shindra.Map
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,8 +28,8 @@ class MapLineFragment() : MapFragment()
 
         val lineName = arguments?.getString("lineName")
 
-        val loadingDialog = LoadingDialog(activity)
-        val errorDialog = ErrorDialog(activity)
+        val loadingDialog = LoadingDialog(activity as Activity)
+        val errorDialog = ErrorDialog(activity as Activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, lineName!!).observe(object : ObservableListener<Line> {
@@ -62,7 +63,7 @@ class MapLineFragment() : MapFragment()
     {
         val pois = ArrayList<Poi>()
         for ((_, _, _, _, position) in line?.stops!!)
-            pois.add(Poi(R.drawable.icon_maps_place_24px, Converter.lineLetterToLineColor(line.name), position?.latitude!!, position?.longitude!!))
+            pois.add(Poi(R.drawable.icon_maps_place_24px, Converter.lineLetterToLineColor(line.name), position?.latitude!!, position.longitude!!))
         addPois(pois)
     }
 
