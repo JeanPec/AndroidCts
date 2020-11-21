@@ -28,8 +28,6 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
 
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
