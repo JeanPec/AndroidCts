@@ -1,28 +1,24 @@
-package com.shindra.Time
+package com.shindra.time
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.LoadingClass
-import com.shindra.Map.MapActivity
-import com.shindra.MyViewModel
+import com.shindra.utilis.LoadingClass
+import com.shindra.map.MapActivity
+import com.shindra.utilis.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
-import com.shindra.ctslibrary.bo.Stop
-import kotlin.collections.ArrayList
 
 class TimeFragment : Fragment() {
 
@@ -62,7 +58,8 @@ class TimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
          view.findViewById<Button>(R.id.button_map).setOnClickListener{
-             val intent = Intent(context, MapActivity::class.java)
+             //val intent = MapActivity.newInstance(activity as Activity,this.arguments?.getString("name"))//Intent(context, MapActivity::class.java)
+             val intent = Intent(activity, MapActivity :: class.java)
              intent.putExtra("name", this.arguments?.getString("name"))
              startActivity(intent)
          }
@@ -71,4 +68,22 @@ class TimeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
+    companion object{
+        /**
+         * Create a new instance of DetailsFragment, initialized to
+         * show the text at 'index'.
+         */
+        fun newInstance(name_line: String?): TimeFragment {
+            val f = TimeFragment()
+
+            // Supply index input as an argument.
+            val args = Bundle()
+            args.putString("name", name_line)
+            f.arguments = args
+
+            return f
+        }
+    }
+
 }

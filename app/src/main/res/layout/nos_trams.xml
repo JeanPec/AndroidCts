@@ -43,7 +43,8 @@
             android:textColor="@color/Primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/Background">
+            android:backgroundTint="@color/Background"
+            android:background="@android:color/transparent">
         </Button>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

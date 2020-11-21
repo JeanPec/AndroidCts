@@ -1,4 +1,4 @@
-package com.shindra.Time
+package com.shindra.time
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -37,7 +37,7 @@ class TimeAdapter(var stopList: ArrayList<Stop>, val lineName : String?) : Recyc
 
         fun onBind(current_stop : Stop, line_name : String?){
             textStop.setText(current_stop.name)
-            textLine.setText("Ligne".plus(" ").plus(line_name))
+            textLine.setText(context.getString(R.string.line).plus(" ").plus(line_name))
             textLine.setTextColor(getColor(context, getColorId(line_name)))
             current_stop.estimatedDepartureTime?.let{ textTime.text = SimpleDateFormat("HH'h'mm", Locale.FRANCE).format(current_stop.estimatedDepartureTime)}
         }

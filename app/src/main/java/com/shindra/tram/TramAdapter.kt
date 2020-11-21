@@ -1,25 +1,24 @@
-package com.shindra
+package com.shindra.tram
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.core.graphics.convertTo
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Line
 
 
-class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.RecyclerLineClick) : RecyclerView.Adapter<TrainAdapter.TrainViewHolder>(){
+class TramAdapter(var lineList: ArrayList<Line>, val callback: TramViewHolder.RecyclerLineClick) : RecyclerView.Adapter<TramAdapter.TramViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TramViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.nos_trams,
-        parent, false)
-        return TrainViewHolder(itemView)
+                parent, false)
+        return TramViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: TrainViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TramViewHolder, position: Int) {
         val currentLine : Line = lineList[position]
         holder.onBind(currentLine,callback,currentLine.name)
     }
@@ -27,12 +26,12 @@ class TrainAdapter(var lineList: ArrayList<Line>, val callback: TrainViewHolder.
     override fun getItemCount() = lineList.size
 
 
-    class TrainViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+    class TramViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val imageView: ImageView = itemView.findViewById(R.id.image_view)
         private val button: Button = itemView.findViewById(R.id.button_horraires)
 
-        fun onBind(line : Line,callback : RecyclerLineClick, nameLine : String) {
+        fun onBind(line : Line, callback : RecyclerLineClick, nameLine : String) {
             imageView.setImageResource(getImagesRessource(nameLine))
             button.setOnClickListener{
                 callback.onLineClick(line)

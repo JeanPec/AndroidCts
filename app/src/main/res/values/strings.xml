@@ -5,5 +5,8 @@
     <string name="map_time">Voir sur la carte</string>
     <string name="next_step">Prochain départ</string>
     <string name="undefined">Erreur</string>
+    <string name="line">Ligne </string>
+    <string name="time">Horaire</string>
+    <string name="tram">Nos trams</string>
 
 </resources>

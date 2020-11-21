@@ -1,4 +1,4 @@
-package com.shindra.Map
+package com.shindra.map
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.shindra.LoadingClass
-import com.shindra.MyViewModel
+import com.shindra.utilis.LoadingClass
+import com.shindra.utilis.MyViewModel
 import com.shindra.R
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
@@ -36,6 +36,7 @@ class MapWithStopFragment() : MapFragment() {
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, line_name!!).observe(object : ObservableListener<Line> {
+
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
                 dialog.show()
@@ -53,6 +54,23 @@ class MapWithStopFragment() : MapFragment() {
                 //call if the network call has responded with an error
             }
         })
+    }
+    companion object {
+        /**
+         * Create a new instance of DetailsFragment, initialized to
+         * show the text at 'index'.
+         */
+        fun newInstance(name_line: String?): MapWithStopFragment {
+            val f = MapWithStopFragment()
+
+            // Supply index input as an argument.
+            val args = Bundle()
+            args.putString("name", name_line)
+            f.arguments = args
+
+            return f
+        }
+
     }
 
 }

@@ -1,9 +1,8 @@
-package com.shindra
+package com.shindra.utilis
 
 import android.app.Activity
-import android.content.Context
-import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import com.shindra.R
 
 
 class LoadingClass(context: Activity) : AlertDialog(context) {
