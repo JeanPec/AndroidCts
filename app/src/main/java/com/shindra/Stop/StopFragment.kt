@@ -84,7 +84,7 @@ class StopFragment() : Fragment()
 
     fun updateWidgets(data: ArrayList<Stop>)
     {
-        (stops?.adapter as StopAdapter?)?.stops = data
+        (stops?.adapter as? StopAdapter?)?.stops = data
         stops?.adapter?.notifyDataSetChanged()
     }
 

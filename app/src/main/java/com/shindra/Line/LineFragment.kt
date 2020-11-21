@@ -84,7 +84,7 @@ class LineFragment : Fragment()
 
     fun updateWidgets(tramLines : ArrayList<Line>)
     {
-        (lines?.adapter as LineAdapter).lines = tramLines
+        (lines?.adapter as? LineAdapter)?.lines = tramLines
         lines?.adapter?.notifyDataSetChanged()
     }
 }
