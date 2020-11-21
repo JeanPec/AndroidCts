@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:text="Headline1"></TextView>
+            android:text="@string/init"></TextView>
 
         <TextView
             android:id="@+id/Ligne"
@@ -40,7 +40,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="8dp"
-            android:text="BodyLine"></TextView>
+            android:text="@string/init"></TextView>
 
         <TextView
             android:id="@+id/Time"
@@ -50,7 +50,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:text="8H35"></TextView>
+            android:text="@string/init"></TextView>
 
         <TextView
             android:id="@+id/prochaindepart"
@@ -62,6 +62,6 @@
             android:layout_marginTop="0dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Prochain départ"></TextView>
+            android:text="@string/prochDepart"></TextView>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

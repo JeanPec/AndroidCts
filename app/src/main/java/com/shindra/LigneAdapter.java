@@ -31,7 +31,6 @@ public class LigneAdapter extends RecyclerView.Adapter<LigneViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull LigneViewHolder holder, int position) {
         Line newLigne = line.get(position);
-        holder.image.setImageResource(getImage(newLigne));
         holder.OnBind(newLigne, callback);
     }
 
@@ -43,26 +42,5 @@ public class LigneAdapter extends RecyclerView.Adapter<LigneViewHolder> {
     public void setLine(ArrayList<Line> line)
     {
         this.line = line;
-    }
-
-    private int getImage(Line line)
-    {
-        switch (line.getName())
-        {
-            case "A":
-                return R.drawable.ic_tram_a;
-            case "B":
-                return R.drawable.ic_tram_b;
-            case "C":
-                return R.drawable.ic_tram_c;
-            case "D":
-                return R.drawable.ic_tram_d;
-            case "E":
-                return R.drawable.ic_tram_e;
-            case "F":
-                return R.drawable.ic_tram_f;
-            default:
-                return R.drawable.ic_tram;
-        }
     }
 }

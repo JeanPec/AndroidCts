@@ -1,16 +1,59 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.util.Log;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.shindra.arrakis.controls.MapFragment;
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import com.shindra.arrakis.controls.Poi;
 import com.shindra.ctslibrary.bo.Stop;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class LigneMapFragment extends MapFragment
 {
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        ActivityLoad loadPage = new ActivityLoad(getActivity());
+        loadPage.showLoadingScreen();
+
+        Intent intent = getActivity().getIntent();
+        String lineRef = intent.getStringExtra("lineRef");
+
+
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class); // recupere l'objet class d'un modele
+        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM , lineRef) , new ObservableListener<Line>() {
+
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(Line data) {
+                loadPage.HideLoadingScreen();
+                addPointsOnCard(data);
+
+            }
+
+            @Override
+            public void onLoading() {
+
+            }
+        });
+    }
+
+
     public void addPointsOnCard(Line line)
     {
         ArrayList<Poi> poi = new ArrayList<>();

@@ -33,12 +33,7 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position) {
         Stop newArret = arrets.get(position);
-        holder.Headline1.setText(newArret.getName());
-        holder.Ligne.setText(getInfos(lineRef));
-        holder.Ligne.setTextColor(ContextCompat.getColor(holder.Ligne.getContext(), getColor(lineRef)));
-        SimpleDateFormat fmt = new SimpleDateFormat("HH'h'mm");
-        holder.Time.setText(fmt.format(newArret.getEstimatedDepartureTime()));
-
+        holder.OnBind(newArret, lineRef);
     }
 
     @Override
@@ -51,47 +46,5 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
         this.arrets = arrets;
     }
 
-
-    private String getInfos(String lineRef)
-    {
-        switch (lineRef)
-        {
-            case "A":
-                return "Ligne A";
-            case "B":
-                return "Ligne B";
-            case "C":
-                return "Ligne C";
-            case "D":
-                return "Ligne D";
-            case "E":
-                return "Ligne E";
-            case "F":
-                return "Ligne F";
-            default:
-                return " ";
-        }
-    }
-
-    private int getColor(String lineRef)
-    {
-        switch (lineRef)
-        {
-            case "A":
-                return R.color.ligne_a;
-            case "B":
-                return R.color.ligne_b;
-            case "C":
-                return R.color.ligne_c;
-            case "D":
-                return R.color.ligne_d;
-            case "E":
-                return R.color.ligne_e;
-            case "F":
-                return R.color.ligne_f;
-            default:
-                return R.color.black;
-        }
-    }
 
 }

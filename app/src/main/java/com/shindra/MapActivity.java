@@ -27,28 +27,14 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        lineRef = getIntent().getStringExtra("lineRef");
+        getSupportActionBar().setTitle(getString(R.string.ligne , lineRef));
+
         fragment = new LigneMapFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.frameMap, fragment).commit();
 
-        loadPage = new ActivityLoad(this);
 
-        lineRef = getIntent().getStringExtra("lineRef");
-        getSupportActionBar().setTitle("Ligne " + lineRef);
 
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, lineRef), new ObservableListener<Line>() {
-            @Override
-            public void onLoading() {loadPage.showLoadingScreen();}
-
-            @Override
-            public void onSuccess(Line line) {
-                loadPage.HideLoadingScreen();
-                fragment.addPointsOnCard(line);
-            }
-
-            @Override
-            public void onError(@NotNull Throwable throwable) {loadPage.HideLoadingScreen();}
-        });
     }
 }

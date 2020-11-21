@@ -46,7 +46,7 @@ public class LigneActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                getSupportActionBar().setTitle("Nos trams");
+                getSupportActionBar().setTitle(R.string.nosTrams);
                 loadPage.HideLoadingScreen();
 
                 ArrayList<Line> lineTram = new ArrayList<Line>();

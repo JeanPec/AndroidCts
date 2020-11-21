@@ -35,27 +35,15 @@ public class HoraireActivity extends AppCompatActivity {
         setContentView(R.layout.activity_horaire);
 
         lineRef = getIntent().getStringExtra("lineRef");
-        horaireFragment = new HoraireFragment();
+        horaireFragment = new HoraireFragment(getIntent().getStringExtra("lineRef"));
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragmentHoraire, horaireFragment).commit();
 
-        arrets = findViewById(R.id.recyclerView2);
-        arrets.setLayoutManager(new LinearLayoutManager(this));
-        arrets.setAdapter(new HoraireAdapter(new ArrayList<Stop>(), lineRef));
-
         loadPage = new ActivityLoad(this);
-        getSupportActionBar().setTitle("Ligne " + lineRef);
-
-        seeMap = findViewById(R.id.carteButton);
-        seeMap.setOnClickListener(v -> {
-            Intent intent = new Intent(HoraireActivity.this, MapActivity.class);
-            intent.putExtra("lineRef", lineRef);
-            startActivity(intent);
-        });
-
+        getSupportActionBar().setTitle(getString(R.string.ligne ,lineRef));
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, lineRef, 0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, horaireFragment.getLineRef(), 0), new ObservableListener<Line>() {
             @Override
             public void onError(@NotNull Throwable throwable) {loadPage.HideLoadingScreen();}
 
