@@ -31,8 +31,6 @@ public class ActivityHoraire extends AppCompatActivity
         LettreLigne = intentNosTramLigne.getStringExtra("LigneTram");
 
         //Configuration du Fragment, horaire de tram
-        Bundle BundleHoraire = new Bundle();
-        BundleHoraire.putString("LettreLigne", LettreLigne);
         FragmentHoraireTram FragHoraireTram = new FragmentHoraireTram();
         FragmentTransaction fragTran = getSupportFragmentManager().beginTransaction();
         fragTran.add(R.id.fragmentHoraire, FragHoraireTram.newInstance(LettreLigne));
