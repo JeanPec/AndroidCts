@@ -41,7 +41,6 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
 
         Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
 
-
         List<TramCard> tramCardList = new ArrayList<TramCard>();
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_a), imgTram));
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_b), imgTram));
