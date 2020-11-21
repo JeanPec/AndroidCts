@@ -1,14 +1,18 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="8sp"
+    android:layout_marginHorizontal="16sp"
+    android:elevation="4sp"
+    app:cardCornerRadius="4sp"
     android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/cvTramline_tramlogo"
@@ -17,27 +21,33 @@
             android:contentDescription="@string/cvTramline_linelogo_desc"
             app:layout_constraintBottom_toTopOf="@+id/cvTramline_tramphoto"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_tram_a" />
+            app:srcCompat="@drawable/ic_tram_a"
+            android:padding="8sp"
+            />
 
         <ImageView
             android:id="@+id/cvTramline_tramphoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cvTramline_tramphoto_desc"
-            app:layout_constraintTop_toBottomOf="@id/cvTramline_tramlogo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/tram"
             android:adjustViewBounds="true"
-            />
+            android:contentDescription="@string/cvTramline_tramphoto_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvTramline_tramlogo"
+            app:srcCompat="@drawable/tram" />
 
         <Button
             android:id="@+id/cvTramline_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
+            android:minHeight="10sp"
+            android:padding="16sp"
             android:text="@string/cvTramline_button_text"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvTramline_tramphoto"
-            app:layout_constraintStart_toStartOf="parent" />
+            style="@style/BUTTON"
+            android:textColor="@color/Primary"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

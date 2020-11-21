@@ -1,6 +1,5 @@
 package com.shindra
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +18,12 @@ class TramsSchedulesActivity : AppCompatActivity() {
         Log.i(logTag, "Created second activity with tramline : " + associatedLinename)
 
         //Change title of activity
-        supportActionBar?.title = getString(R.string.cvTimetable_LineNamePrefix, associatedLinename)
+        supportActionBar?.title = getString(R.string.activity_name_horaires)
 
         //Fragment get started automatically because it is inside the layout file
 
         //When everything has finished creating, we can start the request to the api
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentTramTimetable) as TimetableFragment
-        fragment.requestTimetable(associatedLinename.toString())
+        fragment.requestTimetable(associatedLinename)
     }
 }

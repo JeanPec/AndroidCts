@@ -22,8 +22,9 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
         //Log.d(TAG, "onBind")
         //affect the value in s to the views contained in this this holder
         stopName.text = s.name
-        lineName.text = c.getString(R.string.cvTimetable_LineNamePrefix, name)
         timeView.text = getSimpleTimeStringFromDate(s.estimatedDepartureTime)
+        lineName.text = c.getString(R.string.LineNamePrefix, name)
+        lineName.setTextColor(c.getColor(GetColorIDFromLine(name)))
     }
 
     init {
@@ -35,7 +36,7 @@ class TimetableViewHolder internal constructor(itemView: View) : RecyclerView.Vi
     }
 
     private fun getSimpleTimeStringFromDate(d : Date?) : String {
-        if(d == null) return "ND"
+        if(d == null) return "-"
 
         var sdf = SimpleDateFormat("h'h'mm")
         return sdf.format(d)

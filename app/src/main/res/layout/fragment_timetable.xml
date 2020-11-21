@@ -9,7 +9,8 @@
         android:id="@+id/rvTimetable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/showGPSButton">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -17,7 +18,8 @@
         android:id="@+id/showGPSButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_alignParentBottom="true"/>
+        android:text="@string/cvTimetable_ShowMapButton"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8sp"/>
 
 </RelativeLayout>

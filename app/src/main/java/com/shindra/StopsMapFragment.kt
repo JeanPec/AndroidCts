@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
 import com.shindra.arrakis.observable.ObservableListener
@@ -58,8 +56,8 @@ class StopsMapFragment : MapFragment() {
 
             override fun onSuccess(data: Line) {
                 //call once the network call has responded with a success
-                Log.d(logTag, "Received data from network :: " + data.name + " " + data?.stops?.get(0)?.name)
-                var s =  data?.stops?.get(0)
+                Log.d(logTag, "Received data from network :: " + data.name + " " + data.stops?.get(0)?.name)
+                val s =  data.stops?.get(0)
                 Log.d(logTag, s?.position.toString() + " :: " + s?.position?.longitude + " :: " + s?.position?.latitude.toString())
 
                 drawStopsOnMap(data.stops)
@@ -74,9 +72,12 @@ class StopsMapFragment : MapFragment() {
     }
 
     fun drawStopsOnMap(stops : ArrayList<Stop>?) {
-        var pois = ArrayList<Poi>()
+        val pois = ArrayList<Poi>()
+
+        val color = GetColorIDFromLine(requestedLineName)
+
         stops?.forEach {
-            pois.add(Poi(R.drawable.gps_spot_icon, R.color.black, it.position?.latitude!!, it?.position?.longitude!!))
+            pois.add(Poi(R.drawable.gps_spot_icon, color, it.position?.latitude!!, it.position?.longitude!!))
         }
         addPois(pois)
     }

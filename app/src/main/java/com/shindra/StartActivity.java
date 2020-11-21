@@ -30,9 +30,12 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = SetUpRecyclerView();
+        //Change title of activity
+        setTitle(getString(R.string.activity_name_trams));
 
         LoadingDialog loadingDialog = new LoadingDialog(this);
+
+        RecyclerView recyclerView = SetUpRecyclerView();
 
         //Call api for available lines
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);

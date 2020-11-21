@@ -30,7 +30,7 @@
                 android:value=".StartActivity" />
         </activity>
 
-        <activity android:name=".StopsMapActivity"></activity>
+        <activity android:name=".StopsMapActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -4,8 +4,12 @@
     <string name="activity_name_trams">Nos trams</string>
     <string name="activity_name_horaires">Horaires</string>
 
+    <string name="LineNamePrefix">Ligne %s</string>
+
+    <string name="LoadingData">Veuillez patienter, chargement des données en cours</string>
+
     <string name="cvTimetable_NextStart">Prochain départ</string>
-    <string name="cvTimetable_LineNamePrefix">Ligne %s</string>
+    <string name="cvTimetable_ShowMapButton">Voir sur la carte</string>
 
     <string name="cvTramline_linelogo_desc">Image logo</string>
     <string name="cvTramline_tramphoto_desc">Illustration tram</string>

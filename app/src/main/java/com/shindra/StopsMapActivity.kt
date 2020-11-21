@@ -19,7 +19,7 @@ class StopsMapActivity : AppCompatActivity() {
         Log.i(logTag, "Created gps activity with tramline : " + requestedLineName)
 
         //Change title of activity
-        supportActionBar?.title = getString(R.string.cvTimetable_LineNamePrefix, requestedLineName)
+        supportActionBar?.title = getString(R.string.LineNamePrefix, requestedLineName)
 
         //start fragment
         val args = Bundle()
