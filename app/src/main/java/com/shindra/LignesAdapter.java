@@ -1,3 +1,6 @@
+//How to add click clistener to cardview :
+//https://www.youtube.com/watch?v=yYVIasp5KXo
+
 package com.shindra;
 
 import android.content.Context;
@@ -5,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.ViewGroup;
@@ -25,6 +29,7 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     private Context context;
     private List<Line> lines;
     private LayoutInflater mInflater;
+    public Button scheduleButton;
 
     //Data is passed into the constructor like slide 104
     LignesAdapter(List<Line> lines) {
@@ -43,12 +48,22 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(lines.get(position));
+        //TAKE BACK HERE
+        /*
+        scheduleButton.findViewById(R.id.scheduleButton); //crash from here
+        scheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("button", "Bouton presse");
+            }
+        });
+        */
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context, "Bouton appuye", Toast.LENGTH_SHORT).show();
-                Log.d("button", "Bouton presse");
+                Log.d("button", "CardView pressee");
             }
 
         });
@@ -78,30 +93,28 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
             imageTram.setImageResource(R.drawable.ic_tram);
             String lineName = line.getName();
             int listSize = lines.size();
-            for (int i=0 ; i<listSize ; i++) {
-                imageLetter = itemView.findViewById(R.id.imageLetter);
-                switch(lineName) {
-                    case "A":
-                        imageLetter.setImageResource(R.drawable.ic_a);
-                        break;
-                    case "B" :
-                        imageLetter.setImageResource(R.drawable.ic_b);
-                        break;
-                    case "C" :
-                        imageLetter.setImageResource(R.drawable.ic_c);
-                        break;
-                    case "D" :
-                        imageLetter.setImageResource(R.drawable.ic_d);
-                        break;
-                    case "E" :
-                        imageLetter.setImageResource(R.drawable.ic_e);
-                        break;
-                    case "F" :
-                        imageLetter.setImageResource(R.drawable.ic_f);
-                        break;
-                }
-            }
 
+            imageLetter = itemView.findViewById(R.id.imageLetter);
+            switch(lineName) {
+                case "A":
+                    imageLetter.setImageResource(R.drawable.ic_a);
+                    break;
+                case "B" :
+                    imageLetter.setImageResource(R.drawable.ic_b);
+                    break;
+                case "C" :
+                    imageLetter.setImageResource(R.drawable.ic_c);
+                    break;
+                case "D" :
+                    imageLetter.setImageResource(R.drawable.ic_d);
+                    break;
+                case "E" :
+                    imageLetter.setImageResource(R.drawable.ic_e);
+                    break;
+                case "F" :
+                    imageLetter.setImageResource(R.drawable.ic_f);
+                    break;
+            }
 
         }
 

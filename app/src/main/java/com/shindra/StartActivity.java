@@ -45,7 +45,7 @@ public class StartActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Nos trams");
+        setTitle(R.string.title_name);
         Log.d("info", "je suis la startactivity");
         //myOnClickListener = new MyOnClickListener(this);
 
@@ -78,15 +78,13 @@ public class StartActivity extends AppCompatActivity {
                 //tramLine.addAll(data);
 
                 int indexTramLine = 0;
-                for (int i=0 ; i<tailleData ; i++) {
-                    if (data.get(i).getRouteType().compareTo(TRAM) == 0) {
-                        //Log.d("CTS", "Ligne recuperee:" + data.get(i).toString() + " /Val du booleen:" + data.get(i).getRouteType().compareTo(TRAM));
-                        tramLine.add(indexTramLine, data.get(i));
-                        indexTramLine++;
+
+                for (Line currentLine: data) {
+                    if (currentLine.getRouteType().compareTo(TRAM) == 0) {
+                        tramLine.add(currentLine);
                     }
 
                 }
-
 
                 Log.d("CTS", "Taille de tramLine apres boucle:"+tramLine.size());
             }
