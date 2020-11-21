@@ -29,7 +29,9 @@ interface CtsApiService {
 
     @GET("/v1/siri/2.0/estimated-timetable")
     fun estimatedTimeTable(@Query("VehicleMode") routeType: RouteType,
+                           @Query("LineRef") lineRef: String,
                            @Query("DirectionRef") directionRef: Int) : Single<EstimatedTimeTable>
+
 }
 
 object CtsService : RetrofitServices<CtsApiService>() {
@@ -60,8 +62,10 @@ object CtsService : RetrofitServices<CtsApiService>() {
     fun estimatedTimeTable(routeType: RouteType,
                            lineRef: String,
                            directionRef: Int) : Single<EstimatedTimeTable> {
-        return service.estimatedTimeTable(routeType, directionRef)
+        return service.estimatedTimeTable(routeType, lineRef, directionRef)
     }
+
+
 }
 
 class BasicAuthenticator(private val userName: String, private val userPassword: String) : Authenticator {
