@@ -20,9 +20,7 @@ class ScheduleAdapter(var lineStops: List<Stop>, var lineTramName: String)
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         Log.i("BIND", "stop.name.toString()")
 
-        val stop = lineStops[position]
-
-        holder.onBind(stop, lineTramName)
+        holder.onBind(lineStops[position], lineTramName)
     }
 
     override fun getItemCount(): Int {

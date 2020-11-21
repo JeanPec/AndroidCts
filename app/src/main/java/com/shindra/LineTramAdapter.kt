@@ -21,8 +21,6 @@ class LineTramAdapter(private var lineTramList: List<Line>, private val listener
 
     override fun onBindViewHolder(holder: LineTramViewHolder, position: Int) {
         val lineOfTram = lineTramList[position]
-        holder.iconTram.setImageResource(ApiLinesConvertor().apiLineToIcon(lineOfTram))
-        //holder.initializeCardView(lineOfTram)
         holder.onBind(lineOfTram, listener)
     }
 

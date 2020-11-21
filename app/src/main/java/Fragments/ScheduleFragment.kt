@@ -1,14 +1,13 @@
 package Fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,6 @@ import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
-import kotlin.reflect.typeOf
 
 class ScheduleFragment : Fragment() {
 
@@ -31,9 +29,22 @@ class ScheduleFragment : Fragment() {
     private var listOfStop: MutableList<Stop> = mutableListOf()
     var lineTramName: String? = null
 
+    companion object {
+        fun newInstance(lineTramName: String): ScheduleFragment {
+            val scheduleFragment = ScheduleFragment()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+            val args = Bundle()
+            args.putString("lineTramName", lineTramName)
+            scheduleFragment.arguments = args
+
+            return scheduleFragment
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         lineTramName = arguments?.getString("lineTramName")
         // Inflate the layout for this fragment
@@ -45,7 +56,8 @@ class ScheduleFragment : Fragment() {
         Log.i("COUNT", listOfStop.toString())
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineTramName!!, 0).observe(object: ObservableListener<Line> {
+        model.lineWithEstimatedTimeTable(RouteType.TRAM, lineTramName!!, 0).observe(object :
+            ObservableListener<Line> {
             override fun onLoading() {
                 //start loading here
             }
@@ -71,4 +83,7 @@ class ScheduleFragment : Fragment() {
 
         return fragmentView
     }
+
+
+
 }

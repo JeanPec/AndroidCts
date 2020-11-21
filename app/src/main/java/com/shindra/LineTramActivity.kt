@@ -14,7 +14,7 @@ import java.util.*
 
 class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener {
 
-    private  var listOfLines: MutableList<Line> = mutableListOf()
+    private  var listOfLines: List<Line> = mutableListOf()
     lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +34,7 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
 
-                for(item: Line in data) {
-                    if(item.routeType == RouteType.TRAM)
-                        listOfLines.add(item)
-                }
-
+                listOfLines = data.filter{ it.routeType == RouteType.TRAM }
                 recyclerView.adapter = LineTramAdapter(listOfLines, this@LineTramActivity)
             }
 

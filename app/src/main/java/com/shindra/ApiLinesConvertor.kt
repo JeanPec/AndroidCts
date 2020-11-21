@@ -3,6 +3,7 @@ package com.shindra
 import android.graphics.drawable.Drawable
 import android.util.Log
 import com.shindra.ctslibrary.bo.Line
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -24,11 +25,9 @@ class ApiLinesConvertor {
         return if(date === null) {
             "N/A"
         } else {
-            val calendar = Calendar.getInstance()
-            calendar.time = date
-            String.format("%sh%s", calendar.get(Calendar.HOUR_OF_DAY).toString(), calendar.get(Calendar.MINUTE).toString())
+            val simpleDateFormat = SimpleDateFormat("h'h'mm", Locale.FRANCE)
+            simpleDateFormat.format(date)
         }
-
     }
 
     fun lineToColor(lineName: String) : Int {

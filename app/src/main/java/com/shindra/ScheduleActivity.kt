@@ -17,15 +17,7 @@ class ScheduleActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.schedule_activity)
 
-        val lineTramName = intent.getStringExtra("lineTramName")
-        Log.i("FDSFDSFSD", lineTramName.toString())
-
-        // https://stackoverflow.com/questions/12739909/send-data-from-activity-to-fragment-in-android
-        val bundle = Bundle()
-        bundle.putString("lineTramName", lineTramName)
-        val scheduleFragment = ScheduleFragment()
-        scheduleFragment.arguments = bundle
+        val scheduleFragment = ScheduleFragment().apply { arguments = intent.extras}
         supportFragmentManager.beginTransaction().add(R.id.scheduleFragment, scheduleFragment).commit()
-
     }
 }
