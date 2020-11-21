@@ -55,6 +55,12 @@ public class RecyclerViewExempleAdapter extends RecyclerView.Adapter<RecyclerVie
         public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
+
+        public void onBindViewHolder(ViewHolder holder, int position)
+        {
+            String animal = mData.get(position);
+            holder.myTextView.setText(animal);
+        }
     }
 
     // convenience method for getting data at click position

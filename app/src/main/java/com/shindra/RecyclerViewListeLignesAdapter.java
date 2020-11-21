@@ -5,25 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<RecyclerViewListeLignesAdapter.ViewHolder> {
 
     private List<String> mData;
+    private List<CardView> mListeLignes;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    RecyclerViewListeLignesAdapter(Context context, List<String> data) {
+    RecyclerViewListeLignesAdapter(Context context, List<CardView> data) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.mListeLignes = data;
     }
 
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.exemple_item, parent, false);
+        View view = mInflater.inflate(R.layout.cardview_ligne_tram, parent, false);
         return new ViewHolder(view);
     }
 
@@ -44,6 +47,7 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        public CardView mCardViewLigne;
 
         ViewHolder(View itemView) {
             super(itemView);
