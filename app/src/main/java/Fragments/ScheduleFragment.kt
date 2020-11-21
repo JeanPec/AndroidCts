@@ -25,7 +25,6 @@ class ScheduleFragment : Fragment() {
 
     private lateinit var fragmentView: View
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: ScheduleAdapter
     private var listOfStop: MutableList<Stop> = mutableListOf()
     var lineTramName: String? = null
 
