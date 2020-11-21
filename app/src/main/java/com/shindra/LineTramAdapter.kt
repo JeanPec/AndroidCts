@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.ctslibrary.bo.Line
+import java.util.ArrayList
 
 
 class LineTramAdapter(private var lineTramList: List<Line>, private val listener: LineTramViewHolder.OnClickListener)

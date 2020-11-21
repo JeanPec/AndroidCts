@@ -8,26 +8,7 @@ import java.util.*
 
 class ApiLinesConvertor {
 
-    private val A = "Parc des Sports - Illkirch Graffenstaden"
-    private val B = "Lingolsheim Tiergaertel - Hoenheim Gare"
-    private val C = "Gare Centrale - Neuhof Rodolphe Reuss"
-    private val D = "Poteries - Port du Rhin / Kehl Rathaus"
-    private val E = "Robertsau l'Escale - Campus d'Illkirch"
-    private val F = "Comtes - Place d'Islande"
-
-    public fun apiLineToLetter(apiLine: Line):  Char {
-        return when(apiLine.name) {
-            A -> 'A'
-            B -> 'B'
-            C -> 'C'
-            D -> 'D'
-            E -> 'E'
-            F -> 'F'
-            else -> 'Z'
-        }
-    }
-
-    public fun apiLineToIcon(apiLine: Line): Int {
+    fun apiLineToIcon(apiLine: Line): Int {
         return when(apiLine.name) {
             "A" -> R.drawable.ic_tram_a
             "B" -> R.drawable.ic_tram_b
@@ -39,7 +20,7 @@ class ApiLinesConvertor {
         }
     }
 
-    public fun getDateText(date: Date?): String {
+    fun getDateText(date: Date?): String {
         return if(date === null) {
             "N/A"
         } else {
@@ -48,6 +29,18 @@ class ApiLinesConvertor {
             String.format("%sh%s", calendar.get(Calendar.HOUR_OF_DAY).toString(), calendar.get(Calendar.MINUTE).toString())
         }
 
+    }
+
+    fun lineToColor(lineName: String) : Int {
+        return when (lineName) {
+            "A" -> R.color.line_a
+            "B" -> R.color.line_b
+            "C" -> R.color.line_c
+            "D" -> R.color.line_d
+            "E" -> R.color.line_e
+            "F" -> R.color.line_f
+            else -> R.color.body2
+        }
     }
 
 }

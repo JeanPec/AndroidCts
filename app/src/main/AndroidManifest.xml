@@ -29,6 +29,14 @@
 
         </activity>
 
+        <activity android:name=".LineMapActivity"
+            android:parentActivityName=".ScheduleActivity">
+
+                <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ScheduleActivity" />
+
+        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB-PUj9rWHjXJveAxRnMtHGM54ZpxmEGDU"/>

@@ -2,8 +2,6 @@ package com.shindra
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +21,6 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_tram_activity)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        val context = this
 
         recyclerView = findViewById(R.id.LineTramRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -42,7 +39,7 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
                         listOfLines.add(item)
                 }
 
-                recyclerView.adapter = LineTramAdapter(listOfLines, context)
+                recyclerView.adapter = LineTramAdapter(listOfLines, this@LineTramActivity)
             }
 
             override fun onError(throwable: Throwable) {
