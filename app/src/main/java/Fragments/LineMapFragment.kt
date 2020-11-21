@@ -21,6 +21,18 @@ class LineMapFragment : MapFragment() {
     private lateinit var fragmentView: View
     var lineTramName: String? = null
 
+    companion object {
+        fun newInstance(lineTramName: String): LineMapFragment {
+            val lineMapFragment = LineMapFragment()
+
+            val args = Bundle()
+            args.putString("lineTramName", lineTramName)
+            lineMapFragment.arguments = args
+
+            return lineMapFragment
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
