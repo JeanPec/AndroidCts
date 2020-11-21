@@ -23,7 +23,7 @@ public class MySecondAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     String letterLine;//take the letter of the line
     String stringLigne;
 
-        public MySecondAdapter(Line line,String letter) {
+    public MySecondAdapter(Line line, String letter) {
             selectedLine = line;
             letterLine = letter;
             stringLigne = "Ligne "+letterLine;
@@ -81,6 +81,7 @@ public class MySecondAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
             else if(stop.getName().contains("Ancienne Syn")){
                 stationName.setText("Les Halles");
             }else stationName.setText(stop.getName());
+
         }
 
     }

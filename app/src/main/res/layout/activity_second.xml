@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="voir sur la carte"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginHorizontal="8dp"/>
-
     <FrameLayout
         android:id="@+id/frame_recycler"
         android:layout_width="match_parent"

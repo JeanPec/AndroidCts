@@ -3,6 +3,8 @@
     <string name="mainLayout">mainLayout</string>
     <string name="nosTram">Nos tram</string>
     <string name="horaire">Horaire</string>
+    <string name="carte">Ligne A</string>
+
 
     <string name="imageViewNewTram">imageViewNewTram</string>
     <string name="imageViewLine">imageViewLine</string>

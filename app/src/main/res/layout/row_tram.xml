@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="330dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:elevation="4dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewTram"
+        <RelativeLayout
+            android:id="@+id/layoutImageTram"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/nouveau_tram_strasbourg"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_margin="8dp">
+            android:layout_height="200dp"
+            android:layout_below="@id/imageViewLine">
 
-        </androidx.appcompat.widget.AppCompatImageView>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewTram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nouveau_tram_strasbourg"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true">
+            </androidx.appcompat.widget.AppCompatImageView>
+        </RelativeLayout>
+
 
         <ImageView
             android:id="@+id/imageViewLine"
@@ -34,23 +40,12 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="16dp"
+            android:layout_below="@+id/layoutImageTram"
             android:background="@android:color/transparent"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/horaire"
-            android:textColor="@color/cPrimary"/>
-
-        <TextView
-            android:visibility="invisible"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"/>
+            android:textColor="@color/cPrimary" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

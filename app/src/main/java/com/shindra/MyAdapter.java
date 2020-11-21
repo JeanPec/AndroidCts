@@ -12,19 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.ctslibrary.bo.Line;
 import java.util.ArrayList;
 
-//heritage of mother class RecyclerView.Adapter<T>
+//herite of mother class RecyclerView.Adapter<T>
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     //If a new line is created a picture of the imageTramLine need to be added
     //one idea is to add some other images to imageTramLine
     //and depending on the texTramLine size we display the available lines
-    String linesFromAPI[];
-    int nbTram;
     ArrayList<Line> lineAPI;
     RecyclerHoraireClick callBack;
 
-    public MyAdapter(int siz, ArrayList<Line> lin, RecyclerHoraireClick cal){
-        nbTram = siz;
+    public MyAdapter(ArrayList<Line> lin, RecyclerHoraireClick cal){
         lineAPI = lin;
         callBack = cal;
     }
@@ -41,60 +38,34 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.onBindPicTram(R.drawable.nouveau_tram_strasbourg);
-        //holder.onBindPicLine(imagesTramLine[position]);
-        //holder.onBindString(lineAPI.get(position).getName());
-
+        //for the tram line letter (TRAM A to F)
         switch (lineAPI.get(position).getName()){
             case "A":
-                holder.onBindPicLine(R.drawable.tram_a);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_a,lineAPI.get(position),callBack);
                 break;
             case "B":
-                holder.onBindPicLine(R.drawable.tram_b);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_b,lineAPI.get(position),callBack);
                 break;
             case "C":
-                holder.onBindPicLine(R.drawable.tram_c);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_c,lineAPI.get(position),callBack);
                 break;
             case "D":
-                holder.onBindPicLine(R.drawable.tram_d);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_d,lineAPI.get(position),callBack);
                 break;
             case "E":
-                holder.onBindPicLine(R.drawable.tram_e);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_e,lineAPI.get(position),callBack);
                 break;
             case "F":
-                holder.onBindPicLine(R.drawable.tram_f);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram_f,lineAPI.get(position),callBack);
                 break;
             default:
-                holder.onBindPicLine(R.drawable.tram);
+                holder.onBind(R.drawable.nouveau_tram_strasbourg,R.drawable.tram,lineAPI.get(position),callBack);
         }
-
-        holder.onBindHoraire(lineAPI.get(position),callBack);
-
-        /*
-        for (int j = 0; j < lineAPI.size() ; j++) {
-            linesFromAPI[j] = lineAPI.get(j).getName().toString();
-        }
-    /*
-        //set on click listener : click on "horaire" button to open the other activity
-        //this has to be changed because it is not the best way to do it
-        //however I tried but I could not do it like the it is shown on the lesson powerpoint
-        holder.HoraireTram.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View v) {
-                Intent intent = new Intent(context, SecondActivity.class);
-                //dynamicaly get data from the string array
-                intent.putExtra("textTramLine", textTramLine[position]);
-                //intent.putExtra("imagesTramLine",imagesTramLine);
-                context.startActivity(intent); //open the TimeActivity with the intent
-                }
-        });
-     */
-
     }
 
     @Override
     public int getItemCount() {
-        return nbTram;
+        return lineAPI.size();
     }
 
     /*
@@ -103,32 +74,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     They are managed by the Adapter
      */
 
-    //heritage of the mother class RecyclerView.ViewHolder
+    //herite of the mother class RecyclerView.ViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageViewTram,imageViewLine;
         Button BtHoraire;
-        TextView textLines;
+
         //constructor take as parameter a view
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageViewTram = itemView.findViewById(R.id.imageViewTram);
             imageViewLine = itemView.findViewById(R.id.imageViewLine);
             BtHoraire = itemView.findViewById(R.id.button1);
-            textLines = itemView.findViewById(R.id.textView);
         }
 
 
-        //The onBind() binds the data to the view
-        //that we pass in parameter of the constructor
-        public  void onBindPicTram(int PicTramStrasbourg){ imageViewTram.setImageResource(PicTramStrasbourg); }
-
-        public void onBindPicLine(int PicLine){ imageViewLine.setImageResource(PicLine); }
-
-        public void onBindString(String s){ textLines.setText(s);}
-
-        public void onBindHoraire(Line selectedLine, RecyclerHoraireClick callb){
+        //The onBind() binds the data to the view that we pass in parameter of the constructor
+        public void onBind(int PicTramStrasbourg,int PicLine, Line selectedLine, RecyclerHoraireClick callb){
+            imageViewLine.setImageResource(PicLine);
+            imageViewTram.setImageResource(PicTramStrasbourg);
             BtHoraire.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -138,6 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         }
     }
 
+    //interface for the button listener
     public interface RecyclerHoraireClick {
         void onHoraireClick(Line line);
     }
