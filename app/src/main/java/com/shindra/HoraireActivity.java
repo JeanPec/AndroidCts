@@ -35,36 +35,14 @@ public class HoraireActivity extends AppCompatActivity {
         setContentView(R.layout.activity_horaire);
 
         lineRef = getIntent().getStringExtra("lineRef");
-        horaireFragment = new HoraireFragment(getIntent().getStringExtra("lineRef"));
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragmentHoraire, horaireFragment).commit();
 
-        loadPage = new ActivityLoad(this);
+        horaireFragment = new HoraireFragment(getIntent().getStringExtra("lineRef"));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHoraire,horaireFragment).commit();
+
+        //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //fragmentTransaction.add(R.id.fragmentHoraire, horaireFragment).commit();
+
         getSupportActionBar().setTitle(getString(R.string.ligne ,lineRef));
 
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, horaireFragment.getLineRef(), 0), new ObservableListener<Line>() {
-            @Override
-            public void onError(@NotNull Throwable throwable) {loadPage.HideLoadingScreen();}
-
-            @Override
-            public void onLoading()
-            {
-                loadPage.showLoadingScreen();
-            }
-
-            @Override
-            public void onSuccess(Line data)
-            {
-                ArrayList<Stop> listArrets = new ArrayList<Stop>();
-                for (Stop stop : data.getStops())
-                    if (stop.getEstimatedDepartureTime() != null)
-                        listArrets.add(stop);
-
-                ((HoraireAdapter) arrets.getAdapter()).setArrets(listArrets);
-                arrets.getAdapter().notifyDataSetChanged();
-                loadPage.HideLoadingScreen();
-            }
-        });
     }
 }

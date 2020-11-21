@@ -46,5 +46,10 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireViewHolder> {
         this.arrets = arrets;
     }
 
+    public void setStops(ArrayList<Stop> arrets)
+    {
+        this.arrets = arrets;
+    }
+
 
 }

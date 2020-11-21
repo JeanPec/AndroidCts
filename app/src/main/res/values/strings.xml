@@ -4,7 +4,7 @@
     <string name="nosTrams">Nos trams</string>
     <string name="buttonVoirCarte">VOIR SUR LA CARTE</string>
     <string name="loadPage">Veuillez patienter, chargement de données en cours...</string>
-    <string name="init"></string>
+    <string name="init">xxx</string>
     <string name="prochDepart">Prochain départ</string>
     <string name="ligne">Ligne %1$s</string>
 </resources>
