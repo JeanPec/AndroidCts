@@ -33,8 +33,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Line newLigne = lines.get(position);
-        holder.image_tram_x.setImageResource(Image(newLigne));
-        holder.OnBind(newLigne,callback);
+        //holder.image_tram_x.setImageResource(Image(newLigne));
+        holder.OnBind(newLigne,callback,position);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
             image_photo = itemView.findViewById(R.id.imageView2);
             this.Bhoraire = itemView.findViewById((R.id.button));
         }
-        public void OnBind(Line line, RecyclerItemClick callback)
+        public void OnBind(Line line, RecyclerItemClick callback, int position)
         {
             Bhoraire.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,6 +68,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
                     callback.OnClick(line);
                 }
             });
+            Line newLigne = lines.get(position);
+            image_tram_x.setImageResource(Image(newLigne));
         }
 
     }
