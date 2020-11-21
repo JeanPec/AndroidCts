@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_container);
+        setContentView(R.layout.menu_container);
         setTitle(R.string.menu_name);
 
         LoadingDialog loadingDialog = new LoadingDialog(StartActivity.this);

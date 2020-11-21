@@ -28,7 +28,7 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
     @Override
     public viewHolderMenu onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View TramView = inflater.inflate(R.layout.custom_menu, parent, false);
+        View TramView = inflater.inflate(R.layout.menu_card_view , parent, false);
         return new viewHolderMenu(TramView);
     }
 
