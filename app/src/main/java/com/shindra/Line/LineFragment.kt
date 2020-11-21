@@ -44,6 +44,13 @@ class LineFragment : Fragment()
             }
         })
 
+        return view
+    }
+
+    override fun onStart()
+    {
+        super.onStart()
+
         val loadingDialog = LoadingDialog(activity as Activity)
         val errorDialog = ErrorDialog(activity as Activity)
 
@@ -78,8 +85,6 @@ class LineFragment : Fragment()
                 errorDialog.show()
             }
         })
-
-        return view
     }
 
     fun updateWidgets(tramLines : ArrayList<Line>)

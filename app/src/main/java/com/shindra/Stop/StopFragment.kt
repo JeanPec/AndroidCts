@@ -46,6 +46,15 @@ class StopFragment() : Fragment()
             startActivity(intent)
         })
 
+        return view
+    }
+
+    override fun onStart()
+    {
+        super.onStart()
+
+        val lineName = arguments?.getString(getString(R.string.lineNameKey))
+
         val loadingDialog = LoadingDialog(activity as Activity)
         val errorDialog = ErrorDialog(activity as Activity)
 
@@ -79,8 +88,6 @@ class StopFragment() : Fragment()
                 errorDialog.show()
             }
         })
-
-        return view
     }
 
     fun updateWidgets(data: ArrayList<Stop>)

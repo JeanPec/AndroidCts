@@ -25,9 +25,14 @@ class MapLineFragment() : MapFragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_gmaps, container, false)
+        return inflater.inflate(R.layout.fragment_gmaps, container, false)
+    }
 
-        val lineName = arguments?.getString("lineName")
+    override fun onStart()
+    {
+        super.onStart()
+
+        val lineName = arguments?.getString(getString(R.string.lineNameKey))
 
         val loadingDialog = LoadingDialog(activity as Activity)
         val errorDialog = ErrorDialog(activity as Activity)
@@ -56,8 +61,6 @@ class MapLineFragment() : MapFragment()
                 errorDialog.show()
             }
         })
-
-        return view
     }
 
     fun addStopsOnMap(line: Line?)
