@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.horaire_fragment">
 
+
+
     <!-- TODO: Update blank fragment layout -->
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view_horaire"/>
+        android:id="@+id/recycler_view_horaire"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/button"
@@ -20,7 +21,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="bottom"
-        android:text="Button" />
-
+        android:text="Voir sur la carte" />
 
 </FrameLayout>

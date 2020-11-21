@@ -36,15 +36,22 @@ public class HoraireViewHolder extends RecyclerView.ViewHolder {
     public void onBind(TrameStop trameStop) {
         stop.setText(trameStop.nomArret);
         ligneTram.setText(trameStop.nomLine);
-        datetoString(trameStop.horaire);
-        /*nextHoraire.setText(datetoString(trameStop.horaire));*/
+        nextHoraire.setText(datetoString(trameStop.horaire));
+        /*datetoString(trameStop.horaire);*/
+
         //appliquer une conversion sur l'horaire en format sString voulu
 
     };
 
-    public void datetoString (Date horaire ) {
+    public String datetoString (Date horaire ) {
 
-        Log.d(TAG,"coucou "+ horaire);
-
+       /* Log.d(TAG,"coucou "+ horaire);*/
+        String horairestring = "" +  horaire;
+        String heure = horairestring.substring(11, 13);
+        String minute  = horairestring.substring(14,16);
+        String horaire_format = heure + "h" + minute;
+        return horaire_format;
     }
+
+
 }

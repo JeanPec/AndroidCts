@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
+
+        <TextView
+            android:id="@+id/dialogueMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text= "Veuillez patienter, chargements des données en cours"
+            android:layout_below="@id/progressBar2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

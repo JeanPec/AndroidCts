@@ -36,7 +36,7 @@ interface RecyclerItemClick{
 
     public void onBind (Tram tram, RecyclerItemClick callback){
         imageTrame.setImageResource(tram.drawable_id_svg);
-        itemView.setOnClickListener(new View.OnClickListener() {
+        buttonHoraire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callback.onHoraireClick(tram);

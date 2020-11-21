@@ -1,9 +1,13 @@
 package com.shindra.Fragments;
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.shindra.Activites.HoraireAdaptater;
+import com.shindra.Activites.LoadingFrament;
 import com.shindra.Activites.MyViewModel;
 import com.shindra.Activites.TrameStop;
 import com.shindra.R;
@@ -31,6 +36,7 @@ import java.util.ArrayList;
  */
 public class horaire_fragment extends Fragment {
 
+    DialogFragment MyDialogFragment;
     public View fragmentview;
     public horaire_fragment() { }
     private RecyclerView rcView;
@@ -46,6 +52,14 @@ public class horaire_fragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+              /*  mParam2 = getArguments().getString(ARG_PARAM2);
+                mParam3 = getArguments().getString(ARG_PARAM3);
+                mParam4 = getArguments().getString(ARG_PARAM4);*/
+        }
+
         rcView = fragmentview.findViewById(R.id.recycler_view_horaire);
         rcView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         rcView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -56,9 +70,17 @@ public class horaire_fragment extends Fragment {
             RouteType routeType = null;
 
             ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(routeType.TRAM, mParam1, 0), new ObservableListener<Line>() {
+
+                @Override
+                public void onLoading() {
+                   MyDialogFragment = new LoadingFrament();
+                    MyDialogFragment.show(getParentFragmentManager(), "missiles");
+                }
+
                 @Override
                 public void onSuccess(Line data) {
                     ArrayList<TrameStop> TramesStop = new ArrayList<>();
+                    MyDialogFragment.dismiss();
                     for(Stop lineStop :  data.getStops() ) {
                         TramesStop.add(new TrameStop(lineStop.getName(),data.getName(),lineStop.getEstimatedDepartureTime()));
                     }
@@ -69,23 +91,9 @@ public class horaire_fragment extends Fragment {
                 public void onError(@NotNull Throwable throwable) {
 
                 }
-
-                @Override
-                public void onLoading() {
-
-                }
             });
 
-            if (getArguments() != null) {
-                mParam1 = getArguments().getString(ARG_PARAM1);
-              /*  mParam2 = getArguments().getString(ARG_PARAM2);
-                mParam3 = getArguments().getString(ARG_PARAM3);
-                mParam4 = getArguments().getString(ARG_PARAM4);*/
-            }
-
-
         }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @androidx.annotation.Nullable Bundle savedInstanceState) {
@@ -99,9 +107,9 @@ public class horaire_fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+   /* private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
-    private static final String ARG_PARAM4 = "param3";
+    private static final String ARG_PARAM4 = "param3";*/
 
     // TODO: Rename and change types of parameters
     private String mParam1;

@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,16 +21,19 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_layout);
-        RecyclerView list = (RecyclerView) findViewById(R.id.list_trame_recycler_view);
+        RecyclerView list = findViewById(R.id.list_trame_recycler_view);
         list.setLayoutManager(new LinearLayoutManager( this));
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
+
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
@@ -37,6 +41,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
+
                 //call once the network call has responded with a success
                 ArrayList<Tram> Trames = new ArrayList<>();
                 for(Line lineData : data){
@@ -62,18 +67,16 @@ public class StartActivity extends AppCompatActivity {
                     }
                 }
                 list.setAdapter(new TramLineRecyclerViewAdaptater(Trames, new TramLineViewHolder.RecyclerItemClick() {
-                    final Intent myIntent = new Intent().setClass(StartActivity.this, HoraireActivity.class);
+
 
                     @Override
                     public void onHoraireClick( Tram trames) {
                     /* c'est la qu'on définit les actions qui seront déclenchées au moment du click*/
                         /* et contient l'objet tram associé à la vue*/
                         //on creer une nouvelle intent on definit la class de depart ici this et la class d'arrivé ici SecondActivite
-
+                        final Intent myIntent = new Intent(StartActivity.this, HoraireActivity.class);
                         myIntent.putExtra("STRING10", trames.getNomImage());
                         startActivity(myIntent);
-
-                        Log.d("StartActivity","c" );
                     }
                 }));
             }

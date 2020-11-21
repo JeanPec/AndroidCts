@@ -11,7 +11,7 @@ public class TrameStop {
 
         public TrameStop(String stop, String nomLine1, Date horaire1){
                 nomArret = stop;
-                nomLine = nomLine1;
+                nomLine = "Ligne " + nomLine1;
                 horaire = horaire1;
         }
 

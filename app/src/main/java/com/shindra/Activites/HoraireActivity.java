@@ -22,7 +22,6 @@ public class HoraireActivity extends AppCompatActivity {
         // faire le point entre les 2 activités
         Intent intentA = getIntent();
         String nomline = intentA.getStringExtra("STRING10");
-
         ft.add(R.id.fragment_horaire, horaire_fragment.newInstance(nomline)).commit();
         Log.d("HoraireActivity","c" );
     }
