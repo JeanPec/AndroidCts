@@ -15,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Line;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.shindra.R.id.imgTram;
 
 public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramViewHolder> {
 
-    List<TramCard> listeTramCard;
+    ArrayList<Line> listeTramCard;
     RecyclerItemClick callback;
 
     public static class TramViewHolder extends RecyclerView.ViewHolder {
@@ -60,7 +61,7 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
 
     }
 
-    public TramCardAdapter(List<TramCard> listeTramCard, RecyclerItemClick callback) {
+    public TramCardAdapter(ArrayList<Line> listeTramCard, RecyclerItemClick callback) {
         this.listeTramCard = listeTramCard;
         this.callback = callback;
     }
