@@ -17,10 +17,7 @@ class ScheduleActivity : AppCompatActivity() {
         val lineName = intent.getStringExtra("lineName")
 
         //Fragment configuration
-        val bundle = Bundle()
-        bundle.putString("lineName", lineName)
-        val fragmentStop = ScheduleFragmentStop()
-        fragmentStop.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragment_stop, fragmentStop).commit()
+        val fragmentStop = lineName?.let { ScheduleFragmentStop().newInstance(it) }
+        fragmentStop?.let { supportFragmentManager.beginTransaction().add(R.id.fragment_stop, it).commit() }
     }
 }

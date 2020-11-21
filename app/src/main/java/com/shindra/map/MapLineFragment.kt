@@ -1,7 +1,6 @@
 package com.shindra.map
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +14,20 @@ import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
+import com.shindra.schedules.ScheduleFragmentStop
 import com.shindra.utilities.LoadingDialog
 import com.shindra.utilities.MyViewModel
 
 class MapLineFragment : MapFragment() {
     private var lineName = String()
+
+    fun newInstance(lineName : String): MapLineFragment {
+        val fragment = MapLineFragment()
+        val bundle = Bundle()
+        bundle.putString("lineName", lineName)
+        fragment.arguments = bundle
+        return fragment
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_gmaps, container, false)

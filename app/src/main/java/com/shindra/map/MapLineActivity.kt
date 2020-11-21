@@ -17,11 +17,8 @@ class MapLineActivity: AppCompatActivity() {
         title = lineName?.let { getLineName(it) }
 
         //Fragment configuration
-        val bundle = Bundle()
-        bundle.putString("lineName", lineName)
-        val fragment = MapLineFragment()
-        fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.fragment_line_map,fragment).commit()
+        val fragment = lineName?.let { MapLineFragment().newInstance(it) }
+        fragment?.let { supportFragmentManager.beginTransaction().add(R.id.fragment_line_map, it).commit() }
     }
 
     private fun getLineName(line: String) : String {

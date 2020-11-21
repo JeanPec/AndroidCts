@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.map.MapLineActivity
 import com.shindra.utilities.MyViewModel
 import com.shindra.R
-import com.shindra.arrakis.controls.Poi
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -26,6 +25,14 @@ import kotlin.collections.ArrayList
 
 class ScheduleFragmentStop() : Fragment(){
     private var stopList = ArrayList<Stop>()
+
+    fun newInstance(lineName : String): ScheduleFragmentStop {
+        val fragment = ScheduleFragmentStop()
+        val bundle = Bundle()
+        bundle.putString("lineName", lineName)
+        fragment.arguments = bundle
+        return fragment
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.schedule_fragment_stop, container, false)
