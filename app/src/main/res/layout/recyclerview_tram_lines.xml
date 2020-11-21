@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity">
+    tools:context=".TramLines.TramLinesActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView_Tram_Line"
+        android:id="@+id/recyclerview_tram_lines"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

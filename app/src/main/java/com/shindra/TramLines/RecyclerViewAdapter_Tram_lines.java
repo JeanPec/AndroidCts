@@ -1,18 +1,17 @@
-package com.shindra;
+package com.shindra.TramLines;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
+import com.shindra.TramLines.Trams_View_Holder;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_View_Holder>
 {

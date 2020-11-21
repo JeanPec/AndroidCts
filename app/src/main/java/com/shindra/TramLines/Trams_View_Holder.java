@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.TramLines;
 
 import android.widget.Button;
 import android.widget.ImageView;
@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
 public class Trams_View_Holder extends RecyclerView.ViewHolder
@@ -25,8 +26,7 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
 
     public void onBind_logo(Line image)
     {
-        String line_name = image.getName();
-        switch (line_name)
+        switch (image.getName())
         {
             case "A":
                 tram_logo.setImageResource(R.drawable.tram_a);

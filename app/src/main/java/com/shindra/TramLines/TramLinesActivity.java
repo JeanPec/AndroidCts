@@ -1,7 +1,6 @@
-package com.shindra;
+package com.shindra.TramLines;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.MyViewModel;
+import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -18,20 +19,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class StartActivity extends AppCompatActivity
+public class TramLinesActivity extends AppCompatActivity
 {
-
     private ArrayList<Line> tram_lines_list;
+    protected void onStart() {
+        super.onStart();
+        setContentView(R.layout.recyclerview_tram_lines);
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle(getString(R.string.nos_trams_label));
 
-        setTitle("Nos Trams");
-
-        RecyclerView Tram_Line_List = findViewById(R.id.RecyclerView_Tram_Line);
+        RecyclerView Tram_Line_List = findViewById(R.id.recyclerview_tram_lines);
         Tram_Line_List.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines_list);
 
@@ -61,6 +58,14 @@ public class StartActivity extends AppCompatActivity
             public void onError(@NotNull Throwable throwable) {
             }
         });
+    }
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
     }
 
 }
