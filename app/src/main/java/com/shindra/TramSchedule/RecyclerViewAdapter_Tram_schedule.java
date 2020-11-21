@@ -8,41 +8,44 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
-import com.shindra.TramLines.Trams_View_Holder;
 import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter_Tram_schedule extends RecyclerView.Adapter<Trams_View_Holder>
+public class RecyclerViewAdapter_Tram_schedule extends RecyclerView.Adapter<Trams_Schedule_Holder>
 {
-    private ArrayList<Line> tram_lines;
-    //Context context;
+    private ArrayList<Stop> TramStopList;
+    private String StopListName;
 
-    RecyclerViewAdapter_Tram_schedule(ArrayList<Line> List_Tram_Lines)
+
+    public RecyclerViewAdapter_Tram_schedule(ArrayList<Stop> TramStopList, String StopListName)
     {
-        this.tram_lines= List_Tram_Lines;
+        this.TramStopList = TramStopList;
+        this.StopListName = StopListName;
+
     }
 
     @NonNull
     @Override
-    public Trams_View_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public Trams_Schedule_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View TramView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tram_lines_view, parent, false);
-        return new Trams_View_Holder(TramView);
+        View ScheduleView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tram_lines_view, parent, false);
+        return new Trams_Schedule_Holder(ScheduleView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Trams_View_Holder holder, int position)
+    public void onBindViewHolder(@NonNull Trams_Schedule_Holder holder, int position)
     {
-        Line requestTramLine = tram_lines.get(position);
-        holder.onBind_logo(requestTramLine);
+        Stop requestTramLine = TramStopList.get(position);
+        holder.onBind(requestTramLine, StopListName);
 
     }
 
     @Override
     public int getItemCount()
     {
-        return tram_lines.size();
+        return TramStopList.size();
     }
 
 }

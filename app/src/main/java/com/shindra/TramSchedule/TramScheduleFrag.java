@@ -34,11 +34,8 @@ import java.util.ArrayList;
  */
 public class TramScheduleFrag extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String Line_Letter;
     private ArrayList<Stop> TramStopList;
@@ -80,7 +77,37 @@ public class TramScheduleFrag extends Fragment {
         TramScheduleList = ScheduleView.findViewById(R.id.recyclerview_tram_schedule);
         TramScheduleList.setLayoutManager(new LinearLayoutManager(getContext()));
         return ScheduleView;
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, Line_Letter, 0), new ObservableListener<Line>()
+        {
+            @Override
+            public void onError(@NotNull Throwable throwable) {
 
+            }
+
+            @Override
+            public void onLoading() {
+
+            }
+
+            public void onSuccess(Line data)
+        {
+
+                TramStopList = new ArrayList<Stop>();
+        for (Stop listStop : data.getStops())
+        {
+            if (listStop.getEstimatedDepartureTime() != null)
+            {
+                TramStopList.add(listStop);
+            }
+            TramScheduleList.setAdapter(new RecyclerViewAdapter_Tram_schedule(TramStopList, Line_Letter));
+        }
+        }
+        });
     }
 }

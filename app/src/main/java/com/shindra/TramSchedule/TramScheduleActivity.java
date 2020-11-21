@@ -16,12 +16,6 @@ public class TramScheduleActivity extends AppCompatActivity
     private String Line_Letter;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -30,13 +24,12 @@ public class TramScheduleActivity extends AppCompatActivity
 
         getSupportActionBar().setTitle(getString(R.string.horaire_label));
 
-        //Recuperation de la ligne de tram de l'activite précedente
         Intent intentTram_Lines = getIntent();
         Line_Letter = intentTram_Lines.getStringExtra("Tram_Line");
 
-        //Configuration du Fragment, horaire de tram
-        Bundle BundleHoraire = new Bundle();
-        BundleHoraire.putString("Line_Letter", Line_Letter);
+
+        Bundle BundleSchedule = new Bundle();
+        BundleSchedule.putString("Line_Letter", Line_Letter);
         TramScheduleFrag TramScheduleFrag = new TramScheduleFrag();
         FragmentTransaction fragTran = getSupportFragmentManager().beginTransaction();
         fragTran.add(R.id.ScheduleLayout, TramScheduleFrag.newInstance(Line_Letter));

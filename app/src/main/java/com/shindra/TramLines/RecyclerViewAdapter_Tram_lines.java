@@ -8,19 +8,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
-import com.shindra.TramLines.Trams_View_Holder;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_View_Holder>
 {
-    private ArrayList<Line> tram_lines;
-    //Context context;
+    private ArrayList<Line> tramLinesList;
+    private Trams_View_Holder.ScheduleButtonClick callBack;
+
+    public RecyclerViewAdapter_Tram_lines(ArrayList<Line> listelignetrams, Trams_View_Holder.ScheduleButtonClick callBack)
+    {
+        this.tramLinesList = listelignetrams;
+        this.callBack = callBack;
+    }
+
 
     RecyclerViewAdapter_Tram_lines(ArrayList<Line> List_Tram_Lines)
     {
-        this.tram_lines= List_Tram_Lines;
+        this.tramLinesList = List_Tram_Lines;
     }
 
     @NonNull
@@ -34,15 +40,15 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
     @Override
     public void onBindViewHolder(@NonNull Trams_View_Holder holder, int position)
     {
-        Line requestTramLine = tram_lines.get(position);
-        holder.onBind_logo(requestTramLine);
+        Line requestTramLine = tramLinesList.get(position);
+        holder.onBind(requestTramLine, callBack);
 
     }
 
     @Override
     public int getItemCount()
     {
-        return tram_lines.size();
+        return tramLinesList.size();
     }
 
 }

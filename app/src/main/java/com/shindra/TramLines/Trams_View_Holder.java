@@ -12,19 +12,21 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class Trams_View_Holder extends RecyclerView.ViewHolder
 {
-    //private final ImageView tram_view;
     private final ImageView tram_logo;
-    //private final Button button;
+    private final Button button;
 
+    interface ScheduleButtonClick
+    {
+        void onScheduleButtonClick(Line line);
+    }
     public Trams_View_Holder(@NonNull View itemView)
     {
         super(itemView);
         this.tram_logo = itemView.findViewById(R.id.Tram_Logo);
-        //this.tram_view = itemView.findViewById(R.id.Tram_Line_View);
-        //this.button = itemView.findViewById(R.id.Tram_view_button);
+        this.button = itemView.findViewById(R.id.Tram_view_button);
     }
 
-    public void onBind_logo(Line image)
+    public void onBind(Line image, ScheduleButtonClick callBack)
     {
         switch (image.getName())
         {
@@ -56,6 +58,15 @@ public class Trams_View_Holder extends RecyclerView.ViewHolder
                 tram_logo.setImageResource(R.drawable.tram);
                 break;
         }
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                callBack.onScheduleButtonClick(image);
+            }
+        });
+
     }
 }
 

@@ -1,7 +1,8 @@
 package com.shindra.TramLines;
 
 import android.os.Bundle;
-
+import android.content.Intent;
+import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.MyViewModel;
 import com.shindra.R;
+import com.shindra.TramSchedule.TramScheduleActivity;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -18,6 +20,7 @@ import com.shindra.ctslibrary.bo.Line;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
 
 public class TramLinesActivity extends AppCompatActivity
 {
@@ -30,7 +33,22 @@ public class TramLinesActivity extends AppCompatActivity
 
         RecyclerView Tram_Line_List = findViewById(R.id.recyclerview_tram_lines);
         Tram_Line_List.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines_list);
+        //RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines_list);
+
+        Trams_View_Holder.ScheduleButtonClick callBack = new Trams_View_Holder.ScheduleButtonClick()
+        {
+            @Override
+            public void onScheduleButtonClick(Line line)
+            {
+                Log.i(getString(R.string.nos_trams_label),"Appuie BTN : " + line.getName());
+                //Creation de la nouvelle Intent
+                Intent intent = new Intent(TramLinesActivity.this, TramScheduleActivity.class);
+                intent.putExtra("Tram_Line",line.getName());
+                startActivity(intent);
+            }
+        };
+
+
 
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
