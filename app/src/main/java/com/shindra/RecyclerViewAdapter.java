@@ -40,19 +40,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<TramViewHolder> {
 
             case "A":
                 iPosition = R.drawable.tram_a;
+                break;
             case "B":
                 iPosition = R.drawable.tram_b;
+                break;
             case "C":
                 iPosition = R.drawable.tram_c;
+                break;
             case "D":
                 iPosition = R.drawable.tram_d;
+                break;
             case "E":
                 iPosition = R.drawable.tram_e;
+                break;
             case "F":
                 iPosition = R.drawable.tram_f;
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + strLineName);
+                iPosition = R.drawable.tram;
         }
         return (iPosition);
     }

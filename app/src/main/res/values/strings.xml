@@ -8,7 +8,13 @@
     <string name="Ligne_E">Ligne E</string>
     <string name="Ligne_F">Ligne F</string>
     <string name="schedule_button_text">Horaire</string>
+    <string name="HoraireText">Horaire</string>
     <string name="title_activity_hours">HoursActivity</string>
+    <string name="seeOnMapButtonText">Voir sur la carte</string>
+    <string name="defaultStopText">Stop</string>
+    <string name="defaultLineName">LineX</string>
+    <string name="defaultHours">00h00</string>
+    <string name="prochainDepartText">Prochain départ</string>
     <string name="load_text">Veuillez patienter, chargement des données en cours</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>

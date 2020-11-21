@@ -8,19 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HoursActivity extends AppCompatActivity {
 
-    private TextView mTextView;
-
-    private void HoursActivity(){
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.hourslayout);
 
-        mTextView = (TextView) findViewById(R.id.text);
+        String strLineName = getIntent().getStringExtra("lineName");
 
-        // Enables Always-on
+        setContentView(R.layout.hours_main);
+        setTitle(R.string.HoraireText);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("lineName", strLineName);
+        HoursFragment hoursFragment = new HoursFragment();
+        hoursFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.hoursFragment, hoursFragment).commit();
+
     }
 }

@@ -57,7 +57,6 @@ public class StartActivity extends AppCompatActivity implements TramViewHolder.o
                 for (Line lTram : data){
                     if(lTram.getRouteType() == RouteType.TRAM){
                         lTrams.add(lTram);
-                        Log.d("nom ligne:",lTram.getName());
                     }
                 }
                 ((RecyclerViewAdapter) rTramList.getAdapter()).setListTrams(lTrams);
