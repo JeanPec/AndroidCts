@@ -17,11 +17,9 @@ class TimeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.time_frameLayout,fragment).commit()
     }
 
-    /*companion object{
-        fun newInstance(context: Context,line_name : String ) : Intent{
-            val intent = Intent(context, TimeActivity.javaClass)
-            intent.putExtra("name", line_name)
-            return intent
-        }
-    }*/
+    fun newInstance(context: Context,line_name : String ) : Intent{
+        val intent = Intent(context, this.javaClass)
+        intent.putExtra("name", line_name)
+        return intent
+    }
 }

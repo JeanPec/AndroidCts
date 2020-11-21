@@ -55,9 +55,7 @@ class StartActivity : AppCompatActivity(), TramAdapter.TramViewHolder.RecyclerLi
     }
 
     override fun onLineClick(line: Line) {
-        //val intent = TimeActivity.newInstance(this,line.name)
-        val intent = Intent(this, TimeActivity ::class.java)
-        intent.putExtra("name", line.name)
+        val intent = TimeActivity().newInstance(this,line.name)
         startActivity(intent)
     }
 

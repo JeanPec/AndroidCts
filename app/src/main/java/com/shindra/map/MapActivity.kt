@@ -18,11 +18,10 @@ class MapActivity : AppCompatActivity(){
         supportFragmentManager.beginTransaction().add(R.id.map_frameLayout,fragment).commit()
     }
 
-    /*companion object{
-        fun newInstance(context: Context,line_name : String? ) : Intent {
-            val intent = Intent(context, MapActivity.javaClass)
-            intent.putExtra("name", line_name)
-            return intent
-        }
-    }*/
+    fun newInstance(context: Context,line_name : String? ) : Intent {
+        val intent = Intent(context, this.javaClass)
+        intent.putExtra("name", line_name)
+        return intent
+    }
+
 }
