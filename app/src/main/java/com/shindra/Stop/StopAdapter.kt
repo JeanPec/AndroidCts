@@ -19,12 +19,8 @@ class StopAdapter(var stops: ArrayList<Stop>, var lineName: String?) : RecyclerV
 
     override fun onBindViewHolder(holder: StopViewHolder, position: Int)
     {
-        val (name, _, estimatedDepartureTime) = stops[position]
-        holder.stopName.text = name
-        holder.lineName.text = "Ligne $lineName"
-        holder.lineName.setTextColor(ContextCompat.getColor(holder.lineName.context, Converter.lineLetterToLineColor(lineName)))
-        holder.stopTime.text = Converter.dateToTime(estimatedDepartureTime)
-        holder.information.text = "Prochain départ"
+        val item = stops[position]
+        holder.onBind(item, lineName)
     }
 
     override fun getItemCount(): Int

@@ -19,7 +19,6 @@ class LineAdapter(var lines: ArrayList<Line>, val callback: ILineClickable) : Re
     override fun onBindViewHolder(holder: LineViewHolder, position: Int)
     {
         val item = lines[position]
-        holder.tramIcon.setImageResource(Converter.lineLetterToLineIcon(item.name))
         holder.onBind(item, callback)
     }
 

@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.R
+import com.shindra.Service.Converter
 import com.shindra.ctslibrary.bo.Line
 
 class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -14,6 +15,7 @@ class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun onBind(line : Line, callback : ILineClickable)
     {
+        tramIcon.setImageResource(Converter.lineLetterToLineIcon(line.name))
         scheduleButton.setOnClickListener {callback.onLineClick(line)}
     }
 }
