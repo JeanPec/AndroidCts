@@ -29,7 +29,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     private Context context;
     private List<Line> lines;
     private LayoutInflater mInflater;
-    public Button scheduleButton;
 
     //Data is passed into the constructor like slide 104
     LignesAdapter(List<Line> lines) {
@@ -48,25 +47,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(lines.get(position));
-        //TAKE BACK HERE
-        /*
-        scheduleButton.findViewById(R.id.scheduleButton); //crash from here
-        scheduleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("button", "Bouton presse");
-            }
-        });
-        */
-
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("button", "CardView pressee");
-            }
-
-        });
 
     }
 
@@ -81,19 +61,28 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
         TextView myTextView;
         ImageView imageTram;
         ImageView imageLetter;
+        Button scheduleButton;
 
         ViewHolder(View itemView) {
             super(itemView);
             //set values to views
             imageTram = itemView.findViewById(R.id.imageTram);
+            scheduleButton = itemView.findViewById(R.id.scheduleButton);
         }
 
         public void onBind(Line line) {
+
             //Populate elements
             imageTram.setImageResource(R.drawable.ic_tram);
             String lineName = line.getName();
             int listSize = lines.size();
 
+            scheduleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("button", "Bouton presse, ligne demandee:"+line.getName().toString());
+                }
+            });
             imageLetter = itemView.findViewById(R.id.imageLetter);
             switch(lineName) {
                 case "A":
