@@ -4,6 +4,8 @@
 package com.shindra;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,24 +31,26 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
     private Context context;
     private List<Line> lines;
     private LayoutInflater mInflater;
+    InterfaceRequiredLine callback; //cf slide 97
 
     //Data is passed into the constructor like slide 104
-    LignesAdapter(List<Line> lines) {
+    LignesAdapter(List<Line> lines, InterfaceRequiredLine callback) {
         this.lines=lines;
-
+        this.callback=callback;
     }
 
     //Inflates the row layout from xml when needed
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View lineView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row, parent, false);
-        return new ViewHolder(lineView);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row, parent, false);
+        return new ViewHolder(view);
     }
 
     //Binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.onBind(lines.get(position));
+        holder.onBind(lines.get(position), callback);
 
     }
 
@@ -56,33 +60,39 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
         return lines.size();
     }
 
+    public void setLines(ArrayList<Line> lines) {
+        this.lines=lines;
+    }
+
     //Stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView myTextView;
         ImageView imageTram;
         ImageView imageLetter;
         Button scheduleButton;
 
-        ViewHolder(View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //set values to views
             imageTram = itemView.findViewById(R.id.imageTram);
             scheduleButton = itemView.findViewById(R.id.scheduleButton);
         }
 
-        public void onBind(Line line) {
+        public void onBind(Line line, InterfaceRequiredLine callback) { //2nd parameter : to do callback like in slide 97
 
             //Populate elements
             imageTram.setImageResource(R.drawable.ic_tram);
             String lineName = line.getName();
-            int listSize = lines.size();
 
             scheduleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d("button", "Bouton presse, ligne demandee:"+line.getName().toString());
+                    callback.OnClick(line); //CRASH HERE
                 }
             });
+
             imageLetter = itemView.findViewById(R.id.imageLetter);
             switch(lineName) {
                 case "A":
@@ -105,6 +115,10 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
                     break;
             }
 
+        }
+
+        interface InterfaceRequiredLine {
+            void OnClick(Line line);
         }
 
     }

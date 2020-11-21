@@ -1,6 +1,7 @@
 package com.shindra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -102,7 +103,11 @@ public class StartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         removedItems = new ArrayList<Integer>();
-        adapter = new LignesAdapter(tramLine);
+        adapter = new LignesAdapter(tramLine, line -> {
+            Intent intent = new Intent(StartActivity.this, ScheduleActivity.class);
+            intent.putExtra("keyNameLine", line.getName());
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
 
     }
