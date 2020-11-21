@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:elevation="8dp"
-        android:id="@+id/row_schedules">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="16dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="4dp"
+    android:id="@+id/row_schedules">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp">
 
             <TextView
@@ -20,8 +21,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="20sp"
                 android:text="Parc des sports"
@@ -31,19 +30,15 @@
                 android:id="@+id/LineTram"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="Ligne A"
-                android:textColor="@color/cPrimary" />
+                android:textColor="@color/cLigneA"
+                android:layout_below="@id/StationName"/>
 
             <TextView
                 android:id="@+id/StationTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="18h35"
                 android:textColor="@color/cHeadLine"
@@ -54,10 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="8dp"
                 android:text="Prochain départ"
+                android:layout_below="@id/StationTime"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/cBody2"
                 android:textSize="14sp"/>

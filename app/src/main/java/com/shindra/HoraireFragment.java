@@ -3,6 +3,7 @@ package com.shindra;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -63,14 +65,6 @@ public class HoraireFragment extends Fragment {
                         DialogCTS2.dismiss();
                         selectedLine = data;
                         secondRecyclerView.setAdapter(new MySecondAdapter(selectedLine, letterLine));
-
-                       /*
-                        SelectedLineStopName = data.getStops().get(0).getName();
-                        SelectedLineNextDeparture = data.getStops().get(0).getEstimatedDepartureTime().toString();
-                        Log.d(TAGG,"my data : " + SelectedLineStopName);
-                        Log.d(TAGG,"my data 2 : " + SelectedLineNextDeparture);
-                        Log.d(TAGG,"my data 2 : " + data);
-                        */
                     }
 
                     @Override
@@ -96,9 +90,38 @@ public class HoraireFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ThirdActivity.class);
-                intent.putExtra("textLineFromActivity2", selectedLine.getName());
-                getActivity().startActivity(intent);
+
+                if (InternetConnection.checkConnection(getContext())) {
+                    Intent intent = new Intent(getActivity(), ThirdActivity.class);
+                    intent.putExtra("textLineFromActivity2", selectedLine.getName());
+
+                    switch (selectedLine.getName()){
+                        case "A":
+                            intent.putExtra("lineColor", R.color.cLigneA);
+                            break;
+                        case "B":
+                            intent.putExtra("lineColor", R.color.cLigneB);
+                            break;
+                        case "C":
+                            intent.putExtra("lineColor", R.color.cLigneC);
+                            break;
+                        case "D":
+                            intent.putExtra("lineColor", R.color.cLigneD);
+                            break;
+                        case "E":
+                            intent.putExtra("lineColor", R.color.cLigneE);
+                            break;
+                        case "F":
+                            intent.putExtra("lineColor", R.color.cLigneF);
+                            break;
+                        default:
+                            intent.putExtra("lineColor", R.color.black);
+                    }
+                    getActivity().startActivity(intent);
+
+                } else {
+                    Toast.makeText(getContext(),"Pas de connexion active", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 
-//CHECK WHETHER INTERNET CONNECTION IS AVAILABLE OR NOT
+//CHECK WHETHER INTERNET CONNECTION IS AVAILABLE OR NOT (STACKOVERFLOW SOURCE)
 
 public class InternetConnection {
 
@@ -14,7 +14,6 @@ public class InternetConnection {
 
         if (connMgr != null) {
             NetworkInfo activeNetworkInfo = connMgr.getActiveNetworkInfo();
-
             if (activeNetworkInfo != null) { // connected to the internet
                 // connected to the mobile provider's data plan
                 if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {

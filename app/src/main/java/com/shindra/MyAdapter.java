@@ -15,9 +15,10 @@ import java.util.ArrayList;
 //herite of mother class RecyclerView.Adapter<T>
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
-    //If a new line is created a picture of the imageTramLine need to be added
-    //one idea is to add some other images to imageTramLine
-    //and depending on the texTramLine size we display the available lines
+    //If a new line is created a picture of the Tram letter (R.drawable.tram_g) needs to be added
+    //one idea is to add in advance some other images (tram_g, tram_e) to prevent this
+    //and depending on the lineAPI size  we display the available lines
+    //at the moment, if a new line is added, a default image is displayed ("tram")
     ArrayList<Line> lineAPI;
     RecyclerHoraireClick callBack;
 

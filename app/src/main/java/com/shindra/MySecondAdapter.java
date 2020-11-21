@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Line;
@@ -60,8 +62,8 @@ public class MySecondAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
             stationTime = itemView.findViewById(R.id.StationTime);
         }
 
-        public void onBind(Stop stop, String letterLine){
-
+        @SuppressLint("ResourceAsColor")
+        public void onBind(Stop stop, String strLine){
             //mettre en heure local + 1
             SimpleDateFormat df = new SimpleDateFormat("HH:mm");
             String formatedDate;
@@ -73,7 +75,31 @@ public class MySecondAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
                 stationTime.setText(formatedDate);
             }
 
-            letter.setText(letterLine);
+            switch (strLine){
+                case "Ligne A":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneA));
+                    break;
+                case "Ligne B":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneB));
+                    break;
+                case "Ligne C":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneC));
+                    break;
+                case "Ligne D":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneD));
+                    break;
+                case "Ligne E":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneE));
+                    break;
+                case "Ligne F":
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.cLigneF));
+                    break;
+                default:
+                    letter.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.black));
+            }
+
+           /* letter.setTextColor(R.color.cLigneB);*/
+            letter.setText(strLine);
 
             if(stop.getName().contains("Alt Win")){
                 stationName.setText("Alt Winmärik-Vieux M.");

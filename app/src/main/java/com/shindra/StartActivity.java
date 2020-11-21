@@ -51,7 +51,6 @@ public class StartActivity extends AppCompatActivity {
                 public void onSuccess(ArrayList<Line> dataRecieved) {
                     //call once the network call has responded with a success
                     Log.d(TAG, "on Success");
-
                     DialogCTS.dismiss();
 
                     //save data from tram lines
@@ -64,7 +63,7 @@ public class StartActivity extends AppCompatActivity {
                     firstRecyclerView.setAdapter(new MyAdapter(dataCTS, new MyAdapter.RecyclerHoraireClick() {
                         @Override
                         public void onHoraireClick(Line line) {
-                            //if network is available open next activity
+                            //if network is available open next activity, or toast a message
                             if (InternetConnection.checkConnection(getApplicationContext())) {
                                 Log.d(TAG, "INTERNET IS AVAILABLE");
                                 //open the SecondActivity with the intent
