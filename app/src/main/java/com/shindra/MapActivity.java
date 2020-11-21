@@ -25,13 +25,7 @@ public class MapActivity extends AppCompatActivity {
 
         setTitle(getString(R.string.map_name) +" "+ lineName );
 
-        mapFragment = new MyMapFragment();
-
-        Bundle mapBundle = new Bundle();
-        mapBundle.putString("lineName",lineName);
-
-        mapFragment.setArguments(mapBundle);
-
+        mapFragment =  MyMapFragment.newInstance(lineName);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_MapContainer,mapFragment).commit();
     }
 }

@@ -25,11 +25,7 @@ public class ScheduleActivity extends AppCompatActivity {
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineNameSelected");
 
-        //passage en argument de la ligne sélectionné
-        Bundle scheduleBundle = new Bundle();
-        scheduleBundle.putString("lineName",lineName);
-        fragmentSchedule = new ScheduleFragment();
-        fragmentSchedule.setArguments(scheduleBundle);
+        fragmentSchedule = ScheduleFragment.newInstance(lineName);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragScheduleContainer,fragmentSchedule).commit();
 
     }

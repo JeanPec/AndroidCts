@@ -33,7 +33,6 @@ public class viewHolderMenu extends RecyclerView.ViewHolder {
             }
         });
     }
-
     int getLineImg(Line currentTramLine) {
         switch (currentTramLine.getName()) {
             case "A":
@@ -59,4 +58,5 @@ public class viewHolderMenu extends RecyclerView.ViewHolder {
 
         }
     }
+
 }

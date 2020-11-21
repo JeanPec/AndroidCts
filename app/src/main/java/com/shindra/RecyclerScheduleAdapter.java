@@ -5,14 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.ctslibrary.bo.Stop;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSchedule>{
 
@@ -39,50 +36,8 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
     @Override
     public void onBindViewHolder(@NonNull viewHolderSchedule holder , int position) {
         Stop currentStop = tramStops.get(position);
-        holder.lineTram.setText(lineText + " " + tramLineSelected);
-        holder.lineTram.setTextColor(ContextCompat.getColor(holder.lineTram.getContext(),getColor(tramLineSelected)));
-        holder.lineStation.setText(currentStop.getName());
-        holder.stopScheduleTime.setText(getDate(currentStop.getEstimatedDepartureTime()));
+        holder.onBind(currentStop,lineText,tramLineSelected);
     }
-
-    public String getDate(Date date)
-    {
-        SimpleDateFormat s = new SimpleDateFormat("HH'h'mm");
-        return s.format(date);
-    }
-
-
-    public int getColor(String tramLineSelected)
-    {
-        switch  (tramLineSelected)
-        {
-        case "A":
-        return (R.color.Ligne_A);
-
-        case "B":
-        return(R.color.Ligne_B);
-
-        case "C":
-        return (R.color.Ligne_C);
-
-        case "D":
-        return(R.color.Ligne_D);
-
-        case "E":
-        return(R.color.Ligne_E);
-
-        case "F":
-        return(R.color.Ligne_F);
-
-        default:
-        return(R.color.black);
-
-         }
-
-    }
-
-
-
 
     @Override
     public int getItemCount() {

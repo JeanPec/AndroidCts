@@ -25,8 +25,11 @@ public class MyMapFragment extends MapFragment {
     String lineName;
     ArrayList<Poi> linePoints;
 
-    public static MyMapFragment newInstance(String param1 , String param2) {
+    public static MyMapFragment newInstance(String lineName ) {
         MyMapFragment fragment = new MyMapFragment();
+        Bundle args = new Bundle();
+        args.putString("lineName" , lineName);
+        fragment.setArguments(args);
         return fragment;
     }
 
