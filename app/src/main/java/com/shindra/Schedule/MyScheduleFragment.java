@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.Dialog.LoadingDialog;
-import com.shindra.Map.MapActivity;
+import com.shindra.Map.MyMapActivity;
 import com.shindra.MyViewModel;
 import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
@@ -26,28 +26,20 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ScheduleFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ScheduleFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MyScheduleFragment extends Fragment {
+
     String lineName;
     RecyclerView recyclerScheduleView;
     ArrayList<Stop> lineStops;
     Button seeOnMapButton;
 
-    public ScheduleFragment() {
+    public MyScheduleFragment() {
         // Required empty public constructor
     }
 
-    public static ScheduleFragment newInstance(String lineName) {
-        ScheduleFragment fragment = new ScheduleFragment();
+    public static MyScheduleFragment newInstance(String lineName) {
+        MyScheduleFragment fragment = new MyScheduleFragment();
         Bundle args = new Bundle();
         args.putString("lineName" , lineName);
         fragment.setArguments(args);
@@ -68,11 +60,15 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.schedule_frag, container , false);
         recyclerScheduleView = view.findViewById(R.id.recyclerViewScheduleFrag);
         recyclerScheduleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerScheduleView.setAdapter(new MyRecyclerScheduleAdapter(new ArrayList<Stop>(),lineName,getString(R.string.map_name)));
         seeOnMapButton = view.findViewById(R.id.seeOnMapButton);
+
+
+
         seeOnMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mapActivity = new Intent(getActivity(), MapActivity.class);
+                Intent mapActivity = new Intent(getActivity(), MyMapActivity.class);
                 mapActivity.putExtra("lineNameSelected", lineName);
                 startActivity(mapActivity);
             }
@@ -99,9 +95,10 @@ public class ScheduleFragment extends Fragment {
 
                         lineStops.add(oneStop);
                     }
-
+                    ((MyRecyclerScheduleAdapter)recyclerScheduleView.getAdapter()).setListStop(lineStops);
+                    recyclerScheduleView.getAdapter().notifyDataSetChanged();
                 }
-                recyclerScheduleView.setAdapter(new RecyclerScheduleAdapter(lineStops,lineName,getString(R.string.map_name)));
+
                 loadingDialog.dismissDialog();
             }
             @Override

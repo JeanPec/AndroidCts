@@ -10,20 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
-public class viewHolderMenu extends RecyclerView.ViewHolder {
+public class MyViewHolderMenu extends RecyclerView.ViewHolder {
 
     ImageView iconLineTram;
     ImageView imgTram;
     Button scheduleTimeButton;
 
-    public viewHolderMenu(@NonNull View itemView) {
+    public MyViewHolderMenu(@NonNull View itemView) {
         super(itemView);
         iconLineTram = itemView.findViewById(R.id.tramLineImg_onLayout);
         imgTram = itemView.findViewById(R.id.tramImg_onLayout);
         scheduleTimeButton = itemView.findViewById(R.id.scheduleTimeButton);
     }
 
-    void onBind(Line line , ScheduleButtonListener callback) {
+    void onBind(Line line , MyScheduleButtonListener callback) {
 
         iconLineTram.setImageResource(getLineImg(line));
 

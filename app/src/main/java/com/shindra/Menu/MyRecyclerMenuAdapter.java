@@ -12,12 +12,12 @@ import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
 
-public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
+public class MyRecyclerMenuAdapter extends RecyclerView.Adapter<MyViewHolderMenu> {
 
     private ArrayList<Line> tramLines;
-    ScheduleButtonListener callback;
+    MyScheduleButtonListener callback;
 
-    public RecyclerMenuAdapter(ArrayList<Line> tramLines1, ScheduleButtonListener callback1) {
+    public MyRecyclerMenuAdapter(ArrayList<Line> tramLines1, MyScheduleButtonListener callback1) {
         tramLines = tramLines1;
         callback = callback1;
     }
@@ -26,16 +26,16 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<viewHolderMenu> {
 
     @NonNull
     @Override
-    public viewHolderMenu onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolderMenu onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View TramView = inflater.inflate(R.layout.menu_card_view , parent, false);
-        return new viewHolderMenu(TramView);
+        return new MyViewHolderMenu(TramView);
     }
 
 
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolderMenu holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolderMenu holder, int position) {
         Line currentTramLine = tramLines.get(position);
         holder.onBind(currentTramLine, callback);
     }

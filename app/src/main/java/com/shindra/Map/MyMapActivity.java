@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.shindra.R;
 
-public class MapActivity extends AppCompatActivity {
+public class MyMapActivity extends AppCompatActivity {
 
     String lineName;
     MyMapFragment mapFragment;
 
-    public MapActivity() {
+    public MyMapActivity() {
         super();
     }
 
@@ -25,7 +25,7 @@ public class MapActivity extends AppCompatActivity {
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineNameSelected");
 
-        setTitle(getString(R.string.map_name) +" "+ lineName );
+        setTitle(getString(R.string.map_name) + lineName );
 
         mapFragment =  MyMapFragment.newInstance(lineName);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_MapContainer,mapFragment).commit();

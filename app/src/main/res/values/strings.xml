@@ -2,7 +2,7 @@
     <string name="app_name">CtsAppFip3A</string>
     <string name="menu_name">Nos Trams</string>
     <string name="schedule_name">Horaires</string>
-    <string name="map_name">Ligne</string>
+    <string name="map_name">"Ligne "</string>
 
     <string name="buttonForTime">HORAIRE</string>
     <string name="txtDescr">Ceci est un txt</string>

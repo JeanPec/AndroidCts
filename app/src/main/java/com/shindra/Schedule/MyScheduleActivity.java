@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.R;
 
 
-public class ScheduleActivity extends AppCompatActivity {
+public class MyScheduleActivity extends AppCompatActivity {
 
     String lineName;
     RecyclerView recyclerViewSchedule;
@@ -23,11 +23,11 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.schedule_container);
         setTitle(R.string.schedule_name);
 
-//recupere le intent de StartActivity + recuperation de la ligne sélectionné
+
         Intent intent = getIntent();
         lineName = getIntent().getStringExtra("lineNameSelected");
 
-        fragmentSchedule = ScheduleFragment.newInstance(lineName);
+        fragmentSchedule = MyScheduleFragment.newInstance(lineName);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragScheduleContainer,fragmentSchedule).commit();
 
     }

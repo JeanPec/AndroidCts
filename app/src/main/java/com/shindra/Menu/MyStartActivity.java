@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.Dialog.LoadingDialog;
 import com.shindra.MyViewModel;
 import com.shindra.R;
-import com.shindra.Schedule.ScheduleActivity;
+import com.shindra.Schedule.MyScheduleActivity;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class StartActivity extends AppCompatActivity {
+public class MyStartActivity extends AppCompatActivity {
 
      ArrayList<Line> linesTram;
 
@@ -36,7 +36,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.menu_container);
         setTitle(R.string.menu_name);
 
-        LoadingDialog loadingDialog = new LoadingDialog(StartActivity.this);
+        LoadingDialog loadingDialog = new LoadingDialog(MyStartActivity.this);
         loadingDialog.startAnimation();
 
 
@@ -68,9 +68,9 @@ public class StartActivity extends AppCompatActivity {
                         linesTram.add(oneLine);
                     }
 
-                recyclerViewLineTram.setAdapter(new RecyclerMenuAdapter(linesTram, line ->  {
+                recyclerViewLineTram.setAdapter(new MyRecyclerMenuAdapter(linesTram, line ->  {
                     //setTitle("Click");
-                    Intent scheduleActivity = new Intent(StartActivity.this, ScheduleActivity.class);
+                    Intent scheduleActivity = new Intent(MyStartActivity.this, MyScheduleActivity.class);
                     scheduleActivity.putExtra("lineNameSelected", line.getName());
                     startActivity(scheduleActivity);
                 }));

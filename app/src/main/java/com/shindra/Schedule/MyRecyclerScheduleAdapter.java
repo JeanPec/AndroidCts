@@ -12,13 +12,13 @@ import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;
 
-public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSchedule>{
+public class MyRecyclerScheduleAdapter extends RecyclerView.Adapter<MyViewHolderSchedule>{
 
     private ArrayList<Stop> tramStops;
     private String tramLineSelected;
     private String lineText;
 
-    public RecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1, String lineText1) {
+    public MyRecyclerScheduleAdapter(ArrayList<Stop> tramStops1, String tramLineSelected1, String lineText1) {
 
         tramStops = tramStops1;
         tramLineSelected = tramLineSelected1;
@@ -28,14 +28,14 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
 
     @NonNull
     @Override
-    public viewHolderSchedule onCreateViewHolder(@NonNull ViewGroup parent , int viewType) {
+    public MyViewHolderSchedule onCreateViewHolder(@NonNull ViewGroup parent , int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View scheduleView = inflater.inflate(R.layout.schedule_card_view, parent, false);
-        return new viewHolderSchedule(scheduleView);
+        return new MyViewHolderSchedule(scheduleView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolderSchedule holder , int position) {
+    public void onBindViewHolder(@NonNull MyViewHolderSchedule holder , int position) {
         Stop currentStop = tramStops.get(position);
         holder.onBind(currentStop,lineText,tramLineSelected);
     }
@@ -43,5 +43,10 @@ public class RecyclerScheduleAdapter extends RecyclerView.Adapter<viewHolderSche
     @Override
     public int getItemCount() {
         return tramStops.size();
+    }
+
+    public void setListStop(ArrayList<Stop> tramStops)
+    {
+        this.tramStops = tramStops;
     }
 }

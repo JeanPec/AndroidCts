@@ -13,19 +13,21 @@ import com.shindra.ctslibrary.bo.Stop;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class viewHolderSchedule extends RecyclerView.ViewHolder {
+public class MyViewHolderSchedule extends RecyclerView.ViewHolder {
      TextView lineStation;
      TextView lineTram;
      TextView stopScheduleTime;
         TextView nextStation;
 
-    public viewHolderSchedule(@NonNull View itemView) {
+    public MyViewHolderSchedule(@NonNull View itemView) {
         super(itemView);
         lineStation = itemView.findViewById(R.id.station_txt);
         lineTram  = itemView.findViewById(R.id.lineTram_txt);
         stopScheduleTime = itemView.findViewById(R.id.scheduleTime_txt);
         nextStation = itemView.findViewById(R.id.nextStation_txt);
     }
+
+
 
     public void  onBind(Stop line, String lineText, String tramLineSelected)
     {
