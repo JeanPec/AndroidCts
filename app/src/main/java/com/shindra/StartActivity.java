@@ -13,7 +13,7 @@ import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
-import com.shindra.ctslibrary.bo.Stop;
+import com.shindra.Misc.LoadingDialog;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,7 +41,7 @@ public class StartActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.main_view_name);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_lines);
-        com.shindra.Misc.LoadingDialogForActivity loadingDialogForActivity = new com.shindra.Misc.LoadingDialogForActivity(this);
+        LoadingDialog loadingDialog = new LoadingDialog(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new LinesRecyclerViewAdapter(getListOfTramLines(), new RecyclerButtonClick() {
@@ -60,14 +60,14 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                loadingDialogForActivity.show();
+                loadingDialog.show();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
 
                 //call once the network call has responded with a success
-                loadingDialogForActivity.dismiss();
+                loadingDialog.dismiss();
                 setTramList(data);
                 recyclerView.getAdapter().notifyDataSetChanged();
             }

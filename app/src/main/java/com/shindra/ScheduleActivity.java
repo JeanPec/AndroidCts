@@ -1,8 +1,7 @@
 package com.shindra;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import com.shindra.Misc.LoadingDialog;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +16,9 @@ public class ScheduleActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
         String passedLineName = getIntent().getStringExtra("lineName");
+        LoadingDialog loadingDialog = new LoadingDialog(this);
 
-        ScheduleFragment scheduleFragment = new ScheduleFragment(passedLineName);
+        ScheduleFragment scheduleFragment = new ScheduleFragment(passedLineName, loadingDialog);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, scheduleFragment).commit();

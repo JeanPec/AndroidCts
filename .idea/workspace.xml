@@ -37,8 +37,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données">
+    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="modifications par rapport aux remarques du merge request">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialogForActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleViewHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" afterDir="false" />
     </list>
@@ -210,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605464806892</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modifications par rapport aux remarques du merge request">
+      <created>1605944911665</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605944911665</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,7 +264,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données" />
+    <MESSAGE value="modifications par rapport aux remarques du merge request" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifications par rapport aux remarques du merge request" />
   </component>
   <component name="WindowStateProjectService">
     <state x="714" y="271" key="#PSD" timestamp="1605097118118">
@@ -277,22 +297,22 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="620" y="280" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1605283206901" />
-    <state width="1636" height="284" key="GridCell.Tab.0.bottom" timestamp="1605784313364">
+    <state width="1636" height="284" key="GridCell.Tab.0.bottom" timestamp="1605950271927">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605784313364" />
-    <state width="1636" height="284" key="GridCell.Tab.0.center" timestamp="1605784313279">
+    <state width="1636" height="284" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271927" />
+    <state width="1636" height="284" key="GridCell.Tab.0.center" timestamp="1605950271926">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605784313279" />
-    <state width="1636" height="284" key="GridCell.Tab.0.left" timestamp="1605784313279">
+    <state width="1636" height="284" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271926" />
+    <state width="1636" height="284" key="GridCell.Tab.0.left" timestamp="1605950271925">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605784313279" />
-    <state width="1636" height="284" key="GridCell.Tab.0.right" timestamp="1605784313363">
+    <state width="1636" height="284" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271925" />
+    <state width="1636" height="284" key="GridCell.Tab.0.right" timestamp="1605950271926">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605784313363" />
+    <state width="1636" height="284" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271926" />
     <state width="1636" height="285" key="GridCell.Tab.1.bottom" timestamp="1605773281883">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -317,10 +337,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1605459803267" />
-    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1604922039720">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="338" y="142" key="Vcs.Push.Dialog.v2" timestamp="1605944923308">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.-474.1680.1050@0.0.1366.768" timestamp="1604922039720" />
+    <state x="338" y="142" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605944923308" />
     <state x="656" y="303" key="chooseDestDirectoryDialog" timestamp="1605282526741">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

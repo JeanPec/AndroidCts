@@ -41,12 +41,8 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder {
     }
 
     private String convertDateToString(Date date){
-        SimpleDateFormat formatter = new SimpleDateFormat("h:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("h'h'mm");
         String strDate= formatter.format(date);
-        //Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
-        //calendar.setTime(date);   // assigns calendar to given date
-        //String hour = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY));
-        //String minutes = String.valueOf(calendar.get(Calendar.MONTH));
         return strDate;
     }
 

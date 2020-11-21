@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 
 import com.shindra.R;
 
-public class LoadingDialogForActivity {
+public class LoadingDialog {
     private AlertDialog dialog;
 
-    public LoadingDialogForActivity(Activity activity) {
+    public LoadingDialog(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.layout_chargement, null));
