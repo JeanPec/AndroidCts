@@ -22,19 +22,14 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
-        // La seul référence d'image qu'il faut changer et celle des trams.
         public final ImageView ligneTram;
-        //public final ImageView imageTram;
 
         public NosTramsViewHolder(@NonNull View itemView) {
             super(itemView);
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
-            //imageTram = itemView.findViewById(R.id.imageTram);
         }
-        //La réponse de l'appel réseau permet de choisir l'image du tram à afficher
         public void TramsOnBind(Line image)
         {
-
             switch (image.getName())
             {
                 case "A":
@@ -66,8 +61,6 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
                     break;
             }
         }
-
-
     }
 
     public NosTramsAdapter (ArrayList<Line> nosTramsList) {
@@ -86,12 +79,9 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     public void onBindViewHolder(@NonNull NosTramsViewHolder holder, int position) {
         Line currentTram = nosTramsList.get(position);
         holder.TramsOnBind(currentTram);
-
     }
-
     @Override
     public int getItemCount() {
         return nosTramsList.size();
     }
-
 }

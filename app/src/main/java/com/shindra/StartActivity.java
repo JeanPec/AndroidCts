@@ -23,13 +23,7 @@ import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
-    private ArrayList<Line> nosTramsList; //Initialization of an array containing "NosTramsItem" object
-    //Ajout 18/11/2020
-    private String NomVue;
-
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager; //Responsible for the alignment of the items of the list
+    private ArrayList<Line> nosTramsList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,16 +35,12 @@ public class StartActivity extends AppCompatActivity {
         super.onStart();
 
         setContentView(R.layout.activity_main);
-
-        getSupportActionBar().setTitle(getString(R.string.LabelNosTrams)); //setTitle(NomVue); //Change the name of the view
+        getSupportActionBar().setTitle(getString(R.string.LabelNosTrams));
 
         RecyclerView nosTramList = findViewById(R.id.recyclerView);
-        //recyclerView.setHasFixedSize(true);
         nosTramList.setLayoutManager (new LinearLayoutManager (this));
         RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList);
-        adapter = LinesAdapter;
-
-        nosTramList.setAdapter (adapter);
+        nosTramList.setAdapter (LinesAdapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -64,11 +54,9 @@ public class StartActivity extends AppCompatActivity {
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
 
-                nosTramsList =  new ArrayList<Line>();//Crée une liste contenant des objets de type Line
-                //nosTramList=data.filter
+                nosTramsList =  new ArrayList<Line>();
                 for (Line LignesCTS : data)
                 {
-
                     if (LignesCTS.getRouteType() == RouteType.TRAM)
                     {
                         nosTramsList.add(LignesCTS);
@@ -76,10 +64,8 @@ public class StartActivity extends AppCompatActivity {
                     Log.i("NosTram","Recupération des Lignes terminées");
                 }
 
-                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList)); //Création de la vue Nos Trams avec l'ensemble des trams de la liste
-
+                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList));
             }
-
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
