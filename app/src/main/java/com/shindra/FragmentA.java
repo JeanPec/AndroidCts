@@ -21,32 +21,8 @@ public class FragmentA extends Fragment {
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-
-        View rootView = inflater.inflate(R.layout.fragment_a, container,false);
-
-        /*recyclerView =  rootView.findViewById(R.id.listeTramRV);
-
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-
-        adapter = new RVAdapter();
-        recyclerView.setAdapter(adapter);
-
-
-
-        return super.onCreateView(inflater,container,savedInstanceState);*/
-        return rootView;
+        return inflater.inflate(R.layout.fragment_a, container,false);
     }
-
-
-
-    /*private View.OnClickListener BHoraireListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }*/
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

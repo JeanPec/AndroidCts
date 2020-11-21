@@ -1,7 +1,9 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 //import android.support.wearable.activity.WearableActivity;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +30,7 @@ public class HoraireActivity extends AppCompatActivity {
     ChargementActivity loadPage;
     Bundle bundle;
     FragmentA fragmentA;
+    public Button carte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +49,17 @@ public class HoraireActivity extends AppCompatActivity {
         arretTram.setAdapter(new HoraireAdapter(new ArrayList<Stop>(),nomLigne));
 
         loadPage = new ChargementActivity(this);
-        getSupportActionBar().setTitle("Ligne " + getInfo(nomLigne));
+        getSupportActionBar().setTitle("Ligne " + nomLigne);
+
+        carte = findViewById(R.id.BoutonCarte);
+        carte.setOnClickListener(v -> {
+            Intent intent = new Intent(HoraireActivity.this,CarteActivity.class);
+            intent.putExtra("nomLigne", nomLigne);
+            startActivity(intent);
+        });
 
         MyViewModel myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(myViewModel.lineWithEstimatedTimeTable(RouteType.TRAM, getInfo(nomLigne), 0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(myViewModel.lineWithEstimatedTimeTable(RouteType.TRAM, nomLigne, 0), new ObservableListener<Line>() {
             @Override
             public void onLoading() {
                 loadPage.showChargement();
@@ -73,29 +83,5 @@ public class HoraireActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-        // Enables Always-on
-        //setAmbientEnabled();
-    }
-    private String getInfo(String nomLigne){
-        switch (nomLigne){
-            case "Parc des Sports - Illkirch Graffenstaden":
-                return "A";
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
-                return "B";
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
-                return "C";
-            case "Poteries - Port du Rhin / Kehl Rathaus":
-                return "D";
-            case "Robertsau l'Escale - Campus d'Illkirch":
-                return "E";
-            case "Comtes - Place d'Islande":
-                return "F";
-            default:
-                return "Inconnu";
-
-        }
     }
 }

@@ -23,19 +23,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
         this.callback = callback;
     }
 
-    /*int images1[];
-    int images2;
-    Context context;
-
-
-
-
-    RVAdapter(Context ct, int img1[], int img2){
-        context = ct;
-        images1 = img1;
-        images2 = img2;
-    }*/
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,7 +33,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Line newLigne = lines.get(position);
-        holder.myImg1.setImageResource(Image(newLigne));
+        holder.image_tram_x.setImageResource(Image(newLigne));
         holder.OnBind(newLigne,callback);
     }
 
@@ -63,13 +50,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView myImg1, myImg2;
+        ImageView image_tram_x, image_photo;
         Button Bhoraire;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myImg1 = itemView.findViewById(R.id.imageView);
-            myImg2 = itemView.findViewById(R.id.imageView2);
+            image_tram_x = itemView.findViewById(R.id.imageView);
+            image_photo = itemView.findViewById(R.id.imageView2);
             this.Bhoraire = itemView.findViewById((R.id.button));
         }
         public void OnBind(Line line, RecyclerItemClick callback)
@@ -89,17 +76,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     {
         switch (line.getName())
         {
-            case "Parc des Sports - Illkirch Graffenstaden":
+            case "A":
                 return R.drawable.tram_a;
-            case "Lingolsheim Tiergaertel - Hoenheim Gare":
+            case "B":
                 return R.drawable.tram_b;
-            case "Gare Centrale - Neuhof Rodolphe Reuss":
+            case "C":
                 return R.drawable.tram_c;
-            case "Poteries - Port du Rhin / Kehl Rathaus":
+            case "D":
                 return R.drawable.tram_d;
-            case "Robertsau l'Escale - Campus d'Illkirch":
+            case "E":
                 return R.drawable.tram_e;
-            case "Comtes - Place d'Islande":
+            case "F":
                 return R.drawable.tram_f;
             default:
                 return R.drawable.tram;
