@@ -6,6 +6,8 @@
     <string name="line_activity_name">Nos Trams</string>
     <!-- Line card view -->
     <string name="line_card_view_button_schedule">Horaire</string>
+    <string name="line_card_view_line_icon_description">Icone tram</string>
+    <string name="line_card_view_line_image_description">Image tram</string>
 
     <!-- Schedule activity -->
     <string name="schedule_activity_name">Horaires</string>

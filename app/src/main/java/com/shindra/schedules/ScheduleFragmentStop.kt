@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shindra.map.MapLineActivity
 import com.shindra.utilities.MyViewModel
 import com.shindra.R
+import com.shindra.arrakis.controls.Poi
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -63,7 +64,13 @@ class ScheduleFragmentStop() : Fragment(){
             override fun onSuccess(data: Line) {
                 //call once the network call has responded with a success
                 //adapter data change
-                (stopRecyclerList.adapter as ScheduleAdapter).stops = data.stops!!
+                val stopsList = ArrayList<Stop>()
+                data.stops?.forEach { it1 ->
+                    if (it1.estimatedDepartureTime != null){
+                        stopsList.add(it1)
+                    }
+                }
+                (stopRecyclerList.adapter as ScheduleAdapter).stops = stopsList
                 (stopRecyclerList.adapter as ScheduleAdapter).notifyDataSetChanged()
 
                 //remove LoadingDialog

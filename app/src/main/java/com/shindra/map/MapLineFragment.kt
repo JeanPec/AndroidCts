@@ -1,6 +1,7 @@
 package com.shindra.map
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,8 +51,8 @@ class MapLineFragment : MapFragment() {
                 //call once the network call has responded with a success
                 //add point on map
                 val coordinateList = ArrayList<Poi>()
-                for (stop in data.stops!!){
-                    coordinateList.add(Poi(R.drawable.icon_maps_place_24px, getLineColor(lineName), stop.position?.latitude!!, stop.position?.longitude!!))
+                data.stops?.forEach {
+                    coordinateList.add(Poi(R.drawable.icon_maps_place_24px, getLineColor(lineName), it.position?.latitude!!, it.position?.longitude!!))
                 }
                 addPois(coordinateList)
 
