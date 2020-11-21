@@ -27,15 +27,15 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(getString(R.string.tramLinesActivityName));
-
         loadingWindow window = new loadingWindow(this);
 
+        //recycler View configuration
         RecyclerView recyclerView = findViewById(R.id.recycler_view_tram);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
+        //network request
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
@@ -51,6 +51,7 @@ public class StartActivity extends AppCompatActivity {
 
                 window.dismissLoadingWindow();
 
+                //transfer each tram lines from data (containing all lines like bus, tram, etc..) into listOfLines
                 for (Line lineData : data ) {
                     if(lineData.getRouteType() == RouteType.TRAM)
                     {
@@ -58,16 +59,19 @@ public class StartActivity extends AppCompatActivity {
                     }
                 }
 
-                RecyclerView.Adapter _adapter = new StartActivityAdapter(listOfLines, new StartActivityAdapter.RecyclerItemClick() {
+                //creation of the adapter
+                RecyclerView.Adapter adapter = new StartActivityAdapter(listOfLines, new StartActivityAdapter.RecyclerItemClick() {
                     @Override
                     public void onDiaryButtonClick(Line tram) {
+                        //Create an Intent to pass from StartActivity to stationActivity
                         Intent intent = new Intent(StartActivity.this, stationActivity.class);
                         intent.putExtra("TRAM_LINE",tram.getName());
                         startActivity(intent);
                     }
                 });
 
-                recyclerView.setAdapter(_adapter);
+                //Set the adapter in the recycler view
+                recyclerView.setAdapter(adapter);
             }
 
             @Override

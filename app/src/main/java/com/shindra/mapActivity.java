@@ -35,12 +35,15 @@ public class mapActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getString(R.string.ligneText) + getIntent().getStringExtra("LINE_NAME"));
 
+        //Create a new fragment stationFragment and his bundle
         frag = new mapFragment();
         Bundle bundle = new Bundle();
 
+        //begin transaction between the container and the fragment frag. Add parameter to the bundle
         getSupportFragmentManager().beginTransaction().add(R.id.map_container,frag).commit();
-        frag.setArguments(bundle);
         bundle.putString("lineName",getIntent().getStringExtra("LINE_NAME"));
+        frag.setArguments(bundle);
+
 
     }
 

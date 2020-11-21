@@ -27,12 +27,15 @@ public class stationActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getString(R.string.stationActivityName));
 
+        //Create a new fragment stationFragment and his bundle
         frag = new stationFragment();
         Bundle bundle = new Bundle();
 
+        //begin transaction between the container and the fragment frag. Add parameter to the bundle
         getSupportFragmentManager().beginTransaction().add(R.id.container_station,frag).commit();
-        frag.setArguments(bundle);
         bundle.putString("lineName",getIntent().getStringExtra("TRAM_LINE"));
+        frag.setArguments(bundle);
+
 
 
     }
