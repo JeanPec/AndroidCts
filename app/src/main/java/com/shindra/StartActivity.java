@@ -31,6 +31,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startactivity);
 
+        setTitle(getString(R.string.title_activity_line));
+
         /* RecyclerView used to print all subway's lines */
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

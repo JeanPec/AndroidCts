@@ -15,16 +15,14 @@
         android:theme="@style/Theme.CtsAppFip3A">
 
         <activity
-            android:name=".StartActivity"
-            android:label="@string/title_activity_line">
+            android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".StopActivity"
-            android:label="@string/title_activity_stop" />
+
+        <activity android:name=".StopActivity" />
 
         <activity android:name=".LineMapActivity" />
 
