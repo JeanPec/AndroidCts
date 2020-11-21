@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ScheduleActivity extends AppCompatActivity {
+    //Fragment required
 
     Bundle b;
     public String nameLine;
