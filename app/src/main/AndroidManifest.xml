@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".StartActivity">
+        <activity android:name=".Menu.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +20,8 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".ScheduleActivity"/>
-        <activity android:name=".MapActivity"/>
+        <activity android:name=".Schedule.ScheduleActivity"/>
+        <activity android:name=".Map.MapActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

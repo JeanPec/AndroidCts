@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.Schedule;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.LoadingDialog;
+import com.shindra.Map.MapActivity;
+import com.shindra.MyViewModel;
+import com.shindra.R;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;

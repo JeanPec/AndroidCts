@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.Menu;
 
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
 public class viewHolderMenu extends RecyclerView.ViewHolder {

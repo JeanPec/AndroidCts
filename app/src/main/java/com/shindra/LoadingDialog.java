@@ -8,13 +8,13 @@ public class LoadingDialog extends AlertDialog {
     private AlertDialog loadingDialog;
 
 
-    protected LoadingDialog(Context context)
+    public LoadingDialog(Context context)
     {
         super(context);
     }
 
 
-    void startAnimation(){
+    public void startAnimation(){
 
     Builder builder = new Builder(getContext());
     LayoutInflater inflater = getLayoutInflater();
@@ -26,7 +26,7 @@ public class LoadingDialog extends AlertDialog {
 
     }
 
-    void dismissDialog()
+    public void dismissDialog()
     {
         loadingDialog.dismiss();
     }

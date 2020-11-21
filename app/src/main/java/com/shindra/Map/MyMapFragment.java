@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.Map;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import com.shindra.LoadingDialog;
+import com.shindra.MyViewModel;
+import com.shindra.R;
 import com.shindra.arrakis.controls.MapFragment;
 import com.shindra.arrakis.controls.Poi;
 import com.shindra.arrakis.observable.ObservableExtensionKt;

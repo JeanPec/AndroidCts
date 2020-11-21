@@ -1,4 +1,4 @@
-package com.shindra;
+package com.shindra.Schedule;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;
