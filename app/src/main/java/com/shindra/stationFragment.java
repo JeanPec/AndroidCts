@@ -14,10 +14,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
+import com.shindra.ctslibrary.bo.Line;
+
+import org.jetbrains.annotations.NotNull;
+
 public class stationFragment extends Fragment {
 
     public RecyclerView recycler;
-    public stationAdapter adapter;
     public Button button;
 
     @Nullable
@@ -28,14 +34,47 @@ public class stationFragment extends Fragment {
         recycler=v.findViewById(R.id.recycler_view_station);
         button=v.findViewById(R.id.buttonToMapActivity);
 
-        Intent intentFromStartActivity = getActivity().getIntent();
-        String lineName = getArguments().getString("lineName");
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setHasFixedSize(true);
-        //adapter = new stationAdapter(getActivity(),button,model);
 
         return v;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        loadingWindow window = new loadingWindow(getContext());
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM,getArguments().getString("lineName"),0), new ObservableListener<Line>() {
+
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(Line data) {
+                window.dismissLoadingWindow();
+
+                RecyclerView.Adapter _adapter = new stationAdapter(data);
+                recycler.setAdapter(_adapter);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), mapActivity.class);
+                        intent.putExtra("LINE_NAME",data.getName());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onLoading() {
+                window.displayLoadingWindow();
+            }
+        });
+    }
+
 }

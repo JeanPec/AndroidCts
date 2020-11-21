@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +28,8 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(getString(R.string.tramLinesActivityName));
 
-        loadingWindow window = new loadingWindow(StartActivity.this);
+        loadingWindow window = new loadingWindow(this);
+
         RecyclerView recyclerView = findViewById(R.id.recycler_view_tram);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
 
@@ -53,7 +55,6 @@ public class StartActivity extends AppCompatActivity {
                     if(lineData.getRouteType() == RouteType.TRAM)
                     {
                        listOfLines.add(lineData);
-                        Log.i("Main",lineData.getName());
                     }
                 }
 
@@ -72,7 +73,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
-                Log.e("Main", "ATTENTION" + throwable.getMessage());
             }
         });
 

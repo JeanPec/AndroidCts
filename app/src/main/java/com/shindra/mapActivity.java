@@ -26,39 +26,21 @@ import java.util.ArrayList;
 
 public class mapActivity extends AppCompatActivity {
 
+    private mapFragment frag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        loadingWindow window = new loadingWindow(mapActivity.this);
 
-        Intent intentFromStartActivity = getIntent();
-        String lineName = intentFromStartActivity.getStringExtra("LINE_NAME") ;
-        getSupportActionBar().setTitle("Ligne " + lineName);
+        getSupportActionBar().setTitle(getString(R.string.ligneText) + getIntent().getStringExtra("LINE_NAME"));
 
-        mapFragment frag = new mapFragment();
+        frag = new mapFragment();
+        Bundle bundle = new Bundle();
+
         getSupportFragmentManager().beginTransaction().add(R.id.map_container,frag).commit();
-
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM,lineName), new ObservableListener<Line>() {
-
-            @Override
-            public void onError(@NotNull Throwable throwable) {
-
-            }
-
-            @Override
-            public void onSuccess(Line data) {
-
-                window.dismissLoadingWindow();
-                frag.addPoi(data);
-            }
-
-            @Override
-            public void onLoading() {
-                window.displayLoadingWindow();
-            }
-        });
+        frag.setArguments(bundle);
+        bundle.putString("lineName",getIntent().getStringExtra("LINE_NAME"));
 
     }
 

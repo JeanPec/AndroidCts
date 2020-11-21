@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdapter.tramViewHolder> {
     private ArrayList<Line> _lineList;
@@ -31,9 +32,11 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
             tramLineView = itemView.findViewById(R.id.tramLinePicture);
             tramIllustrationView = itemView.findViewById(R.id.illustrationPicture);
             buttonToStationDiary = itemView.findViewById(R.id.diaryStationButton);
+
         }
 
         public void onBind(Line tram, RecyclerItemClick callback){
+            tramIllustrationView.setImageResource(R.drawable.nouveau_tram_strasbourg);
             buttonToStationDiary.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -41,6 +44,7 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
                 }
             });
         }
+
     }
 
     public StartActivityAdapter(ArrayList<Line> lineList, RecyclerItemClick callBack) {
@@ -58,7 +62,6 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
 
     @Override
     public void onBindViewHolder(@NonNull tramViewHolder holder, int position) {
-
         Line currentTram = _lineList.get(position);
         switch (currentTram.getName())
         {
@@ -86,7 +89,7 @@ public class StartActivityAdapter extends RecyclerView.Adapter<StartActivityAdap
 
         }
 
-        holder.tramIllustrationView.setImageResource(R.drawable.nouveau_tram_strasbourg);
+        //holder.tramIllustrationView.setImageResource(R.drawable.nouveau_tram_strasbourg);
         holder.onBind(currentTram, _callBack);
     }
 

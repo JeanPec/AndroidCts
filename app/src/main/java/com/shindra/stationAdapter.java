@@ -31,6 +31,13 @@ public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationD
             lineNameView = itemView.findViewById(R.id.tramLine);
             scheduledTimeView = itemView.findViewById(R.id.scheduledTime);
         }
+
+        public void onBind(Line line, Stop stop, int position){
+            stationNameView.setText(stop.component1());
+            scheduledTimeView.setText(getAdaptedHourFromDate(stop));
+            lineNameView.setText(getLineNameFromLine(line));
+            lineNameView.setTextColor(ContextCompat.getColor(lineNameView.getContext(),getLineColorFromLine(line)));
+        }
     }
 
     public stationAdapter(Line line) {
@@ -50,11 +57,7 @@ public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationD
     public void onBindViewHolder(@NonNull stationDiaryViewHolder holder, int position) {
 
         Stop currentStop = _listOfStop.get(position);
-        holder.stationNameView.setText(currentStop.component1());
-
-        holder.lineNameView.setText(getLineNameFromLine());
-        holder.lineNameView.setTextColor(ContextCompat.getColor(holder.lineNameView.getContext(),getLineColorFromLine(_line)));
-        holder.scheduledTimeView.setText(getAdaptedHourFromDate(currentStop));
+        holder.onBind(_line,currentStop, position);
     }
 
     @Override
@@ -62,21 +65,17 @@ public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationD
         return _listOfStop.size();
     }
 
-    public String getAdaptedHourFromDate(Stop stop)
+    public static String getAdaptedHourFromDate(Stop stop)
     {
-        String hour, minute;
-        hour = new SimpleDateFormat("HH").format(stop.component2()).toString();
-        minute = new SimpleDateFormat("mm").format(stop.component2()).toString();
-         return hour + "h" + minute;
+        return new SimpleDateFormat("HH'h'mm").format(stop.component2()).toString();
     }
 
-    public String getLineNameFromLine()
+    public static String getLineNameFromLine(Line line)
     {
-        String name = "Ligne " + _line.getName();
-        return name;
+        return  "Ligne" + line.getName();
     }
 
-    public int getLineColorFromLine(Line line){
+    public static int getLineColorFromLine(Line line){
 
         switch (line.getName())
         {
