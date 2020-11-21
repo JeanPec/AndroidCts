@@ -1,6 +1,7 @@
 package com.shindra;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -24,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
 
     private ArrayList<Line> nosTramsList; //Initialization of an array containing "NosTramsItem" object
     //Ajout 18/11/2020
-    private String NomVue = "Nos Trams";    // Insert the name of the view
+    private String NomVue;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -33,34 +34,27 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         setContentView(R.layout.activity_main);
 
-        //Ajout 18/11/2020
-        setTitle(NomVue); //Change the name of the view
-
-
-        //Manually adding object in the array
-        //nosTramsList.add(new NosTramsItem(R.drawable.tram_a, R.drawable.tram));
-        //nosTramsList.add(new NosTramsItem(R.drawable.tram_b,  R.drawable.tram));
-        //nosTramsList.add(new NosTramsItem(R.drawable.tram_c,  R.drawable.tram));
-        //nosTramsList.add(new NosTramsItem(R.drawable.tram_d,  R.drawable.tram));
+        getSupportActionBar().setTitle(getString(R.string.LabelNosTrams)); //setTitle(NomVue); //Change the name of the view
 
         RecyclerView nosTramList = findViewById(R.id.recyclerView);
         //recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager (this);
-        nosTramList.setLayoutManager (layoutManager); //J'attribue le linearlayoumanager à nosTramsList
+        nosTramList.setLayoutManager (new LinearLayoutManager (this));
         RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList);
         adapter = LinesAdapter;
 
-        //Suppression de l'erreur si un objet de référence nulle
-       try{
-            recyclerView.setAdapter (adapter);
-        }catch (NullPointerException ignored){
-        }
-
+        nosTramList.setAdapter (adapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
+
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
@@ -71,14 +65,15 @@ public class StartActivity extends AppCompatActivity {
                 //call once the network call has responded with a success
 
                 nosTramsList =  new ArrayList<Line>();//Crée une liste contenant des objets de type Line
+                //nosTramList=data.filter
                 for (Line LignesCTS : data)
                 {
 
                     if (LignesCTS.getRouteType() == RouteType.TRAM)
                     {
-                        //Rajout d'un test pour vérifier si l'objet ajouté est nul pour éviter la "NullPointerException"?
                         nosTramsList.add(LignesCTS);
                     }
+                    Log.i("NosTram","Recupération des Lignes terminées");
                 }
 
                 nosTramList.setAdapter(new NosTramsAdapter(nosTramsList)); //Création de la vue Nos Trams avec l'ensemble des trams de la liste
@@ -90,6 +85,7 @@ public class StartActivity extends AppCompatActivity {
                 //call if the network call has responded with an error
             }
         });
+
     }
 }
 

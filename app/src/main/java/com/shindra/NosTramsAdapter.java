@@ -34,8 +34,8 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
         //La réponse de l'appel réseau permet de choisir l'image du tram à afficher
         public void TramsOnBind(Line image)
         {
-            String line_name = image.getName();
-            switch (line_name)
+
+            switch (image.getName())
             {
                 case "A":
                     ligneTram.setImageResource(R.drawable.tram_a);
@@ -86,9 +86,6 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     public void onBindViewHolder(@NonNull NosTramsViewHolder holder, int position) {
         Line currentTram = nosTramsList.get(position);
         holder.TramsOnBind(currentTram);
-
-        //holder.ligneTram.setImageResource (currentTram.imageLigne);
-        //holder.imageTram.setImageResource(currentTram.imageTram);
 
     }
 
