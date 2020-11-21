@@ -17,21 +17,22 @@ class MyViewModel : ViewModel() {
 
     fun lines(): BehaviorSubject<ArrayList<Line>> {
         return ctsRepository
-            .lines()
-            .subscribeOnAndObserveOn()
-            .convertToBehaviorSubject()
+                .lines()
+                .subscribeOnAndObserveOn()
+                .convertToBehaviorSubject()
     }
 
     fun lineWithStop(routeType: RouteType, routeName: String): BehaviorSubject<Line> {
         return ctsRepository.lineWithStops(routeType, routeName).subscribeOnAndObserveOn()
-            .convertToBehaviorSubject()
+                .convertToBehaviorSubject()
     }
 
     fun lineWithEstimatedTimeTable(routeType: RouteType, lineRef: String, direction: Int): BehaviorSubject<Line> {
         return ctsRepository.lineWithEstimatedTime(routeType, lineRef, direction).subscribeOnAndObserveOn()
-            .convertToBehaviorSubject()
+                .convertToBehaviorSubject()
     }
 
 }
+
 
 

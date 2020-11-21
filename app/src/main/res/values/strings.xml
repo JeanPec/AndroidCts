@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
+    <string name="chargement" />
+    <string name="voir_carte" />
+    <string name="see_card" />
+    <string name="voir_horaire" />
 </resources>
