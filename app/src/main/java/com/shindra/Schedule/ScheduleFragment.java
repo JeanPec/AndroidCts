@@ -1,6 +1,5 @@
 package com.shindra.Schedule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,7 +18,6 @@ import android.widget.Button;
 import com.shindra.ErrorScreen;
 import com.shindra.LoadingScreen;
 import com.shindra.Map.MapActivity;
-import com.shindra.Map.MapLineFragment;
 import com.shindra.MyViewModel;
 
 import com.shindra.R;
@@ -34,12 +32,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ScheduleFragment extends Fragment {
+
+    // Attributes
     private static final String TAG = "ScheduleFragment";
     private RecyclerView mRecyclerView;
     private LoadingScreen mLoadingScreen;
     private ErrorScreen mErrorScreen;
     private Button mButtonViewMap;
+    private String mTramLineLetter;
 
+    // Constructor
     public static ScheduleFragment onInstance(String tramLineLetter){
         ScheduleFragment fragment = new ScheduleFragment();
         Bundle args = new Bundle();
@@ -48,15 +50,16 @@ public class ScheduleFragment extends Fragment {
         return fragment;
     }
 
+    // Methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         Log.i(TAG, "onCreateView");
         ((AppCompatActivity) getContext()).getSupportActionBar().setTitle(getString(R.string.schedule));
-        String tramLineLetter = getArguments().getString("tramLineLetter");
-        mLoadingScreen = new LoadingScreen((Activity)getContext());
-        mErrorScreen = new ErrorScreen((Activity)getContext());
+        mTramLineLetter = getArguments().getString("tramLineLetter");
+        mLoadingScreen = new LoadingScreen(getContext());
+        mErrorScreen = new ErrorScreen(getContext());
 
         // View configurations
         View view = inflater.inflate(R.layout.fv_schedule, container, false);
@@ -64,8 +67,7 @@ public class ScheduleFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Adapter: scheduleList will automatically be updated with Update function
-        ArrayList<ScheduleItem> scheduleList = new ArrayList<>();
-        ScheduleAdapter adapter = new ScheduleAdapter(scheduleList);
+        ScheduleAdapter adapter = new ScheduleAdapter(new ArrayList<>());
         mRecyclerView.setAdapter(adapter);
 
         // Handle view map button
@@ -74,18 +76,28 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MapActivity.class);
-                intent.putExtra("tramLineLetter",tramLineLetter);
+                intent.putExtra("tramLineLetter", mTramLineLetter);
                 startActivity(intent);
             }
         });
+        return view;
+    }
+
+
+    @Override
+    public void onStart() {
+        Log.i(TAG, "onStart");
+        super.onStart();
+        ArrayList<ScheduleItem> scheduleItemList = new ArrayList<ScheduleItem>();
 
         // Network calls
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, tramLineLetter, 0), new ObservableListener<Line>() {@Override
-        public void onLoading() {
-            Log.i(TAG, "onLoading");
-            mLoadingScreen.display();
-        }
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, mTramLineLetter, 0), new ObservableListener<Line>() {
+            @Override
+            public void onLoading() {
+                Log.i(TAG, "onLoading");
+                mLoadingScreen.show();
+            }
 
             @Override
             public void onSuccess(Line data) {
@@ -93,44 +105,36 @@ public class ScheduleFragment extends Fragment {
                 mLoadingScreen.dismiss();
 
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                for(int i=0; i<data.getStops().size();i++)
-                {
+                for (int i = 0; i < data.getStops().size(); i++) {
                     String tramStationName = data.getStops().get(i).getName();
-                    if(tramStationName.length() > 30)
-                    {
-                        tramStationName = data.getStops().get(i).getName().substring(0, 27);
-                        tramStationName += "...";
+
+                    if (tramStationName.length() > 30) {
+                        tramStationName = tramStationName.substring(0, 28);
+                        tramStationName += "..";
                     }
 
-                    if(i==data.getStops().size()-1){
+                    if (i == data.getStops().size() - 1) {
                         // Add the terminus one, which has no "departure time"
-                        scheduleList.add(new ScheduleItem(tramLineLetter, tramStationName, "Terminus"));
+                        scheduleItemList.add(new ScheduleItem(mTramLineLetter, tramStationName, "Terminus"));
                         // Add a fake one to see the last one
-                        scheduleList.add(new ScheduleItem("XXX", "XXX", "XXX"));
+                        scheduleItemList.add(new ScheduleItem("XXX", "XXX", "XXX"));
                         break;
                     }
 
-                    String nextDepartureTime = sdf.format(data.getStops().get(i).getEstimatedDepartureTime()).replace(':','h');
-                    scheduleList.add(new ScheduleItem(tramLineLetter, tramStationName, nextDepartureTime));
+                    String nextDepartureTime = sdf.format(data.getStops().get(i).getEstimatedDepartureTime()).replace(':', 'h');
+                    scheduleItemList.add(new ScheduleItem(mTramLineLetter, tramStationName, nextDepartureTime));
                 }
 
-                UpdateView(scheduleList);
+                // Update view
+                ((ScheduleAdapter) mRecyclerView.getAdapter()).SetScheduleList(scheduleItemList);
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
                 Log.i(TAG, "onError");
                 mLoadingScreen.dismiss();
-                mErrorScreen.display();
+                mErrorScreen.show();
             }
         });
-
-        return view;
-    }
-
-    public void UpdateView(ArrayList<ScheduleItem> scheduleList) {
-        Log.i(TAG, "UpdateMethod");
-        ScheduleAdapter tmp = (ScheduleAdapter) mRecyclerView.getAdapter();
-        tmp.SetScheduleList(scheduleList);
     }
 }

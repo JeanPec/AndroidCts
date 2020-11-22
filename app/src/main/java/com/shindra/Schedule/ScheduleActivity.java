@@ -11,9 +11,12 @@ import android.util.Log;
 import com.shindra.R;
 
 public class ScheduleActivity extends AppCompatActivity {
+
+    // Attributes
     private static final String TAG = "ScheduleActivity";
     private Fragment mFragment;
 
+    // Methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");

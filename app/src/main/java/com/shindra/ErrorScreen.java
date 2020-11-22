@@ -15,7 +15,7 @@ public class ErrorScreen extends AlertDialog{
         alertDial = builder.create();
     }
 
-    public void display()
+    public void show()
     {
         alertDial.show();
     }

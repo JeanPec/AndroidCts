@@ -10,9 +10,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.shindra.R;
 
 public class OurTramsActivity extends AppCompatActivity {
+
+    // Attributes
     private static final String TAG = "OurTramsActivity";
     private OurTramsFragment mFragment;
 
+    // Methods
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");

@@ -1,6 +1,5 @@
 package com.shindra.OurTrams;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -30,26 +29,28 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class OurTramsFragment extends Fragment {
+
+    // Attributes
     private static final String TAG = "OurTramsFragment";
     private LoadingScreen mLoadingScreen;
     private RecyclerView mRecyclerView;
     private ErrorScreen mErrorScreen;
 
+    // Methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         Log.i(TAG, "onCreateView");
         ((AppCompatActivity) getContext()).getSupportActionBar().setTitle(getString(R.string.OurTrams));
-        mLoadingScreen = new LoadingScreen((Activity)getContext());
-        mErrorScreen = new ErrorScreen((Activity)getContext());
-
+        mLoadingScreen = new LoadingScreen(getContext());
+        mErrorScreen = new ErrorScreen(getContext());
         // View configurations
         View view = inflater.inflate(R.layout.fv_our_trams, container, false);
         mRecyclerView = view.findViewById(R.id.fv_our_trams_RecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Adapter: list will automatically be updated with Update function
+        // Adapter: list will automatically be updated
         OurTramsAdapter adapter = new OurTramsAdapter(new ArrayList<OurTramsItem>(), new OurTramsAdapter.OnItemClickListener() {
             @Override
             public void onButtonScheduleClick(String tramLineLetter) {
@@ -59,6 +60,14 @@ public class OurTramsFragment extends Fragment {
             }
         });
         mRecyclerView.setAdapter(adapter);
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        Log.i(TAG, "onStart");
+        super.onStart();
+        ArrayList<OurTramsItem> ourTramsItemList = new ArrayList<OurTramsItem>();
 
         // Network calls
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -66,7 +75,7 @@ public class OurTramsFragment extends Fragment {
             @Override
             public void onLoading() {
                 Log.i(TAG, "onLoading");
-                mLoadingScreen.display();
+                mLoadingScreen.show();
             }
 
             @Override
@@ -75,29 +84,22 @@ public class OurTramsFragment extends Fragment {
                 mLoadingScreen.dismiss();
 
                 // Get only tram data and convert it to OurTramsItem
-                ArrayList<OurTramsItem> ourTramsItemList = new ArrayList<OurTramsItem>();
                 for (Line element : data){
                     if (element.getRouteType() == RouteType.TRAM){
                         ourTramsItemList.add(new OurTramsItem(element.getName()));
                     }
                 }
 
-                UpdateView(ourTramsItemList);
+                // Update view
+                ((OurTramsAdapter) mRecyclerView.getAdapter()).SetOurTramsList(ourTramsItemList);
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
                 Log.i(TAG, "onError");
                 mLoadingScreen.dismiss();
-                mErrorScreen.display();
+                mErrorScreen.show();
             }
         });
-        return view;
-    }
-
-    public void UpdateView(ArrayList<OurTramsItem> ourTramsItemsList) {
-        Log.i(TAG, "UpdateMethod");
-        OurTramsAdapter tmp = (OurTramsAdapter) mRecyclerView.getAdapter();
-        tmp.SetOurTramsList(ourTramsItemsList);
     }
 }

@@ -15,7 +15,7 @@ public class LoadingScreen extends AlertDialog{
         alertDial = builder.create();
     }
 
-    public void display()
+    public void show()
     {
         alertDial.show();
     }

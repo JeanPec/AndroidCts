@@ -14,25 +14,28 @@ import com.shindra.HelperLine;
 import com.shindra.LoadingScreen;
 import com.shindra.MyViewModel;
 import com.shindra.R;
-import com.shindra.arrakis.controls.Poi;
-import com.shindra.arrakis.observable.ObservableExtensionKt;
-import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
+import com.shindra.arrakis.controls.Poi;
+import com.shindra.arrakis.observable.ObservableExtensionKt;
+import com.shindra.arrakis.observable.ObservableListener;
+
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class MapLineFragment extends com.shindra.arrakis.controls.MapFragment
 {
+
+    // Attributes
     private static final String TAG = "MapLineFragment";
     private String mTramLineLetter;
     private LoadingScreen mLoadingScreen;
     private ErrorScreen mErrorScreen;
 
+    // Constructor
     public static MapLineFragment onInstance(String tramLineLetter){
         MapLineFragment fragment = new MapLineFragment();
         Bundle args = new Bundle();
@@ -41,6 +44,7 @@ public class MapLineFragment extends com.shindra.arrakis.controls.MapFragment
         return fragment;
     }
 
+    // Methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,7 +71,7 @@ public class MapLineFragment extends com.shindra.arrakis.controls.MapFragment
             public void onLoading()
             {
                 Log.i(TAG, "onLoading");
-                mLoadingScreen.display();
+                mLoadingScreen.show();
             }
 
             @Override
@@ -83,7 +87,7 @@ public class MapLineFragment extends com.shindra.arrakis.controls.MapFragment
             {
                 Log.i(TAG, "onError");
                 mLoadingScreen.dismiss();
-                mErrorScreen.display();
+                mErrorScreen.show();
             }
         });
     }
@@ -91,7 +95,7 @@ public class MapLineFragment extends com.shindra.arrakis.controls.MapFragment
     public void UpdateView(Line line)
     {
         // Add positions on map
-        Log.i(TAG, "Update");
+        Log.i(TAG, "UpdateView");
         ArrayList<Poi> positions = new ArrayList<Poi>();
         for (Stop element : line.getStops())
             positions.add(new Poi(R.drawable.icon_maps_place_24px, HelperLine.GetLineColor(line.getName()), element.getPosition().getLatitude(), element.getPosition().getLongitude()));
