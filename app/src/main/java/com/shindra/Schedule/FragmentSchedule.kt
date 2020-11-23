@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.Lines.LinesRecyclerViewAdapter
 import com.shindra.LoadingDialog
 import com.shindra.Map.MapActivity
 import com.shindra.MyViewModel
@@ -29,10 +28,6 @@ class FragmentSchedule : Fragment() {
     private lateinit var viewOfLayout: View
     val stops = ArrayList<Stop>()
     var lineID: String? = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

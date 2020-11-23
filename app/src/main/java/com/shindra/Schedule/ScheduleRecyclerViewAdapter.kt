@@ -1,9 +1,7 @@
 package com.shindra.Schedule
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop

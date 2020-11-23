@@ -1,25 +1,21 @@
 package com.shindra.Schedule
 
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.MapClick
 import com.shindra.R
-import com.shindra.ScheduleClick
-import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
 
 class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var scheduleStop = itemView.findViewById<TextView>(R.id.Schedule_stop)
-    var scheduleLine = itemView.findViewById<TextView>(R.id.Schedule_line)
-    var scheduleTime = itemView.findViewById<TextView>(R.id.Schedule_time)
+    var scheduleStop: TextView = itemView.findViewById(R.id.Schedule_stop)
+    var scheduleLine: TextView = itemView.findViewById(R.id.Schedule_line)
+    var scheduleTime: TextView = itemView.findViewById(R.id.Schedule_time)
 
     fun onBind(stop: Stop, lineID: String) {
         scheduleStop.text = stop.name
-        scheduleLine.text = "Ligne $lineID"
+        scheduleLine.text = itemView.context.getString(R.string.activity_schedule_line_name) + lineID
         when (lineID) {
             "A" -> scheduleLine.setTextColor(ContextCompat.getColor(scheduleLine.context, R.color.ligne_A))
             "B" -> scheduleLine.setTextColor(ContextCompat.getColor(scheduleLine.context, R.color.ligne_B))

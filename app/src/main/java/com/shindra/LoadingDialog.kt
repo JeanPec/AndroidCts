@@ -12,11 +12,11 @@ class LoadingDialog(context : Activity) : AppCompatActivity() {
     private val dialogBuilder = AlertDialog.Builder(context).setView(loadingDialogView)
     private val loadingDialog = dialogBuilder.create()
 
-    public fun showLoadingDialog() {
+    fun showLoadingDialog() {
         loadingDialog.show()
     }
 
-    public fun dismissLoadingDialog() {
+    fun dismissLoadingDialog() {
         loadingDialog.dismiss()
     }
 

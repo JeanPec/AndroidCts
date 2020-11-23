@@ -27,10 +27,6 @@ class FragmentLine : Fragment(), ScheduleClick {
     val lines = ArrayList<Line>()
     private lateinit var viewOfLayout: View
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onStart() {
         super.onStart()
 
