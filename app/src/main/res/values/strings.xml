@@ -1,16 +1,15 @@
 <resources>
     <string name="app_name">CtsAppFip3A</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="blank_fragment">TEST</string>
     <string name="title_activity_schedule">ScheduleActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loading_dialog_string">Veuillez patienter, chargement des données en cours.</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="line_to_schedule_activity_intent_name">LINE</string>
+    <string name="schedule_activity_to_fragment_bundle_name">LINE_ID</string>
+    <string name="schedule_to_map_activity_intent_name">LINE_ID</string>
+    <string name="map_activity_to_fragment_bundle_name">LINE_ID</string>
+    <string name="activity_schedule_line_name">Ligne </string>
+    <string name="line_activity_title">Nos Trams</string>
+    <string name="map_activity_title">Ligne </string>
+    <string name="schedule_activity_title">Ligne </string>
 </resources>

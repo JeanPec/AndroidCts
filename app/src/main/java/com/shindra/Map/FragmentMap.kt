@@ -21,7 +21,7 @@ class FragmentMap : MapFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lineID = this.arguments?.getString("LINE_ID")
+        lineID = this.arguments?.getString(getString(R.string.map_activity_to_fragment_bundle_name))
     }
 
 

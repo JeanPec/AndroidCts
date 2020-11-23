@@ -29,12 +29,11 @@ class MapActivity : AppCompatActivity() {
         setContentView(R.layout.activity_map)
 
         val intent = intent
-        val lineID = intent.getStringExtra("LINE_ID")
-        println("OUT $lineID")
-        title = "Ligne $lineID"
+        val lineID = intent.getStringExtra(getString(R.string.schedule_to_map_activity_intent_name))
+        title = getString(R.string.map_activity_title) + lineID
 
         val bundle = Bundle()
-        bundle.putString("LINE_ID", lineID)
+        bundle.putString(getString(R.string.map_activity_to_fragment_bundle_name), lineID)
         val fragmentMap = FragmentMap()
         fragmentMap.arguments = bundle
         val fragmentManager = supportFragmentManager

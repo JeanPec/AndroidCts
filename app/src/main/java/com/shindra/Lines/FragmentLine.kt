@@ -74,8 +74,7 @@ class FragmentLine : Fragment(), ScheduleClick {
 
     override fun onScheduleClick(line: Line?) {
         val intent = Intent(this.activity, ScheduleActivity::class.java)
-        println(line?.name)
-        intent.putExtra("LINE", line?.name)
+        intent.putExtra(getString(R.string.line_to_schedule_activity_intent_name), line?.name)
         startActivity(intent)
     }
 }

@@ -1,13 +1,10 @@
 package com.shindra.Schedule
 
-import android.content.DialogInterface
+import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.MapClick
 import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
@@ -25,38 +22,32 @@ class ScheduleRecyclerViewAdapter(var stops: ArrayList<Stop>, private val lineID
         val stop = stops[position]
         holder.scheduleStop.text = stop.name
         holder.scheduleLine.text = "Ligne $lineID"
-        if (lineID == "A") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_A))
-        } else if (lineID == "B") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_B))
-        } else if (lineID == "C") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_C))
-        } else if (lineID == "D") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_D))
-        } else if (lineID == "E") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_E))
-        } else if (lineID == "F") {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_F))
-        } else {
-            holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.Body2))
+        when (lineID) {
+            "A" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_A))
+            "B" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_B))
+            "C" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_C))
+            "D" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_D))
+            "E" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_E))
+            "F" -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.ligne_F))
+            else -> holder.scheduleLine.setTextColor(ContextCompat.getColor(holder.scheduleLine.context, R.color.Body2))
         }
-        holder.scheduleTime.text = convert(stop.estimatedArrivalTime)
+        holder.scheduleTime.text = stop.estimatedArrivalTime?.getDateStringHHMM()
     }
 
     override fun getItemCount(): Int {
         return stops.size
     }
 
-    companion object {
-        fun convert(input: Date?): String {
-            return if (input != null) {
-                val hours = input.hours
-                String.format("%dh%02d", hours, input.minutes)
-            } else {
-                ""
-            }
-        }
-    }
+
+}
+
+fun Date.getDateStringHHMM(): String {
+    val date:Date = this // your date
+    val cal = Calendar.getInstance()
+    cal.time = date
+    val hours = cal.get(Calendar.HOUR_OF_DAY).toString()
+    val minutes = String.format("%02d", cal.get(Calendar.MINUTE))
+    return (hours + "h" + minutes)
 }
 
 

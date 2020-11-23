@@ -38,7 +38,7 @@ class FragmentSchedule : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         viewOfLayout =  inflater.inflate(R.layout.fragment_schedule, container, false)
-        lineID = this.arguments?.getString("LINE_ID")
+        lineID = this.arguments?.getString(getString(R.string.schedule_activity_to_fragment_bundle_name))
         return viewOfLayout
     }
 
@@ -83,8 +83,7 @@ class FragmentSchedule : Fragment() {
 
     private fun onMapClick(lineID: String) {
         val intent = Intent(this.activity, MapActivity::class.java)
-        println(lineID)
-        intent.putExtra("LINE_ID", lineID)
+        intent.putExtra(getString(R.string.schedule_to_map_activity_intent_name), lineID)
         startActivity(intent)
     }
 
