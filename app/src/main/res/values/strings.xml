@@ -8,8 +8,8 @@
     <string name="schedule_activity_to_fragment_bundle_name">LINE_ID</string>
     <string name="schedule_to_map_activity_intent_name">LINE_ID</string>
     <string name="map_activity_to_fragment_bundle_name">LINE_ID</string>
-    <string name="activity_schedule_line_name">Ligne </string>
+    <string name="activity_schedule_line_name">Ligne\u0020</string>
     <string name="line_activity_title">Nos Trams</string>
-    <string name="map_activity_title">Ligne </string>
-    <string name="schedule_activity_title">Ligne </string>
+    <string name="map_activity_title">Ligne\u0020</string>
+    <string name="schedule_activity_title">Ligne\u0020</string>
 </resources>
