@@ -36,10 +36,18 @@ public class StartActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(getString(R.string.LabelNosTrams));
+        NosTramsAdapter.RecyclerTimetableClick callBack = new NosTramsAdapter.RecyclerTimetableClick() {
+            @Override
+            public void onTimetableClick(Line image) {
+                Log.i("Test","Bouton HOURRA");
+                setContentView(R.layout.horaire_item);
+            }
+        };
 
         RecyclerView nosTramList = findViewById(R.id.recyclerView);
         nosTramList.setLayoutManager (new LinearLayoutManager (this));
-        RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList);
+        RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList, callBack);
+
         nosTramList.setAdapter (LinesAdapter);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
@@ -53,8 +61,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
-
-                nosTramsList =  new ArrayList<Line>();
                 for (Line LignesCTS : data)
                 {
                     if (LignesCTS.getRouteType() == RouteType.TRAM)
@@ -64,7 +70,7 @@ public class StartActivity extends AppCompatActivity {
                     Log.i("NosTram","Recupération des Lignes terminées");
                 }
 
-                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList));
+                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList, callBack));
             }
             @Override
             public void onError(@NotNull Throwable throwable) {

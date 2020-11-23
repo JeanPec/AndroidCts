@@ -17,18 +17,25 @@ import java.util.ArrayList;
 
 public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTramsViewHolder> {
 
+    interface RecyclerTimetableClick
+    {
+        void onTimetableClick (Line image);
+    }
+
     private ArrayList <Line> nosTramsList;
+    private RecyclerTimetableClick callBack;
 
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
         public final ImageView ligneTram;
 
+
         public NosTramsViewHolder(@NonNull View itemView) {
             super(itemView);
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
         }
-        public void TramsOnBind(Line image)
+        public void TramsOnBind(Line image, RecyclerTimetableClick callback)
         {
             switch (image.getName())
             {
@@ -60,11 +67,23 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
                     ligneTram.setImageResource(R.drawable.tram);
                     break;
             }
+
+            itemView.setOnClickListener (new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    callback.onTimetableClick(image);
+                }
+            });
+
+
+
         }
     }
 
-    public NosTramsAdapter (ArrayList<Line> nosTramsList) {
+    public NosTramsAdapter (ArrayList<Line> nosTramsList, RecyclerTimetableClick callBack) {
         this.nosTramsList = nosTramsList;
+        this.callBack = callBack;
     }
 
     @NonNull
@@ -78,7 +97,7 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     @Override
     public void onBindViewHolder(@NonNull NosTramsViewHolder holder, int position) {
         Line currentTram = nosTramsList.get(position);
-        holder.TramsOnBind(currentTram);
+        holder.TramsOnBind(currentTram,callBack);
     }
     @Override
     public int getItemCount() {
