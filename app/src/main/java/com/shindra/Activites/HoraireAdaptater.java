@@ -1,4 +1,5 @@
 package com.shindra.Activites;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class HoraireAdaptater extends RecyclerView.Adapter<HoraireViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HoraireViewHolder holder, int position) {
         holder.onBind(TramStop.get(position));
+
     }
 
 

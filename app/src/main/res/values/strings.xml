@@ -14,5 +14,7 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="DialogueMessage">Veuillez patienter, chargements des données en cours</string>
+    <string name="horaire">TextView</string>
+    <string name="voir_sur_la_carte">Voir sur la carte</string>
 
 </resources>

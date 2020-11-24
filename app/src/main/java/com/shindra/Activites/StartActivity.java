@@ -1,8 +1,10 @@
 package com.shindra.Activites;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.RelativeLayout;
 
 
 import androidx.annotation.Nullable;
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 
 
 public class StartActivity extends AppCompatActivity {
-
 
 
     @Override

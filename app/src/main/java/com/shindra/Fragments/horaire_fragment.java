@@ -27,6 +27,7 @@ import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -81,7 +82,7 @@ public class horaire_fragment extends Fragment {
                 public void onSuccess(Line data) {
                     ArrayList<TrameStop> TramesStop = new ArrayList<>();
                     MyDialogFragment.dismiss();
-                    for(Stop lineStop :  data.getStops() ) {
+                    for(Stop lineStop : Objects.requireNonNull(data.getStops())) {
                         TramesStop.add(new TrameStop(lineStop.getName(),data.getName(),lineStop.getEstimatedDepartureTime()));
                     }
                     rcView.setAdapter(new HoraireAdaptater(TramesStop));
