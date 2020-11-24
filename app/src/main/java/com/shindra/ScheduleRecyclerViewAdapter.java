@@ -1,6 +1,6 @@
 package com.shindra;
 
-
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +15,12 @@ import java.util.ArrayList;
 public class ScheduleRecyclerViewAdapter extends RecyclerView.Adapter<ScheduleViewHolder> {
     private ArrayList<Stop>stops;
     String lineName;
-    ScheduleRecyclerViewAdapter(ArrayList<Stop> stops, String lineName){
+    Context context;
+
+    ScheduleRecyclerViewAdapter(ArrayList<Stop> stops, String lineName, Context context){
         this.stops = stops;
         this.lineName = lineName;
+        this.context = context;
     }
 
     @NonNull
@@ -31,7 +34,7 @@ public class ScheduleRecyclerViewAdapter extends RecyclerView.Adapter<ScheduleVi
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position){
-        holder.onBind(stops.get(position), lineName);
+        holder.onBind(stops.get(position), lineName, context);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.shindra;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -13,7 +13,7 @@ import com.shindra.ctslibrary.bo.Line;
 public class LineViewHolder extends RecyclerView.ViewHolder {
 
     private final ImageView lineName;
-    public final Button button;
+    public final TextView button;
 
     public LineViewHolder(@NonNull View itemView){
         super(itemView);

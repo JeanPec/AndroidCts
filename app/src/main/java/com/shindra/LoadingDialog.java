@@ -3,7 +3,6 @@ package com.shindra.Misc;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
 import com.shindra.R;
 

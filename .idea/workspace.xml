@@ -37,22 +37,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="modifications par rapport aux remarques du merge request">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+    <list default="true" id="6a8a14b1-bf23-4e15-896e-01423041e907" name="Default Changelist" comment="carte + LoadingDialog - reste couleur et style à modifier">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialogForActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/LineViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/LineViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/LoadingDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleRecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleRecyclerViewAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleViewHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/shindra/StartActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_schedule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/line_recycler_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/line_recycler_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/schedule_recycler_card_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/schedule_recycler_card_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +80,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -105,6 +104,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="625b92290706" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-19T11:03:16.080Z" />
+    <property name="ResourceManagerPrefKey.ResourceType" value="FONT" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -229,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605944911665</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="carte + LoadingDialog - reste couleur et style à modifier">
+      <created>1605952650937</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605952650937</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,7 +272,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="modification place setCentent dans startActivity + recyclerview fonctionne - manque la recupération des données" />
     <MESSAGE value="modifications par rapport aux remarques du merge request" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifications par rapport aux remarques du merge request" />
+    <MESSAGE value="carte + LoadingDialog - reste couleur et style à modifier" />
+    <option name="LAST_COMMIT_MESSAGE" value="carte + LoadingDialog - reste couleur et style à modifier" />
   </component>
   <component name="WindowStateProjectService">
     <state x="714" y="271" key="#PSD" timestamp="1605097118118">
@@ -280,9 +288,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="416" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1605784692783" />
-    <state x="217" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605771560459">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="390" y="-778" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606237241897">
+      <screen x="173" y="-1050" width="1680" height="1050" />
     </state>
+    <state x="390" y="-778" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606237241897" />
     <state x="217" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1605771560459" />
     <state x="113" y="126" width="1454" height="799" key="AVDManager" timestamp="1605271188507">
       <screen x="0" y="0" width="1680" height="1050" />
@@ -293,26 +302,34 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="420" y="280" key="AndroidCreateResourceDirectoryDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1605272825271" />
+    <state x="593" y="-770" key="AndroidCreateResourceFileDialog" timestamp="1606237176098">
+      <screen x="173" y="-1050" width="1680" height="1050" />
+    </state>
+    <state x="593" y="-770" key="AndroidCreateResourceFileDialog/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606237176098" />
     <state x="620" y="280" key="FileChooserDialogImpl" timestamp="1605283206901">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="620" y="280" key="FileChooserDialogImpl/0.0.1680.1050@0.0.1680.1050" timestamp="1605283206901" />
-    <state width="1636" height="284" key="GridCell.Tab.0.bottom" timestamp="1605950271927">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1636" height="284" key="GridCell.Tab.0.bottom" timestamp="1606241266302">
+      <screen x="173" y="-1050" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271927" />
-    <state width="1636" height="284" key="GridCell.Tab.0.center" timestamp="1605950271926">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1636" height="284" key="GridCell.Tab.0.bottom/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606241266302" />
+    <state width="1636" height="284" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1605952677822" />
+    <state width="1636" height="284" key="GridCell.Tab.0.center" timestamp="1606241266301">
+      <screen x="173" y="-1050" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271926" />
-    <state width="1636" height="284" key="GridCell.Tab.0.left" timestamp="1605950271925">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1636" height="284" key="GridCell.Tab.0.center/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606241266301" />
+    <state width="1636" height="284" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1605952677820" />
+    <state width="1636" height="284" key="GridCell.Tab.0.left" timestamp="1606241266301">
+      <screen x="173" y="-1050" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271925" />
-    <state width="1636" height="284" key="GridCell.Tab.0.right" timestamp="1605950271926">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1636" height="284" key="GridCell.Tab.0.left/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606241266301" />
+    <state width="1636" height="284" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1605952677820" />
+    <state width="1636" height="284" key="GridCell.Tab.0.right" timestamp="1606241266301">
+      <screen x="173" y="-1050" width="1680" height="1050" />
     </state>
-    <state width="1636" height="284" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605950271926" />
+    <state width="1636" height="284" key="GridCell.Tab.0.right/0.0.1366.768/173.-1050.1680.1050@173.-1050.1680.1050" timestamp="1606241266301" />
+    <state width="1636" height="284" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1605952677821" />
     <state width="1636" height="285" key="GridCell.Tab.1.bottom" timestamp="1605773281883">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -337,11 +354,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1605459803267" />
-    <state x="338" y="142" key="Vcs.Push.Dialog.v2" timestamp="1605944923308">
+    <state x="338" y="142" key="Vcs.Push.Dialog.v2" timestamp="1605952653672">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.768/1366.-474.1680.1050@0.0.1366.768" timestamp="1604922039720" />
-    <state x="338" y="142" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605944923308" />
+    <state x="338" y="142" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1605952653672" />
     <state x="656" y="303" key="chooseDestDirectoryDialog" timestamp="1605282526741">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -366,16 +383,5 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="83" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1605714579574" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/shindra/ScheduleActivity.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

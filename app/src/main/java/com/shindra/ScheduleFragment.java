@@ -64,7 +64,7 @@ public class ScheduleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.schedule_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ScheduleRecyclerViewAdapter(getStops(), lineName));
+        recyclerView.setAdapter(new ScheduleRecyclerViewAdapter(getStops(), lineName, requireContext()));
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(
                 RouteType.TRAM, lineName,1), new ObservableListener<Line>() {
@@ -78,7 +78,7 @@ public class ScheduleFragment extends Fragment {
             @Override
             public void onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                loadingDialog.dismiss();
+                loadingDialog.show();
             }
 
             @Override

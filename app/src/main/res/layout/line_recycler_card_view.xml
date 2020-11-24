@@ -33,13 +33,14 @@
             android:adjustViewBounds="true">
         </ImageView>
 
-        <Button
+        <TextView
             android:id="@+id/schedule_button"
+            android:textColor="@color/primary"
             android:layout_width="wrap_content"
             android:layout_below="@id/photo_tram"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@string/voir_horaire"></Button>
+            android:text="@string/voir_horaire"></TextView>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

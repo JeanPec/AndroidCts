@@ -7,11 +7,13 @@
         android:id="@+id/schedule_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/map_button">
     </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/map_button"
+        style="@style/Button"
         android:text="@string/voir_carte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
