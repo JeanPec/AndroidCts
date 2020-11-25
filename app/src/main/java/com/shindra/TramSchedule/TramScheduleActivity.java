@@ -28,8 +28,8 @@ public class TramScheduleActivity extends AppCompatActivity
         Line_Letter = intentTram_Lines.getStringExtra("Tram_Line");
 
 
-        Bundle BundleSchedule = new Bundle();
-        BundleSchedule.putString("Line_Letter", Line_Letter);
+        //Bundle BundleSchedule = new Bundle();
+        //BundleSchedule.putString("Line_Letter", Line_Letter);
         TramScheduleFrag TramScheduleFrag = new TramScheduleFrag();
         FragmentTransaction fragTran = getSupportFragmentManager().beginTransaction();
         fragTran.add(R.id.ScheduleLayout, TramScheduleFrag.newInstance(Line_Letter));

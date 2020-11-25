@@ -17,9 +17,9 @@ public class RecyclerViewAdapter_Tram_lines extends RecyclerView.Adapter<Trams_V
     private ArrayList<Line> tramLinesList;
     private Trams_View_Holder.ScheduleButtonClick callBack;
 
-    public RecyclerViewAdapter_Tram_lines(ArrayList<Line> listelignetrams, Trams_View_Holder.ScheduleButtonClick callBack)
+    public RecyclerViewAdapter_Tram_lines(ArrayList<Line> tramLinesList, Trams_View_Holder.ScheduleButtonClick callBack)
     {
-        this.tramLinesList = listelignetrams;
+        this.tramLinesList = tramLinesList;
         this.callBack = callBack;
     }
 

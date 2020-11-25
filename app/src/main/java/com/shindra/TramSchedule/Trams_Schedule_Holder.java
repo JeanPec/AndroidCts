@@ -34,7 +34,7 @@ public class Trams_Schedule_Holder extends RecyclerView.ViewHolder {
     {
         Integer LineColor = itemView.getContext().getColor(GetLineColor(LineName));
         Line_Tram.setTextColor(LineColor);
-        Line_Tram.setText("ligne " +LineName);
+        Line_Tram.setText("ligne " +  LineName);
 
         Departure_Time.setText(DateToString(requestStopTram.getEstimatedDepartureTime()));
         Stop_Name.setText(requestStopTram.getName());
@@ -42,8 +42,8 @@ public class Trams_Schedule_Holder extends RecyclerView.ViewHolder {
 
     private String DateToString(Date date)
     {
-        SimpleDateFormat Conv = new SimpleDateFormat("HH:mm");
-        return Conv.format(date);
+        SimpleDateFormat Date_Format = new SimpleDateFormat("HH:mm");
+        return Date_Format.format(date);
     }
 
     private int GetLineColor(String LineLetter)

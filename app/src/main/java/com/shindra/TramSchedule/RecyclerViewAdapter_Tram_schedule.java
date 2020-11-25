@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shindra.R;
-import com.shindra.ctslibrary.bo.Line;
 import com.shindra.ctslibrary.bo.Stop;
 
 import java.util.ArrayList;

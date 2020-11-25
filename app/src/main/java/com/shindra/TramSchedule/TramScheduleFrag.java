@@ -1,14 +1,10 @@
 package com.shindra.TramSchedule;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,17 +22,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TramScheduleFrag#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TramScheduleFrag extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
 
-    private String mParam1;
+    private String Line_Name;
     private String Line_Letter;
     private ArrayList<Stop> TramStopList;
     RecyclerView TramScheduleList;
@@ -64,7 +54,7 @@ public class TramScheduleFrag extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            Line_Name = getArguments().getString(ARG_PARAM1);
         }
     }
 

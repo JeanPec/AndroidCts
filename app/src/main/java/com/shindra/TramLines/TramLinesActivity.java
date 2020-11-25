@@ -33,18 +33,16 @@ public class TramLinesActivity extends AppCompatActivity
 
         RecyclerView Tram_Line_List = findViewById(R.id.recyclerview_tram_lines);
         Tram_Line_List.setLayoutManager(new LinearLayoutManager(this));
-        //RecyclerView.Adapter LinesAdapter = new RecyclerViewAdapter_Tram_lines(tram_lines_list);
 
         Trams_View_Holder.ScheduleButtonClick callBack = new Trams_View_Holder.ScheduleButtonClick()
         {
             @Override
             public void onScheduleButtonClick(Line line)
             {
-                Log.i(getString(R.string.nos_trams_label),"Appuie BTN : " + line.getName());
-                //Creation de la nouvelle Intent
-                Intent intent = new Intent(TramLinesActivity.this, TramScheduleActivity.class);
-                intent.putExtra("Tram_Line",line.getName());
-                startActivity(intent);
+               //Log.i(getString(R.string.nos_trams_label),"Appuie BTN : " + line.getName());
+                Intent intentSchedule = new Intent(TramLinesActivity.this, TramScheduleActivity.class);
+                intentSchedule.putExtra("Tram_Line",line.getName());
+                TramLinesActivity.this.startActivity(intentSchedule);
             }
         };
 
