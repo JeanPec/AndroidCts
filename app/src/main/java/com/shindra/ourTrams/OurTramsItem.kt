@@ -1,8 +1,9 @@
-package com.shindra.OurTrams
+package com.shindra.ourTrams
 
 /* Constructors:
     -Primary constructor via Header: it's the method implemented here: attributes are in the class
-    header, it allows only to initialize properties: you can't add any logic in it.
+    header, it allows only to initialize properties: you can't add any logic in it. You can use
+    attributes like properties to have an easier access to attributes. Just make them public with:
         val = read-only property
         var = read-write property
 
@@ -27,8 +28,4 @@ package com.shindra.OurTrams
          using the "constructor" keyword.
  */
 
-class OurTramsItem(private val mTramLineLetter: String) {
-
-    // Methods
-    fun getTramLineLetter(): String { return mTramLineLetter }
-}
+data class  OurTramsItem(val mTramLineLetter: String)

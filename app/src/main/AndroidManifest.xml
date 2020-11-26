@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A" >
-        <activity android:name=".Schedule.ScheduleActivity" >
+        <activity android:name=".schedule.ScheduleActivity" >
         </activity>
-        <activity android:name=".Map.MapActivity" >
+        <activity android:name=".map.MapActivity" >
         </activity>
-        <activity android:name=".OurTrams.OurTramsActivity" >
+        <activity android:name=".ourTrams.OurTramsActivity" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

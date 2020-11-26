@@ -1,10 +1,8 @@
-package com.shindra.Others
-
-import com.shindra.R
+package com.shindra
 
 // Class used as a group of functions
 object HelperLine {
-    fun GetTramLetterImg(tramLetter: String?): Int {
+    fun getTramLetterImg(tramLetter: String?): Int {
         return when (tramLetter) {
             "A" -> R.drawable.tram_a
             "B" -> R.drawable.tram_b
@@ -16,7 +14,7 @@ object HelperLine {
         }
     }
 
-    fun GetLineColor(tramLetter: String?): Int {
+    fun getLineColor(tramLetter: String?): Int {
         return when (tramLetter) {
             "A" -> R.color.LigneA
             "B" -> R.color.LigneB

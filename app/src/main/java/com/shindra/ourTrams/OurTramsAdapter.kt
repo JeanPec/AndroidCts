@@ -1,4 +1,4 @@
-package com.shindra.OurTrams
+package com.shindra.ourTrams
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,13 +10,13 @@ class OurTramsAdapter(private var mOurTramsList: ArrayList<OurTramsItem>, privat
     // Methods
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OurTramsViewHolder {
         // Called to create each ViewHolder in RecyclerView
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.cv_our_trams, parent, false)
-        return OurTramsViewHolder(view);
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cv_our_trams, parent, false)
+        return OurTramsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: OurTramsViewHolder, position: Int) {
         // Called after onCreateViewHolder, to bind data for each ViewHolder in RecyclerView
-        var item = mOurTramsList[position]
+        val item = mOurTramsList[position]
         holder.onBind(item, mListener)
     }
 
@@ -24,11 +24,10 @@ class OurTramsAdapter(private var mOurTramsList: ArrayList<OurTramsItem>, privat
         return mOurTramsList.size
     }
 
-    fun SetOurTramsList(list: ArrayList<OurTramsItem>)
+    fun setOurTramsList(list: ArrayList<OurTramsItem>)
     {
         // Update ViewHolders DataSet
-        mOurTramsList = list;
-        notifyDataSetChanged();
+        mOurTramsList = list
     }
 
     // Interface

@@ -1,7 +1,6 @@
-package com.shindra.Map
+package com.shindra.map
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.shindra.R
 
@@ -36,22 +35,22 @@ import com.shindra.R
 class MapActivity : AppCompatActivity() {
 
     // Attributes
-    private val TAG = "MapActivity"
+    private lateinit var tramLineKey: String
     private lateinit var mFragment: MapLineFragment
-    private lateinit var mTramLineLetter: String
+    private var mTramLineLetter: String? = null
 
     // Methods
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.av_map)
+        tramLineKey = getString(R.string.TramLineLetterGen)
 
         // Retrieve intent data
         val intent = intent
-        mTramLineLetter = (intent.getStringExtra("tramLineLetter"))!!
+        mTramLineLetter = intent?.getStringExtra(tramLineKey)
 
         // Create, pass args & call fragment
-        mFragment = MapLineFragment.onInstance(mTramLineLetter)
+        mFragment = MapLineFragment.onInstance(mTramLineLetter , tramLineKey)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.av_map_fragmentHolder, mFragment).commit()
     }

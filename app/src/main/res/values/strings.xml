@@ -7,4 +7,6 @@
     <string name="OurTrams">Nos trams</string>
     <string name="PleaseWait">Veuillez patientez, chargement des données en cours</string>
     <string name="ErrorMessage">Il y a eu une erreur lors de l\'appel réseau. Veuillez redémarrer l\'application</string>
+    <string name="TramLineLetterGen">tramLineLetter</string>
+
 </resources>

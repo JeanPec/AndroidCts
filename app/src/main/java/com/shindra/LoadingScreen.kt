@@ -1,8 +1,7 @@
-package com.shindra.Misc
+package com.shindra
 
 import android.app.Activity
 import android.app.AlertDialog
-import com.shindra.R
 
 class LoadingScreen(context: Activity) : AlertDialog(context)
 {
