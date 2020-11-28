@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,11 +28,13 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
         public final ImageView ligneTram;
+        public final Button timetableButton;
 
 
         public NosTramsViewHolder(@NonNull View itemView) {
             super(itemView);
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
+            this.timetableButton = itemView.findViewById(R.id.Tram_view_button);
         }
         public void TramsOnBind(Line image, RecyclerTimetableClick callback)
         {
@@ -68,10 +69,11 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
                     break;
             }
 
-            itemView.setOnClickListener (new View.OnClickListener() {
+            timetableButton.setOnClickListener (new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+
                     callback.onTimetableClick(image);
                 }
             });
