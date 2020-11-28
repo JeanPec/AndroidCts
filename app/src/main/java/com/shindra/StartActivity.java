@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -65,7 +66,10 @@ public class StartActivity extends AppCompatActivity {
         recyclerView.setAdapter(new tramAdapter(Trams,new Holder.onButtonClickListener(){
             @Override
             public void onButtonClick(Tram dtram){
-
+                Intent horaireIntent = new Intent(StartActivity.this,Horaire.class);
+                horaireIntent.putExtra("STING", dtram.nom);
+                startActivity(horaireIntent);
+                
             }
         }));
     }

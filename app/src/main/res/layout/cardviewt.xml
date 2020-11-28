@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
-    android:layout_margin="8sp"
+    android:layout_marginTop="8sp"
+    android:layout_margin="16sp"
     android:elevation="4sp"
     android:layout_width="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Card"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -20,26 +22,25 @@
             android:contentDescription="@string/imagetram"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/tram_a" />
+            app:srcCompat="@drawable/tram" />
 
         <ImageView
             android:id="@+id/illustration"
-            android:layout_width="393sp"
-            android:layout_height="212sp"
-            android:layout_marginTop="8sp"
+            android:layout_width="352dp"
+            android:layout_height="189dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/illustrationtram"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_tram"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/nouveau_tram_strasbourg" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="99dp"
+            android:layout_height="43dp"
             android:layout_marginStart="16sp"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16sp"
             android:backgroundTint="#f2f2f2"
             android:text="@string/horaire"

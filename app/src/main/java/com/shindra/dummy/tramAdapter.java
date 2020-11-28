@@ -29,7 +29,7 @@ public class tramAdapter extends RecyclerView.Adapter<Holder>{
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View tramView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.cardview, parent,  false);
+                .inflate(R.layout.cardviewt, parent,  false);
 
         return new Holder(tramView);
     }
