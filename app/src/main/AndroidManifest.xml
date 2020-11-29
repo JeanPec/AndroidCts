@@ -20,31 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity
-            android:name=".TestActivity"
-            android:banner="@drawable/app_icon_your_company"
-            android:icon="@drawable/app_icon_your_company"
-            android:label="@string/title_activity_test"
-            android:logo="@drawable/app_icon_your_company"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".PlaybackActivity" />
-        <activity android:name=".BrowseErrorActivity" />
-
-        <!--  -->
-        <activity android:name=".StartActivity">
+        <activity android:name=".NosTrams.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Timetable.TimetableActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

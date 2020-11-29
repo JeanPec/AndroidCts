@@ -1,16 +1,19 @@
-package com.shindra;
+package com.shindra.NosTrams;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.MyViewModel;
+import com.shindra.NosTrams.NosTramsAdapter;
+import com.shindra.R;
+import com.shindra.Timetable.TimetableActivity;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
@@ -19,7 +22,6 @@ import com.shindra.ctslibrary.bo.Line;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -39,8 +41,10 @@ public class StartActivity extends AppCompatActivity {
         NosTramsAdapter.RecyclerTimetableClick callBack = new NosTramsAdapter.RecyclerTimetableClick() {
             @Override
             public void onTimetableClick(Line image) {
-                Log.i("Test","Bouton HOURRA");
-                setContentView(R.layout.horaire_item);
+                Log.i("Info","Bouton horaire actionné");
+                //setContentView(R.layout.horaire_item);
+                openTimetableActivity();
+                //startActivity(new Intent(StartActivity.this, TimetableActivity.class));
             }
         };
 
@@ -78,6 +82,10 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void openTimetableActivity(){
+        Intent intent = new Intent (this, TimetableActivity.class);
+        startActivity(intent);
     }
 }
 

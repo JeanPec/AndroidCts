@@ -14,6 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.CtsAppFip3A.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.CtsAppFip3A.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.CtsAppFip3A.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

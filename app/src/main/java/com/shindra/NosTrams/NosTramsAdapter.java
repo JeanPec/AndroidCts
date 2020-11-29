@@ -1,5 +1,5 @@
 //Ajout 18/11/2020
-package com.shindra;
+package com.shindra.NosTrams;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.R;
 import com.shindra.ctslibrary.bo.Line;
 
 import java.util.ArrayList;

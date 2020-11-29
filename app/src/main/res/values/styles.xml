@@ -3,17 +3,17 @@
 
     <style name = "HeadLine">
         <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">20px</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name = "Body2">
         <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">14px</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name = "ButtonCarte">
         <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">14px</item>
+        <item name="android:textSize">14dp</item>
     </style>
 </resources>

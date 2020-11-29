@@ -43,6 +43,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'androidx.wear:wear:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -51,6 +54,7 @@ dependencies {
     implementation project(':Arrakis')
 
     implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0'
+    compileOnly 'com.google.android.wearable:wearable:2.8.1'
 
     def room_version = "2.3.0-alpha02"
     kapt "androidx.room:room-compiler:$room_version"

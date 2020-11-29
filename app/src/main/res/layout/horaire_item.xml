@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/NomArret"
+                android:id="@+id/nomArret"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
                 android:theme="@style/Body2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/NomArret" />
+                app:layout_constraintTop_toBottomOf="@+id/nomArret" />
 
             <TextView
                 android:id="@+id/HeureTram"
