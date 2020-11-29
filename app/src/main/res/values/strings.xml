@@ -12,4 +12,10 @@
     <string name="line_activity_title">Nos Trams</string>
     <string name="map_activity_title">Ligne\u0020</string>
     <string name="schedule_activity_title">Ligne\u0020</string>
+    <string name="line_id_A">A</string>
+    <string name="line_id_B">B</string>
+    <string name="line_id_C">C</string>
+    <string name="line_id_D">D</string>
+    <string name="line_id_E">E</string>
+    <string name="line_id_F">F</string>
 </resources>

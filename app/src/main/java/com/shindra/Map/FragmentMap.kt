@@ -62,12 +62,12 @@ class FragmentMap : MapFragment() {
 
     fun  getLineColor(lineID:String?) : Int {
         return when (lineID) {
-            "A" -> R.color.ligne_A
-            "B" -> R.color.ligne_B
-            "C" -> R.color.ligne_C
-            "D" -> R.color.ligne_D
-            "E" -> R.color.ligne_E
-            "F" -> R.color.ligne_F
+            getString(R.string.line_id_A) -> R.color.ligne_A
+            getString(R.string.line_id_B) -> R.color.ligne_B
+            getString(R.string.line_id_C) -> R.color.ligne_C
+            getString(R.string.line_id_D) -> R.color.ligne_D
+            getString(R.string.line_id_E) -> R.color.ligne_E
+            getString(R.string.line_id_F) -> R.color.ligne_F
             else -> R.color.black
         }
     }

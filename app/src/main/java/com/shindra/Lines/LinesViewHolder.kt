@@ -16,12 +16,12 @@ class LinesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         scheduleButton.setOnClickListener { callback.onScheduleClick(line) }
 
         when (line.name) {
-            "A" -> mImageView.setImageResource(R.drawable.tram_a)
-            "B" -> mImageView.setImageResource(R.drawable.tram_b)
-            "C" -> mImageView.setImageResource(R.drawable.tram_c)
-            "D" -> mImageView.setImageResource(R.drawable.tram_d)
-            "E" -> mImageView.setImageResource(R.drawable.tram_e)
-            "F" -> mImageView.setImageResource(R.drawable.tram_f)
+            itemView.context.getString(R.string.line_id_A) -> mImageView.setImageResource(R.drawable.tram_a)
+            itemView.context.getString(R.string.line_id_B) -> mImageView.setImageResource(R.drawable.tram_b)
+            itemView.context.getString(R.string.line_id_C) -> mImageView.setImageResource(R.drawable.tram_c)
+            itemView.context.getString(R.string.line_id_D) -> mImageView.setImageResource(R.drawable.tram_d)
+            itemView.context.getString(R.string.line_id_E) -> mImageView.setImageResource(R.drawable.tram_e)
+            itemView.context.getString(R.string.line_id_F) -> mImageView.setImageResource(R.drawable.tram_f)
             else -> mImageView.setImageResource(R.drawable.tram)
         }
     }

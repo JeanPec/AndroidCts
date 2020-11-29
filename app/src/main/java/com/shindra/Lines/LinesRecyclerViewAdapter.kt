@@ -8,7 +8,7 @@ import com.shindra.ScheduleClick
 import com.shindra.ctslibrary.bo.Line
 import java.util.*
 
-class LinesRecyclerViewAdapter(var lines: ArrayList<Line>, val callback: ScheduleClick) : RecyclerView.Adapter<LinesViewHolder>() {
+class LinesRecyclerViewAdapter(var lines: ArrayList<Line>, private val callback: ScheduleClick) : RecyclerView.Adapter<LinesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LinesViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.line_cardview, parent, false)

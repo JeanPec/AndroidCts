@@ -26,8 +26,8 @@ import java.util.ArrayList
 class FragmentSchedule : Fragment() {
 
     private lateinit var viewOfLayout: View
-    val stops = ArrayList<Stop>()
-    var lineID: String? = ""
+    private val stops = ArrayList<Stop>()
+    private var lineID: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

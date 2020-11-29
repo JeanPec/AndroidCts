@@ -27,6 +27,13 @@ class FragmentLine : Fragment(), ScheduleClick {
     val lines = ArrayList<Line>()
     private lateinit var viewOfLayout: View
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        viewOfLayout = inflater.inflate(R.layout.fragment_lines, container, false)
+        return viewOfLayout
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -34,7 +41,7 @@ class FragmentLine : Fragment(), ScheduleClick {
 
         val tramRecyclerList = viewOfLayout.findViewById<RecyclerView>(R.id.cardListLines)
         tramRecyclerList.layoutManager = LinearLayoutManager(this.context)
-        tramRecyclerList.adapter = LinesRecyclerViewAdapter(lines, this)//object : com.shindra.ScheduleClick)
+        tramRecyclerList.adapter = LinesRecyclerViewAdapter(lines, this)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
@@ -59,13 +66,6 @@ class FragmentLine : Fragment(), ScheduleClick {
                 //call if the network call has responded with an error
             }
         })
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        viewOfLayout = inflater.inflate(R.layout.fragment_lines, container, false)
-        return viewOfLayout
     }
 
     override fun onScheduleClick(line: Line?) {
