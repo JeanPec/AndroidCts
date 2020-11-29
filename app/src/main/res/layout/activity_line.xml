@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Lines.LinesActivity">
 
-
     <FrameLayout
         android:id="@+id/fragmentTram"
         android:name="com.shindra.FragmentTram"

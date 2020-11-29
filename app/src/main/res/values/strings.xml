@@ -18,4 +18,7 @@
     <string name="line_id_D">D</string>
     <string name="line_id_E">E</string>
     <string name="line_id_F">F</string>
+    <string name="button_text_see_on_map">VOIR SUR LA CARTE</string>
+    <string name="button_text_schedule">HORAIRES</string>
+    <string name="schedule_cardview_text">Prochain départ</string>
 </resources>
