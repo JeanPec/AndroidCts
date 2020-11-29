@@ -64,7 +64,6 @@ public class mapFragment extends MapFragment {
 
     }
 
-
     public int getLineColorFromLine(Line line){
 
         switch (line.getName())

@@ -34,8 +34,8 @@ public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationD
 
         public void onBind(Line line, Stop stop, int position){
             stationNameView.setText(stop.component1());
-            scheduledTimeView.setText(getAdaptedHourFromDate(stop));
-            lineNameView.setText(getLineNameFromLine(line));
+            scheduledTimeView.setText(new SimpleDateFormat("HH'h'mm").format(stop.component2()));
+            lineNameView.setText(lineNameView.getContext().getString(R.string.ligneText) + line.getName());
             lineNameView.setTextColor(ContextCompat.getColor(lineNameView.getContext(),getLineColorFromLine(line)));
         }
     }
@@ -63,16 +63,6 @@ public class stationAdapter extends RecyclerView.Adapter<stationAdapter.stationD
     @Override
     public int getItemCount() {
         return _listOfStop.size();
-    }
-
-    public static String getAdaptedHourFromDate(Stop stop)
-    {
-        return new SimpleDateFormat("HH'h'mm").format(stop.component2()).toString();
-    }
-
-    public static String getLineNameFromLine(Line line)
-    {
-        return  "Ligne" + line.getName();
     }
 
     public static int getLineColorFromLine(Line line){
