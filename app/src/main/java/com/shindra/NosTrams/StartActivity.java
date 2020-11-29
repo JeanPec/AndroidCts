@@ -42,9 +42,9 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onTimetableClick(Line image) {
                 Log.i("Info","Bouton horaire actionné");
-                //setContentView(R.layout.horaire_item);
-                openTimetableActivity();
-                //startActivity(new Intent(StartActivity.this, TimetableActivity.class));
+                Intent intent = new Intent (StartActivity.this, TimetableActivity.class);
+                intent.putExtra("Ligne", image.getName());
+                startActivity(intent);
             }
         };
 
@@ -82,10 +82,6 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public void openTimetableActivity(){
-        Intent intent = new Intent (this, TimetableActivity.class);
-        startActivity(intent);
     }
 }
 
