@@ -10,9 +10,9 @@ import com.shindra.getDateStringHHMM
 
 
 class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var scheduleStop: TextView = itemView.findViewById(R.id.Schedule_stop)
-    var scheduleLine: TextView = itemView.findViewById(R.id.Schedule_line)
-    var scheduleTime: TextView = itemView.findViewById(R.id.Schedule_time)
+    private var scheduleStop: TextView = itemView.findViewById(R.id.Schedule_stop)
+    private var scheduleLine: TextView = itemView.findViewById(R.id.Schedule_line)
+    private var scheduleTime: TextView = itemView.findViewById(R.id.Schedule_time)
 
     fun onBind(stop: Stop, lineID: String) {
         scheduleStop.text = stop.name

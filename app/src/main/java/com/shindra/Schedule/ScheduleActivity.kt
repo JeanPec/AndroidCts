@@ -12,7 +12,7 @@ class ScheduleActivity : AppCompatActivity() {
         val lineID = intent.getStringExtra(getString(R.string.line_to_schedule_activity_intent_name))
 
         setContentView(R.layout.activity_schedule)
-        title = getString(R.string.schedule_activity_title) + lineID
+        title = getString(R.string.schedule_activity_title)
 
         val bundle = Bundle()
         bundle.putString(getString(R.string.schedule_activity_to_fragment_bundle_name), lineID)

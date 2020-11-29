@@ -10,11 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.LoadingDialog
-import com.shindra.MyViewModel
-import com.shindra.R
+import com.shindra.*
 import com.shindra.Schedule.ScheduleActivity
-import com.shindra.ScheduleClick
 import com.shindra.arrakis.extension.toArrayList
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
@@ -24,7 +21,7 @@ import java.util.ArrayList
 
 class FragmentLine : Fragment(), ScheduleClick {
 
-    val lines = ArrayList<Line>()
+    private val lines = ArrayList<Line>()
     private lateinit var viewOfLayout: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +35,7 @@ class FragmentLine : Fragment(), ScheduleClick {
         super.onStart()
 
         val loadingDialog = LoadingDialog(this.activity as Activity)
+        val errorDialog = ErrorDialog(this.activity as Activity)
 
         val tramRecyclerList = viewOfLayout.findViewById<RecyclerView>(R.id.cardListLines)
         tramRecyclerList.layoutManager = LinearLayoutManager(this.context)
@@ -64,6 +62,8 @@ class FragmentLine : Fragment(), ScheduleClick {
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+                loadingDialog.dismissLoadingDialog()
+                errorDialog.showErrorDialog()
             }
         })
     }

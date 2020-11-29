@@ -9,7 +9,7 @@ import com.shindra.ScheduleClick
 import com.shindra.ctslibrary.bo.Line
 
 class LinesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var mImageView: ImageView = itemView.findViewById(R.id.tramLine)
+    private var mImageView: ImageView = itemView.findViewById(R.id.tramLine)
     private var scheduleButton = itemView.findViewById<Button>(R.id.schedule_button)
 
     fun onBind(line: Line, callback: ScheduleClick) {

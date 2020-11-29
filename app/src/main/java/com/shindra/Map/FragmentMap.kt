@@ -3,6 +3,7 @@ package com.shindra.Map
 import android.app.Activity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.ErrorDialog
 import com.shindra.LoadingDialog
 import com.shindra.MyViewModel
 import com.shindra.R
@@ -27,6 +28,7 @@ class FragmentMap : MapFragment() {
         super.onStart()
 
         val loadingDialog = LoadingDialog(this.activity as Activity)
+        val errorDialog = ErrorDialog(this.activity as Activity)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         if (lineID != null) {
@@ -55,6 +57,8 @@ class FragmentMap : MapFragment() {
 
                 override fun onError(throwable: Throwable) {
                     //call if the network call has responded with an error
+                    loadingDialog.dismissLoadingDialog()
+                    errorDialog.showErrorDialog()
                 }
             })
         }

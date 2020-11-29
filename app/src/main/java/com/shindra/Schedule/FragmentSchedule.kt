@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.ErrorDialog
 import com.shindra.LoadingDialog
 import com.shindra.Map.MapActivity
 import com.shindra.MyViewModel
@@ -41,6 +42,7 @@ class FragmentSchedule : Fragment() {
         super.onStart()
 
         val loadingDialog = LoadingDialog(this.activity as Activity)
+        val errorDialog = ErrorDialog(this.activity as Activity)
 
         val scheduleRecyclerList = viewOfLayout.findViewById<RecyclerView>(R.id.cardListSchedule)
         scheduleRecyclerList.layoutManager = LinearLayoutManager(this.context)
@@ -50,7 +52,7 @@ class FragmentSchedule : Fragment() {
         button.setOnClickListener { lineID?.let { it1 -> onMapClick(it1) } }
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        lineID?.let {
+        lineID?.let { it ->
             model.lineWithEstimatedTimeTable(RouteType.TRAM, it, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
@@ -71,6 +73,8 @@ class FragmentSchedule : Fragment() {
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+                loadingDialog.dismissLoadingDialog()
+                errorDialog.showErrorDialog()
             }
         })
         }
