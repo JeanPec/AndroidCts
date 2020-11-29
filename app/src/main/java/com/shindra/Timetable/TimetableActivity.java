@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +12,12 @@ import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.shindra.R;
+import com.shindra.ctslibrary.bo.Stop;
+
+import java.util.ArrayList;
 
 public class TimetableActivity extends AppCompatActivity {
+
     private FrameLayout fragmentContainer;
 
 
@@ -27,17 +32,17 @@ public class TimetableActivity extends AppCompatActivity {
         String Ligne = intentStartActivity.getStringExtra("Ligne");
         Log.i("Info",Ligne + " Info Ligne transféré StartActivity ==> TimetableActivity");
 
-        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
+        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_horaire);
         openFragment();
 
 
     }
 
     public void openFragment(){
-        TimetableFragment fragment = TimetableFragment.newInstance();
+        TimetableFragment fragment = TimetableFragment.newInstance("A");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.addToBackStack(null);
-        transaction.add(R.id.fragment_container, fragment, "TimetableFragment").commit();
+        transaction.add(R.id.fragment_horaire, fragment, "TimetableFragment").commit();
     }
 }
