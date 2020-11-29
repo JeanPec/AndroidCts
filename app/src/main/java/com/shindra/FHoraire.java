@@ -2,8 +2,11 @@ package com.shindra;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -26,34 +29,55 @@ import java.util.ArrayList;
 public class FHoraire extends Fragment {
 
     RecyclerView recycler;
-    ArrayList<Stop> horaires = new ArrayList();
+    String ligne;
+    ArrayList<Stop> horaires = new ArrayList<>();
 
     public FHoraire() {
-        // Required empty public constructor
-    }
+        super(R.layout.fragment_f_horaire);
 
-
-    public static FHoraire newInstance() {
-        FHoraire Fragement = new FHoraire();
-
-        Bundle args = new Bundle();
-
-        Fragement.setArguments(args);
-
-        return Fragement;
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstacesState){
+        recycler = view.findViewById(R.id.RecylcerView);
+
+        recycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recycler.setAdapter(new stopAdapter(horaires, new stopHolder.onButtonClickListener() {
+            @Override
+            public void onButtonClick(Stop stop) {
+
+            }
+        },
+                ligne));
+    }
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        recycler = recycler.findViewById(R.id.RecylcerView);
+        String ligne = requireArguments().getString("ligne");
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, ligne, 1), new ObservableListener<Line>() {
+            @Override
+            public void onLoading() {
 
+            }
 
-        ObservableExtensionKt.convertToBehaviorSubject(model.lineWithEstimatedTimeTable(RouteType.TRAM,"#TODO",1));
+            @Override
+            public void onSuccess(Line data) {
+                horaires = data.getStops();
+                ((stopAdapter) recycler.getAdapter()).setLigne(ligne);
+                ((stopAdapter) recycler.getAdapter()).setStops(horaires);
+                recycler.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(@NotNull Throwable throwable) {
+
+            }
+        });
+
     }
+
 
 }

@@ -2,8 +2,12 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="16sp"
     android:layout_marginTop="8sp"
+    android:layout_marginBottom="8sp"
+    android:layout_marginLeft="16sp"
+    android:layout_marginRight="16sp"
+    android:elevation="4sp"
+    app:cardCornerRadius="4sp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -20,7 +24,10 @@
             android:layout_marginStart="8sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"/>
 
         <TextView
             android:id="@+id/Bodyline"
@@ -30,7 +37,9 @@
             android:layout_marginStart="8sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"/>
 
         <TextView
             android:id="@+id/heure"
@@ -40,7 +49,10 @@
             android:layout_marginEnd="8sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"/>
 
         <TextView
             android:id="@+id/Body"
@@ -50,7 +62,9 @@
             android:layout_marginEnd="8sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

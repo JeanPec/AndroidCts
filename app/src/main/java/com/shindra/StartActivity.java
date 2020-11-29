@@ -1,7 +1,11 @@
 package com.shindra;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.system.Int64Ref;
+import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +34,9 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Mes Trams");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ef2b3e")));
+
 
         recyclerView = findViewById(R.id.RecylceView);
 
@@ -67,7 +74,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onButtonClick(Tram dtram){
                 Intent horaireIntent = new Intent(StartActivity.this,Horaire.class);
-                horaireIntent.putExtra("STING", dtram.nom);
+                horaireIntent.putExtra("TRAM", dtram.nom);
                 startActivity(horaireIntent);
                 
             }
