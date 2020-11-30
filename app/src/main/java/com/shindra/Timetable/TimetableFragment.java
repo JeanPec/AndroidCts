@@ -80,7 +80,7 @@ public class TimetableFragment extends Fragment {
             public void onSuccess(Line data) {
                 Log.i("Info","Appel réussi");
 
-                listArret = new ArrayList<Stop>();
+                listArret = new ArrayList<>();
                 for (Stop Arrets : data.getStops())
                 {
                     if (Arrets.getEstimatedDepartureTime() != null)

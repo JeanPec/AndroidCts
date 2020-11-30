@@ -39,7 +39,7 @@ public class TimetableViewHolder extends RecyclerView.ViewHolder {
         nomArret.setText(infoStop.getName());
 
         //Configuration de la textview Ligne
-        int colorTram = GetColorTram(Ligne);//voir fonctionnement
+        Integer colorTram = itemView.getContext().getColor(GetColorTram(Ligne));
         nomLigne.setTextColor(colorTram);
         nomLigne.setText("Ligne" + Ligne);
 

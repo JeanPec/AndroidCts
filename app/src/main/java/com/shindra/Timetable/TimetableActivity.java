@@ -18,28 +18,26 @@ import java.util.ArrayList;
 
 public class TimetableActivity extends AppCompatActivity {
 
-    private FrameLayout fragmentContainer;
-
+   // private FrameLayout fragmentContainer;
+    private String Ligne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_timetable);
+        setContentView(R.layout.timetable_activity);
         getSupportActionBar().setTitle(getString(R.string.LabelHoraire));
 
         Intent intentStartActivity = getIntent();
-        String Ligne = intentStartActivity.getStringExtra("Ligne");
+        Ligne = intentStartActivity.getStringExtra("Ligne");
         Log.i("Info",Ligne + " Info Ligne transféré StartActivity ==> TimetableActivity");
 
-        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_horaire);
-        openFragment();
-
-
+        //fragmentContainer = (FrameLayout) findViewById(R.id.fragment_horaire);
+        openFragment(Ligne);
     }
 
-    public void openFragment(){
-        TimetableFragment fragment = TimetableFragment.newInstance("A");
+    public void openFragment(String Ligne){
+        TimetableFragment fragment = TimetableFragment.newInstance(Ligne);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.addToBackStack(null);
