@@ -29,8 +29,7 @@ class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : Re
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         //1- Obtenir la ligne.
-        //2- Envoyer les information de la ligne dans la cellule.
-        //3-
+        //2- Envoyer les information de la ligne dans la cellule
         if (trams != null) {
             holder.onBind(trams!!.get(position),callback)
         }
@@ -47,7 +46,6 @@ class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : Re
         var ligne:ImageView = itemView.findViewById(R.id.ligne)
         var image:ImageView = itemView.findViewById(R.id.image)
         var scheduleButton : Button = itemView.findViewById(R.id.scheduleButton)
-
 
         //Fonction permettant de récupérer l'id d'une image en fonction de son nom.
         fun getImageId(context: Context, pictureName: String) = context.getResources().getIdentifier("drawable/$pictureName", null, context.getPackageName())

@@ -68,6 +68,7 @@
                 android:textAlignment="center"
                 android:textColor="#EF2B3E"
                 style="@style/Button"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

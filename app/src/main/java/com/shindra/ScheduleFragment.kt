@@ -23,6 +23,7 @@ class ScheduleFragment : Fragment() {
     private var lineObject : Line? = null
     private lateinit var scheduleCardViewAdapter : ScheduleCardViewAdapter
     private var recyclerView : RecyclerView? = null
+    private var progressLayout : View? = null
 
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class ScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressLayout = view.findViewById(R.id.loading_layout)
         recyclerView = view.findViewById(R.id.scheduleRecyclerView)
         var mapButton : Button = view.findViewById(R.id.mapButton)
 
@@ -60,6 +62,7 @@ class ScheduleFragment : Fragment() {
         model.lineWithEstimatedTimeTable(RouteType.TRAM, line!!, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                progressLayout?.visibility = View.VISIBLE
 
             }
 
@@ -75,6 +78,7 @@ class ScheduleFragment : Fragment() {
                 scheduleCardViewAdapter.notifyDataSetChanged()
                 recyclerView?.layoutManager = LinearLayoutManager(activity)
                 recyclerView?.adapter = scheduleCardViewAdapter
+                progressLayout?.visibility = View.GONE
             }
 
             override fun onError(throwable: Throwable) {

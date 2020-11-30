@@ -2,10 +2,12 @@ package com.shindra
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Layout
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +29,7 @@ class TramFragment : Fragment() {
     private  var _tramList : ArrayList<Line>? = ArrayList()
     private var  recyclerView : RecyclerView? = null
     private var cardViewAdapter : CardViewAdapter? = null
-
+    private var progressLayout : View? =  null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -42,11 +44,11 @@ class TramFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressLayout = view.findViewById(R.id.loading_layout)
         recyclerView = view.findViewById(R.id.recyclerViewTram)
         cardViewAdapter = CardViewAdapter(_tramList, object : com.shindra.RecyclerItemClick
         {
             override fun onScheduleClick(tram: Line) {
-                Toast.makeText(context, tram.name.toString(),Toast.LENGTH_SHORT).show()
                 val intent : Intent = Intent(context,ScheduleActivity::class.java)
                 intent.putExtra("line",tram.name)
                 startActivity(intent)
@@ -54,6 +56,7 @@ class TramFragment : Fragment() {
         })
         recyclerView?.layoutManager = LinearLayoutManager(activity)
         recyclerView?.adapter = cardViewAdapter
+        progressLayout?.visibility = View.VISIBLE
     }
 
     override fun onStart() {
@@ -62,7 +65,7 @@ class TramFragment : Fragment() {
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-
+                progressLayout?.visibility = View.VISIBLE
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
@@ -70,10 +73,13 @@ class TramFragment : Fragment() {
                 _tramList = data.filter{ it.routeType == RouteType.TRAM}.toArrayList()
                 cardViewAdapter?.setTram(_tramList)
                 cardViewAdapter?.notifyDataSetChanged()
+                progressLayout?.visibility = View.GONE
+
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+
             }
         })
     }
