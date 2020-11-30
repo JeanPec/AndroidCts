@@ -22,7 +22,7 @@ import static com.shindra.R.id.imgTram;
 
 public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramViewHolder> {
 
-    ArrayList<Line> listeTramCard;
+    ArrayList<TramCard> listeTramCard;
     RecyclerItemClick callback;
 
     public static class TramViewHolder extends RecyclerView.ViewHolder {
@@ -61,7 +61,7 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramVi
 
     }
 
-    public TramCardAdapter(ArrayList<Line> listeTramCard, RecyclerItemClick callback) {
+    public TramCardAdapter(ArrayList<TramCard> listeTramCard, RecyclerItemClick callback) {
         this.listeTramCard = listeTramCard;
         this.callback = callback;
     }

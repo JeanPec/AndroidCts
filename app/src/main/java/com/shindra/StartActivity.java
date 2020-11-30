@@ -2,7 +2,6 @@ package com.shindra;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -15,6 +14,7 @@ import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
 import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,45 +28,9 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
     private RecyclerView.LayoutManager layoutManager;
     private TramCardAdapter tramCardAdapter;
 
-    private static List<TramCard> tramCardList;
+    private List<HoraireCard> horaireCardList;
 
 
-    private ArrayList<Line> nosTramsList = new ArrayList<>();
-
-    protected void onStart() {
-        super.onStart();
-
-        recyclerView = findViewById(R.id.appCts_recyclerview);
-
-        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
-            @Override
-            public void onError(@NotNull Throwable throwable) {
-
-            }
-
-            @Override
-            public void onSuccess(ArrayList<Line> data) {
-                nosTramsList =  new ArrayList<Line>();
-                for (Line LignesCTS : data)
-                {
-                    if (LignesCTS.getRouteType() == RouteType.TRAM)
-                    {
-                        nosTramsList.add(LignesCTS);
-                        Log.i("NosTram",LignesCTS.getName());
-                    }
-                    Log.i("NosTram","Recupération des Lignes terminées");
-                }
-                recyclerView.setAdapter(new TramCardAdapter(nosTramsList));
-
-            }
-
-            @Override
-            public void onLoading() {
-
-            }
-        });
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,7 +45,7 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
 
         Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
 
-        tramCardList = new ArrayList<TramCard>();
+        ArrayList<TramCard> tramCardList = new ArrayList<TramCard>();
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_a), imgTram));
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_b), imgTram));
         tramCardList.add(new TramCard(getDrawable(R.drawable.tram_c), imgTram));
@@ -91,13 +55,7 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
 
 
 
-
-
-
-
-
-
-
+        recyclerView = findViewById(R.id.appCts_recyclerview);
 
         TramCardAdapter tramCardAdapter = new TramCardAdapter(tramCardList, this);
 
@@ -108,7 +66,7 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
 
 
 
-       /* MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
+        MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
@@ -118,27 +76,29 @@ public class StartActivity extends AppCompatActivity implements RecyclerItemClic
             @Override
             public void onSuccess(ArrayList<Line> data) {
                 //call once the network call has responded with a success
+                horaireCardList = new ArrayList<HoraireCard>();
+
+                for(Line line:data){
+                    if(line.getRouteType() == RouteType.TRAM){
+                        horaireCardList.add(new HoraireCard(String.valueOf(line.getStops().size()), "8h00", "test"));
+                    }
+
+                }
+
+
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error
             }
-        });*/
+        });
     }
 
     @Override
     public void onHoraireButtonClick(TramCard tramCard) {
-        List<HoraireCard> horaireCardList = new ArrayList<HoraireCard>();
+        //List<HoraireCard> horaireCardList = new ArrayList<HoraireCard>();
 
-
-        //-----------------------------test en fonction de la ligne-------------------
-
-        if(tramCard == tramCardList.get(0)){
-            horaireCardList.add(new HoraireCard("Arret 1", "19h00", "A"));
-        }
-        else
-            horaireCardList.add(new HoraireCard("Arret 2", "19h15", "B"));
 
 
        /* horaireCardList.add(new HoraireCard("Arret 1", "19h00", "A"));
