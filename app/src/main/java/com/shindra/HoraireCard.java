@@ -34,22 +34,22 @@ public class HoraireCard extends RecyclerView.ViewHolder {
 
         switch (line){
             case "A":
-                this.nomLigne.setTextColor(R.color.color_Ligne_A);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_A));
                 break;
             case "B":
-                this.nomLigne.setTextColor(R.color.color_Ligne_B);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_B));
                 break;
             case "C":
-                this.nomLigne.setTextColor(R.color.color_Ligne_C);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_C));
                 break;
             case "D":
-                this.nomLigne.setTextColor(R.color.color_Ligne_D);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_D));
                 break;
             case "E":
-                this.nomLigne.setTextColor(R.color.color_Ligne_E);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_E));
                 break;
             case "F":
-                this.nomLigne.setTextColor(R.color.color_Ligne_F);
+                this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_F));
                 break;
         }
 

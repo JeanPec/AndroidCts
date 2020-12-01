@@ -20,17 +20,23 @@ import java.util.ArrayList;
 
 import io.reactivex.rxjava3.disposables.Disposable;
 
+import static com.shindra.StartActivity.lineClicked;
+
 public class HoraireActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<Stop> stopArrayList;
 
 
+
     protected void onStart() {
         super.onStart();
 
+
+
+
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, "A", 0), new ObservableListener<Line>() {
+        ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, lineClicked, 0), new ObservableListener<Line>() {
 
             @Override
             public void onSuccess(Line data) {
@@ -42,7 +48,7 @@ public class HoraireActivity extends AppCompatActivity {
                         stopArrayList.add(stop);
                     }
                 }
-                recyclerView.setAdapter(new HoraireAdapter(stopArrayList, "A"));
+                recyclerView.setAdapter(new HoraireAdapter(stopArrayList, lineClicked));
             }
 
             @Override

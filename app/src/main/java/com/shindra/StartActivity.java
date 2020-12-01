@@ -31,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
    // private TramCardAdapter tramCardAdapter;
 
     private ArrayList<Line> lineArrayList;
+    public static String lineClicked;
 
 
    // private List<HoraireCard> horaireCardList;
@@ -45,6 +46,7 @@ public class StartActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(StartActivity.this, HoraireActivity.class);
                 intent.putExtra("line", line.getName());
+                lineClicked = line.getName();
 
                 startActivity(intent);
 
