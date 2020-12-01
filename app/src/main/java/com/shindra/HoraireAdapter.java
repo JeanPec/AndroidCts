@@ -10,11 +10,98 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.HoraireViewHolder>{
+public class HoraireAdapter extends RecyclerView.Adapter<HoraireCard>{
 
-    List<HoraireCard> listeHoraire;
+   // List<HoraireCard> listeHoraire;
+
+
+    ArrayList<Stop> stopArrayList;
+    String nomLigne;
+
+
+
+    public HoraireAdapter(ArrayList<Stop> stopArrayList, String nomLigne) {
+        this.stopArrayList = stopArrayList;
+        this.nomLigne = nomLigne;
+
+    }
+
+    @NonNull
+    @Override
+    public HoraireCard onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_horaire, parent, false);
+        HoraireCard horaireViewHolder = new HoraireCard(view);
+        return horaireViewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HoraireCard holder, int position) {
+        Stop stop = stopArrayList.get(position);
+        holder.onBind(stop, nomLigne);
+    }
+/*
+    @Override
+    public void onBindViewHolder(@NonNull TramCard holder, int position) {
+        Line line = lineArrayList.get(position);
+        //holder.nomLigne.setText(tramCard.getNomLigne());
+        holder.onBind(line, callback);
+
+
+    }*/
+
+    @Override
+    public int getItemCount() {
+        return stopArrayList.size();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+
 
     public static class HoraireViewHolder extends RecyclerView.ViewHolder {
 
@@ -102,7 +189,7 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireAdapter.HoraireV
 
 
 
-
+*/
 
 
 

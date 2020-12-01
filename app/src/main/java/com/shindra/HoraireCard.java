@@ -1,15 +1,68 @@
 package com.shindra;
 
+import android.annotation.SuppressLint;
+import android.view.View;
 import android.widget.TextView;
 
-public class HoraireCard {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    public String arret, horaire, nomLigne;
+import com.shindra.ctslibrary.bo.Line;
+import com.shindra.ctslibrary.bo.Stop;
 
-    public HoraireCard(String arret, String horaire, String nomLigne) {
-        this.arret = arret;
+import java.text.SimpleDateFormat;
+
+public class HoraireCard extends RecyclerView.ViewHolder {
+
+    public TextView arret, horaire, nomLigne, prochainDepart;
+
+    public HoraireCard(@NonNull View itemView) {
+        super(itemView);
+        /*this.arret = arret;
         this.horaire = horaire;
-        this.nomLigne = nomLigne;
+        this.nomLigne = nomLigne;*/
+
+        this.arret = itemView.findViewById(R.id.arret);
+        this.horaire = itemView.findViewById(R.id.horaire);
+        this.nomLigne = itemView.findViewById(R.id.nomLigne);
+        this.prochainDepart = itemView.findViewById(R.id.prochainDepart);
+
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void setLineTextColor(String line){
+
+        switch (line){
+            case "A":
+                this.nomLigne.setTextColor(R.color.color_Ligne_A);
+                break;
+            case "B":
+                this.nomLigne.setTextColor(R.color.color_Ligne_B);
+                break;
+            case "C":
+                this.nomLigne.setTextColor(R.color.color_Ligne_C);
+                break;
+            case "D":
+                this.nomLigne.setTextColor(R.color.color_Ligne_D);
+                break;
+            case "E":
+                this.nomLigne.setTextColor(R.color.color_Ligne_E);
+                break;
+            case "F":
+                this.nomLigne.setTextColor(R.color.color_Ligne_F);
+                break;
+        }
+
+
+    }
+
+
+
+    public void onBind(Stop stop, String line){
+        setLineTextColor(line);
+        nomLigne.setText("Ligne "+line);
+        horaire.setText(new SimpleDateFormat("HH:mm").format(stop.getEstimatedDepartureTime()));
+        arret.setText(stop.getName());
 
     }
 }

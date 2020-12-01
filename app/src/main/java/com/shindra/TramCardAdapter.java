@@ -20,72 +20,38 @@ import java.util.List;
 
 import static com.shindra.R.id.imgTram;
 
-public class TramCardAdapter extends RecyclerView.Adapter<TramCardAdapter.TramViewHolder> {
+public class TramCardAdapter extends RecyclerView.Adapter<TramCard> {
 
-    ArrayList<TramCard> listeTramCard;
-    RecyclerItemClick callback;
-
-    public static class TramViewHolder extends RecyclerView.ViewHolder {
-
-        //TextView nomLigne;
-        ImageView imgNomLigne, imgTram;
-        Button  horaireButton;
-
-
-        @SuppressLint("WrongViewCast")
-        public TramViewHolder(@NonNull View itemView) {
-            super(itemView);
-           // nomLigne = itemView.findViewById(R.id.nomLigne);
-            imgTram = itemView.findViewById(R.id.imgTram);
-            imgNomLigne = itemView.findViewById(R.id.imgLigne);
-            horaireButton = itemView.findViewById(R.id.horaireButton);
+    ArrayList<Line> lineArrayList;
+    TramCard.RecyclerItemClick callback;
 
 
 
-        }
-
-        public void onBind(TramCard tramCard, RecyclerItemClick callback) {
-            imgTram.setImageDrawable(tramCard.imgTram);
-            imgNomLigne.setImageDrawable(tramCard.imgNomLigne);
-
-            horaireButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callback.onHoraireButtonClick(tramCard);
-                }
-            });
-
-
-        }
-
-
-    }
-
-    public TramCardAdapter(ArrayList<TramCard> listeTramCard, RecyclerItemClick callback) {
-        this.listeTramCard = listeTramCard;
+    public TramCardAdapter(ArrayList<Line> lineArrayList, TramCard.RecyclerItemClick callback) {
+        this.lineArrayList = lineArrayList;
         this.callback = callback;
     }
 
     @NonNull
     @Override
-    public TramViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TramCard onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_ligne_tram, parent, false);
-        TramViewHolder tramViewHolder = new TramViewHolder(view);
+        TramCard tramViewHolder = new TramCard(view);
         return tramViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TramViewHolder holder, int position) {
-        TramCard tramCard = listeTramCard.get(position);
+    public void onBindViewHolder(@NonNull TramCard holder, int position) {
+        Line line = lineArrayList.get(position);
         //holder.nomLigne.setText(tramCard.getNomLigne());
-        holder.onBind(tramCard, callback);
+        holder.onBind(line, callback);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return listeTramCard.size();
+        return lineArrayList.size();
     }
 
 
