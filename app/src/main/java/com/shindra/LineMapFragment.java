@@ -47,7 +47,6 @@ public class LineMapFragment extends MapFragment {
         dialogLoad = new DialogLoadActivity(getActivity());
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
         ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, lineName), new ObservableListener<Line>() {
             @Override
             public void onLoading() {

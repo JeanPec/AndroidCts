@@ -54,9 +54,7 @@ public class StopFragment extends Fragment {
 
         dialogLoad = new DialogLoadActivity(getActivity());
 
-        /* Network call to CTS API */
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, lineName, 0), new ObservableListener<Line>() {
             @Override
             public void onLoading() {

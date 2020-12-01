@@ -37,8 +37,6 @@ public class StartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        /* ArrayList containing subway's lines received with network */
-        lines = new ArrayList<Line>();
 
         dialogLoad = new DialogLoadActivity(StartActivity.this);
 
@@ -47,6 +45,9 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        /* ArrayList containing subway's lines received with network */
+        lines = new ArrayList<Line>();
 
         /* Intent used to pass LINE_NAME to Stop activity */
         Intent intent = new Intent(this, StopActivity.class);

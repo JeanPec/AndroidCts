@@ -16,7 +16,7 @@
         android:layout_marginStart="16sp"
         android:layout_marginTop="8sp"
         android:layout_marginEnd="16sp"
-        android:layout_marginBottom="8sp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +29,12 @@
             <TextView
                 android:id="@+id/stopName"
                 style="@style/HeadLine6"
-                android:textColor="@color/Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8sp"
                 android:layout_marginTop="8sp"
                 android:text="Headline1"
+                android:textColor="@color/Headline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,21 +52,21 @@
             <TextView
                 android:id="@+id/departureTime"
                 style="@style/HeadLine6"
-                android:textColor="@color/Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8sp"
                 android:text="Hour"
+                android:textColor="@color/Headline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/stopName" />
 
             <TextView
                 android:id="@+id/info"
                 style="@style/Body2"
-                android:textColor="@color/Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Body2"
+                android:textColor="@color/Body2"
                 app:layout_constraintBottom_toBottomOf="@+id/lineName"
                 app:layout_constraintEnd_toEndOf="@+id/departureTime" />
 
