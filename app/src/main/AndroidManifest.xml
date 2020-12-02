@@ -12,13 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
-        <activity android:name=".TramLines.TramLinesActivity">
+        <activity android:name=".TramLines.Activity_TramLines">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
+
+        <activity android:name=".TramSchedule.Activity_TramSchedule"/>
+        <activity android:name=".TramMap.Activity_TramMap"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

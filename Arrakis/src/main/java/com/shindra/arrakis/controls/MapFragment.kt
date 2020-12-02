@@ -76,7 +76,7 @@ abstract class MapFragment : Fragment() {
     protected fun getDefaultZoom() = DEFAULT_ZOOM
 
 
-    protected fun addPois(pois: ArrayList<Poi>) {
+    protected fun addPois(pois: ArrayList<Pos>) {
         gMapsView?.clear()
 
         pois.forEach {
@@ -85,19 +85,19 @@ abstract class MapFragment : Fragment() {
         centerOnMap(pois[0].latitude, pois[0].longitude, pois)
     }
 
-    private fun addPoiToMap(poi: Poi) {
-        val latlgt = LatLng(poi.latitude, poi.longitude)
-        gMapsView?.addMarker(MarkerOptions().position(latlgt).icon(getMarkerIconFromDrawable(poi)))
+    private fun addPoiToMap(pos: Pos) {
+        val latlgt = LatLng(pos.latitude, pos.longitude)
+        gMapsView?.addMarker(MarkerOptions().position(latlgt).icon(getMarkerIconFromDrawable(pos)))
     }
 
-    private fun getMarkerIconFromDrawable(poi: Poi): BitmapDescriptor? {
+    private fun getMarkerIconFromDrawable(pos: Pos): BitmapDescriptor? {
         val unwrappedDrawable = ContextCompat.getDrawable(context
-            ?: ArrakisApplication.arrakisContext, poi.imageRes)
+            ?: ArrakisApplication.arrakisContext, pos.imageRes)
 
         return BitmapDescriptorFactory.fromBitmap(unwrappedDrawable?.let {
             val wrappedDrawable = DrawableCompat.wrap(it)
             DrawableCompat.setTint(wrappedDrawable, ContextCompat.getColor(context
-                ?: ArrakisApplication.arrakisContext, poi.imageTint))
+                ?: ArrakisApplication.arrakisContext, pos.imageTint))
             val canvas = Canvas()
             val bitmap = Bitmap.createBitmap(wrappedDrawable.intrinsicWidth, wrappedDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
             canvas.setBitmap(bitmap)
@@ -107,7 +107,7 @@ abstract class MapFragment : Fragment() {
         })
     }
 
-    private fun centerOnMap(lat: Double, long: Double, pois: ArrayList<Poi>) {
+    private fun centerOnMap(lat: Double, long: Double, pois: ArrayList<Pos>) {
         var latSpan: Double = 0.0
         var longSpan: Double = 0.0
 
@@ -133,7 +133,7 @@ abstract class MapFragment : Fragment() {
 }
 
 
-data class Poi(
+data class Pos(
     @DrawableRes val imageRes: Int,
     @ColorRes val imageTint: Int,
     val latitude: Double,
