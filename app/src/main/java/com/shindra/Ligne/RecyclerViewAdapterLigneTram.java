@@ -33,7 +33,7 @@ public class RecyclerViewAdapterLigneTram extends RecyclerView.Adapter<TramsView
         return new TramsViewHolder(TramView);
     }
 
-    //Liaison entre les donnees et les differente lignes sur la RecyclerView
+    //Liaison entre les donnees et les differentes lignes sur la RecyclerView
     @Override
     public void onBindViewHolder(@NonNull TramsViewHolder holder, int position)
     {
