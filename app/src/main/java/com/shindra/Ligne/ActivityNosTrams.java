@@ -39,8 +39,8 @@ public class ActivityNosTrams extends AppCompatActivity
         getSupportActionBar().setTitle(getString(R.string.Txt_page_NosTrams));
 
         //Configuration de la RecyclerView, ligne de tram
-        RecyclerView ListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);   //Referencement vers la recyclerview "NosTrams"
-        ListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView RVListeLigneTram = findViewById(R.id.RecyclerView_Ligne_Tram);   //Referencement vers la recyclerview "NosTrams"
+        RVListeLigneTram.setLayoutManager(new LinearLayoutManager(this));
 
         //Alert dialog, Creation de la ProgressBar de chargement
         DialogDeChargement dialogDeChargement = new DialogDeChargement(ActivityNosTrams.this);
@@ -88,7 +88,7 @@ public class ActivityNosTrams extends AppCompatActivity
                         ligneTram.add(ligne);
                     }
                 }
-                ListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(ligneTram, callBack));
+                RVListeLigneTram.setAdapter(new RecyclerViewAdapterLigneTram(ligneTram, callBack));
 
                 Log.i(getString(R.string.Txt_page_NosTrams),"Recupération des Lignes de Trams Validé");
 
