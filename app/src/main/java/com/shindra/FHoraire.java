@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupWindow;
 
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
@@ -40,15 +43,11 @@ public class FHoraire extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstacesState){
         recycler = view.findViewById(R.id.RecylcerView);
-
         recycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recycler.setAdapter(new stopAdapter(horaires, new stopHolder.onButtonClickListener() {
-            @Override
-            public void onButtonClick(Stop stop) {
+        recycler.setAdapter(new stopAdapter(horaires, ligne));
+        //LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        //PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.loadingpopup,null,false),100,100,true);
 
-            }
-        },
-                ligne));
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,7 @@ public class FHoraire extends Fragment {
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, ligne, 1), new ObservableListener<Line>() {
             @Override
             public void onLoading() {
-
+                //  pw.showAtLocation(view, Gravity.CENTER, 0,0);
             }
 
             @Override
@@ -69,11 +68,13 @@ public class FHoraire extends Fragment {
                 ((stopAdapter) recycler.getAdapter()).setLigne(ligne);
                 ((stopAdapter) recycler.getAdapter()).setStops(horaires);
                 recycler.getAdapter().notifyDataSetChanged();
+                //  pw.dismiss();
+
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-
+                //  pw.dismiss();
             }
         });
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat">
-        <item name="android:colorPrimary"> @color/primary </item>
-        <item name="android:colorPrimaryDark">#b50017</item>
-
-
+    <style name="Theme.AppTheme" parent="Theme.CtsAppFip3A">
+        <item name="android:statusBarColor">@color/primaryVariant</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorOnPrimary">@color/background</item>
     </style>
 
 </resources>

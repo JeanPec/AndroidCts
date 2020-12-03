@@ -23,13 +23,11 @@ import java.util.ArrayList;
 
 public class stopAdapter extends RecyclerView.Adapter<stopHolder>{
     private ArrayList<Stop> stops;
-    stopHolder.onButtonClickListener callback;
     private String ligne;
 
 
-    public stopAdapter(ArrayList<Stop> stops, stopHolder.onButtonClickListener callback, String ligne) {
+    public stopAdapter(ArrayList<Stop> stops,  String ligne) {
         this.stops = stops;
-        this.callback = callback;
         this.ligne=ligne;
 
     }
@@ -50,7 +48,7 @@ public class stopAdapter extends RecyclerView.Adapter<stopHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull stopHolder holder, int position) {
-        holder.onBind(stops.get(position),callback,ligne);
+        holder.onBind(stops.get(position),ligne);
 
 
     }
@@ -80,7 +78,7 @@ class stopHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void onBind(@NotNull Stop stop, stopHolder.onButtonClickListener callback,String line){
+    public void onBind(@NotNull Stop stop, String line){
         Headline.setText(stop.getName());
         heure.setText(format.format(stop.getEstimatedArrivalTime()));
         Bodyline.setText("Ligne "+line);

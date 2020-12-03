@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_marginTop="8sp"
+    android:layout_marginBottom="8sp"
     android:layout_margin="16sp"
     android:elevation="4sp"
     app:cardCornerRadius="4sp"
@@ -46,6 +47,8 @@
             android:backgroundTint="#f2f2f2"
             android:text="@string/horaire"
             android:textColor="#b50017"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/illustration" />

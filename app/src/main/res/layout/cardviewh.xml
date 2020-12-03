@@ -63,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview"
+            android:textColor="#99000000"
             android:textSize="14sp"
             android:fontFamily="sans-serif"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,8 +5,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.system.Int64Ref;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -34,21 +40,21 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // View view = new View(this.getBaseContext());
         getSupportActionBar().setTitle("Mes Trams");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ef2b3e")));
 
-
         recyclerView = findViewById(R.id.RecylceView);
 
+        //LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        //PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.loadingpopup,null,false),100,100,true);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
-
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
+                //pw.showAtLocation(view, Gravity.CENTER, 0,0);
             }
 
             @Override
@@ -61,11 +67,12 @@ public class StartActivity extends AppCompatActivity {
                 }
                 ((tramAdapter) recyclerView.getAdapter()).setTrams(Trams);
                 recyclerView.getAdapter().notifyDataSetChanged();
+               // pw.dismiss();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-                //call if the network call has responded with an error
+               //pw.dismiss();
             }
         });
 
@@ -76,7 +83,7 @@ public class StartActivity extends AppCompatActivity {
                 Intent horaireIntent = new Intent(StartActivity.this,Horaire.class);
                 horaireIntent.putExtra("TRAM", dtram.nom);
                 startActivity(horaireIntent);
-                
+
             }
         }));
     }
