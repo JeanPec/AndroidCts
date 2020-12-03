@@ -12,7 +12,7 @@ class MapActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.map_fragment_holder)
-        title = getString(R.string.line)+(intent.getStringExtra("name"))
+        title = getString(R.string.line)+" "+(intent.getStringExtra("name"))
 
         val fragment = MapWithStopFragment.newInstance(intent.getStringExtra("name"))
         supportFragmentManager.beginTransaction().add(R.id.map_frameLayout,fragment).commit()
