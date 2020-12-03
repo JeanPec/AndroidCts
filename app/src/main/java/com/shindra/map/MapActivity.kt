@@ -37,7 +37,7 @@ class MapActivity : AppCompatActivity() {
     // Attributes
     private lateinit var tramLineKey: String
     private lateinit var mFragment: MapLineFragment
-    private var mTramLineLetter: String? = null
+    private lateinit var mTramLineLetter: String
 
     // Methods
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,10 +47,12 @@ class MapActivity : AppCompatActivity() {
 
         // Retrieve intent data
         val intent = intent
-        mTramLineLetter = intent?.getStringExtra(tramLineKey)
+        mTramLineLetter = intent?.getStringExtra(tramLineKey).orEmpty()
 
         // Create, pass args & call fragment
-        mFragment = MapLineFragment.onInstance(mTramLineLetter , tramLineKey)
+        mFragment = MapLineFragment.onInstance(mTramLineLetter, tramLineKey)
+
+        //MapLineFragment.onInstance(mTramLineLetter , tramLineKey)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.av_map_fragmentHolder, mFragment).commit()
     }

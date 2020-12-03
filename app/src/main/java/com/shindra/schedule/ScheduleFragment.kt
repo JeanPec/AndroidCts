@@ -28,7 +28,7 @@ import kotlin.collections.ArrayList
 class ScheduleFragment : Fragment() {
 
     // Attributes
-    private var mRecyclerView: RecyclerView? = null
+    private lateinit var mRecyclerView: RecyclerView
     private lateinit var mTramLineLetter: String
     private lateinit var mButtonSchedule: Button
 
@@ -37,14 +37,14 @@ class ScheduleFragment : Fragment() {
         // onCreateView is called after onCreate: it retrieves the view
 
         // Retrieve activity data
-        mTramLineLetter = requireArguments().getString(getString(R.string.TramLineLetterGen)).toString()
-        (activity as AppCompatActivity).supportActionBar?.title = "${getString(R.string.line)} $mTramLineLetter"
+        mTramLineLetter = requireArguments().getString(getString(R.string.TramLineLetterGen)).orEmpty()
 
         // View configurations
+        (activity as AppCompatActivity).supportActionBar?.title = "${getString(R.string.line)} $mTramLineLetter"
         val view = inflater.inflate(R.layout.fv_schedule, container, false)
-        mRecyclerView = view?.findViewById(R.id.fv_schedule_RecyclerView)
-        mRecyclerView?.layoutManager = LinearLayoutManager(context)
-        mRecyclerView?.adapter = ScheduleAdapter(ArrayList())
+        mRecyclerView = view.findViewById(R.id.fv_schedule_RecyclerView)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.adapter = ScheduleAdapter(ArrayList())
 
         // Handle button
         mButtonSchedule = view.findViewById(R.id.fv_schedule_buttonSeeMap)
@@ -73,45 +73,34 @@ class ScheduleFragment : Fragment() {
             override fun onSuccess(data: Line) {
                 mLoadingScreen.dismiss()
                 val scheduleList: ArrayList<ScheduleItem> = ArrayList()
-                val length = data.stops?.size
+                val length = data.stops?.size ?:0
 
-                /* Need to check if length!=null if I want to use it in my for loop which needs
-                   an Int and not Int?. A second approach is to use for each loop */
-                if (length!= null ) {
-                    for (i in 0..length) {
-                        val sdf = SimpleDateFormat("HH:mm", Locale.FRANCE)
-                        var tramStationName = data.stops?.get(i)?.name
+                for (i in 0..length) {
+                    val sdf = SimpleDateFormat("HH:mm", Locale.FRANCE)
+                    var tramStationName = data.stops?.get(i)?.name.orEmpty()
 
-                        if(tramStationName?.length != null)
-                        {
-                            if (tramStationName.length > 30) {
-                                // If name too long, short it to see the correct time
-                                tramStationName = tramStationName.substring(0, 27)
-                                tramStationName += ".."
-                            }
-                        }
-
-                        if (i == length - 1) {
-                            // Add the terminus one, which has no "departure time"
-                            tramStationName?.let { ScheduleItem("TERMINUS", it, mTramLineLetter) }?.let { scheduleList.add(it) }
-                            // Add a fake one to see the last one
-                            scheduleList.add(ScheduleItem("", "", ""))
-                            break
-                        }
-
-                        val date = data.stops?.get(i)?.estimatedDepartureTime
-                        if (date != null)
-                        {
-                            val nextDepartureTime = sdf.format(date).replace(':', 'h')
-                            tramStationName?.let { ScheduleItem(nextDepartureTime, it, mTramLineLetter) }?.let { scheduleList.add(it) }
-                        }
+                    if (tramStationName.length > 30){
+                        // If name too long, short it to see the correct time
+                        tramStationName = tramStationName.substring(0, 27)
+                        tramStationName += ".."
                     }
 
-                    // UpdateView
-                    (mRecyclerView?.adapter as ScheduleAdapter).setScheduleList(scheduleList)
-                    (mRecyclerView?.adapter as ScheduleAdapter).notifyDataSetChanged()
+                    if (i == length - 1) {
+                        // Add the terminus one, which has no "departure time"
+                        scheduleList.add(ScheduleItem("TERMINUS", tramStationName, mTramLineLetter))
+                        // Add a fake one to see the last one
+                        scheduleList.add(ScheduleItem("", "", ""))
+                        break
+                    }
+
+                    val date = data.stops?.get(i)?.estimatedDepartureTime ?:":"
+                    val nextDepartureTime = sdf.format(date).replace(':', 'h')
+                    scheduleList.add(ScheduleItem(nextDepartureTime, tramStationName, mTramLineLetter))
                 }
-                else {mErrorScreen.show()}
+
+                    // UpdateView
+                    (mRecyclerView.adapter as ScheduleAdapter).setScheduleList(scheduleList)
+                    (mRecyclerView.adapter as ScheduleAdapter).notifyDataSetChanged()
             }
 
             override fun onError(throwable: Throwable) {
@@ -122,7 +111,7 @@ class ScheduleFragment : Fragment() {
     }
 
     companion object {
-        fun onInstance(tramLineLetter: String?, tramLineKey: String): ScheduleFragment {
+        fun onInstance(tramLineLetter: String, tramLineKey: String): ScheduleFragment {
             val fragment = ScheduleFragment()
             val args = Bundle()
             args.putString(tramLineKey, tramLineLetter)

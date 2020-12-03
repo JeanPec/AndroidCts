@@ -25,7 +25,7 @@ import kotlin.collections.ArrayList
 class OurTramsFragment : Fragment() {
 
     // Attributes
-    private var mRecyclerView: RecyclerView? = null
+    private lateinit var mRecyclerView: RecyclerView
 
     // Methods
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,8 +36,8 @@ class OurTramsFragment : Fragment() {
         // View configurations
         val view = inflater.inflate(R.layout.fv_our_trams, container, false)
         mRecyclerView = view.findViewById(R.id.fv_our_trams_RecyclerView)
-        mRecyclerView?.layoutManager = LinearLayoutManager(context)
-        mRecyclerView?.adapter = OurTramsAdapter(ArrayList(), object : OurTramsAdapter.OnItemClickListener
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.adapter = OurTramsAdapter(ArrayList(), object : OurTramsAdapter.OnItemClickListener
         {
             override fun onButtonScheduleClick(tramLineName: String) {
                 val intent = Intent(activity, ScheduleActivity::class.java)
@@ -74,8 +74,8 @@ class OurTramsFragment : Fragment() {
                 }
 
                 // Update view
-                (mRecyclerView?.adapter as OurTramsAdapter).setOurTramsList(ourTramsList)
-                (mRecyclerView?.adapter as OurTramsAdapter).notifyDataSetChanged()
+                (mRecyclerView.adapter as OurTramsAdapter).setOurTramsList(ourTramsList)
+                (mRecyclerView.adapter as OurTramsAdapter).notifyDataSetChanged()
             }
 
             override fun onError(throwable: Throwable) {

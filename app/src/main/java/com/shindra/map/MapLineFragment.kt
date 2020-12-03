@@ -45,7 +45,7 @@ class MapLineFragment : MapFragment() {
         val view = inflater.inflate(R.layout.fragment_gmaps, container, false)
 
         // Retrieve activity data
-        mTramLineLetter = requireArguments().getString(getString(R.string.TramLineLetterGen)).toString()
+        mTramLineLetter = requireArguments().getString(getString(R.string.TramLineLetterGen)).orEmpty()
         (activity as AppCompatActivity).supportActionBar?.title = "${getString(R.string.line)} $mTramLineLetter"
         return view
     }
@@ -59,20 +59,20 @@ class MapLineFragment : MapFragment() {
         // Network calls
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, mTramLineLetter).observe(object : ObservableListener<Line> {
-            override fun onLoading() {
-                mLoadingScreen.show()
-            }
+                override fun onLoading() {
+                    mLoadingScreen.show()
+                }
 
-            override fun onSuccess(data: Line) {
-                mLoadingScreen.dismiss()
-                updateView(data)
-            }
+                override fun onSuccess(data: Line) {
+                    mLoadingScreen.dismiss()
+                    updateView(data)
+                }
 
-            override fun onError(throwable: Throwable) {
-                mLoadingScreen.dismiss()
-                mErrorScreen.show()
-            }
-        })
+                override fun onError(throwable: Throwable) {
+                    mLoadingScreen.dismiss()
+                    mErrorScreen.show()
+                }
+            })
     }
 
     // Function
@@ -87,7 +87,7 @@ class MapLineFragment : MapFragment() {
 
     // Constructor
     companion object {
-        fun onInstance(tramLineLetter: String?, tramLineLetterKey: String): MapLineFragment {
+        fun onInstance(tramLineLetter: String, tramLineLetterKey: String): MapLineFragment {
             val fragment = MapLineFragment()
             val args = Bundle()
             args.putString(tramLineLetterKey, tramLineLetter)

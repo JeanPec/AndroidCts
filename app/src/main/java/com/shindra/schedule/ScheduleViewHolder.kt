@@ -16,7 +16,7 @@ class ScheduleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     // Methods
     fun onBind(item: ScheduleItem, context: Context){
-        val tramLineText: String = context.getString(R.string.line) + " " + item.mTramLineLetter
+        val tramLineText = "${context.getString(R.string.line)} ${item.mTramLineLetter}"
 
         mTramStationName.text = item.mTramStationName
         mNextDepartureTime.text = item.mNextDepartureTime
