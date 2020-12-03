@@ -1,14 +1,13 @@
-package com.shindra
+package com.shindra.LineTram
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
-import com.shindra.ApiLinesConvertor
+import com.shindra.Utilities.ApiLinesConvertor
+import com.shindra.R
 
 class LineTramViewHolder(inflater: LayoutInflater, parent: ViewGroup)
     : RecyclerView.ViewHolder(inflater.inflate(R.layout.line_tram, parent, false)) {

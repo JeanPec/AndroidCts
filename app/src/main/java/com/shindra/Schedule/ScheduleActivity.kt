@@ -1,15 +1,8 @@
-package com.shindra
+package com.shindra.Schedule
 
-import Fragments.ScheduleFragment
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
-import androidx.lifecycle.ViewModelProvider
-import com.shindra.arrakis.observable.ObservableListener
-import com.shindra.arrakis.observable.observe
-import com.shindra.ctslibrary.apibo.RouteType
-import com.shindra.ctslibrary.bo.Line
+import com.shindra.R
 
 class ScheduleActivity : AppCompatActivity(){
 

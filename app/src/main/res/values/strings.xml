@@ -9,4 +9,5 @@
     <string name="line_name">Ligne %1$s</string>
     <string name="tram_title">Nos trams</string>
     <string name="next_start">Prochain départ</string>
+    <string name="error_text">Une erreur est survenu lors de l\'appel réseau. Veuillez redémarrer l\'application.</string>
 </resources>

@@ -1,10 +1,8 @@
-package com.shindra
+package com.shindra.Schedule
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 
 class ScheduleAdapter(var lineStops: List<Stop>, var lineTramName: String)

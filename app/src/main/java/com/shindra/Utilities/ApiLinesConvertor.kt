@@ -1,10 +1,8 @@
-package com.shindra
+package com.shindra.Utilities
 
-import android.graphics.drawable.Drawable
-import android.util.Log
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Line
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class ApiLinesConvertor {

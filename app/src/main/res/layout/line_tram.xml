@@ -9,8 +9,8 @@
     android:layout_marginRight="16dp"
     android:layout_marginBottom="8dp"
     android:contentDescription="@string/hello_blank_fragment"
-    android:elevation="8dp"
-    app:cardCornerRadius="8dp">
+    android:elevation="4dp"
+    app:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

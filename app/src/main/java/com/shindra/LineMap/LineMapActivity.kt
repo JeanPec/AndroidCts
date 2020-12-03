@@ -1,11 +1,8 @@
-package com.shindra
+package com.shindra.LineMap
 
-import Fragments.LineMapFragment
-import Fragments.ScheduleFragment
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import com.shindra.R
 
 class LineMapActivity: AppCompatActivity() {
 

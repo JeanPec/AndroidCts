@@ -1,16 +1,15 @@
-package Fragments
+package com.shindra.LineMap
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.shindra.ApiLinesConvertor
-import com.shindra.LoadingDialog
-import com.shindra.MyViewModel
-import com.shindra.R
+import com.shindra.*
+import com.shindra.Utilities.ApiLinesConvertor
+import com.shindra.Utilities.ErrorDialog
+import com.shindra.Utilities.LoadingDialog
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
 import com.shindra.arrakis.observable.ObservableListener
@@ -50,6 +49,8 @@ class LineMapFragment : MapFragment() {
         super.onStart()
 
         val loadingDialog = LoadingDialog(activity as Activity)
+        val errorDialog = ErrorDialog(requireActivity())
+
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, lineTramName!!).observe(object : ObservableListener<Line> {
             override fun onLoading() {
@@ -66,6 +67,7 @@ class LineMapFragment : MapFragment() {
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
                 loadingDialog.dismiss()
+                errorDialog.show()
             }
         })
 

@@ -13,30 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CtsAppFip3A">
 
-        <activity android:name=".LineTramActivity">
+        <activity android:name=".LineTram.LineTramActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ScheduleActivity"
-            android:parentActivityName=".LineTramActivity">
+        <activity android:name=".Schedule.ScheduleActivity"
+            android:parentActivityName=".LineTram.LineTramActivity">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LineTramActivity" />
+                android:value=".LineTram.LineTramActivity" />
 
         </activity>
 
-        <activity android:name=".LineMapActivity"
-            android:parentActivityName=".ScheduleActivity">
+        <activity android:name=".LineMap.LineMapActivity"/>
 
-                <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ScheduleActivity" />
-
-        </activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB-PUj9rWHjXJveAxRnMtHGM54ZpxmEGDU"/>

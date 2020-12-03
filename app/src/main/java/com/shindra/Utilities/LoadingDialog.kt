@@ -1,8 +1,8 @@
-package com.shindra
+package com.shindra.Utilities
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.util.Log
+import com.shindra.R
 
 class LoadingDialog(activity: Activity): AlertDialog(activity) {
     init {

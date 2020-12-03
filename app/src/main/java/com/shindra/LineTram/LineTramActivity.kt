@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.LineTram
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Utilities.ErrorDialog
+import com.shindra.Utilities.LoadingDialog
+import com.shindra.MyViewModel
+import com.shindra.R
+import com.shindra.Schedule.ScheduleActivity
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -22,7 +27,10 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
         setContentView(R.layout.line_tram_activity)
         setTitle(R.string.tram_title)
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
+
         val loadingDialog = LoadingDialog(this)
+        val errorDialog = ErrorDialog(this)
+
         recyclerView = findViewById(R.id.LineTramRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = LineTramAdapter(listOfLines, this)
@@ -43,6 +51,7 @@ class LineTramActivity : AppCompatActivity(), LineTramViewHolder.OnClickListener
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
                 loadingDialog.dismiss()
+                errorDialog.show()
             }
         })
 

@@ -1,6 +1,5 @@
-package Fragments
+package com.shindra.Schedule
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.*
+import com.shindra.LineMap.LineMapActivity
+import com.shindra.Utilities.ErrorDialog
+import com.shindra.Utilities.LoadingDialog
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -54,6 +56,7 @@ class ScheduleFragment : Fragment() {
         Log.i("COUNT", listOfStop.toString())
 
         val loadingDialog = LoadingDialog(requireActivity())
+        val errorDialog = ErrorDialog(requireActivity())
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithEstimatedTimeTable(RouteType.TRAM, lineTramName!!, 0).observe(object :
@@ -77,7 +80,7 @@ class ScheduleFragment : Fragment() {
             override fun onError(throwable: Throwable) {
                 // Stop loading + launch error
                 loadingDialog.dismiss()
-
+                errorDialog.show()
             }
         })
 

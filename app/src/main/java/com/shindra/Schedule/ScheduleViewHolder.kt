@@ -1,12 +1,12 @@
-package com.shindra
+package com.shindra.Schedule
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Utilities.ApiLinesConvertor
+import com.shindra.R
 import com.shindra.ctslibrary.bo.Stop
 
 class ScheduleViewHolder(inflater: LayoutInflater, parent: ViewGroup)
