@@ -6,9 +6,8 @@
     tools:context=".TramFragment"
     android:background="@color/Background">
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/TramListCardview"
+        android:id="@+id/TramList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

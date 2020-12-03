@@ -1,5 +1,6 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +13,15 @@ import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
+import android.view.LayoutInflater;
+import android.app.AlertDialog;
+import android.view.View;
 
 
 public class StartActivity extends AppCompatActivity {
 
     private RecyclerView mTramRecyclerView;
-    private RecyclerView.Adapter mTramdapter;
-    private RecyclerView.LayoutManager mTramLayoutManager;
-
+    private RecyclerView.Adapter mTramAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,19 +32,16 @@ public class StartActivity extends AppCompatActivity {
 
         ArrayList<Line> mTramLines = new ArrayList<>();
 
-        mTramLines.add(new Line("Tram A", RouteType.TRAM, null));
-        mTramLines.add(new Line("Tram B", RouteType.TRAM, null));
-        mTramLines.add(new Line("Tram C", RouteType.TRAM, null));
-        mTramLines.add(new Line("Tram D", RouteType.TRAM, null));
-        mTramLines.add(new Line("Tram E", RouteType.TRAM, null));
-        mTramLines.add(new Line("Tram F", RouteType.TRAM, null));
-
-        mTramRecyclerView = findViewById(R.id.TramListCardview);
+        mTramRecyclerView = findViewById(R.id.TramList);
         mTramRecyclerView.setHasFixedSize(true);
-        mTramLayoutManager = new LinearLayoutManager(this);
-        mTramdapter = new TramRecyclerViewAdapter(mTramLines);
+        RecyclerView.LayoutManager mTramLayoutManager = new LinearLayoutManager(this);
         mTramRecyclerView.setLayoutManager(mTramLayoutManager);
-        mTramRecyclerView.setAdapter(mTramdapter);
+
+        View mView = LayoutInflater.from(this).inflate(R.layout.progressbar_dialog, null);
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this).setView(mView);
+        AlertDialog mDialog = mBuilder.create();
+
+        Intent mIntent = new Intent(StartActivity.this, TimeActivity.class);
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -50,24 +49,32 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
+
+                mDialog.show();
             }
 
             @Override
-            public void onSuccess(ArrayList<Line> data) {
+            public void onSuccess(ArrayList<Line> pData) {
 
-                /*for (Line l : data) {
+               for (Line l : pData) {
                     if (l.getRouteType() == RouteType.TRAM) {
                         mTramLines.add(l);
                     }
-                }*/
+                }
+                mTramRecyclerView.setAdapter(mTramAdapter);
+                mDialog.dismiss();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-                //call if the network call has responded with an error
             }
         });
 
+        mTramAdapter = new TramRecyclerViewAdapter(mTramLines, pLine -> {
+            mIntent.putExtra("LINE", pLine.getName());
+            startActivity(mIntent);
+        });
+
+        mTramRecyclerView.setAdapter(mTramAdapter);
     }
 }

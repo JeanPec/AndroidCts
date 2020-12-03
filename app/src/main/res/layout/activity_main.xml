@@ -6,7 +6,6 @@
     android:background="@color/Background"
     tools:context=".StartActivity">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/TramFragment"
         android:name="com.shindra.TramFragment"

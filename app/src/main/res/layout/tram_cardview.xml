@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -48,7 +47,8 @@
                 android:contentDescription="@string/texte_tram" />
 
             <Button
-                android:id="@+id/HoraireButton"
+                android:id="@+id/TimeButton"
+                style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/TramImage"
