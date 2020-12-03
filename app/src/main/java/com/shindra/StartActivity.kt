@@ -1,5 +1,6 @@
 package com.shindra
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,22 +11,22 @@ import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
 import com.shindra.ctslibrary.bo.Line
-import java.nio.file.Files.lines
 
 
-class StartActivity : AppCompatActivity() {
+
+class StartActivity : AppCompatActivity(), ViewHolderTram.RecyclerItemClick {
+
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewTram)
+        recyclerView = findViewById(R.id.recyclerViewTram)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        val trams = ArrayList<Line>()
-        val adapter = RecyclerTramAdapter(trams)
-        recyclerView.adapter = adapter
+
+        val ligneDetram = ArrayList<Line>()
+        recyclerView.adapter = RecyclerTramAdapter(ligneDetram, this)
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lines().observe(object : ObservableListener<ArrayList<Line>> {
@@ -39,24 +40,27 @@ class StartActivity : AppCompatActivity() {
 
                 Log.i("data", data.toString())
 
-                val trams = ArrayList<Line>()
+               // val trams = ArrayList<Line>()
 
                 for (Ligne in data) {
                     if (Ligne.routeType === RouteType.TRAM) {
-                        trams.add(Ligne)
+                        ligneDetram.add(Ligne)
                     }
                 }
-                Log.i("ligne", trams.toString())
+                Log.i("ligne", ligneDetram.toString())
 
-                val adapter = RecyclerTramAdapter(trams)
+                val adapter = RecyclerTramAdapter(ligneDetram, this@StartActivity)
                 recyclerView.adapter = adapter
-
             }
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
             }
         })
+    }
 
+    override fun onHoraireClick(tram: Line) {
+        val intent = Intent(this, HoraireActivity::class.java)
+        startActivity(intent)
     }
 }

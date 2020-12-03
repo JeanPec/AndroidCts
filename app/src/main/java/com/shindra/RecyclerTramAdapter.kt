@@ -12,24 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.shindra.ctslibrary.bo.Line
 
+//lateinit var callback: ViewHolderTram.RecyclerItemClick
 
-class RecyclerTramAdapter(private val listetram: ArrayList<Line>) : RecyclerView.Adapter<ViewHolderTram>() {
+
+class RecyclerTramAdapter(private val listetram: ArrayList<Line>, private val callback: ViewHolderTram.RecyclerItemClick) : RecyclerView.Adapter<ViewHolderTram>() {
     override fun onBindViewHolder(holder: ViewHolderTram, position: Int) {
-        holder.onBind(listetram[position])
-
-       /* val tram: Line = listetram[position]
-        holder.viewTram.setImageResource( when (tram.name) {
-            "A" -> R.drawable.ic_tram_a
-            "B" -> R.drawable.ic_tram_b
-            "C" -> R.drawable.ic_tram_c
-            "D" -> R.drawable.ic_tram_d
-            "E" -> R.drawable.ic_tram_e
-            "F" -> R.drawable.ic_tram_f
-            else -> {
-                R.drawable.ic_tram
-            }
-        })*/
-
+        holder.onBind(listetram[position], callback)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTram {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.cardview_tram, parent, false)
@@ -38,8 +26,4 @@ class RecyclerTramAdapter(private val listetram: ArrayList<Line>) : RecyclerView
     override fun getItemCount(): Int {
         return listetram.size
     }
-   /* class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        var viewTram: ImageView = itemView.findViewById(R.id.tram)
-        var BoutonHoraire = itemView.findViewById<Button>(R.id.bouton_horaire)
-    }*/
 }

@@ -2,35 +2,19 @@ package com.shindra
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.shindra.arrakis.observable.ObservableListener
-import com.shindra.arrakis.observable.observe
-import com.shindra.ctslibrary.bo.Line
-
+import androidx.fragment.app.Fragment
 
 class HoraireActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_horaire)
+        setContentView(R.layout.activity_horaire)
 
-        val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lines().observe(object : ObservableListener<ArrayList<Line>> {
 
-            override fun onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
-            }
 
-            override fun onSuccess(data: ArrayList<Line>) {
-                //call once the network call has responded with a success
+        val fragmentHoraire = FragmentHoraire().apply { arguments = intent.extras}
+        supportFragmentManager.beginTransaction().add(R.id.HoraireFragment, fragmentHoraire).commit()
 
-            }
 
-            override fun onError(throwable: Throwable) {
-                //call if the network call has responded with an error
-            }
-        })
     }
 }
