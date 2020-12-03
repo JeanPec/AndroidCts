@@ -7,8 +7,8 @@
     <string name="buttonForTime">HORAIRE</string>
     <string name="txtDescr">Ceci est un txt</string>
     <string name="buttonSeeOnMap">VOIR SUR LA CARTE</string>
-    <string name="lineStop_txt">lineStop</string>
-    <string name="schedule_time_txt">Hours</string>
+    <string name="lineStop_txt">HeadLine1</string>
+    <string name="schedule_time_txt">18h35</string>
     <string name="schedule_nextstation_txt">Prochain depart</string>
 
     <string name="loading_text">Veuillez patienter, chargement des données en cours ...</string>

@@ -2,7 +2,6 @@ package com.shindra.Menu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,14 +74,11 @@ public class MyStartActivity extends AppCompatActivity {
                     startActivity(scheduleActivity);
                 }));
 
-                Handler handlerLoadingView = new Handler();
-                handlerLoadingView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+
                         loadingDialog.dismissDialog();
+
                     }
-                }, 500);
-            }
+
             @Override
             public void onError(@NotNull Throwable throwable) {
                 //call if the network call has responded with an error

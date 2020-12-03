@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- CardView pour le menu Horaire -->
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,6 +18,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
+    <!-- MarginBottom 8dp because of MarginTop of the next CardView -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/scheduleCardViewContainer"
         android:layout_width="match_parent"
@@ -26,18 +30,13 @@
         <TextView
             android:id="@+id/station_txt"
             style="@style/Headline_6F"
-            android:layout_width="290dp"
-            android:layout_height="26dp"
+            android:layout_width="291dp"
+            android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/lineStop_txt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/scheduleTime_txt"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/lineTram_txt"

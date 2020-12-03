@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<!--  CardView du menu Train -->
+
+<androidx.cardview.widget.CardView android:id="@+id/cardView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardMenuContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ccc"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+    <!-- MarginBottom 8dp because of MarginTop of the next CardView -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardTram_Layout"
             android:layout_width="match_parent"
@@ -35,7 +26,7 @@
 
             <ImageView
                 android:id="@+id/tramImg_onLayout"
-                android:layout_width="341dp"
+                android:layout_width="match_parent"
                 android:layout_height="181dp"
                 android:layout_marginTop="8dp"
                 android:contentDescription="@+id/tramImg_onLayout"
@@ -65,7 +56,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/design_default_color_background"
+                android:background="@android:color/transparent"
                 android:text="@string/buttonForTime"
                 android:textColor="@color/Primary"
                 android:theme="@style/ButtonF"
@@ -75,6 +66,5 @@
                 tools:text="@string/buttonForTime" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
