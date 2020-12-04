@@ -42,31 +42,6 @@ public class RecyclerViewHorairesAdapter extends RecyclerView.Adapter<RecyclerVi
         holder.arret.setText(arret.getName());
         holder.ligne.setText("Ligne " + NomLigne);
 
-        //La couleur du texte de nom de ligne change en fonction du nom de ligne
-        /*switch (NomLigne) {
-            case "A":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineA));
-                break;
-            case "B":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineB));
-                break;
-            case "C":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineC));
-                break;
-            case "D":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineD));
-                break;
-            case "E":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineE));
-                break;
-            case "F":
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.LineF));
-                break;
-            default:
-                holder.ligne.setTextColor(ContextCompat.getColor(holder.ligne.getContext(), R.color.Body2));
-                break;
-        }*/
-
         //On affiche l'horaire au formal HHmm
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH'h'mm");
         holder.horaire.setText(simpleDateFormat.format(Objects.requireNonNull(arret.getEstimatedArrivalTime())));

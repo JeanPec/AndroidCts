@@ -97,7 +97,7 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
     }
 }
 
-//On crée l'interface qui prmet la fonctionalité de click sur un objet
+//On crée l'interface qui permet la fonctionalité de click sur un objet
 interface RecyclerViewItemClick{
     void onTimeClick(Line line);
 }

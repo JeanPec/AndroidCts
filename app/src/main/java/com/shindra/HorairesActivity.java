@@ -53,12 +53,11 @@ public class HorairesActivity extends AppCompatActivity {
 
             @Override
             public void onLoading() {
-
             }
 
             @Override
             public void onSuccess(Line Ligne) {
-
+                //On ajoute les arrêts dans la liste
                 ListeArrets.addAll(Objects.requireNonNull(Ligne.getStops()));
                 RecyclerViewHoraires.setAdapter(RecyclerViewHorairesAdapter);
             }
@@ -68,6 +67,7 @@ public class HorairesActivity extends AppCompatActivity {
             }
         });
 
+        //On définit l'adapter comme celui de notre RecyclerView
         RecyclerViewHorairesAdapter = new RecyclerViewHorairesAdapter(ListeArrets, NomLigne);
         RecyclerViewHoraires.setAdapter(RecyclerViewHorairesAdapter);
     }

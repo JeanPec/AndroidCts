@@ -61,6 +61,7 @@ public class StartActivity extends AppCompatActivity {
                     {
                         ListeLignes.add(ligne);
                     }
+                    ListeLignesRecyclerView.setAdapter(ListeLignesRecylclerViewAdapter);
                 }
             }
 
