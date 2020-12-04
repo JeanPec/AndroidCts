@@ -53,7 +53,7 @@ public class TimeRecyclerViewAdapter extends RecyclerView.Adapter<TimeRecyclerVi
 
         Stop mStop = mStops.get(pPosition);
         pHolder.mTimeStop.setText(mStop.getName());
-        pHolder.mTimeLine.setText(R.string.Ligne + mLineName);
+        pHolder.mTimeLine.setText("Ligne" + " " + mLineName);
 
         switch (mLineName) {
             case "A":
