@@ -11,6 +11,7 @@ class ScheduleActivity : AppCompatActivity(){
         setContentView(R.layout.schedule_activity)
         setTitle(R.string.tram_schedule)
 
+        // Initializing & passing the intent to the fragment
         val scheduleFragment = ScheduleFragment().apply { arguments = intent.extras}
         supportFragmentManager.beginTransaction().add(R.id.scheduleFragment, scheduleFragment).commit()
     }

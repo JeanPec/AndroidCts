@@ -9,16 +9,16 @@ class ScheduleAdapter(var lineStops: List<Stop>, var lineTramName: String)
     : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
+        // Instantiating the Views in the RecyclerView
         val inflater = LayoutInflater.from(parent.context)
         return ScheduleViewHolder(inflater, parent)
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
+        // Binding data to each ViewHolder in the RecyclerView
         holder.onBind(lineStops[position], lineTramName)
     }
 
-    override fun getItemCount(): Int {
-        return lineStops.size
-    }
+    override fun getItemCount(): Int = lineStops.size
 
 }

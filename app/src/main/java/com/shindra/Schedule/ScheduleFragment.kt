@@ -33,54 +33,54 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // Initializing the components dialog
+        val loadingDialog = LoadingDialog(requireActivity())
+        val errorDialog = ErrorDialog(requireActivity())
 
+        // Retrieving the name of the line
         lineTramName = arguments?.getString("lineTramName")
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.schedule_fragment, container, false)
 
+        // Setting up the View
         recyclerView = fragmentView.findViewById(R.id.ScheduleRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = ScheduleAdapter(listOfStop, getString(R.string.line_name, lineTramName))
-        Log.i("COUNT", listOfStop.toString())
 
-        val loadingDialog = LoadingDialog(requireActivity())
-        val errorDialog = ErrorDialog(requireActivity())
 
+        // Calling the API
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithEstimatedTimeTable(RouteType.TRAM, lineTramName!!, 0).observe(object :
             ObservableListener<Line> {
             override fun onLoading() {
-                //start loading here
+                // Start loading here
                 loadingDialog.show()
             }
 
             override fun onSuccess(data: Line) {
+                // Stop the loading
                 loadingDialog.dismiss()
-
-                Log.i("COUNT", data.stops.toString())
-                // Complex expression ??
+                // Updating the view with the new data
                 (recyclerView.adapter as ScheduleAdapter).lineStops = data.stops!!
                 (recyclerView.adapter as ScheduleAdapter).notifyDataSetChanged()
-                // Stop loading
-
             }
 
             override fun onError(throwable: Throwable) {
-                // Stop loading + launch error
+                //call if the network call has responded with an error
                 loadingDialog.dismiss()
                 errorDialog.show()
             }
         })
 
+        // Handling button click
         fragmentView.findViewById<Button>(R.id.btnShowMap).setOnClickListener {
             val intent = Intent(activity, LineMapActivity::class.java)
             intent.putExtra("lineTramName", lineTramName)
+            // Redirecting to Map
             startActivity(intent)
         }
 
         return fragmentView
     }
-
-
 
 }

@@ -11,11 +11,13 @@ class LineTramAdapter(private var lineTramList: List<Line>, private val listener
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineTramViewHolder {
+        // Instantiating the Views in the RecyclerView
         val inflater = LayoutInflater.from(parent.context)
         return LineTramViewHolder(inflater, parent)
     }
 
     override fun onBindViewHolder(holder: LineTramViewHolder, position: Int) {
+        // Binding data to each ViewHolder in the RecyclerView
         val lineOfTram = lineTramList[position]
         holder.onBind(lineOfTram, listener)
     }

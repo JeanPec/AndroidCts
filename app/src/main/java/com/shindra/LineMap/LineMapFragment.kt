@@ -25,7 +25,9 @@ class LineMapFragment : MapFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+        // Retrieving the name of the line
         lineTramName = arguments?.getString("lineTramName")
+        // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_gmaps, container, false)
         // Rest of the initialization is already done in MapFragment
 
@@ -34,11 +36,13 @@ class LineMapFragment : MapFragment() {
 
     // onStart from MapFragment
     override fun onStart() {
+        // Called once onCreate is done
         super.onStart()
 
         val loadingDialog = LoadingDialog(activity as Activity)
         val errorDialog = ErrorDialog(requireActivity())
 
+        // Calling the API
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
         model.lineWithStop(RouteType.TRAM, lineTramName!!).observe(object : ObservableListener<Line> {
             override fun onLoading() {
@@ -62,12 +66,12 @@ class LineMapFragment : MapFragment() {
     }
 
     fun addStop(line: Line) {
-
+        // Adding position/points on the map
         val pois = java.util.ArrayList<Poi>()
         for (stop in line.stops!!) {
             pois.add(Poi(R.drawable.icon_maps_place_24px, ApiLinesConvertor().lineToColor(lineTramName!!), stop.position?.latitude!!, stop.position?.longitude!!))
         }
-
+        // This will update the view with the new points
         addPois(pois)
     }
 

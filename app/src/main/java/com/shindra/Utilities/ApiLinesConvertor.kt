@@ -7,6 +7,7 @@ import java.util.*
 
 class ApiLinesConvertor {
 
+    // Converts line letter to the matching icon
     fun apiLineToIcon(apiLine: Line): Int {
         return when(apiLine.name) {
             "A" -> R.drawable.ic_tram_a
@@ -19,6 +20,7 @@ class ApiLinesConvertor {
         }
     }
 
+    // Parse the date to the format we want
     fun getDateText(date: Date?): String {
         return if(date === null) {
             "N/A"
@@ -28,6 +30,7 @@ class ApiLinesConvertor {
         }
     }
 
+    // Converts the line letter to the matching color
     fun lineToColor(lineName: String) : Int {
         return when (lineName) {
             "A", "Ligne A" -> R.color.line_a

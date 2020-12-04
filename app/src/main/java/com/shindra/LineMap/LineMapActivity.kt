@@ -10,6 +10,8 @@ class LineMapActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_map_activity)
         setTitle(getString(R.string.line_name, intent.getStringExtra("lineTramName")))
+
+        // Initializing & passing the intent to the fragment
         val lineMapFragment = LineMapFragment().apply { arguments = intent.extras}
         supportFragmentManager.beginTransaction().add(R.id.lineMapFragment, lineMapFragment).commit()
     }
