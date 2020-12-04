@@ -41,10 +41,10 @@ public class StartActivity extends AppCompatActivity {
         ListeLignesRecyclerView.setLayoutManager(ListeLignesLayoutManager);
 
         //On crée une vue
-        View View = LayoutInflater.from(this).inflate(R.layout.progressbar_dialog, null);
+        View Vue = LayoutInflater.from(this).inflate(R.layout.progressbar_dialog, null);
 
         //On crée un dialogue pour la phase de chargement
-        AlertDialog.Builder Builder = new AlertDialog.Builder(this).setView(View);
+        AlertDialog.Builder Builder = new AlertDialog.Builder(this).setView(Vue);
         AlertDialog Dialogue = Builder.create();
 
         //On instancie l'Intent
