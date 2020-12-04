@@ -29,7 +29,7 @@ public class HorairesActivity extends AppCompatActivity {
     //On crée une liste qui va contenir les arrêts
     ArrayList<Stop> ListeArrets = new ArrayList<>();
 
-    //On récupère le nom de la lign via l'Intent
+    //On récupère le nom de la ligne via l'Intent
     Intent Intent = getIntent();
     String NomLigne = Intent.getStringExtra("LINE");
 
