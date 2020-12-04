@@ -13,10 +13,10 @@
         android:visibility="visible"
         tools:listitem="@layout/exemple_item" />
 
-    <!--androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_liste_lignes_recyclerview"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/liste_lignes_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        tools:listitem="@layout/cardview_ligne_tram" /-->
+        tools:listitem="@layout/cardview_ligne_tram" />
 </androidx.constraintlayout.widget.ConstraintLayout>

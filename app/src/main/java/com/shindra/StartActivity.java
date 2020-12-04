@@ -1,15 +1,19 @@
 package com.shindra;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.shindra.arrakis.observable.ObservableExtensionKt;
 import com.shindra.arrakis.observable.ObservableListener;
+import com.shindra.ctslibrary.apibo.RouteType;
 import com.shindra.ctslibrary.bo.Line;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +21,12 @@ import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
-    RecyclerViewExempleAdapter adapter;
+    //On crée la RecyclerView qui va accueillir les lignes et son adapter
+    private RecyclerView ListeLignesRecyclerView;
+    private RecyclerView.Adapter ListeLignesRecylclerViewAdapter;
+
+    //On crée une liste des lignes
+    ArrayList<Line> ListeLignes = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,32 +34,46 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Nos Trams");
 
-        // data to populate the RecyclerView with
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
+        //On met en place la RecyclerView
+        ListeLignesRecyclerView = findViewById(R.id.liste_lignes_recyclerview);
+        ListeLignesRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager ListeLignesLayoutManager = new LinearLayoutManager(this);
+        ListeLignesRecyclerView.setLayoutManager(ListeLignesLayoutManager);
 
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.exemple_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerViewExempleAdapter(this, animalNames);
-        recyclerView.setAdapter(adapter);
+        //On crée une vue
+        View View = LayoutInflater.from(this).inflate(R.layout.progressbar_dialog, null);
 
+        //On crée un dialogue pour la phase de chargement
+        AlertDialog.Builder Builder = new AlertDialog.Builder(this).setView(View);
+        AlertDialog Dialogue = Builder.create();
+
+        //On instancie l'Intent
+        Intent IntentListeLignes = new Intent(StartActivity.this, HorairesActivity.class);
+
+        //On crée un view model pour cette activité
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
 
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
+                //On affiche le dialogue au chargement
+                Dialogue.show();
             }
 
             @Override
             public void onSuccess(ArrayList<Line> data) {
-                //call once the network call has responded with a success
+
+                //On ajoute chaque ligne dans la liste qu'on a crée plus haut
+                for (Line ligne : data)
+                {
+                    if (ligne.getRouteType() == RouteType.TRAM)
+                    {
+                        ListeLignes.add(ligne);
+                    }
+                }
+                //On enlève le dialogue de chargement
+                Dialogue.dismiss();
             }
 
             @Override
@@ -58,6 +81,15 @@ public class StartActivity extends AppCompatActivity {
                 //call if the network call has responded with an error
             }
         });
+
+        //On instancie l'adapter de notre RecyclerView
+        ListeLignesRecylclerViewAdapter = new RecyclerViewListeLignesAdapter(ListeLignes, Line -> {
+            Intent.putExtra("LINE", Line.getName());
+            startActivity(IntentListeLignes);
+        });
+
+        //On définit l'adapter comme celui de notre RecyclerView
+        ListeLignesRecyclerView.setAdapter(ListeLignesRecylclerViewAdapter);
     }
 }
 
