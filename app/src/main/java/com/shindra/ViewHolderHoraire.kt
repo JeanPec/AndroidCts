@@ -1,5 +1,6 @@
 package com.shindra
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,9 @@ class ViewHolderHoraire(inflater: LayoutInflater, parent: ViewGroup) : RecyclerV
     var texteInformation: TextView = itemView.findViewById(R.id.texte_information)
 
 
-    fun onBind(arret: Stop, nomLigneTram: String){
+    fun onBind(arret: Stop, nomTram: String){
         nomArret.text = arret.name
-        nomLigne.text = "Ligne " + nomLigneTram
-        nomLigne.text = "Ligne "
+        nomLigne.text = "Ligne " + nomTram
         texteInformation.text = "stop"
         heurePassage.text = "heure"
         

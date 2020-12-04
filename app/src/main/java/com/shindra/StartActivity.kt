@@ -65,6 +65,7 @@ class StartActivity : AppCompatActivity(), ViewHolderTram.RecyclerItemClick {
 
     override fun onHoraireClick(tram: Line) {
         val intent = Intent(this, HoraireActivity::class.java)
+        intent.putExtra("nomligne", tram.name)
         startActivity(intent)
     }
 }

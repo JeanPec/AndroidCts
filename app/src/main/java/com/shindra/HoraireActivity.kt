@@ -10,11 +10,7 @@ class HoraireActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_horaire)
 
-
-
         val fragmentHoraire = FragmentHoraire().apply { arguments = intent.extras}
         supportFragmentManager.beginTransaction().add(R.id.HoraireFragment, fragmentHoraire).commit()
-
-
     }
 }

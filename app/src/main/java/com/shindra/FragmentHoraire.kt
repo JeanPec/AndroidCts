@@ -19,32 +19,33 @@ import kotlin.math.log
 class FragmentHoraire : Fragment() {
     lateinit var recyclerView : RecyclerView
     private lateinit var viewFragment : View
-    lateinit var nomTram: String
-    private var listeArret = ArrayList<Stop>()
+    var nomTram: String? = null
+    var listedesArret = ArrayList<Stop>()
 
     companion object {
         @JvmStatic
-        fun newInstance(nomTram: String): FragmentHoraire{
+        fun newInstance(arret: String): FragmentHoraire{
             val fragmentHoraire = FragmentHoraire()
             val args = Bundle()
-            args.putString("nomTram", nomTram)
+            args.putString("nomligne", arret)
             fragmentHoraire.arguments = args
             return fragmentHoraire
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        nomTram = arguments?.getString("nomTram").toString()
+        Log.i("listedesarrettram", listedesArret.toString())
+        nomTram = arguments?.getString("nomligne").toString()
         viewFragment = inflater.inflate(R.layout.fragment_horaire, container, false)
         recyclerView = viewFragment.findViewById(R.id.RecyclerViewHoraire)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = RecyclerHoraireAdapter(listeArret, nomTram)
-        Log.i("nomdutram", nomTram)
+        recyclerView.adapter = RecyclerHoraireAdapter(listedesArret, nomTram!!)
+        Log.i("nomdutram", nomTram!!)
+
 
         val ecranChargement = Chargement(requireActivity())
 
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-            model.lineWithEstimatedTimeTable(RouteType.TRAM, nomTram, 0).observe(object :
+            model.lineWithEstimatedTimeTable(RouteType.TRAM, nomTram!!, 0).observe(object :
                 ObservableListener<Line> {
 
             override fun onLoading() {
@@ -54,8 +55,9 @@ class FragmentHoraire : Fragment() {
                 ecranChargement.dismiss()
                 (recyclerView.adapter as RecyclerHoraireAdapter).listeArret = data.stops!!
                 (recyclerView.adapter as RecyclerHoraireAdapter).notifyDataSetChanged()
-                Log.i("nomdutram2", nomTram)
-                Log.i("listetram", listeArret.toString())
+                Log.i("listeARRETtram", data.stops.toString())
+
+
             }
             override fun onError(throwable: Throwable) {
                 ecranChargement.dismiss()
