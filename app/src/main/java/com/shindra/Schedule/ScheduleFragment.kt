@@ -28,18 +28,6 @@ class ScheduleFragment : Fragment() {
     private var listOfStop: MutableList<Stop> = mutableListOf()
     var lineTramName: String? = null
 
-    companion object {
-        fun newInstance(lineTramName: String): ScheduleFragment {
-            val scheduleFragment = ScheduleFragment()
-
-            val args = Bundle()
-            args.putString("lineTramName", lineTramName)
-            scheduleFragment.arguments = args
-
-            return scheduleFragment
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
