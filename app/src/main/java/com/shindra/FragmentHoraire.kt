@@ -41,19 +41,24 @@ class FragmentHoraire : Fragment() {
         recyclerView.adapter = RecyclerHoraireAdapter(listeArret, nomTram)
         Log.i("nomdutram", nomTram)
 
+        val ecranChargement = Chargement(requireActivity())
+
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
             model.lineWithEstimatedTimeTable(RouteType.TRAM, nomTram, 0).observe(object :
                 ObservableListener<Line> {
 
             override fun onLoading() {
+                ecranChargement.show()
             }
             override fun onSuccess(data: Line) {
+                ecranChargement.dismiss()
                 (recyclerView.adapter as RecyclerHoraireAdapter).listeArret = data.stops!!
                 (recyclerView.adapter as RecyclerHoraireAdapter).notifyDataSetChanged()
                 Log.i("nomdutram2", nomTram)
                 Log.i("listetram", listeArret.toString())
             }
             override fun onError(throwable: Throwable) {
+                ecranChargement.dismiss()
             }
         })
 

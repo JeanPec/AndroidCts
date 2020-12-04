@@ -25,6 +25,8 @@ class StartActivity : AppCompatActivity(), ViewHolderTram.RecyclerItemClick {
         recyclerView = findViewById(R.id.recyclerViewTram)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
+        val ecranChargement = Chargement(this)
+
         val ligneDetram = ArrayList<Line>()
         recyclerView.adapter = RecyclerTramAdapter(ligneDetram, this)
 
@@ -33,11 +35,12 @@ class StartActivity : AppCompatActivity(), ViewHolderTram.RecyclerItemClick {
 
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
+                ecranChargement.show()
             }
 
             override fun onSuccess(data: ArrayList<Line>) {
                 //call once the network call has responded with a success
-
+                ecranChargement.dismiss()
                 Log.i("data", data.toString())
 
                // val trams = ArrayList<Line>()
@@ -55,6 +58,7 @@ class StartActivity : AppCompatActivity(), ViewHolderTram.RecyclerItemClick {
 
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
+                ecranChargement.dismiss()
             }
         })
     }
