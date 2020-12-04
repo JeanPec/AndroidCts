@@ -40,25 +40,15 @@ public class StartActivity extends AppCompatActivity {
         RecyclerView.LayoutManager ListeLignesLayoutManager = new LinearLayoutManager(this);
         ListeLignesRecyclerView.setLayoutManager(ListeLignesLayoutManager);
 
-        //On crée une vue pour la barre de chargement
-        View Vue = LayoutInflater.from(this).inflate(R.layout.dialogue_barre_de_chargement, null);
-
-        //On crée un dialogue pour la phase de chargement
-        AlertDialog.Builder Builder = new AlertDialog.Builder(this).setView(Vue);
-        AlertDialog Dialogue = Builder.create();
-
         //On instancie l'Intent
         Intent IntentListeLignes = new Intent(StartActivity.this, HorairesActivity.class);
 
         //On crée un view model pour cette activité
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
 
-
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
             @Override
             public void onLoading() {
-                //On affiche le dialogue au chargement
-                Dialogue.show();
             }
 
             @Override
@@ -72,13 +62,10 @@ public class StartActivity extends AppCompatActivity {
                         ListeLignes.add(ligne);
                     }
                 }
-                //On enlève le dialogue de chargement
-                Dialogue.dismiss();
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-                //call if the network call has responded with an error
             }
         });
 

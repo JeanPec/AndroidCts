@@ -33,8 +33,6 @@ public class HorairesActivity extends AppCompatActivity {
     Intent Intent = getIntent();
     String NomLigne = Intent.getStringExtra("LINE");
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -50,7 +48,6 @@ public class HorairesActivity extends AppCompatActivity {
 
         //On crée un view model pour cette activité
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
-
 
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, NomLigne, 0), new ObservableListener<Line>() {
 
