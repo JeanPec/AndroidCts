@@ -3,6 +3,7 @@ package com.shindra;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;
@@ -79,34 +80,20 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
-        ImageView ImageViewNomLigne;
-        public CardView mCardViewLigne;
+        ImageView ItemViewNomLigne;
+        Button BoutonHoraires;
 
+        //On implémente le constructeur
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
-            itemView.setOnClickListener(this);
+            Ligne = itemView.findViewById(R.id.imageTextTram);
+            BoutonHoraires = itemView.findViewById(R.id.button);
         }
 
+        //On implémente la fonction qui permet de catch un click sur le bouton des horaires
         @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        public void onBind(Line Ligne, RecyclerViewItemClick Click) {
+            BoutonHoraires.setOnClickListener(v -> Click.onTimeButton);
         }
-    }
-
-    // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData.get(id);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }
