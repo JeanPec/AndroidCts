@@ -7,17 +7,18 @@
     android:background="@color/Background">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/TimeList"
+        android:id="@+id/ListeHoraires"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <Button
-        android:text="@string/voir_sur_la_carte"
+        android:id="@+id/voir_sur_carte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="VOIR SUR LA CARTE" />
 
 </RelativeLayout>
