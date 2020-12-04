@@ -18,13 +18,8 @@ import java.util.List;
 
 public class HoraireAdapter extends RecyclerView.Adapter<HoraireCard>{
 
-   // List<HoraireCard> listeHoraire;
-
-
     ArrayList<Stop> stopArrayList;
     String nomLigne;
-
-
 
     public HoraireAdapter(ArrayList<Stop> stopArrayList, String nomLigne) {
         this.stopArrayList = stopArrayList;
@@ -45,15 +40,7 @@ public class HoraireAdapter extends RecyclerView.Adapter<HoraireCard>{
         Stop stop = stopArrayList.get(position);
         holder.onBind(stop, nomLigne);
     }
-/*
-    @Override
-    public void onBindViewHolder(@NonNull TramCard holder, int position) {
-        Line line = lineArrayList.get(position);
-        //holder.nomLigne.setText(tramCard.getNomLigne());
-        holder.onBind(line, callback);
 
-
-    }*/
 
     @Override
     public int getItemCount() {

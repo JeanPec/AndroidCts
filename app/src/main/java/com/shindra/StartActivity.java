@@ -27,14 +27,10 @@ public class StartActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    //private RecyclerView.LayoutManager layoutManager;
-   // private TramCardAdapter tramCardAdapter;
 
     private ArrayList<Line> lineArrayList;
     public static String lineClicked;
 
-
-   // private List<HoraireCard> horaireCardList;
 
     protected void onStart() {
         super.onStart();
@@ -67,11 +63,8 @@ public class StartActivity extends AppCompatActivity {
 
                 lineArrayList = new ArrayList<Line>();
 
-                //horaireCardList = new ArrayList<Line>();
-
                 for(Line line:data){
                     if(line.getRouteType() == RouteType.TRAM){
-                        //horaireCardList.add(new HoraireCard(line.getStops().get(0).getName(), "8h00", "test"));
                         lineArrayList.add(line);
                     }
 
@@ -93,39 +86,12 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // setContentView(R.layout.fragment_first);
-
-        //setTitle("Nos trams");
         getSupportActionBar().setTitle(getString(R.string.home_title));
-        //getSupportActionBar().setTitle(getString(R.string.horaire_title));
-
-
-        //Drawable imgTram = getDrawable(R.drawable.nouveau_tram_strasbourg);
-
-        //ArrayList<TramCard> tramCardList = new ArrayList<TramCard>();
-        /*tramCardList.add(new TramCard(getDrawable(R.drawable.tram_a), imgTram));
-        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_b), imgTram));
-        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_c), imgTram));
-        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_d), imgTram));
-        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_e), imgTram));
-        tramCardList.add(new TramCard(getDrawable(R.drawable.tram_f), imgTram));*/
-
-
 
         recyclerView = findViewById(R.id.appCts_recyclerview);
-
-        //TramCardAdapter tramCardAdapter = new TramCardAdapter(tramCardList, this);
-
-        //recyclerView.setAdapter(tramCardAdapter);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
     }
-
-
-
 
 }
 

@@ -14,9 +14,6 @@ import com.shindra.ctslibrary.bo.Line;
 
 public class TramCard extends RecyclerView.ViewHolder {
 
-
-
-    //TextView nomLigne;
     public ImageView imgNomLigne, imgTram;
     public Button  horaireButton;
 
@@ -32,19 +29,8 @@ public class TramCard extends RecyclerView.ViewHolder {
 
     }
 
-
-
-
     public void onBind(Line line, RecyclerItemClick callback)
     {
-            /*imgTram.setImageDrawable(line.imgTram);
-            imgNomLigne.setImageDrawable(line.imgNomLigne);*/
-
-            // faire un switch ici en fonction des lignes de trams
-
-            // valeur par defaut
-
-
             switch (line.getName()){
                 case "A":
                     this.imgNomLigne.setImageResource(R.drawable.tram_a);

@@ -2,6 +2,7 @@ package com.shindra;
 
 import android.annotation.SuppressLint;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,10 @@ public class HoraireCard extends RecyclerView.ViewHolder {
 
     public TextView arret, horaire, nomLigne, prochainDepart;
 
+
     public HoraireCard(@NonNull View itemView) {
         super(itemView);
-        /*this.arret = arret;
-        this.horaire = horaire;
-        this.nomLigne = nomLigne;*/
+
 
         this.arret = itemView.findViewById(R.id.arret);
         this.horaire = itemView.findViewById(R.id.horaire);

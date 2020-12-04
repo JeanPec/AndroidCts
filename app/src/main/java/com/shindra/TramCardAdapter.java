@@ -26,7 +26,6 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCard> {
     TramCard.RecyclerItemClick callback;
 
 
-
     public TramCardAdapter(ArrayList<Line> lineArrayList, TramCard.RecyclerItemClick callback) {
         this.lineArrayList = lineArrayList;
         this.callback = callback;
@@ -43,7 +42,6 @@ public class TramCardAdapter extends RecyclerView.Adapter<TramCard> {
     @Override
     public void onBindViewHolder(@NonNull TramCard holder, int position) {
         Line line = lineArrayList.get(position);
-        //holder.nomLigne.setText(tramCard.getNomLigne());
         holder.onBind(line, callback);
 
 
