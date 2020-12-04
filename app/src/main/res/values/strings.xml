@@ -16,5 +16,8 @@
     <string name="DialogueMessage">Veuillez patienter, chargements des données en cours</string>
     <string name="horaire">TextView</string>
     <string name="voir_sur_la_carte">Voir sur la carte</string>
+    <string name="lignetram">LigneTram</string>
+    <string name="image_tram">image_tram</string>
+    <string name="Horaire">Horaire</string>
 
 </resources>

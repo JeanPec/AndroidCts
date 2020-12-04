@@ -70,7 +70,7 @@ public class horaire_fragment extends Fragment {
             int direction = 0;
             RouteType routeType = null;
 
-            ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(routeType.TRAM, mParam1, 0), new ObservableListener<Line>() {
+            ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, mParam1, 0), new ObservableListener<Line>() {
 
                 @Override
                 public void onLoading() {
@@ -87,6 +87,7 @@ public class horaire_fragment extends Fragment {
                     }
                     rcView.setAdapter(new HoraireAdaptater(TramesStop));
                 }
+
 
                 @Override
                 public void onError(@NotNull Throwable throwable) {

@@ -69,7 +69,6 @@ public class StartActivity extends AppCompatActivity {
                 }
                 list.setAdapter(new TramLineRecyclerViewAdaptater(Trames, new TramLineViewHolder.RecyclerItemClick() {
 
-
                     @Override
                     public void onHoraireClick( Tram trames) {
                     /* c'est la qu'on définit les actions qui seront déclenchées au moment du click*/
