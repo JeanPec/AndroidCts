@@ -71,14 +71,14 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
         }
     }
 
-    // total number of rows
+    //Nombre total d'éléments
     @Override
     public int getItemCount() {
         return ListeLignes.size();
     }
 
 
-    // stores and recycles views as they are scrolled off screen
+    //Stock les vues au fur et à mesure qu'on scroll
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ImageViewNomLigne;
         Button BoutonHoraires;
