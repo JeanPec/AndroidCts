@@ -41,32 +41,35 @@ class LineMapFragment : MapFragment() {
     override fun onStart() {
         super.onStart()
         val model = ViewModelProvider(this).get(MyViewModel::class.java)
-        model.lineWithStop(RouteType.TRAM, line!!).observe(object : ObservableListener<Line> {
-            override fun onLoading() {
-                //call once we started the network called. Indicate that the network call is in progress
+        line?.let {
+            model.lineWithStop(RouteType.TRAM, it).observe(object : ObservableListener<Line> {
 
-            }
+                override fun onLoading() {
+                    //call once we started the network called. Indicate that the network call is in progress
 
-            override fun onSuccess(data: Line) {
-                //call once the network call has responded with a success
-                lineObject = data
-                listPosition = ArrayList<Poi>()
-                lineObject?.stops?.forEach {stop ->
-                    context?.let{
-                        if(stop.position?.latitude != null && stop.position?.longitude != null){
-                            var poi = Poi(getImageId(it,"icon_maps_place_24px"),getColorId(it,"Ligne"+line), stop?.position?.latitude!!,stop?.position?.longitude!!)
-                        listPosition?.add(poi)
-                        }
-                    }
-                    //var poi = Poi(getImageId(context,"icon_maps_place_24px"),getColorId(context!!,"Ligne"+line), it.position?.latitude!!,it.position?.longitude!!)
                 }
-                listPosition?.let {  addPois(it) }
-            }
 
-            override fun onError(throwable: Throwable) {
-                //call if the network call has responded with an error
-            }
-        })
+                override fun onSuccess(data: Line) {
+                    //call once the network call has responded with a success
+                    lineObject = data
+                    listPosition = ArrayList<Poi>()
+                    lineObject?.stops?.forEach { stop ->
+                        context?.let {
+                            if (stop.position?.latitude != null && stop.position?.longitude != null) {
+                                var poi = Poi(getImageId(it, "icon_maps_place_24px"), getColorId(it, "Ligne" + line), stop?.position?.latitude!!, stop?.position?.longitude!!)
+                                listPosition?.add(poi)
+                            }
+                        }
+                        //var poi = Poi(getImageId(context,"icon_maps_place_24px"),getColorId(context!!,"Ligne"+line), it.position?.latitude!!,it.position?.longitude!!)
+                    }
+                    listPosition?.let { addPois(it) }
+                }
+
+                override fun onError(throwable: Throwable) {
+                    //call if the network call has responded with an error
+                }
+            })
+        }
     }
     fun getImageId(context: Context, pictureName: String) = context.getResources().getIdentifier("drawable/$pictureName", null, context.getPackageName())
     fun getColorId(context: Context, colorName: String) = context.getResources().getIdentifier("$colorName", "color", context.getPackageName())

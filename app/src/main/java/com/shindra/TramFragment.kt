@@ -30,6 +30,8 @@ class TramFragment : Fragment() {
     private var  recyclerView : RecyclerView? = null
     private var cardViewAdapter : CardViewAdapter? = null
     private var progressLayout : View? =  null
+
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

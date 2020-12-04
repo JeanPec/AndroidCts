@@ -20,7 +20,7 @@ class ScheduleCardViewAdapter(line: Line?, callback: RecyclerItemClick):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleCardViewHolder {
         //1- Charger la vue en xml.
-        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.schedulecardview, parent, false)
+        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.schedule_cardview, parent, false)
         //2- Créer ViewHolder pour controler la vue.
         val holder = ScheduleCardViewAdapter.ScheduleCardViewHolder(rootView, parent.context)
         //3- Retourner le ViewHolder.
