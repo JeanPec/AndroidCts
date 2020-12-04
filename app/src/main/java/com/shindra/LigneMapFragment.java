@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class LigneMapFragment extends MapFragment {
 
     String strLineName;
+    LoadingDialog loadingPage;
 
     public static LigneMapFragment newInstance(String strLineName) {
 
@@ -38,22 +39,26 @@ public class LigneMapFragment extends MapFragment {
     public void onStart(){
 
         super.onStart();
+
+        loadingPage = new LoadingDialog(getActivity());
+
         strLineName = getArguments().getString("lineName", getContext().getString(R.string.defaultLineName));
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithStop(RouteType.TRAM, strLineName), new ObservableListener<Line>() {
             @Override
             public void onLoading() {
-
+                loadingPage.show();
             }
 
             @Override
             public void onSuccess(Line data) {
+                loadingPage.dismiss();
                 setMarqueur(data);
             }
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-
+                loadingPage.dismiss();
             }
         });
     }

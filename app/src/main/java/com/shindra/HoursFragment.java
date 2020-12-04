@@ -26,6 +26,7 @@ public class HoursFragment extends Fragment{
 
     private ArrayList<Stop> stopList = new ArrayList<>();
     Button bMap;
+    LoadingDialog loadingPage;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.hoursfragment, container, false);
@@ -45,15 +46,18 @@ public class HoursFragment extends Fragment{
             }
         });
 
+        loadingPage = new LoadingDialog(getActivity());
+
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lineWithEstimatedTimeTable(RouteType.TRAM, strLineName, 0), new ObservableListener<Line>() {
             @Override
             public void onLoading() {
-
+                loadingPage.show();
             }
 
             @Override
             public void onSuccess(Line data) {
+                loadingPage.dismiss();
                 ArrayList<Stop> stops = new ArrayList<>();
                 for (Stop stop : data.getStops()){
                     if (stop.getEstimatedDepartureTime() != null){
@@ -66,7 +70,7 @@ public class HoursFragment extends Fragment{
 
             @Override
             public void onError(@NotNull Throwable throwable) {
-
+                loadingPage.dismiss();
             }
         });
         return view;
