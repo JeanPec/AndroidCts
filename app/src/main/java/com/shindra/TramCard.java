@@ -31,7 +31,7 @@ public class TramCard extends RecyclerView.ViewHolder {
 
     public void onBind(Line line, RecyclerItemClick callback)
     {
-            switch (line.getName()){
+            switch (line.getName()){    // choix de l'image en fonction de la ligne sélectionée
                 case "A":
                     this.imgNomLigne.setImageResource(R.drawable.tram_a);
                     break;

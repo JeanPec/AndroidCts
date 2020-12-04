@@ -12,7 +12,7 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
 
-        getSupportActionBar().setTitle("MAP");
+        getSupportActionBar().setTitle("MAP");  // TEST
 
 
 

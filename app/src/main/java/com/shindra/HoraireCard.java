@@ -32,7 +32,7 @@ public class HoraireCard extends RecyclerView.ViewHolder {
     @SuppressLint("ResourceAsColor")
     private void setLineTextColor(String line){
 
-        switch (line){
+        switch (line){  // change la couleur du text en fonction de la ligne
             case "A":
                 this.nomLigne.setTextColor(itemView.getContext().getColor(R.color.color_Ligne_A));
                 break;
