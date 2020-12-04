@@ -1,8 +1,10 @@
-package com.shindra.NosTrams;
+ package com.shindra.NosTrams;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Adapter;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 public class StartActivity extends AppCompatActivity {
 
     private ArrayList<Line> nosTramsList = new ArrayList<>();
+    public NosTramsAdapter TramsAdapter = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,9 +53,10 @@ public class StartActivity extends AppCompatActivity {
 
         RecyclerView nosTramList = findViewById(R.id.recyclerView);
         nosTramList.setLayoutManager (new LinearLayoutManager (this));
-        RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList, callBack);
+        //RecyclerView.Adapter LinesAdapter = new NosTramsAdapter(nosTramsList, callBack);
 
-        nosTramList.setAdapter (LinesAdapter);
+        //nosTramList.setAdapter (LinesAdapter);
+
 
         MyViewModel model = new ViewModelProvider(this).get(MyViewModel.class);
         ObservableExtensionKt.observe(model.lines(), new ObservableListener<ArrayList<Line>>() {
@@ -73,8 +77,11 @@ public class StartActivity extends AppCompatActivity {
                     }
                     Log.i("NosTram","Recupération des Lignes terminées");
                 }
+                TramsAdapter = new NosTramsAdapter(nosTramsList, callBack);
+                nosTramList.setAdapter(TramsAdapter);
+                TramsAdapter.notifyDataSetChanged();
 
-                nosTramList.setAdapter(new NosTramsAdapter(nosTramsList, callBack));
+                //nosTramList.setAdapter(new NosTramsAdapter(nosTramsList, callBack));
             }
             @Override
             public void onError(@NotNull Throwable throwable) {

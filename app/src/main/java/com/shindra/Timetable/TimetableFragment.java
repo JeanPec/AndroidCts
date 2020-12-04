@@ -88,6 +88,7 @@ public class TimetableFragment extends Fragment {
                         listArret.add(Arrets);
                     }
                     recyclerVTimetable.setAdapter(new TimetableAdapter(listArret,ligneTram));
+
                     Log.i("Info","OnStart Timetable?");
                 }
             }

@@ -28,11 +28,11 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
 
     public static class NosTramsViewHolder extends RecyclerView.ViewHolder{
 
-        public final ImageView ligneTram;
-        public final Button timetableButton;
+        public  ImageView ligneTram;
+        public  Button timetableButton;
 
 
-        public NosTramsViewHolder(@NonNull View itemView) {
+        public NosTramsViewHolder( View itemView) {
             super(itemView);
             ligneTram = itemView.findViewById(R.id.imageLigneTram);
             this.timetableButton = itemView.findViewById(R.id.Tram_view_button);
@@ -89,7 +89,7 @@ public class NosTramsAdapter extends RecyclerView.Adapter<NosTramsAdapter.NosTra
         this.callBack = callBack;
     }
 
-    @NonNull
+    //@NonNull
     @Override
     public NosTramsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View tramV = LayoutInflater.from(parent.getContext()).inflate(R.layout.nos_trams_item,parent,false);

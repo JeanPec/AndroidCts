@@ -18,10 +18,10 @@ import java.util.Date;
 public class TimetableViewHolder extends RecyclerView.ViewHolder {
 
     //Création des variables correspondant aux widgets de la vue Horaire.xml
-    public final TextView nomArret;
-    public final TextView nomLigne;
-    public final TextView heureTram;
-    public final TextView indicationDepart;
+    public TextView nomArret;
+    public TextView nomLigne;
+    public TextView heureTram;
+    public TextView indicationDepart;
 
 
     public TimetableViewHolder(@NonNull View itemView) {

@@ -34,7 +34,7 @@ public class TimetableAdapter extends RecyclerView.Adapter<TimetableViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull TimetableViewHolder holder, int position) {
         Stop infoStop = ListArret.get(position);
-        holder.onBind(infoStop, nomLigne);//Compléter la méthode on Bind
+        holder.onBind(infoStop, nomLigne);
     }
 
     @Override
