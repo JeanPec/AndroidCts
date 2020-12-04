@@ -7,13 +7,6 @@
     tools:context=".StartActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/exemple_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        tools:listitem="@layout/exemple_item" />
-
-    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/liste_lignes_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

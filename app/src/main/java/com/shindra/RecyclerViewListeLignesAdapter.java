@@ -1,52 +1,86 @@
 package com.shindra;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
+import com.shindra.ctslibrary.bo.Line;
+
+import java.util.ArrayList;
 
 public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<RecyclerViewListeLignesAdapter.ViewHolder> {
 
-    private List<String> mData;
-    private List<CardView> mListeLignes;
-    private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    //On crée la liste des lignes
+    private ArrayList<Line> ListeLignes;
 
-    // data is passed into the constructor
-    RecyclerViewListeLignesAdapter(Context context, List<CardView> data) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mListeLignes = data;
+    //On crée un Item Click pour utiliser la fonctionnalité declick sur un objet
+    private RecyclerViewItemClick Click;
+
+    //On passe les données des lignes en entrée dans le constructeur ainsi que le item click
+    RecyclerViewListeLignesAdapter(ArrayList<Line> ListeEnEntree, RecyclerViewItemClick ClickEnEntree) {
+        this.ListeLignes = ListeEnEntree;
+        this.Click = ClickEnEntree;
     }
 
-    // inflates the row layout from xml when needed
+    //On définit le view holder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.cardview_ligne_tram, parent, false);
-        return new ViewHolder(view);
+        View vue = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_ligne_tram, parent, false);
+        return new ViewHolder(vue);
     }
 
-    // binds the data to the TextView in each row
+    //Méthode pour lier les données aux cardviews dans la recycler view en fonction de la position
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.get(position);
-        holder.myTextView.setText(animal);
+
+        Line LigneATraiter = ListeLignes.get(position);
+        //En fonction du nom de la ligne on associe l'image correspondante
+        switch (LigneATraiter.getName()) {
+            case ("A"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_a);
+            }
+            break;
+            case ("B"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_b);
+            }
+            break;
+            case ("C"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_c);
+            }
+            break;
+            case ("D"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_d);
+            }
+            break;
+            case ("E"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_e);
+            }
+            break;
+            case ("F"): {
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram_f);
+            }
+            break;
+
+            default:
+                holder.ImageViewNomLigne.setImageResource(R.drawable.tram);
+                break;
+        }
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        return ListeLignes.size();
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        ImageView ImageViewNomLigne;
         public CardView mCardViewLigne;
 
         ViewHolder(View itemView) {
