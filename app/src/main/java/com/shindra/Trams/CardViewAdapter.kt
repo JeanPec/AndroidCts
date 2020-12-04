@@ -1,4 +1,4 @@
-package com.shindra
+package com.shindra.Trams
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
+import com.shindra.RecyclerItemClick
 import com.shindra.ctslibrary.bo.Line
 
 class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : RecyclerView.Adapter<CardViewAdapter.CardViewHolder>() {
@@ -17,7 +19,7 @@ class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : Re
         //1- Charger la vue en xml.
         val rootView = LayoutInflater.from(parent.context).inflate(R.layout.tramcardview, parent, false)
         //2- Créer ViewHolder pour controler la vue.
-        val holder = CardViewHolder(rootView,parent.context)
+        val holder = CardViewHolder(rootView, parent.context)
         //3- Retourner le ViewHolder.
         return holder
 
@@ -47,17 +49,24 @@ class CardViewAdapter(trams: ArrayList<Line>?, callBack: RecyclerItemClick) : Re
         var image:ImageView = itemView.findViewById(R.id.image)
         var scheduleButton : Button = itemView.findViewById(R.id.scheduleButton)
 
-        //Fonction permettant de récupérer l'id d'une image en fonction de son nom.
-        fun getImageId(context: Context, pictureName: String) = context.getResources().getIdentifier("drawable/$pictureName", null, context.getPackageName())
-
-        public fun  onBind(tram: Line,callback : RecyclerItemClick)
+         fun  onBind(tram: Line,callback : RecyclerItemClick)
         {
             scheduleButton.setOnClickListener {
                     callback.onScheduleClick(tram)
             }
 
-            ligne.setImageResource(getImageId(context,"tram_"+tram.name.toLowerCase()))
-            image.setImageResource(getImageId(context,"nouveau_tram_strasbourg"))
+            when(tram.name)
+            {
+                "A"-> ligne.setImageResource(R.drawable.tram_a)
+                "B"-> ligne.setImageResource(R.drawable.tram_b)
+                "C"-> ligne.setImageResource(R.drawable.tram_c)
+                "D"-> ligne.setImageResource(R.drawable.tram_d)
+                "E"-> ligne.setImageResource(R.drawable.tram_e)
+                "F"-> ligne.setImageResource(R.drawable.tram_f)
+                else-> { ligne.setImageResource(R.drawable.tram)}
+            }
+            image.setImageResource(R.drawable.nouveau_tram_strasbourg)
         }
+
     }
 }

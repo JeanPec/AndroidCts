@@ -1,13 +1,12 @@
-package com.shindra
+package com.shindra.Map
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.shindra.MyViewModel
+import com.shindra.Utils.ProcessDialog
 import com.shindra.arrakis.controls.MapFragment
 import com.shindra.arrakis.controls.Poi
 import com.shindra.arrakis.observable.ObservableListener
@@ -29,12 +28,14 @@ class LineMapFragment : MapFragment() {
     private var lineObject : Line? = null
     private var listPosition : ArrayList<Poi>? = null
     private var icon : Drawable? = null
+    private var processDialog : ProcessDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             line = it.getString(ARG_PARAM1)
         }
+
 
     }
 
@@ -46,7 +47,9 @@ class LineMapFragment : MapFragment() {
 
                 override fun onLoading() {
                     //call once we started the network called. Indicate that the network call is in progress
-
+                    processDialog = ProcessDialog()
+                    processDialog?.initialize(context)
+                    processDialog?.show()
                 }
 
                 override fun onSuccess(data: Line) {
@@ -63,6 +66,7 @@ class LineMapFragment : MapFragment() {
                         //var poi = Poi(getImageId(context,"icon_maps_place_24px"),getColorId(context!!,"Ligne"+line), it.position?.latitude!!,it.position?.longitude!!)
                     }
                     listPosition?.let { addPois(it) }
+                    processDialog?.dismiss()
                 }
 
                 override fun onError(throwable: Throwable) {

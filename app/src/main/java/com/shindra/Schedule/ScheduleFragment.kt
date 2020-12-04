@@ -1,5 +1,7 @@
-package com.shindra
+package com.shindra.Schedule
 
+import android.content.Intent
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.Map.LineMapActivity
+import com.shindra.Map.LineMapFragment
+import com.shindra.MyViewModel
+import com.shindra.R
+import com.shindra.RecyclerItemClick
+import com.shindra.Utils.ProcessDialog
 import com.shindra.arrakis.observable.ObservableListener
 import com.shindra.arrakis.observable.observe
 import com.shindra.ctslibrary.apibo.RouteType
@@ -24,13 +32,16 @@ class ScheduleFragment : Fragment() {
     private lateinit var scheduleCardViewAdapter : ScheduleCardViewAdapter
     private var recyclerView : RecyclerView? = null
     private var progressLayout : View? = null
+    private var processDialog  : ProcessDialog? = null
 
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             line = it.getString(ARG_PARAM1)!!
         }
+
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,14 +57,10 @@ class ScheduleFragment : Fragment() {
 
         mapButton.setOnClickListener{
 
-            val lineMapFragment = LineMapFragment.newInstance(line)
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.frameLayout, lineMapFragment)?.addToBackStack("tag")
-            transaction?.setReorderingAllowed(true)
-            transaction?.commit()
+           val intent = Intent(context,LineMapActivity::class.java)
+            intent.putExtra("line",lineObject?.name)
+            startActivity(intent)
         }
-
-
     }
 
     override fun onStart() {
@@ -62,14 +69,17 @@ class ScheduleFragment : Fragment() {
         model.lineWithEstimatedTimeTable(RouteType.TRAM, line!!, 0).observe(object : ObservableListener<Line> {
             override fun onLoading() {
                 //call once we started the network called. Indicate that the network call is in progress
-                progressLayout?.visibility = View.VISIBLE
+                //progressLayout?.visibility = View.VISIBLE
+                processDialog = ProcessDialog()
+                processDialog?.initialize(context)
+                processDialog?.show()
 
             }
 
             override fun onSuccess(data: Line) {
                 //call once the network call has responded with a success
                 lineObject = data
-                scheduleCardViewAdapter = ScheduleCardViewAdapter(lineObject, object : com.shindra.RecyclerItemClick {
+                scheduleCardViewAdapter = ScheduleCardViewAdapter(lineObject, object : RecyclerItemClick {
                     override fun onScheduleClick(tram: Line) {
                         Toast.makeText(context, tram.name.toString(), Toast.LENGTH_SHORT).show()
                     }
@@ -78,9 +88,9 @@ class ScheduleFragment : Fragment() {
                 scheduleCardViewAdapter.notifyDataSetChanged()
                 recyclerView?.layoutManager = LinearLayoutManager(activity)
                 recyclerView?.adapter = scheduleCardViewAdapter
-                progressLayout?.visibility = View.GONE
+                //progressLayout?.visibility = View.GONE
+                processDialog?.dismiss()
             }
-
             override fun onError(throwable: Throwable) {
                 //call if the network call has responded with an error
             }

@@ -1,14 +1,14 @@
-package com.shindra
+package com.shindra.Schedule
 
 import android.content.Context
-import android.content.res.Resources
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.shindra.R
+import com.shindra.RecyclerItemClick
 import com.shindra.ctslibrary.bo.Line
 import com.shindra.ctslibrary.bo.Stop
 import java.util.*
@@ -22,7 +22,7 @@ class ScheduleCardViewAdapter(line: Line?, callback: RecyclerItemClick):
         //1- Charger la vue en xml.
         val rootView = LayoutInflater.from(parent.context).inflate(R.layout.schedule_cardview, parent, false)
         //2- Créer ViewHolder pour controler la vue.
-        val holder = ScheduleCardViewAdapter.ScheduleCardViewHolder(rootView, parent.context)
+        val holder = ScheduleCardViewHolder(rootView, parent.context)
         //3- Retourner le ViewHolder.
         return holder
     }
@@ -49,11 +49,19 @@ class ScheduleCardViewAdapter(line: Line?, callback: RecyclerItemClick):
         var indicationTextView : TextView = itemView.findViewById(R.id.indicationTextView)
         public fun  onBind(line: Line?, stop: Stop?)
         {
-            val colorId = getColorId(context,"Ligne"+line?.name)
-            if(colorId != null)
+            lineTextView.setTextColor(ContextCompat.getColor(context,when(line?.name)
             {
-                lineTextView.setTextColor(ContextCompat.getColor(context, colorId))
-            }
+                "A"-> R.color.LigneA
+                "B"-> R.color.LigneB
+                "C"-> R.color.LigneC
+                "D"-> R.color.LigneD
+                "E"-> R.color.LigneE
+                "F"-> R.color.LigneF
+                else->
+                {
+                    R.color.black
+                }
+            }))
             stopTextView.setText(stop?.name.toString())
             lineTextView.setText("Ligne " + line?.name)
             val date = stop?.estimatedArrivalTime
@@ -64,10 +72,6 @@ class ScheduleCardViewAdapter(line: Line?, callback: RecyclerItemClick):
             hoursTextView.setText("$hours" + 'h' + "$minutes")
             indicationTextView.setText("Prochain départ")
         }
-        //Fonction permettant de récupérer l'id d'une couleur en fonction de son nom.
-        //Je pars sur la convention de nommage suivante, la couleur d'une ligne s'appellera tout le temps comme tel "Ligne+{nom de la ligne EN MAJUSCULE}
-        //Les conventions de nommage me permettent d'éviter un paquet de switchCase qui rendent le code peu maintenable à mon sens => si il y a X ligne de tram...
-        fun getColorId(context: Context, colorName: String) = context.getResources().getIdentifier("$colorName", "color", context.getPackageName())
     }
 
 }
