@@ -17,7 +17,7 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
     //On crée la liste des lignes
     private ArrayList<Line> ListeLignes;
 
-    //On crée un Item Click pour utiliser la fonctionnalité declick sur un objet
+    //On crée un Item Click pour utiliser la fonctionnalité de click sur un objet
     private RecyclerViewItemClick Click;
 
     //On passe les données des lignes en entrée dans le constructeur ainsi que le item click
@@ -79,21 +79,25 @@ public class RecyclerViewListeLignesAdapter extends RecyclerView.Adapter<Recycle
 
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView ItemViewNomLigne;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView ImageViewNomLigne;
         Button BoutonHoraires;
 
         //On implémente le constructeur
         ViewHolder(View itemView) {
             super(itemView);
-            Ligne = itemView.findViewById(R.id.imageTextTram);
+            ImageViewNomLigne = itemView.findViewById(R.id.imageTextTram);
             BoutonHoraires = itemView.findViewById(R.id.button);
         }
 
         //On implémente la fonction qui permet de catch un click sur le bouton des horaires
-        @Override
         public void onBind(Line Ligne, RecyclerViewItemClick Click) {
-            BoutonHoraires.setOnClickListener(v -> Click.onTimeButton);
+            BoutonHoraires.setOnClickListener(v -> Click.onTimeClick(Ligne));
         }
     }
+}
+
+//On crée l'interface qui prmet la fonctionalité de click sur un objet
+interface RecyclerViewItemClick{
+    void onTimeClick(Line line);
 }
