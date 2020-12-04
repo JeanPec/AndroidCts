@@ -41,7 +41,6 @@ public class HoursAdapter extends RecyclerView.Adapter<HoursHolder>{
         holder.tvLine.setText(getLine(strLineName));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH'h'mm");
         holder.tvTime.setText(simpleDateFormat.format(sStop.getEstimatedDepartureTime()));
-
     }
 
     private static String getLine(String strLineName) {
