@@ -40,8 +40,8 @@ public class StartActivity extends AppCompatActivity {
         RecyclerView.LayoutManager ListeLignesLayoutManager = new LinearLayoutManager(this);
         ListeLignesRecyclerView.setLayoutManager(ListeLignesLayoutManager);
 
-        //On crée une vue
-        View Vue = LayoutInflater.from(this).inflate(R.layout.progressbar_dialog, null);
+        //On crée une vue pour la barre de chargement
+        View Vue = LayoutInflater.from(this).inflate(R.layout.dialogue_barre_de_chargement, null);
 
         //On crée un dialogue pour la phase de chargement
         AlertDialog.Builder Builder = new AlertDialog.Builder(this).setView(Vue);
@@ -84,7 +84,7 @@ public class StartActivity extends AppCompatActivity {
 
         //On instancie l'adapter de notre RecyclerView
         ListeLignesRecylclerViewAdapter = new RecyclerViewListeLignesAdapter(ListeLignes, Line -> {
-            Intent.putExtra("LINE", Line.getName());
+            IntentListeLignes.putExtra("LINE", Line.getName());
             startActivity(IntentListeLignes);
         });
 
